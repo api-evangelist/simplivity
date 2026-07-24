@@ -1,0 +1,2186 @@
+swagger: '2.0'
+info:
+  description: "This API enables the programmatic management of key components of an HPE SimpliVity configuration.\n\nTo access the API, request an authentication token by issuing an authentication request in the following form, where the username/password combination is a set of valid management credentials for the applicable hypervisor environment:\n\n     curl -k https://simplivity@<host>/api/oauth/token -d grant_type=password -d username=<user> -d password=<pass>\n\nThen, you can pass in the resulting access_token returned in each HTTP header using Authorization: Bearer token. For example:\n\n     curl -H \"Authorization: Bearer 0a08c809-17ff-479f-b0a8-aedd4d8305a0\"\n\nThe access_token times out after 10 minutes of inactivity and expires after 24 hours.\n\nMake sure to use TLS version 1.2 or greater.\n\nThere are a wide range of possible return values.  Below is a list of the most common return values. \n\n    200 \"OK\" ⁃ This indicates that the request and action has completed with no issues.\n    201 \"Created\" ⁃ This indicates that the request has completed and a new resource has been created.\n    202 \"Accepted\" ⁃ This indicates that the request has been accepted for processing but the processing has not\n                     completed. This is a typical return when a task is generated.\n    400 \"Bad Request\" ⁃ The request cannot or will not be proccessed.  Usually due to a missing required parameter\n                        or invalid data in the parameter.\n    401 \"Unauthorized\" ⁃ The request has not been applied because it lacks authentication credentials for the\n                         target resource.\n    404 \"Not Found\" ⁃ The requested target doesn't exist or has been deleted.\n    405 \"Method Not Allowed\" ⁃ The method being requested is not valid for the target it is being performed on.\n    408 \"Request Timeout\" ⁃ The response took too long.\n    500 \"Internal Server Error\" ⁃ Indicates that the server encountered an unexpected condition that prevented it\n                                  from fulfilling the request.\n\n<a href=\"https://developer.hpe.com/platform/hpe-simplivity/home\" class=\"\toggleEndpointList\" data-id=\"errors\">Click here for a complete list of return codes and response formats</a>\n\n"
+  version: '1.25'
+  title: HPE OmniStack REST backups policies API
+  contact:
+    name: Hewlett Packard Enterprise
+  license:
+    name: HPE OmniStack REST API
+host: localhost
+basePath: ''
+tags:
+- name: policies
+  description: A policy contains backup rules that can be applied to an individual datastore or virtual_machine.
+paths:
+  /policies:
+    get:
+      tags:
+      - policies
+      summary: Retrieves all policies defined on this system
+      operationId: listPolicies
+      consumes:
+      - application/json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: id
+        in: query
+        description: 'The unique identifier (UID) of the policy
+
+
+          Accepts: Single value, comma-separated list'
+        required: false
+        type: string
+      - name: name
+        in: query
+        description: 'The name of the policy
+
+
+          Accepts: Single value, comma-separated list'
+        required: false
+        type: string
+      - name: cluster_group_id
+        in: query
+        description: 'The unique identifiers (UIDs) of the cluster_groups associated with the policies to return
+
+
+          Accepts: Single value, comma-separated list'
+        required: false
+        type: string
+      - name: owner_cluster_id
+        in: query
+        description: 'The unique identifier (UID) of the omnistack_cluster that owns the policy
+
+
+          Accepts: Single value, comma-separated list'
+        required: false
+        type: string
+      - name: owner_cluster_name
+        in: query
+        description: 'The name of the omnistack_cluster that owns the policy
+
+
+          Accepts: Single value, comma-separated list'
+        required: false
+        type: string
+      - name: fields
+        in: query
+        description: "A comma-separated list of fields to include in the returned objects\n\n Default: Returns all fields"
+        required: false
+        type: string
+      - name: limit
+        in: query
+        description: 'A positive integer that represents the maximum number of results to return
+
+
+          Default: 500'
+        required: false
+        type: integer
+        default: 500
+        format: int32
+      - name: offset
+        in: query
+        description: 'A positive integer that directs the service to start returning the &lt;offset value&gt; instance, up to the limit
+
+
+          Default: 0'
+        required: false
+        type: integer
+        default: 0
+        format: int32
+      - name: case
+        in: query
+        description: 'An indicator that specifies if the filter and sort results use a case-sensitive or insensitive manner
+
+
+          Valid values: sensitive or insensitive
+
+
+          Default: sensitive'
+        required: false
+        type: string
+        default: sensitive
+        enum:
+        - sensitive
+        - insensitive
+      - name: sort
+        in: query
+        description: The name of the field where the sort occurs
+        required: false
+        type: string
+      - name: order
+        in: query
+        description: 'The sort order preference
+
+
+          Valid values: ascending or descending
+
+
+          Default: descending'
+        required: false
+        type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/policy'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    post:
+      tags:
+      - policies
+      summary: Creates a new policy
+      operationId: createPolicy
+      consumes:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: cluster_group_id
+        in: query
+        description: The unique identifier (UID) of the cluster_group
+        required: false
+        type: string
+      - in: body
+        name: policy information
+        description: 'name: The name of the new policy'
+        required: true
+        schema:
+          $ref: '#/definitions/create_or_rename_policy'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/TaskMO'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /policies/policy_schedule_report:
+    get:
+      tags:
+      - policies
+      summary: Retrieves the policy schedule report
+      operationId: getPolicyScheduleReport
+      consumes:
+      - application/json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: cluster_group_id
+        in: query
+        description: cluster_group_id
+        required: false
+        type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/policy_schedule_report'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /policies/resume:
+    post:
+      tags:
+      - policies
+      summary: Resumes policy-based backups on a specific targeted object
+      operationId: resumePolicy
+      consumes:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - in: body
+        name: target object information
+        description: 'Object information that specifies the object where policy backups should be resumed
+
+
+          target_object_type: The type of object where policy backups should be resumed
+
+
+          Valid values:
+
+
+          host, omnistack_cluster, cluster_group (when invoked on Management Virtual Appliance), or federation (when invoked on an OmniStack Virtual Controller)
+
+
+
+          target_object_id: The unique identifier (UID) of the host, omnistack_cluster, or cluster_group that resumes policy backups
+
+
+          Note: An empty ID is valid only if the target_object_type is federation.'
+        required: true
+        schema:
+          $ref: '#/definitions/suspend_or_resume_policy'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/TaskMO'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /policies/suspend:
+    post:
+      tags:
+      - policies
+      summary: Suspends policy-based backups on a specific targeted object
+      operationId: suspendPolicy
+      consumes:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - in: body
+        name: target object information
+        description: 'Object information that specifies the object where policy backups should be suspended
+
+
+          target_object_type: The type of object where policy backups should be suspended
+
+
+          Valid values:
+
+
+          host, omnistack_cluster, cluster_group (when invoked on Management Virtual Appliance), or federation (when invoked on an OmniStack Virtual Controller)
+
+
+
+          target_object_id: The unique identifier (UID) of the host, omnistack_cluster, or cluster group that suspends policy backups
+
+
+          Note: An empty ID is valid only if the target_object_type is federation.'
+        required: true
+        schema:
+          $ref: '#/definitions/suspend_or_resume_policy'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/TaskMO'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /policies/{policyId}:
+    get:
+      tags:
+      - policies
+      summary: Retrieves the specified policy
+      operationId: getPolicy
+      consumes:
+      - application/json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: policyId
+        in: path
+        description: The unique identifier (UID) of the policy you want to access
+        required: true
+        type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/policy'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    delete:
+      tags:
+      - policies
+      summary: Removes a policy
+      operationId: deletePolicy
+      consumes:
+      - application/json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: policyId
+        in: path
+        description: The unique identifier (UID) of the policy you want to access
+        required: true
+        type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/TaskMO'
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  /policies/{policyId}/datastores:
+    get:
+      tags:
+      - policies
+      summary: Retrieves the datastores using this policy
+      description: Deprecated as of version 1.4. Instead use GET /api/datastores?policy_id={policyId}
+      operationId: getPolicyDatastores
+      consumes:
+      - application/json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: policyId
+        in: path
+        description: The unique identifier (UID) of the policy you want to access
+        required: true
+        type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/datastore'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: true
+  /policies/{policyId}/impact_report/create_rules:
+    post:
+      tags:
+      - policies
+      summary: Generate a backup impact reported based on proposed creation of rules for the policy
+      operationId: reportOnProposedRulesCreation
+      consumes:
+      - application/vnd.simplivity.v1.19+json
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: policyId
+        in: path
+        description: The unique identifier (UID) of the policy you want to access
+        required: true
+        type: string
+      - name: replace_all_rules
+        in: query
+        description: 'An indicator to replace the existing rules with new rules for a policy
+
+
+          Valid values:
+
+
+          True: Replaces the existing rules with the new rules
+
+
+          False: Adds new rules to the existing set of rules
+
+
+          Default: false'
+        required: true
+        type: boolean
+        default: false
+      - in: body
+        name: Array of rules proposed to be created for the policy
+        description: 'application_consistent: Set to false for crash-consistent backups. Set to true for application-consistent backups (for example, VSS or snapshot backups).
+
+
+          Default: false
+
+
+          consistency_type: Set to DEFAULT for a snapshot backup. Set to VSS for a Microsoft Volume Shadow Copy Service backup. Set to NONE for crash-consistent backups.
+
+
+          Default: NONE
+
+
+          days: The days of the week (for example, Mon,Fri), or month (for example, 1,15) to take backups or "last" to specify the last day of each month
+
+
+          Default: All (that is, every day)
+
+
+          destination_id: The unique identifier (UID) of the omnistack_cluster to store the backup
+
+
+          Default: local omnistack_cluster
+
+
+          external_store_name: The external store to hold the backup.
+
+          Cannot be specified if destination_id is set.
+
+
+          end_time: The time to stop backing up, for example, 14:30. This time is local to the time zone of the Hypervisor Management System (HMS).
+
+
+          Default: 00:00
+
+
+          frequency: The number of minutes between backups
+
+
+          retention: The number of minutes to keep backups
+
+
+          start_time: The time to start the backups, for example, 14:30. This time is local to the time zone of the Hypervisor Management System (HMS).
+
+
+          Default: 00:00'
+        required: true
+        schema:
+          type: array
+          items:
+            $ref: '#/definitions/create_or_edit_rule'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/policy_schedule_impact_report'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /policies/{policyId}/impact_report/edit_rules:
+    post:
+      tags:
+      - policies
+      summary: Generate a backup impact reported based on proposed changes to the rules for the policy
+      operationId: reportOnProposedRulesEdits
+      consumes:
+      - application/vnd.simplivity.v1.19+json
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: policyId
+        in: path
+        description: The unique identifier (UID) of the policy you want to access
+        required: true
+        type: string
+      - name: replace_all_rules
+        in: query
+        description: 'An indicator to replace the existing rules with new rules for a policy
+
+
+          Valid values:
+
+
+          True: Replaces the existing rules with the new rules
+
+
+          False: Adds new rules to the existing set of rules
+
+
+          Default: false'
+        required: true
+        type: boolean
+        default: false
+      - in: body
+        name: Array of rules proposed to be changed in the policy
+        description: 'rule_id: The unique identifier (UID) of the policy rule
+
+
+          application_consistent: Set to false for crash-consistent backups. Set to true for application-consistent backups (for example, VSS or snapshot backups).
+
+
+          Default: false
+
+
+          consistency_type: Set to DEFAULT for a snapshot backup. Set to VSS for a Microsoft Volume Shadow Copy Service backup. Set to NONE for crash-consistent backups.
+
+
+          Default: NONE
+
+
+          days: The days of the week (for example, Mon,Fri), or month (for example, 1,15) to take backups or "last" to specify the last day of each month
+
+
+          Default: All (that is, every day)
+
+
+          destination_id: The unique identifier (UID) of the omnistack_cluster to store the backup
+
+
+          Default: local omnistack_cluster
+
+
+          external_store_name: The external store to hold the backup.
+
+          Cannot be specified if destination_id is set.
+
+
+          end_time: The time to stop backing up, for example, 14:30. This time is local to the time zone of the Hypervisor Management System (HMS).
+
+
+          Default: 00:00
+
+
+          frequency: The number of minutes between backups
+
+
+          retention: The number of minutes to keep backups
+
+
+          start_time: The time to start the backups, for example, 14:30. This time is local to the time zone of the Hypervisor Management System (HMS).
+
+
+          Default: 00:00'
+        required: true
+        schema:
+          type: array
+          items:
+            $ref: '#/definitions/report_on_proposed_rules_edits'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/policy_schedule_impact_report'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /policies/{policyId}/rename:
+    post:
+      tags:
+      - policies
+      summary: Renames the specified policy
+      operationId: renamePolicy
+      consumes:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: policyId
+        in: path
+        description: The unique identifier (UID) of the policy you want to access
+        required: true
+        type: string
+      - in: body
+        name: policy information
+        description: 'name: The new name of the specified policy'
+        required: true
+        schema:
+          $ref: '#/definitions/create_or_rename_policy'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/TaskMO'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /policies/{policyId}/rules:
+    post:
+      tags:
+      - policies
+      summary: Creates one or more new rules or replaces existing rules with new rules for a policy
+      operationId: createRule
+      consumes:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: policyId
+        in: path
+        description: The unique identifier (UID) of the policy you want to access
+        required: true
+        type: string
+      - name: replace_all_rules
+        in: query
+        description: 'An indicator to replace the existing rules with new rules for a policy
+
+
+          Valid values:
+
+
+          True: Replaces the existing rules with the new rules
+
+
+          False: Adds new rules to the existing set of rules
+
+
+          Default: false'
+        required: true
+        type: boolean
+        default: false
+      - in: body
+        name: array of policy rules information
+        description: 'application_consistent: Set to false for crash-consistent backups. Set to true for application-consistent backups (for example, VSS or snapshot backups).
+
+
+          Default: false
+
+
+          consistency_type: Set to DEFAULT for a snapshot backup. Set to VSS for a Microsoft Volume Shadow Copy Service backup. Set to NONE for crash-consistent backups.
+
+
+          Default: NONE
+
+
+          days: The days of the week (for example, Mon,Fri), or month (for example, 1,15) to take backups or "last" to specify the last day of each month
+
+
+          Default: All (that is, every day)
+
+
+          destination_id: The unique identifier (UID) of the omnistack_cluster to store the backup
+
+
+          Default: local omnistack_cluster
+
+
+          external_store_name: The external store to hold the backup.
+
+          Cannot be specified if destination_id is set.
+
+
+          end_time: The time to stop backing up, for example, 14:30. This time is local to the time zone of the Hypervisor Management System (HMS).
+
+
+          Default: 00:00
+
+
+          frequency: The number of minutes between backups
+
+
+          retention: The number of minutes to keep backups
+
+
+          start_time: The time to start the backups, for example, 14:30. This time is local to the time zone of the Hypervisor Management System (HMS).
+
+
+          Default: 00:00'
+        required: true
+        schema:
+          type: array
+          items:
+            $ref: '#/definitions/create_or_edit_rule'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/TaskMO'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /policies/{policyId}/rules/{ruleId}:
+    get:
+      tags:
+      - policies
+      summary: Retrieves the specified policy rule
+      operationId: getRule
+      consumes:
+      - application/json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: policyId
+        in: path
+        description: The unique identifier (UID) of the policy you want to access
+        required: true
+        type: string
+      - name: ruleId
+        in: path
+        description: The unique identifier (UID) of the policy rule you want to access
+        required: true
+        type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/rule'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    put:
+      tags:
+      - policies
+      summary: Edits an existing policy rule
+      operationId: updateRule
+      consumes:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: policyId
+        in: path
+        description: The unique identifier (UID) of the policy you want to access
+        required: true
+        type: string
+      - name: ruleId
+        in: path
+        description: The unique identifier (UID) of the policy rule you want to access
+        required: true
+        type: string
+      - in: body
+        name: policy rule changes
+        description: Any or all of the backup policy rule fields can change, except destination_name, id, number, and max_backups.
+        required: true
+        schema:
+          $ref: '#/definitions/create_or_edit_rule'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/TaskMO'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    delete:
+      tags:
+      - policies
+      summary: Removes a policy rule
+      operationId: deleteRule
+      consumes:
+      - application/json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: policyId
+        in: path
+        description: The unique identifier (UID) of the policy you want to access
+        required: true
+        type: string
+      - name: ruleId
+        in: path
+        description: The unique identifier (UID) of the policy rule you want to access
+        required: true
+        type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/TaskMO'
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  /policies/{policyId}/rules/{ruleId}/impact_report/delete_rule:
+    post:
+      tags:
+      - policies
+      summary: Generate a backup impact reported based on proposed deletion of a policy rule
+      operationId: reportOnProposedRuleDeletion
+      consumes:
+      - application/vnd.simplivity.v1.19+json
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: policyId
+        in: path
+        description: The unique identifier (UID) of the policy you want to access
+        required: true
+        type: string
+      - name: ruleId
+        in: path
+        description: The unique identifier (UID) of the policy rule you want to access
+        required: true
+        type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/policy_schedule_impact_report'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /policies/{policyId}/virtual_machines:
+    get:
+      tags:
+      - policies
+      summary: Retrieves the virtual_machines using this policy
+      description: Deprecated as of version 1.4. Instead use GET /api/virtual_machines?policy_id={policyId}
+      operationId: getPolicyVirtualMachines
+      consumes:
+      - application/json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: policyId
+        in: path
+        description: The unique identifier (UID) of the policy you want to access
+        required: true
+        type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/virtual_machine'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: true
+definitions:
+  suspend_or_resume_policy:
+    type: object
+    required:
+    - target_object_type
+    properties:
+      target_object_type:
+        type: string
+        description: The type of object where policy backups should be suspended or resumed
+      target_object_id:
+        type: string
+        description: 'The unique identifier (UID) of the omnistack_cluster or host that suspends or resumes policy backups
+
+
+          Note: An empty ID is valid if the target_object_type is federation.'
+    description: Suspends or resumes policy backups
+  virtual_machine:
+    type: object
+    required:
+    - app_aware_vm_status
+    - cluster_group_ids
+    - compute_cluster_parent_hypervisor_object_id
+    - compute_cluster_parent_name
+    - created_at
+    - datastore_id
+    - datastore_name
+    - deleted_at
+    - host_id
+    - hypervisor_management_system
+    - hypervisor_management_system_name
+    - hypervisor_object_id
+    - hypervisor_type
+    - id
+    - name
+    - omnistack_cluster_id
+    - omnistack_cluster_name
+    - policy_id
+    - policy_name
+    - replica_set
+    - state
+    properties:
+      app_aware_vm_status:
+        type: string
+        description: The status of the ability of the virtual machine to take an application-consistent backup that uses Microsoft VSS
+        enum:
+        - UNKNOWN
+        - CAPABLE
+        - INVALID_CREDS
+        - VALID_CREDS
+        - VMWARE_TOOLS_UNAVAILABLE
+        - INVALID_OS
+        - UNKNOWN_FAULT
+      cluster_group_ids:
+        type: array
+        description: The unique identifiers (UIDs) of the cluster_groups associated with the virtual_machine
+        items:
+          type: string
+      compute_cluster_parent_hypervisor_object_id:
+        type: string
+        description: The unique identifier (UID) of the hypervisor-based instance that contains the omnistack_cluster that is associated with the instance
+      compute_cluster_parent_name:
+        type: string
+        description: The name of the hypervisor-based instance that contains the omnistack_cluster that is associated with the instance
+      created_at:
+        type: string
+        description: The time a virtual_machine was created, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+      datastore_id:
+        type: string
+        description: The unique identifier (UID) of the datastore that is associated with the instance
+      datastore_name:
+        type: string
+        description: The name of the datastore that is associated with the instance
+      deleted_at:
+        type: string
+        description: The time a virtual_machine was deleted, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+      ha_resynchronization_progress:
+        type: integer
+        format: int32
+        description: The HA resynchronization progress as a percentage (0-100)
+      ha_status:
+        type: string
+        description: The High Availability status of the virtual_machine
+        enum:
+        - UNKNOWN
+        - OUT_OF_SCOPE
+        - NOT_APPLICABLE
+        - DEGRADED
+        - SAFE
+        - SYNCING
+        - DEFUNCT
+      host_id:
+        type: string
+        description: The unique identifier (UID) of the virtual_machine host
+      host_name:
+        type: string
+        description: The name of the host that this virtual machine is currently assigned to
+      hypervisor_allocated_capacity:
+        type: integer
+        format: int64
+        description: The total number of bytes allocated to this virtual machine across all datastores
+      hypervisor_allocated_cpu:
+        type: integer
+        format: int64
+        description: The amount of CPU available to this virtual machine in MHz
+      hypervisor_consumed_cpu:
+        type: integer
+        format: int64
+        description: The amount of CPU consumed by this virtual machine in MHz
+      hypervisor_consumed_memory:
+        type: integer
+        format: int32
+        description: The number of MB actively used by this virtual machine
+      hypervisor_cpu_count:
+        type: integer
+        format: int32
+        description: The number of virtual CPUs allocated to this virtual machine
+      hypervisor_folder_name:
+        type: string
+        description: The name of the folder this virtual machine is stored in
+      hypervisor_free_space:
+        type: integer
+        format: int64
+        description: The number of bytes of free space available to this virtual machine across all datastores
+      hypervisor_instance_id:
+        type: string
+        description: The unique identifier (UID) of the hypervisor-based instance associated with a virtual_machine
+      hypervisor_is_template:
+        type: boolean
+        example: false
+        description: An indicator that shows if the virtual machine is a template
+      hypervisor_managed_by:
+        type: string
+        description: The managed by property of the virtual machine
+      hypervisor_management_system:
+        type: string
+        description: The IP address of the hypervisor-based instance associated with the virtual machine
+      hypervisor_management_system_name:
+        type: string
+        description: The name of the hypervisor-based instance associated with the virtual machine
+      hypervisor_object_id:
+        type: string
+        description: The unique identifier (UID) of the hypervisor-based instance associated with a virtual_machine
+      hypervisor_total_memory:
+        type: integer
+        format: int32
+        description: The number of MB allocated to this virtual machine
+      hypervisor_type:
+        type: string
+        description: The type of hypervisor associated with the virtual_machine
+        enum:
+        - VSPHERE
+        - HYPERV
+      hypervisor_uuid:
+        type: string
+        description: The SMBIOS unique identifier (UID) of the hypervisor-based instance associated with a virtual_machine
+      hypervisor_virtual_disk_count:
+        type: integer
+        format: int32
+        description: The number of virtual disks assigned to this virtual machine
+      hypervisor_virtual_machine_power_state:
+        type: string
+        description: The power state of the virtual machine (ON, OFF, SUSPENDED, or UNKNOWN)
+        enum:
+        - 'ON'
+        - 'OFF'
+        - SUSPENDED
+        - UNKNOWN
+      id:
+        type: string
+        description: The unique identifier (UID) of the virtual_machine
+      name:
+        type: string
+        description: The name of the virtual_machine
+      network_interfaces:
+        type: array
+        description: A virtualized network interface associated with the virtual_machine
+        items:
+          $ref: '#/definitions/NetworkInterface'
+      omnistack_cluster_id:
+        type: string
+        description: The unique identifier (UID) of the omnistack_cluster that is associated with the instance
+      omnistack_cluster_name:
+        type: string
+        description: The name of the omnistack_cluster that is associated with the instance
+      policy_id:
+        type: string
+        description: The unique identifier (UID) of the policy that is associated with the instance
+      policy_name:
+        type: string
+        description: The name of the policy that is associated with the instance
+      replica_set:
+        type: array
+        description: The primary and secondary hosts that store a replica of the data for this virtual_machine
+        items:
+          $ref: '#/definitions/ReplicaInfo'
+      state:
+        type: string
+        description: The state of the virtual_machine
+        enum:
+        - ALIVE
+        - REMOVED
+        - DELETED
+    description: An instance of a virtual_machine defined on this system
+  AffectedObjectMO:
+    type: object
+    required:
+    - object_id
+    - object_type
+    properties:
+      object_id:
+        type: string
+        description: The unique identifier (UID) of the object affected by the completed task
+      object_type:
+        type: string
+        description: The type of the object affected by the completed task (virtual_machine, datastore, omnistack_cluster, backup, host, policy, rule)
+  rule:
+    type: object
+    required:
+    - frequency
+    - retention
+    properties:
+      destination_id:
+        type: string
+        description: The unique identifier (UID) of the omnistack_cluster to store the backup
+      id:
+        type: string
+        description: The unique identifier (UID) of the policy rule
+      frequency:
+        type: integer
+        format: int32
+        description: The number of minutes between backups
+      number:
+        type: integer
+        format: int32
+        description: The incremental number of the rule in the policy
+      destination_name:
+        type: string
+        description: The name of the omnistack_cluster to store the backup or &lt;local&gt; for the local omnistack_cluster
+      retention:
+        type: integer
+        format: int32
+        description: The number of minutes to keep backups
+      days:
+        type: string
+        description: The days of the week (for example, Mon,Fri), or month (for example, 1,15) to take backups or "last" to specify the last day of each month
+      max_backups:
+        type: integer
+        format: int32
+        description: The maximum number of backups to save for this rule
+      external_store_name:
+        type: string
+        description: The name of the external_store
+      start_time:
+        type: string
+        description: The time to start the backups, for example, 14:30. This time is local to the time zone of the Hypervisor Management System (HMS).
+      end_time:
+        type: string
+        description: The time to stop backing up, for example, 14:30. This time is local to the time zone of the Hypervisor Management System (HMS).
+      application_consistent:
+        type: boolean
+        example: false
+        description: Set to false for crash-consistent backups. Set to true for application-consistent backups (for example, VSS or snapshot backups).
+      consistency_type:
+        type: string
+        description: Set to DEFAULT for a snapshot backup. Set to VSS for a Microsoft Volume Shadow Copy Service backup. Set to NONE for crash-consistent backups.
+        enum:
+        - NONE
+        - DEFAULT
+        - FAILEDVSS
+        - NOT_APPLICABLE
+        - VSS
+    description: A backup policy rule defined on this system
+  datastore:
+    type: object
+    required:
+    - cluster_group_ids
+    - compute_cluster_parent_hypervisor_object_id
+    - compute_cluster_parent_name
+    - created_at
+    - hypervisor_management_system
+    - hypervisor_management_system_name
+    - hypervisor_object_id
+    - hypervisor_type
+    - id
+    - mount_directory
+    - name
+    - omnistack_cluster_id
+    - omnistack_cluster_name
+    - policy_id
+    - policy_name
+    - shares
+    - size
+    properties:
+      cluster_group_ids:
+        type: array
+        description: The unique identifiers (UIDs) of the cluster_groups associated with the datastore
+        items:
+          type: string
+      compute_cluster_parent_hypervisor_object_id:
+        type: string
+        description: The unique identifier (UID) of the hypervisor-based instance that contains the omnistack_cluster that is associated with the instance
+      compute_cluster_parent_name:
+        type: string
+        description: The name of the hypervisor-based instance that contains the omnistack_cluster that is associated with the instance
+      created_at:
+        type: string
+        description: The time the datastore was created, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+      deleted:
+        type: boolean
+        example: false
+        description: '[deprecated] An indicator to show if the datastore is deleted'
+      hypervisor_free_space:
+        type: integer
+        format: int64
+        description: The amount of free space (in bytes) available in the datastore
+      hypervisor_management_system:
+        type: string
+        description: The IP address of the Hypervisor Management System (HMS) associated with the datastore
+      hypervisor_management_system_name:
+        type: string
+        description: The name of the Hypervisor Management System (HMS) associated with the datastore
+      hypervisor_object_id:
+        type: string
+        description: The unique identifier (UID) of the hypervisor-based instance associated with the datastore
+      hypervisor_type:
+        type: string
+        description: The type of Hypervisor Management System (HMS) associated with the datastore
+        enum:
+        - VSPHERE
+        - HYPERV
+      id:
+        type: string
+        description: The unique identifier (UID) of the datastore
+      mount_directory:
+        type: string
+        description: The mount point on the system associated with the datastore
+      name:
+        type: string
+        description: The name of the datastore
+      omnistack_cluster_id:
+        type: string
+        description: The unique identifier (UID) of the omnistack_cluster associated with the datastore
+      omnistack_cluster_name:
+        type: string
+        description: The name of the omnistack_cluster associated with the datastore
+      policy_id:
+        type: string
+        description: The unique identifier (UID) of the policy associated with the datastore
+      policy_name:
+        type: string
+        description: The name of the policy associated with the datastore
+      shares:
+        type: array
+        description: A list of hosts that access the datastore, but do not run HPE OmniStack software
+        items:
+          $ref: '#/definitions/share'
+      single_replica:
+        type: boolean
+        example: false
+        description: Whether the datastore contains only single-replica virtual machines (no storage HA)
+      size:
+        type: integer
+        format: int64
+        description: The size (in bytes) of the datastore
+    description: An instance of a datastore that is defined on this system
+  share:
+    type: object
+    required:
+    - address
+    - host
+    - rw
+    properties:
+      address:
+        type: string
+        description: The network address of the host that shares the datastore
+      host:
+        type: string
+        description: The name of the host that shares the datastore
+      rw:
+        type: string
+        description: 'An indicator that shows the mode of the datastore
+
+
+          Valid values:
+
+
+          True: The datastore is being shared in read/write mode.
+
+
+          False: The datastore is being shared in read-only mode.'
+    description: An object (host) that shares the datastore
+  NetworkInterface:
+    type: object
+    required:
+    - adapter_type
+    - device_number
+    - ipv4_addresses
+    - mac_address
+    - mac_generation
+    - network_label
+    properties:
+      adapter_type:
+        type: string
+        description: The adapter type of the network_interface
+        enum:
+        - E1000
+        - E1000E
+        - PCNET32
+        - VMXNET
+        - VNXNET2
+        - VMXNET3
+        - UNKNOWN
+      device_number:
+        type: string
+        description: The device number of the network_interface; empty if this represents a new network_interface
+      ipv4_addresses:
+        type: array
+        description: The IPV4 address(es) assigned to the network_interface
+        items:
+          type: string
+      mac_address:
+        type: string
+        description: If mac_generation is set to MANUAL, specifies the MAC address assigned to the network_interface
+      mac_generation:
+        type: string
+        description: Specifies how the MAC address for the network_interface is generated
+        enum:
+        - ASSIGNED
+        - GENERATED
+        - MANUAL
+        - UNKNOWN
+      network_label:
+        type: string
+        description: The network ID associated with the network_interface
+  policy_schedule_impact_report:
+    type: object
+    required:
+    - schedule_after_change
+    - schedule_before_change
+    properties:
+      schedule_after_change:
+        description: The policy backup schedule report
+        $ref: '#/definitions/policy_schedule_report'
+      schedule_before_change:
+        description: The policy backup schedule report
+        $ref: '#/definitions/policy_schedule_report'
+    description: The policy backup schedule reports for prior to and after applying proposed changes
+  create_or_edit_rule:
+    type: object
+    required:
+    - frequency
+    - retention
+    properties:
+      destination_id:
+        type: string
+        description: The unique identifier (UID) of the omnistack_cluster to store the backup
+      frequency:
+        type: integer
+        format: int32
+        description: The number of minutes between backups
+      retention:
+        type: integer
+        format: int32
+        description: The number of minutes to keep backups
+      days:
+        type: string
+        description: The days of the week (for example, Mon,Fri), or month (for example, 1,15) to take backups or "last" to specify the last day of each month
+      start_time:
+        type: string
+        description: The time to start the backups, for example, 14:30. This time is local to the time zone of the Hypervisor Management System (HMS).
+      end_time:
+        type: string
+        description: The time to stop backing up, for example, 14:30. This time is local to the time zone of the Hypervisor Management System (HMS).
+      application_consistent:
+        type: boolean
+        example: false
+        description: Set to false for crash-consistent backups. Set to true for application-consistent backups (for example, VSS or snapshot backups).
+      consistency_type:
+        type: string
+        description: Set to DEFAULT for a snapshot backup. Set to VSS for a Microsoft Volume Shadow Copy Service backup. Set to NONE for crash-consistent backups.
+        enum:
+        - NONE
+        - DEFAULT
+        - FAILEDVSS
+        - NOT_APPLICABLE
+        - VSS
+      external_store_name:
+        type: string
+        description: 'The external store to hold the backup.
+
+          Cannot be specified if destination_id is set.'
+    description: Creates a policy rule
+  report_on_proposed_rules_edits:
+    type: object
+    required:
+    - frequency
+    - retention
+    - rule_id
+    properties:
+      destination_id:
+        type: string
+        description: The unique identifier (UID) of the omnistack_cluster to store the backup
+      rule_id:
+        type: string
+        description: The unique identifier (UID) of the policy rule
+      frequency:
+        type: integer
+        format: int32
+        description: The number of minutes between backups
+      retention:
+        type: integer
+        format: int32
+        description: The number of minutes to keep backups
+      days:
+        type: string
+        description: The days of the week (for example, Mon,Fri), or month (for example, 1,15) to take backups or "last" to specify the last day of each month
+      start_time:
+        type: string
+        description: The time to start the backups, for example, 14:30. This time is local to the time zone of the Hypervisor Management System (HMS).
+      end_time:
+        type: string
+        description: The time to stop backing up, for example, 14:30. This time is local to the time zone of the Hypervisor Management System (HMS).
+      application_consistent:
+        type: boolean
+        example: false
+        description: Set to false for crash-consistent backups. Set to true for application-consistent backups (for example, VSS or snapshot backups).
+      consistency_type:
+        type: string
+        description: Set to DEFAULT for a snapshot backup. Set to VSS for a Microsoft Volume Shadow Copy Service backup. Set to NONE for crash-consistent backups.
+        enum:
+        - NONE
+        - DEFAULT
+        - FAILEDVSS
+        - NOT_APPLICABLE
+        - VSS
+      external_store_name:
+        type: string
+        description: 'The external store to hold the backup.
+
+          Cannot be specified if destination_id is set.'
+    description: Generate a backup impact reported based on proposed changes to the rules for the policy
+  policy_schedule_report:
+    type: object
+    required:
+    - backup_rate_level
+    - daily_backup_rate
+    - daily_backup_rate_limit
+    - projected_retained_backups
+    - projected_retained_backups_level
+    - retained_backups_limit
+    properties:
+      backup_rate_level:
+        type: integer
+        format: int32
+        description: The ratio in percent of daily_backup_rate vs daily_backup_rate_limit (i.e. What % of the maximum limit is currently specified)
+      daily_backup_rate:
+        type: integer
+        format: int32
+        description: The average number of backups created in a day in the federation as determined by the current set of backup policies and their rules, and the virtual machines assigned to those backup policies
+      daily_backup_rate_limit:
+        type: integer
+        format: int32
+        description: The maximum number of policy backups allowed to be created in the federation each day
+      projected_retained_backups:
+        type: integer
+        format: int32
+        description: The projection of the maximum number of backups that could be retained given the frequency and retention time specified by the backup policies and the virtual machines assigned to those backup policies
+      projected_retained_backups_level:
+        type: integer
+        format: int32
+        description: The ratio in percent of projected_retained_backups vs retained_backups_limit (i.e. What % of the maximum limit is currently specified)
+      retained_backups_limit:
+        type: integer
+        format: int32
+        description: The maximum number of policy backups the federation is permitted to have at any given time
+    description: A policy on this system
+  create_or_rename_policy:
+    type: object
+    required:
+    - name
+    properties:
+      name:
+        type: string
+        description: The name of the policy
+    description: Creates a new policy
+  ReplicaInfo:
+    type: object
+    required:
+    - id
+    - role
+    properties:
+      id:
+        type: string
+        description: The unique identifier (UID) of the host storing the replica
+      role:
+        type: string
+        description: The role of the replica
+        enum:
+        - PRIMARY
+        - SECONDARY
+  policy:
+    type: object
+    required:
+    - cluster_group_ids
+    - id
+    - name
+    - owner_cluster_id
+    - owner_cluster_name
+    - rules
+    properties:
+      cluster_group_ids:
+        type: array
+        description: The unique identifiers (UIDs) of the cluster_groups associated with the policy
+        items:
+          type: string
+      owner_cluster_id:
+        type: string
+        description: The unique identifier (UID) of the omnistack_cluster that owns the policy
+      owner_cluster_name:
+        type: string
+        description: The name of the omnistack_cluster that owns the policy
+      id:
+        type: string
+        description: The unique identifier (UID) of the policy
+      name:
+        type: string
+        description: The name of the policy
+      rules:
+        type: array
+        description: The rules for the policy
+        items:
+          $ref: '#/definitions/rule'
+    description: A policy on this system
+  TaskMO:
+    type: object
+    required:
+    - affected_objects
+    - end_time
+    - id
+    - start_time
+    - state
+    properties:
+      affected_objects:
+        type: array
+        description: For a completed task, the unique identifiers (UIDs) and types of the objects affected by the operation
+        items:
+          $ref: '#/definitions/AffectedObjectMO'
+      end_time:
+        type: string
+        description: The time the task finished, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+      error_code:
+        type: integer
+        format: int32
+        description: The error code returned if a task failed
+      error_message:
+        type: string
+        description: The error message returned if a task fails
+      id:
+        type: string
+        description: The unique identifier (UID) of the task
+      start_time:
+        type: string
+        description: The time the task started, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+      state:
+        type: string
+        description: The current state of the task object
+        enum:
+        - IN_PROGRESS
+        - COMPLETED
+        - FAILED
+    description: A task that was created as a result of an operation performed on the system
+securityDefinitions:
+  OAuth2:
+    type: oauth2
+    tokenUrl: /oauth/token
+    flow: password
+    scopes:
+      read: Grants read access
+      write: Grants write access

@@ -1,0 +1,1606 @@
+swagger: '2.0'
+info:
+  description: "This API enables the programmatic management of key components of an HPE SimpliVity configuration.\n\nTo access the API, request an authentication token by issuing an authentication request in the following form, where the username/password combination is a set of valid management credentials for the applicable hypervisor environment:\n\n     curl -k https://simplivity@<host>/api/oauth/token -d grant_type=password -d username=<user> -d password=<pass>\n\nThen, you can pass in the resulting access_token returned in each HTTP header using Authorization: Bearer token. For example:\n\n     curl -H \"Authorization: Bearer 0a08c809-17ff-479f-b0a8-aedd4d8305a0\"\n\nThe access_token times out after 10 minutes of inactivity and expires after 24 hours.\n\nMake sure to use TLS version 1.2 or greater.\n\nThere are a wide range of possible return values.  Below is a list of the most common return values. \n\n    200 \"OK\" ⁃ This indicates that the request and action has completed with no issues.\n    201 \"Created\" ⁃ This indicates that the request has completed and a new resource has been created.\n    202 \"Accepted\" ⁃ This indicates that the request has been accepted for processing but the processing has not\n                     completed. This is a typical return when a task is generated.\n    400 \"Bad Request\" ⁃ The request cannot or will not be proccessed.  Usually due to a missing required parameter\n                        or invalid data in the parameter.\n    401 \"Unauthorized\" ⁃ The request has not been applied because it lacks authentication credentials for the\n                         target resource.\n    404 \"Not Found\" ⁃ The requested target doesn't exist or has been deleted.\n    405 \"Method Not Allowed\" ⁃ The method being requested is not valid for the target it is being performed on.\n    408 \"Request Timeout\" ⁃ The response took too long.\n    500 \"Internal Server Error\" ⁃ Indicates that the server encountered an unexpected condition that prevented it\n                                  from fulfilling the request.\n\n<a href=\"https://developer.hpe.com/platform/hpe-simplivity/home\" class=\"\toggleEndpointList\" data-id=\"errors\">Click here for a complete list of return codes and response formats</a>\n\n"
+  version: '1.25'
+  title: HPE OmniStack REST backups hosts API
+  contact:
+    name: Hewlett Packard Enterprise
+  license:
+    name: HPE OmniStack REST API
+host: localhost
+basePath: ''
+tags:
+- name: hosts
+  description: A host is a virtual object that uses HPE OmniStack software in a federation.
+paths:
+  /hosts:
+    get:
+      tags:
+      - hosts
+      summary: Retrieves all hosts defined on this system
+      operationId: listHosts
+      consumes:
+      - application/json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: show_optional_fields
+        in: query
+        description: 'An indicator to show the capacity metrics of the host
+
+
+          Note: These values are computed from various sources. Consequently, the retrieval of these values may adversely affect the response time of a request.'
+        required: false
+        type: boolean
+        default: false
+      - name: id
+        in: query
+        description: 'The unique identifier (UID) of the host
+
+
+          Accepts: Single value, comma-separated list'
+        required: false
+        type: string
+      - name: name
+        in: query
+        description: 'The name of the host
+
+
+          Accepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard'
+        required: false
+        type: string
+      - name: type
+        in: query
+        description: 'The type of host
+
+
+          Accepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard'
+        required: false
+        type: string
+      - name: model
+        in: query
+        description: 'The model of the host
+
+
+          Accepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard'
+        required: false
+        type: string
+      - name: version
+        in: query
+        description: 'The version of the host
+
+
+          Accepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard'
+        required: false
+        type: string
+      - name: hypervisor_management_system
+        in: query
+        description: 'The IP address of the Hypervisor Management System (HMS) associated with the host
+
+
+          Accepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard'
+        required: false
+        type: string
+      - name: hypervisor_management_system_name
+        in: query
+        description: 'The name of the Hypervisor Management System (HMS) associated with the host
+
+
+          Accepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard'
+        required: false
+        type: string
+      - name: hypervisor_object_id
+        in: query
+        description: 'The unique identifier (UID) of the hypervisor-based instance associated with the host
+
+
+          Accepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard'
+        required: false
+        type: string
+      - name: compute_cluster_name
+        in: query
+        description: 'The name of the compute cluster associated with the host
+
+
+          Accepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard'
+        required: false
+        type: string
+      - name: compute_cluster_hypervisor_object_id
+        in: query
+        description: 'The unique identifier (UID) of the Hypervisor Management System (HMS) for the associated compute cluster
+
+
+          Accepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard'
+        required: false
+        type: string
+      - name: management_ip
+        in: query
+        description: 'The IP address of the HPE OmniStack management module that runs on the host
+
+
+          Accepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard'
+        required: false
+        type: string
+      - name: storage_ip
+        in: query
+        description: 'The IP address of the HPE OmniStack storage module that runs on the host
+
+
+          Accepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard'
+        required: false
+        type: string
+      - name: federation_ip
+        in: query
+        description: 'The IP address of the federation
+
+
+          Accepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard'
+        required: false
+        type: string
+      - name: virtual_controller_name
+        in: query
+        description: 'The name of the Virtual Controller that runs on the host
+
+
+          Accepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard'
+        required: false
+        type: string
+      - name: compute_cluster_parent_name
+        in: query
+        description: 'The name of the hypervisor-based instance that contains the omnistack_cluster that is associated with the instance
+
+
+          Accepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard'
+        required: false
+        type: string
+      - name: compute_cluster_parent_hypervisor_object_id
+        in: query
+        description: 'The unique identifier (UID) of the hypervisor-based instance that contains the omnistack_cluster that is associated with the instance
+
+
+          Accepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard'
+        required: false
+        type: string
+      - name: policy_enabled
+        in: query
+        description: 'An indicator to show the status of the backup policy for the host
+
+
+          Valid values:
+
+
+          True: The backup policy for the host is enabled.
+
+
+          False: The backup policy for the host is disabled.'
+        required: false
+        type: boolean
+      - name: current_feature_level_min
+        in: query
+        description: The minimum current feature level of the HPE OmniStack software running on the host
+        required: false
+        type: integer
+        format: int32
+      - name: current_feature_level_max
+        in: query
+        description: The maximum current feature level of the HPE OmniStack software running on the host
+        required: false
+        type: integer
+        format: int32
+      - name: potential_feature_level_min
+        in: query
+        description: The minimum potential feature level of the HPE OmniStack software running on the host
+        required: false
+        type: integer
+        format: int32
+      - name: potential_feature_level_max
+        in: query
+        description: The maximum potential feature level of the HPE OmniStack software running on the host
+        required: false
+        type: integer
+        format: int32
+      - name: cluster_feature_level_min
+        in: query
+        description: The minimum cluster feature level of the HPE OmniStack software running on the host
+        required: false
+        type: integer
+        format: int32
+      - name: cluster_feature_level_max
+        in: query
+        description: The maximum cluster feature level of the HPE OmniStack software running on the host
+        required: false
+        type: integer
+        format: int32
+      - name: upgrade_state
+        in: query
+        description: 'The state of the most recent HPE OmniStack software upgrade for this host (SUCCESS, FAIL, IN_PROGRESS, NOOP, UNKNOWN)
+
+
+          Accepts: Single value, comma-separated list'
+        required: false
+        type: string
+      - name: can_rollback
+        in: query
+        description: 'An indicator to show if the current HPE OmniStack software running on the host can roll back to the previous version
+
+
+          Valid values:
+
+
+          True: The current HPE OmniStack software for the host can roll back to the previous version.
+
+
+          False: The current HPE OmniStack software for the host cannot roll back to the previous version.'
+        required: false
+        type: boolean
+      - name: omnistack_cluster_id
+        in: query
+        description: The unique identifier (UID) of the omnistack_cluster associated with the host
+        required: false
+        type: string
+      - name: state
+        in: query
+        description: The current state of the host
+        required: false
+        type: string
+      - name: cluster_group_id
+        in: query
+        description: 'The unique identifiers (UIDs) of the cluster_groups associated with the hosts to return
+
+
+          Accepts: Single value, comma-separated list'
+        required: false
+        type: string
+      - name: availability_zone_planned
+        in: query
+        description: The planned-assigned availability zone. This will become the effectively-assigned zone once the zone changes are realized.
+        required: false
+        type: string
+      - name: availability_zone_effective
+        in: query
+        description: The effectively-assigned availability zone
+        required: false
+        type: string
+      - name: fields
+        in: query
+        description: "A comma-separated list of fields to include in the returned objects\n\n Default: Returns all fields"
+        required: false
+        type: string
+      - name: limit
+        in: query
+        description: 'A positive integer that represents the maximum number of results to return
+
+
+          Default: 500'
+        required: false
+        type: integer
+        default: 500
+        format: int32
+      - name: offset
+        in: query
+        description: 'A positive integer that directs the service to start returning the &lt;offset value&gt; instance, up to the limit
+
+
+          Default: 0'
+        required: false
+        type: integer
+        default: 0
+        format: int32
+      - name: case
+        in: query
+        description: 'An indicator that specifies if the filter and sort results use a case-sensitive or insensitive manner
+
+
+          Valid values: sensitive or insensitive
+
+
+          Default: sensitive'
+        required: false
+        type: string
+        default: sensitive
+        enum:
+        - sensitive
+        - insensitive
+      - name: sort
+        in: query
+        description: The name of the field where the sort occurs
+        required: false
+        type: string
+      - name: order
+        in: query
+        description: 'The sort order preference
+
+
+          Valid values: ascending or descending
+
+
+          Default: descending'
+        required: false
+        type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/host'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /hosts/{hostId}:
+    get:
+      tags:
+      - hosts
+      summary: Retrieves the specified host
+      operationId: getHost
+      consumes:
+      - application/json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: hostId
+        in: path
+        description: The unique identifier (UID) of the host that you want to retrieve
+        required: true
+        type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/host'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /hosts/{hostId}/cancel_virtual_controller_shutdown:
+    post:
+      tags:
+      - hosts
+      summary: Cancels the shutdown of the Virtual Controller
+      operationId: cancelShutdownVirtualControllerUsingPOST
+      consumes:
+      - application/json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: hostId
+        in: path
+        description: The unique identifier (UID) of the host
+        required: true
+        type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ShutdownResponseMO'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /hosts/{hostId}/capacity:
+    get:
+      tags:
+      - hosts
+      summary: Host Capacity
+      operationId: getHostCapacity
+      consumes:
+      - application/json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: hostId
+        in: path
+        description: The identifier of the host. This identifier is unique within the category namespace.
+        required: true
+        type: string
+      - name: fields
+        in: query
+        description: "A comma-separated list of fields to include in the returned objects\n\n Default: Returns all fields"
+        required: false
+        type: string
+      - name: time_offset
+        in: query
+        description: 'A time offset in seconds (from now) or a datetime, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+
+
+          Default: 0'
+        required: false
+        type: string
+        default: '0'
+      - name: range
+        in: query
+        description: 'A range in seconds (the duration from the specified point in time)
+
+
+          Default: 43200'
+        required: false
+        type: integer
+        default: 43200
+        format: int64
+      - name: resolution
+        in: query
+        description: 'The resolution (SECOND, MINUTE, HOUR, or DAY)
+
+
+          Default: MINUTE'
+        required: false
+        type: string
+        default: MINUTE
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/capacity_info'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /hosts/{hostId}/hardware:
+    get:
+      tags:
+      - hosts
+      summary: Retrieves hardware information for the host
+      operationId: getHostHardware
+      consumes:
+      - application/json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: hostId
+        in: path
+        description: The unique identifier (UID) of the host that you want to retrieve
+        required: true
+        type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/host_hardware'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /hosts/{hostId}/metrics:
+    get:
+      tags:
+      - hosts
+      summary: Retrieves throughput, IOPS, and latency data for the host
+      operationId: getHostMetrics
+      consumes:
+      - application/json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: hostId
+        in: path
+        description: The unique identifier (UID) of the host
+        required: true
+        type: string
+      - name: time_offset
+        in: query
+        description: 'A time offset in seconds (from now) or a datetime, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+
+
+          Default: 0'
+        required: false
+        type: string
+        default: '0'
+      - name: range
+        in: query
+        description: 'A range in seconds (the duration from the specified point in time)
+
+
+          Default: 43200'
+        required: false
+        type: integer
+        default: 43200
+        format: int64
+      - name: resolution
+        in: query
+        description: 'The resolution (SECOND, MINUTE, HOUR, or DAY)
+
+
+          Default: MINUTE'
+        required: false
+        type: string
+        default: MINUTE
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/analytics_info'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /hosts/{hostId}/remove_from_federation:
+    post:
+      tags:
+      - hosts
+      summary: Removes the specified host from the federation. The specified hostId must not be the host executing the request.
+      operationId: removeHostFromFederation
+      consumes:
+      - application/vnd.simplivity.v1.19+json
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: hostId
+        in: path
+        description: The unique identifier (UID) of the host
+        required: true
+        type: string
+      - in: body
+        name: remove host from federation options
+        description: 'force: An indicator that specifies if the host should be removed forcefully or not.
+
+
+          Valid values:
+
+
+          True: Forces the removal of the host even if active virtual machines are present and if the host is not HA-compliant. This may cause data loss.
+
+
+          False: Returns an error if there are any virtual machines on the host or if the host is not HA-compliant.
+
+
+          Default: false'
+        required: true
+        schema:
+          $ref: '#/definitions/remove_from_federation'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/TaskMO'
+        '201':
+          description: Created
+        '202':
+          description: Accepted
+          schema:
+            $ref: '#/definitions/TaskMO'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /hosts/{hostId}/shutdown_virtual_controller:
+    post:
+      tags:
+      - hosts
+      summary: Shuts down the Virtual Controller safely (by reaching HA compliance) or by force
+      operationId: shutdownVirtualControllerUsingPOST
+      consumes:
+      - application/json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: hostId
+        in: path
+        description: The unique identifier (UID) of the host
+        required: true
+        type: string
+      - in: body
+        name: host shutdown details
+        description: 'ha_wait: An indicator to show if the user wants to shut down the Virtual Controller safely or forcefully.
+
+
+          Valid values:
+
+
+          True: Virtual Controller waits for the virtual machines to reach HA compliance before shutting down
+
+
+          False: Virtual Controller forced to shut down without waiting for HA compliance
+
+
+          Default: True'
+        required: true
+        schema:
+          $ref: '#/definitions/ShutdownVirtualControllerMO'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ShutdownResponseMO'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /hosts/{hostId}/virtual_controller_shutdown_status:
+    get:
+      tags:
+      - hosts
+      summary: Retrieves the shutdown status of the Virtual Controller
+      operationId: getVirtualControllerShutdownStatusUsingGET
+      consumes:
+      - application/json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: hostId
+        in: path
+        description: The unique identifier (UID) of the host
+        required: true
+        type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ShutdownStatusMO'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+definitions:
+  analytics_info:
+    type: object
+    required:
+    - data_points
+    - name
+    properties:
+      data_points:
+        type: array
+        description: The metrics data points
+        items:
+          $ref: '#/definitions/MetricsDataMO'
+      name:
+        type: string
+        description: The name of the set of metrics (iops, throughput, latency)
+    description: The metrics information
+  AffectedObjectMO:
+    type: object
+    required:
+    - object_id
+    - object_type
+    properties:
+      object_id:
+        type: string
+        description: The unique identifier (UID) of the object affected by the completed task
+      object_type:
+        type: string
+        description: The type of the object affected by the completed task (virtual_machine, datastore, omnistack_cluster, backup, host, policy, rule)
+  MetricsRawDataMO:
+    type: object
+    required:
+    - date
+    - value
+    properties:
+      date:
+        type: string
+        description: The date for the set of metrics, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+      value:
+        type: object
+        description: A metrics result value
+  MetricsDataMO:
+    type: object
+    required:
+    - date
+    - reads
+    - writes
+    properties:
+      date:
+        type: string
+        description: The date for the set of metrics, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+      reads:
+        type: integer
+        format: int64
+        description: The number of reads per second or latency (in microseconds) or throughput (in bytes per second)
+      writes:
+        type: integer
+        format: int64
+        description: The number of writes per second or latency (in microseconds) or throughput (in bytes per second)
+  battery:
+    type: object
+    required:
+    - firmware_revision
+    - health
+    - manufacturer
+    - manufacturing_date
+    - model_number
+    - percent_charged
+    - serial_number
+    - status
+    properties:
+      firmware_revision:
+        type: string
+        description: The firmware revision of the hardware component
+      health:
+        type: string
+        description: The health status for the battery (HEALTHY, MISSING, FAILED, DEGRADED, or UNKNOWN)
+      manufacturer:
+        type: string
+        description: The manufacturer of the hardware component
+      manufacturing_date:
+        type: string
+        description: The manufacturing date of the battery
+      model_number:
+        type: string
+        description: The model number of the hardware component
+      percent_charged:
+        type: integer
+        format: int32
+        description: The charged percentage for the battery
+      serial_number:
+        type: string
+        description: The serial number of the hardware component
+      status:
+        type: string
+        description: The status of the hardware component (GREEN, YELLOW, RED, or UNKNOWN)
+    description: The backup battery unit information for the host
+  storage_adapter:
+    type: object
+    required:
+    - firmware_revision
+    - has_bbu
+    - manufacturer
+    - model_number
+    - product_name
+    - serial_number
+    - status
+    properties:
+      firmware_revision:
+        type: string
+        description: The firmware revision of the hardware component
+      has_bbu:
+        type: string
+        description: An indicator that specifies whether the hardware component has a backup battery unit
+      manufacturer:
+        type: string
+        description: The manufacturer of the hardware component
+      model_number:
+        type: string
+        description: The model number of the hardware component
+      product_name:
+        type: string
+        description: The product name for the hardware component
+      serial_number:
+        type: string
+        description: The serial number of the hardware component
+      status:
+        type: string
+        description: The status of the hardware component (GREEN, YELLOW, RED, or UNKNOWN)
+    description: The storage adapter information for the host
+  host:
+    type: object
+    required:
+    - availability_zone_effective
+    - availability_zone_planned
+    - can_rollback
+    - cluster_feature_level
+    - cluster_group_ids
+    - compute_cluster_hypervisor_object_id
+    - compute_cluster_name
+    - compute_cluster_parent_hypervisor_object_id
+    - compute_cluster_parent_name
+    - current_feature_level
+    - federation_ip
+    - federation_mask
+    - federation_mtu
+    - hypervisor_management_system
+    - hypervisor_management_system_name
+    - hypervisor_object_id
+    - id
+    - management_ip
+    - management_mask
+    - management_mtu
+    - model
+    - name
+    - omnistack_cluster_id
+    - policy_enabled
+    - potential_feature_level
+    - state
+    - storage_ip
+    - storage_mask
+    - storage_mtu
+    - type
+    - upgrade_state
+    - version
+    - virtual_controller_name
+    properties:
+      allocated_capacity:
+        type: integer
+        format: int64
+        description: The amount of storage space (in bytes) defined for the host
+      availability_zone_effective:
+        type: string
+        description: The effectively-assigned availability zone
+      availability_zone_planned:
+        type: string
+        description: The planned-assigned availability zone. This will become the effectively-assigned zone once the zone changes are realized.
+      can_rollback:
+        type: boolean
+        example: false
+        description: 'An indicator to show if the current HPE OmniStack software running on the host can roll back to the previous version
+
+
+          Valid values:
+
+
+          True: The current HPE OmniStack software for the host can roll back to the previous version.
+
+
+          False: The current HPE OmniStack software for the host cannot roll back to the previous version.'
+      capacity_savings:
+        type: integer
+        format: int64
+        description: The number of total bytes saved by deduplication/compression for the host
+      cluster_feature_level:
+        type: integer
+        format: int32
+        description: The cluster feature level of the HPE OmniStack software running on the host
+      cluster_group_ids:
+        type: array
+        description: The unique identifiers (UIDs) of the cluster_groups associated with the host
+        items:
+          type: string
+      compression_ratio:
+        type: string
+        description: The ratio of data compressed for the host
+      compute_cluster_hypervisor_object_id:
+        type: string
+        description: The unique identifier (UID) of the Hypervisor Management System (HMS) for the associated compute cluster
+      compute_cluster_name:
+        type: string
+        description: The name of the compute cluster associated with the host
+      compute_cluster_parent_hypervisor_object_id:
+        type: string
+        description: The unique identifier (UID) of the hypervisor-based instance that contains the omnistack_cluster that is associated with the instance
+      compute_cluster_parent_name:
+        type: string
+        description: The name of the hypervisor-based instance that contains the omnistack_cluster that is associated with the instance
+      current_feature_level:
+        type: integer
+        format: int32
+        description: The current feature level of the HPE OmniStack software running on the host
+      date:
+        type: string
+        description: The date for the set of metrics, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+      deduplication_ratio:
+        type: string
+        description: The ratio of data deduplicated for the host
+      efficiency_ratio:
+        type: string
+        description: The efficency ratio for the host
+      federation_ip:
+        type: string
+        description: The IP address of the federation
+      federation_mask:
+        type: string
+        description: The network mask of the federation
+      federation_mtu:
+        type: string
+        description: The MTU of the federation
+      free_space:
+        type: integer
+        format: int64
+        description: The amount of storage space (in bytes) currently free for the host
+      hypervisor_management_system:
+        type: string
+        description: The IP address of the Hypervisor Management System (HMS) associated with the host
+      hypervisor_management_system_name:
+        type: string
+        description: The name of the Hypervisor Management System (HMS) associated with the host
+      hypervisor_object_id:
+        type: string
+        description: The unique identifier (UID) of the hypervisor-based instance associated with the host
+      id:
+        type: string
+        description: The unique identifier (UID) of the host
+      local_backup_capacity:
+        type: integer
+        format: int64
+        description: The total amount of data storage used for local backups of the virtual machines defined for the host
+      management_ip:
+        type: string
+        description: The IP address of the HPE OmniStack management module that runs on the host
+      management_mask:
+        type: string
+        description: The network mask of the HPE OmniStack management module that runs on the host
+      management_mtu:
+        type: string
+        description: The MTU of the OmniStack management module that runs on the host
+      model:
+        type: string
+        description: The model of the host
+      name:
+        type: string
+        description: The name of the host
+      omnistack_cluster_id:
+        type: string
+        description: The unique identifier (UID) of the omnistack_cluster associated with the host
+      policy_enabled:
+        type: boolean
+        example: false
+        description: 'An indicator to show the status of the backup policy for the host
+
+
+          Valid values:
+
+
+          True: The backup policy for the host is enabled.
+
+
+          False: The backup policy for the host is disabled.'
+      potential_feature_level:
+        type: integer
+        format: int32
+        description: The potential feature level of the HPE OmniStack software running on the host
+      remote_backup_capacity:
+        type: integer
+        format: int64
+        description: The total amount of data storage used for remote backup of the virtual machines defined for the host
+      state:
+        type: string
+        description: The current state of the host
+        enum:
+        - ALIVE
+        - FAULTY
+        - MANAGED
+        - REMOVED
+        - SUSPECTED
+        - UNKNOWN
+      storage_ip:
+        type: string
+        description: The IP address of the HPE OmniStack storage module that runs on the host
+      storage_mask:
+        type: string
+        description: The network mask of the HPE OmniStack storage module that runs on the host
+      storage_mtu:
+        type: string
+        description: The MTU of the HPE OmniStack storage module that runs on the host
+      stored_compressed_data:
+        type: integer
+        format: int64
+        description: The amount of compressed data stored for the host
+      stored_uncompressed_data:
+        type: integer
+        format: int64
+        description: The amount of uncompressed data stored for the host
+      stored_virtual_machine_data:
+        type: integer
+        format: int64
+        description: The total amount of data storage consumed by all of the virtual machines defined within the host
+      type:
+        type: string
+        description: The type of host
+      upgrade_state:
+        type: string
+        description: The state of the most recent HPE OmniStack software upgrade for this host (SUCCESS, FAIL, IN_PROGRESS, NOOP, UNKNOWN)
+        enum:
+        - SUCCESS
+        - FAIL
+        - IN_PROGRESS
+        - NOOP
+        - UNKNOWN
+      used_capacity:
+        type: integer
+        format: int64
+        description: The used capacity for the host
+      used_logical_capacity:
+        type: integer
+        format: int64
+        description: The logical capacity for the host system
+      version:
+        type: string
+        description: The version of the host
+      virtual_controller_name:
+        type: string
+        description: The name of the Virtual Controller that runs on the host
+    description: A host that is defined on this system
+  drive_set:
+    type: object
+    required:
+    - drive_number
+    - firmware_revision
+    - health
+    - manufacturer
+    - model_number
+    - physical_drives
+    - serial_number
+    - status
+    properties:
+      drive_number:
+        type: integer
+        format: int32
+        description: The drive number
+      firmware_revision:
+        type: string
+        description: The firmware revision of the hardware component
+      health:
+        type: string
+        description: The health status for the hardware component (HEALTHY, INITIALIZING, REBUILDING, WARNING, DEGRADED, UNCONFIGURED, MISSING, OFFLINE, FAILED, or HEALTH UNKNOWN)
+      manufacturer:
+        type: string
+        description: The manufacturer of the hardware component
+      model_number:
+        type: string
+        description: The model number of the hardware component
+      physical_drives:
+        description: A list of physical drives
+        $ref: '#/definitions/physical_drive'
+      serial_number:
+        type: string
+        description: The serial number of the hardware component
+      status:
+        type: string
+        description: The status of the hardware component (GREEN, YELLOW, RED, or UNKNOWN)
+    description: The drive set information
+  host_hardware:
+    type: object
+    required:
+    - battery
+    - firmware_revision
+    - host_id
+    - logical_drives
+    - manufacturer
+    - model_number
+    - name
+    - raid_card
+    - serial_number
+    - status
+    properties:
+      accelerator_card:
+        description: The accelerator card information for the host
+        $ref: '#/definitions/accelerator_card'
+      battery:
+        description: The backup battery unit information for the host
+        $ref: '#/definitions/battery'
+      firmware_revision:
+        type: string
+        description: The firmware revision of the hardware component
+      host_id:
+        type: string
+        description: The unique identifier (UID) of the host
+      logical_drives:
+        description: A list of logical drives for the host
+        $ref: '#/definitions/logical_drive'
+      manufacturer:
+        type: string
+        description: The manufacturer of the hardware component
+      model_number:
+        type: string
+        description: The model number of the hardware component
+      name:
+        type: string
+        description: The name of the host
+      raid_card:
+        description: The storage adapter information for the host
+        $ref: '#/definitions/storage_adapter'
+      serial_number:
+        type: string
+        description: The serial number of the hardware component
+      status:
+        type: string
+        description: The status of the hardware component (GREEN, YELLOW, RED, or UNKNOWN)
+    description: A list of hardware modules for the host
+  ShutdownStatusMO:
+    type: object
+    required:
+    - status
+    properties:
+      status:
+        type: string
+        description: Indicates the shutdown status of the Virtual Controller
+        enum:
+        - NONE
+        - IN_PROGRESS
+        - CANCEL_IN_PROGRESS
+        - FORCE_IN_PROGRESS
+        - HA
+  ShutdownVirtualControllerMO:
+    type: object
+    properties:
+      ha_wait:
+        type: boolean
+        example: true
+        description: 'An indicator to show if the user wants to shut down the Virtual Controller safely or forcefully.
+
+
+          Valid values:
+
+
+          True: Virtual Controller waits for the virtual machines to reach HA compliance before shutting down
+
+
+          False: Virtual Controller forced to shut down without waiting for HA compliance
+
+
+          Default: True'
+  physical_drive:
+    type: object
+    required:
+    - additional_status
+    - capacity
+    - enclosure
+    - firmware_revision
+    - health
+    - life_remaining
+    - manufacturer
+    - media_type
+    - model_number
+    - percent_rebuilt
+    - serial_number
+    - slot
+    - status
+    - wwn
+    properties:
+      additional_status:
+        type: string
+        description: A list of additional statuses for the hardware component. Note that this information is currently only available for solid state drives (SSDs) (SSD life Warn or SSD life Critical).
+      capacity:
+        type: integer
+        format: int64
+        description: The capacity of the drive (in bytes)
+      drive_position:
+        type: string
+        description: The position of the drive
+      enclosure:
+        type: integer
+        format: int32
+        description: The enclosure number of the drive
+      firmware_revision:
+        type: string
+        description: The firmware revision of the hardware component
+      health:
+        type: string
+        description: The health status for the hardware component (HEALTHY, INITIALIZING, REBUILDING, WARNING, DEGRADED, UNCONFIGURED, MISSING, OFFLINE, FAILED, or HEALTH UNKNOWN)
+      life_remaining:
+        type: integer
+        format: int32
+        description: The percentage of solid state drive (SSD) life remaining
+      manufacturer:
+        type: string
+        description: The manufacturer of the hardware component
+      media_type:
+        type: string
+        description: The media type of the drive (Unknown, HDD, SSD)
+        enum:
+        - UNKNOWN
+        - HDD
+        - SSD
+      model_number:
+        type: string
+        description: The model number of the hardware component
+      percent_rebuilt:
+        type: integer
+        format: int32
+        description: The percentage of rebuilt action for the driver
+      serial_number:
+        type: string
+        description: The serial number of the hardware component
+      slot:
+        type: integer
+        format: int32
+        description: The slot number of the drive
+      status:
+        type: string
+        description: The status of the hardware component (GREEN, YELLOW, RED, or UNKNOWN)
+      wwn:
+        type: string
+        description: The WWN number for the driver
+    description: The physical drive
+  logical_drive:
+    type: object
+    required:
+    - cache_state
+    - capacity
+    - drive_sets
+    - firmware_revision
+    - health
+    - manufacturer
+    - model_number
+    - name
+    - serial_number
+    - status
+    properties:
+      cache_state:
+        type: string
+        description: The cache state for the drive
+      capacity:
+        type: integer
+        format: int64
+        description: The capacity of the drive (in bytes)
+      drive_sets:
+        description: A list of the drive sets
+        $ref: '#/definitions/drive_set'
+      firmware_revision:
+        type: string
+        description: The firmware revision of the hardware component
+      health:
+        type: string
+        description: The health status for the hardware component (HEALTHY, INITIALIZING, REBUILDING, WARNING, DEGRADED, UNCONFIGURED, MISSING, OFFLINE, FAILED, or HEALTH UNKNOWN)
+      manufacturer:
+        type: string
+        description: The manufacturer of the hardware component
+      model_number:
+        type: string
+        description: The model number of the hardware component
+      name:
+        type: integer
+        format: int64
+        description: The name of the drive
+      serial_number:
+        type: string
+        description: The serial number of the hardware component
+      status:
+        type: string
+        description: The status of the hardware component (GREEN, YELLOW, RED, or UNKNOWN)
+    description: A host that is defined on this system
+  accelerator_card:
+    type: object
+    required:
+    - firmware_revision
+    - model_number
+    - serial_number
+    - status
+    - temperature
+    properties:
+      firmware_revision:
+        type: string
+        description: The firmware revision of the hardware component
+      model_number:
+        type: string
+        description: The model number of the hardware component
+      serial_number:
+        type: string
+        description: The serial number of the hardware component
+      status:
+        type: string
+        description: The status of the hardware component (GREEN, YELLOW, RED, or UNKNOWN)
+      temperature:
+        type: integer
+        format: int32
+        description: The temperature of the hardware component
+    description: The accelerator card information for the host
+  ShutdownResponseMO:
+    type: object
+    required:
+    - status
+    properties:
+      status:
+        type: string
+        description: The status of the process to shut down, cancel, or force the shutdown of the Virtual Controller
+        enum:
+        - SUCCESS
+        - FAILURE
+        - UNKNOWN
+        - IN_PROGRESS
+  capacity_info:
+    type: object
+    required:
+    - data_points
+    - name
+    properties:
+      data_points:
+        type: array
+        description: The metrics data points
+        items:
+          $ref: '#/definitions/MetricsRawDataMO'
+      name:
+        type: string
+        description: The name of the set of metrics (stored_compressed_data, compression_ratio, deduplication_ratio, capacity_savings, efficiency_ratio, local_backup_capacity, used_logical_capacity, remote_backup_capacity, stored_virtual_machine_data, stored_uncompressed_data, used_capacity, free_space, allocated_capacity)
+    description: The metrics information
+  remove_from_federation:
+    type: object
+    properties:
+      force:
+        type: boolean
+        example: false
+        description: An indicator to force a retention time modification even if this action results in deleting backups
+    description: Removes the specified host from the federation. The specified hostId must not be the host executing the request.
+  TaskMO:
+    type: object
+    required:
+    - affected_objects
+    - end_time
+    - id
+    - start_time
+    - state
+    properties:
+      affected_objects:
+        type: array
+        description: For a completed task, the unique identifiers (UIDs) and types of the objects affected by the operation
+        items:
+          $ref: '#/definitions/AffectedObjectMO'
+      end_time:
+        type: string
+        description: The time the task finished, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+      error_code:
+        type: integer
+        format: int32
+        description: The error code returned if a task failed
+      error_message:
+        type: string
+        description: The error message returned if a task fails
+      id:
+        type: string
+        description: The unique identifier (UID) of the task
+      start_time:
+        type: string
+        description: The time the task started, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+      state:
+        type: string
+        description: The current state of the task object
+        enum:
+        - IN_PROGRESS
+        - COMPLETED
+        - FAILED
+    description: A task that was created as a result of an operation performed on the system
+securityDefinitions:
+  OAuth2:
+    type: oauth2
+    tokenUrl: /oauth/token
+    flow: password
+    scopes:
+      read: Grants read access
+      write: Grants write access

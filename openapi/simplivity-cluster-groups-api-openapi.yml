@@ -1,0 +1,292 @@
+swagger: '2.0'
+info:
+  description: "This API enables the programmatic management of key components of an HPE SimpliVity configuration.\n\nTo access the API, request an authentication token by issuing an authentication request in the following form, where the username/password combination is a set of valid management credentials for the applicable hypervisor environment:\n\n     curl -k https://simplivity@<host>/api/oauth/token -d grant_type=password -d username=<user> -d password=<pass>\n\nThen, you can pass in the resulting access_token returned in each HTTP header using Authorization: Bearer token. For example:\n\n     curl -H \"Authorization: Bearer 0a08c809-17ff-479f-b0a8-aedd4d8305a0\"\n\nThe access_token times out after 10 minutes of inactivity and expires after 24 hours.\n\nMake sure to use TLS version 1.2 or greater.\n\nThere are a wide range of possible return values.  Below is a list of the most common return values. \n\n    200 \"OK\" ⁃ This indicates that the request and action has completed with no issues.\n    201 \"Created\" ⁃ This indicates that the request has completed and a new resource has been created.\n    202 \"Accepted\" ⁃ This indicates that the request has been accepted for processing but the processing has not\n                     completed. This is a typical return when a task is generated.\n    400 \"Bad Request\" ⁃ The request cannot or will not be proccessed.  Usually due to a missing required parameter\n                        or invalid data in the parameter.\n    401 \"Unauthorized\" ⁃ The request has not been applied because it lacks authentication credentials for the\n                         target resource.\n    404 \"Not Found\" ⁃ The requested target doesn't exist or has been deleted.\n    405 \"Method Not Allowed\" ⁃ The method being requested is not valid for the target it is being performed on.\n    408 \"Request Timeout\" ⁃ The response took too long.\n    500 \"Internal Server Error\" ⁃ Indicates that the server encountered an unexpected condition that prevented it\n                                  from fulfilling the request.\n\n<a href=\"https://developer.hpe.com/platform/hpe-simplivity/home\" class=\"\toggleEndpointList\" data-id=\"errors\">Click here for a complete list of return codes and response formats</a>\n\n"
+  version: '1.25'
+  title: HPE OmniStack REST backups cluster_groups API
+  contact:
+    name: Hewlett Packard Enterprise
+  license:
+    name: HPE OmniStack REST API
+host: localhost
+basePath: ''
+tags:
+- name: cluster_groups
+  description: A set of omnistack_clusters that are able to perform backup and restore operations between each other
+paths:
+  /cluster_groups:
+    get:
+      tags:
+      - cluster_groups
+      summary: Retrieves all cluster_groups
+      operationId: listClusterGroups
+      consumes:
+      - application/json
+      produces:
+      - application/vnd.simplivity.v1.19+json
+      - application/vnd.simplivity.v1.23+json
+      - application/json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: id
+        in: query
+        description: 'The unique identifier (UID) of the cluster_groups to return
+
+
+          Accepts: Single value, comma-separated list'
+        required: false
+        type: string
+      - name: name
+        in: query
+        description: 'The name of the cluster_groups to return
+
+
+          Accepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard'
+        required: false
+        type: string
+      - name: fields
+        in: query
+        description: "A comma-separated list of fields to include in the returned objects\n\n Default: Returns all fields"
+        required: false
+        type: string
+      - name: limit
+        in: query
+        description: 'A positive integer that represents the maximum number of results to return
+
+
+          Default: 500'
+        required: false
+        type: integer
+        default: 500
+        format: int32
+      - name: offset
+        in: query
+        description: 'A positive integer that directs the service to start returning the &lt;offset value&gt; instance, up to the limit
+
+
+          Default: 0'
+        required: false
+        type: integer
+        default: 0
+        format: int32
+      - name: case
+        in: query
+        description: 'An indicator that specifies if the filter and sort results use a case-sensitive or insensitive manner
+
+
+          Valid values: sensitive or insensitive
+
+
+          Default: sensitive'
+        required: false
+        type: string
+        default: sensitive
+        enum:
+        - sensitive
+        - insensitive
+      - name: sort
+        in: query
+        description: The name of the field where the sort occurs
+        required: false
+        type: string
+      - name: order
+        in: query
+        description: 'The sort order preference
+
+
+          Valid values: ascending or descending
+
+
+          Default: descending'
+        required: false
+        type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/clusterGroup'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /cluster_groups/{clusterGroupId}/rename:
+    post:
+      tags:
+      - cluster_groups
+      summary: Renames the specified cluster_group
+      operationId: renameClusterGroup
+      consumes:
+      - application/vnd.simplivity.v1.19+json
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      produces:
+      - application/vnd.simplivity.v1.19+json
+      - application/vnd.simplivity.v1.23+json
+      - application/json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: clusterGroupId
+        in: path
+        description: The unique identifier (UID) of the cluster_group
+        required: true
+        type: string
+      - in: body
+        name: cluster_group renaming information
+        description: 'cluster_group_name: The new name for the cluster_group'
+        required: true
+        schema:
+          $ref: '#/definitions/rename_cluster_group'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/TaskMO'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+definitions:
+  AffectedObjectMO:
+    type: object
+    required:
+    - object_id
+    - object_type
+    properties:
+      object_id:
+        type: string
+        description: The unique identifier (UID) of the object affected by the completed task
+      object_type:
+        type: string
+        description: The type of the object affected by the completed task (virtual_machine, datastore, omnistack_cluster, backup, host, policy, rule)
+  clusterGroup:
+    type: object
+    required:
+    - clusters
+    - id
+    - name
+    properties:
+      clusters:
+        type: array
+        description: The unique identifiers (UIDs) of the omnistack_clusters that are defined in the cluster_group
+        items:
+          type: string
+      id:
+        type: string
+        description: The unique identifier (UID) of the cluster_group
+      name:
+        type: string
+        description: The name of the cluster_group
+    description: A cluster_group
+  TaskMO:
+    type: object
+    required:
+    - affected_objects
+    - end_time
+    - id
+    - start_time
+    - state
+    properties:
+      affected_objects:
+        type: array
+        description: For a completed task, the unique identifiers (UIDs) and types of the objects affected by the operation
+        items:
+          $ref: '#/definitions/AffectedObjectMO'
+      end_time:
+        type: string
+        description: The time the task finished, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+      error_code:
+        type: integer
+        format: int32
+        description: The error code returned if a task failed
+      error_message:
+        type: string
+        description: The error message returned if a task fails
+      id:
+        type: string
+        description: The unique identifier (UID) of the task
+      start_time:
+        type: string
+        description: The time the task started, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+      state:
+        type: string
+        description: The current state of the task object
+        enum:
+        - IN_PROGRESS
+        - COMPLETED
+        - FAILED
+    description: A task that was created as a result of an operation performed on the system
+  rename_cluster_group:
+    type: object
+    required:
+    - cluster_group_name
+    properties:
+      id:
+        type: string
+      revision:
+        type: integer
+        format: int32
+      cluster_group_name:
+        type: string
+        description: The new name for the cluster_group
+    description: Renames the specified cluster_group
+securityDefinitions:
+  OAuth2:
+    type: oauth2
+    tokenUrl: /oauth/token
+    flow: password
+    scopes:
+      read: Grants read access
+      write: Grants write access

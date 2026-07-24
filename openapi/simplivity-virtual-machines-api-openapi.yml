@@ -1,0 +1,2018 @@
+swagger: '2.0'
+info:
+  description: "This API enables the programmatic management of key components of an HPE SimpliVity configuration.\n\nTo access the API, request an authentication token by issuing an authentication request in the following form, where the username/password combination is a set of valid management credentials for the applicable hypervisor environment:\n\n     curl -k https://simplivity@<host>/api/oauth/token -d grant_type=password -d username=<user> -d password=<pass>\n\nThen, you can pass in the resulting access_token returned in each HTTP header using Authorization: Bearer token. For example:\n\n     curl -H \"Authorization: Bearer 0a08c809-17ff-479f-b0a8-aedd4d8305a0\"\n\nThe access_token times out after 10 minutes of inactivity and expires after 24 hours.\n\nMake sure to use TLS version 1.2 or greater.\n\nThere are a wide range of possible return values.  Below is a list of the most common return values. \n\n    200 \"OK\" ⁃ This indicates that the request and action has completed with no issues.\n    201 \"Created\" ⁃ This indicates that the request has completed and a new resource has been created.\n    202 \"Accepted\" ⁃ This indicates that the request has been accepted for processing but the processing has not\n                     completed. This is a typical return when a task is generated.\n    400 \"Bad Request\" ⁃ The request cannot or will not be proccessed.  Usually due to a missing required parameter\n                        or invalid data in the parameter.\n    401 \"Unauthorized\" ⁃ The request has not been applied because it lacks authentication credentials for the\n                         target resource.\n    404 \"Not Found\" ⁃ The requested target doesn't exist or has been deleted.\n    405 \"Method Not Allowed\" ⁃ The method being requested is not valid for the target it is being performed on.\n    408 \"Request Timeout\" ⁃ The response took too long.\n    500 \"Internal Server Error\" ⁃ Indicates that the server encountered an unexpected condition that prevented it\n                                  from fulfilling the request.\n\n<a href=\"https://developer.hpe.com/platform/hpe-simplivity/home\" class=\"\toggleEndpointList\" data-id=\"errors\">Click here for a complete list of return codes and response formats</a>\n\n"
+  version: '1.25'
+  title: HPE OmniStack REST backups virtual_machines API
+  contact:
+    name: Hewlett Packard Enterprise
+  license:
+    name: HPE OmniStack REST API
+host: localhost
+basePath: ''
+tags:
+- name: virtual_machines
+  description: A virtual_machine represents a single virtual machine created within an HPE SimpliVity datastore.
+paths:
+  /virtual_machines:
+    get:
+      tags:
+      - virtual_machines
+      summary: Retrieves instances of HPE SimpliVity virtual machines defined on this system
+      operationId: listVms
+      consumes:
+      - application/json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: show_optional_fields
+        in: query
+        description: 'An indicator to show or not show the ha_status, ha_resynchronization_progress, hypervisor_virtual_machine_power_state, and hypervisor_is_template
+
+
+          Note: These values are computed from various sources. Consequently, the retrieval of these values may adversely affect the response time of a request.'
+        required: false
+        type: boolean
+        default: false
+      - name: id
+        in: query
+        description: 'The unique identifier (UID) of the virtual_machines to return
+
+
+          Accepts: Single value, comma-separated list'
+        required: false
+        type: string
+      - name: name
+        in: query
+        description: 'The name of the virtual_machines to return
+
+
+          Accepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard'
+        required: false
+        type: string
+      - name: omnistack_cluster_id
+        in: query
+        description: 'The unique identifier (UID) of the omnistack_cluster that is associated with the instances to return
+
+
+          Accepts: Single value, comma-separated list'
+        required: false
+        type: string
+      - name: omnistack_cluster_name
+        in: query
+        description: 'The name of the omnistack_cluster that is associated with the instances to return
+
+
+          Accepts: Single value, comma-separated list'
+        required: false
+        type: string
+      - name: compute_cluster_parent_hypervisor_object_id
+        in: query
+        description: 'The unique identifier (UID) of the hypervisor-based instance that contains the omnistack_cluster that is associated with the instances to return
+
+
+          Accepts: Single value, comma-separated list'
+        required: false
+        type: string
+      - name: compute_cluster_parent_name
+        in: query
+        description: 'The name of the hypervisor-based instance that contains the omnistack_cluster that is associated with the instances to return
+
+
+          Accepts: Single value, comma-separated list'
+        required: false
+        type: string
+      - name: hypervisor_management_system
+        in: query
+        description: 'The IP address of the hypervisor-based instance associated with the virtual machine
+
+
+          Accepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard'
+        required: false
+        type: string
+      - name: hypervisor_management_system_name
+        in: query
+        description: 'The name of the hypervisor-based instance associated with the virtual machine
+
+
+          Accepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard'
+        required: false
+        type: string
+      - name: datastore_id
+        in: query
+        description: 'The unique identifier (UID) of the datastore that is associated with the instances to return
+
+
+          Accepts: Single value, comma-separated list'
+        required: false
+        type: string
+      - name: datastore_name
+        in: query
+        description: 'The name of the datastore that is associated with the instances to return
+
+
+          Accepts: Single value, comma-separated list'
+        required: false
+        type: string
+      - name: policy_id
+        in: query
+        description: 'The unique identifier (UID) of the policy that is associated with the instances to return
+
+
+          Accepts: Single value, comma-separated list'
+        required: false
+        type: string
+      - name: policy_name
+        in: query
+        description: 'The name of the policy that is associated with the instances to return
+
+
+          Accepts: Single value, comma-separated list'
+        required: false
+        type: string
+      - name: hypervisor_object_id
+        in: query
+        description: 'The unique identifier (UID) of the hypervisor-based instance  that is associated with the instances to return
+
+
+          Accepts: Single value, comma-separated list'
+        required: false
+        type: string
+      - name: created_after
+        in: query
+        description: The earliest creation time after the virtual machines to return were created, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+        required: false
+        type: string
+      - name: created_before
+        in: query
+        description: The latest creation time before the virtual machines to return were created, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+        required: false
+        type: string
+      - name: state
+        in: query
+        description: 'The state of the virtual_machine that is associated with the instances to return
+
+
+          Accepts: Single value, comma-separated list
+
+
+          Valid values: ALIVE, REMOVED, DELETED
+
+
+          Default: ALIVE'
+        required: false
+        type: string
+      - name: app_aware_vm_status
+        in: query
+        description: 'The status of the ability of the virtual machine to take an application-consistent backup that uses Microsoft VSS
+
+
+          Accepts: Single value, comma-separated list'
+        required: false
+        type: string
+      - name: hypervisor_is_template
+        in: query
+        description: An indicator that shows if the virtual machine is a template
+        required: false
+        type: boolean
+      - name: host_id
+        in: query
+        description: The unique identifier (UID) of the virtual_machine host
+        required: false
+        type: string
+      - name: cluster_group_id
+        in: query
+        description: 'The unique identifiers (UIDs) of the cluster_groups associated with the virtual_machines to return
+
+
+          Accepts: Single value, comma-separated list'
+        required: false
+        type: string
+      - name: fields
+        in: query
+        description: "A comma-separated list of fields to include in the returned objects\n\n Default: Returns all fields"
+        required: false
+        type: string
+      - name: limit
+        in: query
+        description: 'A positive integer that represents the maximum number of results to return
+
+
+          Default: 500'
+        required: false
+        type: integer
+        default: 500
+        format: int32
+      - name: offset
+        in: query
+        description: 'A positive integer that directs the service to start returning the &lt;offset value&gt; instance, up to the limit
+
+
+          Default: 0'
+        required: false
+        type: integer
+        default: 0
+        format: int32
+      - name: case
+        in: query
+        description: 'An indicator that specifies if the filter and sort results use a case-sensitive or insensitive manner
+
+
+          Valid values: sensitive or insensitive
+
+
+          Default: sensitive'
+        required: false
+        type: string
+        default: sensitive
+        enum:
+        - sensitive
+        - insensitive
+      - name: sort
+        in: query
+        description: The name of the field where the sort occurs
+        required: false
+        type: string
+      - name: order
+        in: query
+        description: 'The sort order preference
+
+
+          Valid values: ascending or descending
+
+
+          Default: descending'
+        required: false
+        type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/virtual_machine'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /virtual_machines/policy_impact_report/apply_policy:
+    post:
+      tags:
+      - virtual_machines
+      summary: Generate a backup impact reported based on proposed application of a policy to one or more virtual machines
+      operationId: reportOnProposedVMPolicySetting
+      consumes:
+      - application/vnd.simplivity.v1.19+json
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - in: body
+        name: backup policy and virtual machine information
+        description: 'policy_id: The unique identifier (UID) of the policy that you want to associate with the virtual_machine
+
+
+          virtual_machine_id: The unique identifier (UID) of each virtual_machine that you want to associate with the specified policy'
+        required: true
+        schema:
+          $ref: '#/definitions/vm_set_policy_vms'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/policy_schedule_impact_report'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /virtual_machines/set_policy:
+    post:
+      tags:
+      - virtual_machines
+      summary: Sets the backup policy for virtual machines
+      operationId: setPolicyForVms
+      consumes:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - in: body
+        name: backup policy and virtual machine information
+        description: 'policy_id: The unique identifier (UID) of the policy that you want to associate with the virtual_machine
+
+
+          virtual_machine_id: The unique identifier (UID) of each virtual_machine that you want to associate with the specified policy'
+        required: true
+        schema:
+          $ref: '#/definitions/vm_set_policy_vms'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/TaskMO'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /virtual_machines/{vmId}:
+    get:
+      tags:
+      - virtual_machines
+      summary: Retrieves the specified virtual_machines
+      operationId: getVm
+      consumes:
+      - application/json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: vmId
+        in: path
+        description: The unique identifier (UID) of the virtual_machine that you want to retrieve
+        required: true
+        type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/virtual_machine'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /virtual_machines/{vmId}/backup:
+    post:
+      tags:
+      - virtual_machines
+      summary: Backs up a virtual machine
+      operationId: backupVm
+      consumes:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: vmId
+        in: path
+        description: The unique identifier (UID) of the virtual_machine you want to access
+        required: true
+        type: string
+      - in: body
+        name: new backup information
+        description: 'app_consistent: An indicator to show if the backup represents a snapshot of a virtual machine with data that was first flushed to disk
+
+
+          Default: false
+
+
+          backup_name: The name of the new backup created from this action
+
+
+          consistency_type: The consistency type of the backup
+
+
+          Default: NONE
+
+
+          destination_id: The unique identifier (UID) of the omnistack_cluster that stores the new backup
+
+
+          Default:  local omnistack_cluster
+
+
+          retention: The number of minutes to keep backups
+
+
+          Default: 0 (indicates that the backup never expires)
+
+
+          external_store_name: The name of the external_store'
+        required: true
+        schema:
+          $ref: '#/definitions/BackupVMMO'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/TaskMO'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /virtual_machines/{vmId}/backup_parameters:
+    post:
+      tags:
+      - virtual_machines
+      summary: Set the virtual machine backup parameters used for application consistent backups.
+      operationId: setBackupParams
+      consumes:
+      - application/vnd.simplivity.v1.19+json
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: vmId
+        in: path
+        description: The unique identifier (UID) of the virtual_machine you want to access
+        required: true
+        type: string
+      - in: body
+        name: virtual_machine backup parameters
+        description: "guest_username: The user name of the virtual machine\n\nguest_password: The password of the virtual machine\n\noverride_guest_validation: Set to true to disable virtual machine validation logic.\n\napp_aware_type: Set the application aware backup type: \nVSS - Application-consistent backup using Microsoft VSS, \nDEFAULT - Crash-consistent backup, \nNONE - Application-consistent backup using a VMware snapshot."
+        required: true
+        schema:
+          $ref: '#/definitions/backup_parameters'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/TaskMO'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /virtual_machines/{vmId}/backups:
+    get:
+      tags:
+      - virtual_machines
+      summary: Retrieves all backups associated with this virtual_machine
+      description: Deprecated as of version 1.4. Instead use GET /api/backups?virtual_machine_id={vmId}
+      operationId: listVMBackups
+      consumes:
+      - application/json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: vmId
+        in: path
+        description: The unique identifier (UID) of the virtual_machine that you want to retrieve
+        required: true
+        type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/BackupMO'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: true
+  /virtual_machines/{vmId}/clone:
+    post:
+      tags:
+      - virtual_machines
+      summary: Clones a virtual machine
+      operationId: cloneVm
+      consumes:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: vmId
+        in: path
+        description: The unique identifier (UID) of the virtual_machine you want to access
+        required: true
+        type: string
+      - in: body
+        name: virtual_machine cloning information
+        description: 'virtual_machine_name: The name of the virtual_machine created from this action
+
+
+          app_consistent: An indicator to show if the backup represents a snapshot of a virtual machine with data that was first flushed to disk
+
+
+          Default: false
+
+
+          consistency_type: The type of backup used for the clone method (DEFAULT [crash-consistent], VSS [application-consistent using VSS], or NONE [application-consistent using a snapshot]).
+
+
+          NOTE: If the consistency_type and app_consistent values are both set, the value for consistency_type overrides the value for app_consistent.
+
+
+          If consisteny_type is not set and the app_consistent value is set to True, the consistency_type value equals DEFAULT (crash-consistent). If the app_consistent value is set to False, the consistency_type value equalsNONE (application-consistent using a snapshot
+
+
+          Default: NONE'
+        required: true
+        schema:
+          $ref: '#/definitions/CloneVMMO'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/TaskMO'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /virtual_machines/{vmId}/metrics:
+    get:
+      tags:
+      - virtual_machines
+      summary: Retrieves throughput, IOPS, and latency data for the virtual machine
+      operationId: getVmMetrics
+      consumes:
+      - application/json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: vmId
+        in: path
+        description: The unique identifier (UID) of the virtual_machine
+        required: true
+        type: string
+      - name: time_offset
+        in: query
+        description: 'A time offset in seconds (from now) or a datetime, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+
+
+          Default: 0'
+        required: false
+        type: string
+        default: '0'
+      - name: range
+        in: query
+        description: 'A range in seconds (the duration from the specified point in time)
+
+
+          Default: 43200'
+        required: false
+        type: integer
+        default: 43200
+        format: int64
+      - name: resolution
+        in: query
+        description: 'The resolution (SECOND, MINUTE, HOUR, or DAY)
+
+
+          Default: MINUTE'
+        required: false
+        type: string
+        default: MINUTE
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/analytics_info'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /virtual_machines/{vmId}/move:
+    post:
+      tags:
+      - virtual_machines
+      summary: Moves a virtual machine to another datastore
+      operationId: moveVm
+      consumes:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: vmId
+        in: path
+        description: The unique identifier (UID) of the virtual_machine you want to access
+        required: true
+        type: string
+      - in: body
+        name: virtual_machine move information
+        description: 'destination_datastore_id: The unique identifier (UID) of the destination datastore for the move
+
+
+          virtual_machine_name: The name of the virtual_machine created from this action
+
+
+          Default: Retains the current name'
+        required: true
+        schema:
+          $ref: '#/definitions/move_virtual_machine'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/TaskMO'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /virtual_machines/{vmId}/power_off:
+    post:
+      tags:
+      - virtual_machines
+      summary: Power off a VM
+      operationId: powerOffVMUsingPOST
+      consumes:
+      - application/vnd.simplivity.v1.19+json
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: vmId
+        in: path
+        description: The unique identifier (UID) of the virtual_machine you want to access
+        required: true
+        type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/TaskMO'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /virtual_machines/{vmId}/power_on:
+    post:
+      tags:
+      - virtual_machines
+      summary: Power on a VM
+      operationId: powerOnVMUsingPOST
+      consumes:
+      - application/vnd.simplivity.v1.19+json
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: vmId
+        in: path
+        description: The unique identifier (UID) of the virtual_machine you want to access
+        required: true
+        type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/TaskMO'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /virtual_machines/{vmId}/set_policy:
+    post:
+      tags:
+      - virtual_machines
+      summary: Sets the backup policy for a virtual machine
+      operationId: setPolicyForVm
+      consumes:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: vmId
+        in: path
+        description: The unique identifier (UID) of the virtual_machine you want to access
+        required: true
+        type: string
+      - in: body
+        name: backup policy information
+        description: 'policy_id: The unique identifier (UID) of the policy that you want to associate with the virtual_machine'
+        required: true
+        schema:
+          $ref: '#/definitions/set_policy'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/TaskMO'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /virtual_machines/{vmId}/validate_backup_credentials:
+    post:
+      tags:
+      - virtual_machines
+      summary: Validates the credentials for the virtual machine you want to backup
+      operationId: validateBackupCred
+      consumes:
+      - application/vnd.simplivity.v1.19+json
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: vmId
+        in: path
+        description: The unique identifier (UID) of the virtual_machine you want to access
+        required: true
+        type: string
+      - in: body
+        name: virtual_machine credentials
+        description: 'guest_username: The user name of the virtual machine
+
+
+          guest_password: The password of the virtual machine'
+        required: true
+        schema:
+          $ref: '#/definitions/validate_backup_credentials'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/credentials_validation'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+definitions:
+  analytics_info:
+    type: object
+    required:
+    - data_points
+    - name
+    properties:
+      data_points:
+        type: array
+        description: The metrics data points
+        items:
+          $ref: '#/definitions/MetricsDataMO'
+      name:
+        type: string
+        description: The name of the set of metrics (iops, throughput, latency)
+    description: The metrics information
+  AffectedObjectMO:
+    type: object
+    required:
+    - object_id
+    - object_type
+    properties:
+      object_id:
+        type: string
+        description: The unique identifier (UID) of the object affected by the completed task
+      object_type:
+        type: string
+        description: The type of the object affected by the completed task (virtual_machine, datastore, omnistack_cluster, backup, host, policy, rule)
+  BackupMO:
+    type: object
+    required:
+    - application_consistent
+    - associated_cluster
+    - backup_store_type
+    - cluster_group_ids
+    - compute_cluster_parent_hypervisor_object_id
+    - compute_cluster_parent_name
+    - consistency_type
+    - created_at
+    - datastore_id
+    - datastore_name
+    - expiration_time
+    - hypervisor_type
+    - id
+    - name
+    - omnistack_cluster_id
+    - omnistack_cluster_name
+    - sent
+    - sent_completion_time
+    - sent_duration
+    - size
+    - state
+    - type
+    - unique_size_bytes
+    - unique_size_timestamp
+    - virtual_machine_id
+    - virtual_machine_name
+    - virtual_machine_state
+    - virtual_machine_type
+    properties:
+      application_consistent:
+        type: boolean
+        example: false
+        description: An indicator to show if the backup represents a snapshot of a virtual machine with data that was first flushed to disk
+      associated_cluster:
+        type: string
+        description: The cluster associated with the external_store
+      backup_store_type:
+        type: string
+        description: The storage type of the backup
+        enum:
+        - SimplivityStore
+        - StoreOnceOnPrem
+        - StoreOnceCloud
+        - Unknown
+      cluster_group_ids:
+        type: array
+        description: The unique identifiers (UIDs) of the cluster_groups associated with the backup
+        items:
+          type: string
+      compute_cluster_parent_hypervisor_object_id:
+        type: string
+        description: The unique identifier (UID) of the hypervisor-based instance that contains the omnistack_cluster that is associated with the instance
+      compute_cluster_parent_name:
+        type: string
+        description: The name of the hypervisor-based instance that contains the omnistack_cluster that is associated with the instance
+      consistency_type:
+        type: string
+        description: The consistency type of the backup
+        enum:
+        - NONE
+        - DEFAULT
+        - FAILEDVSS
+        - NOT_APPLICABLE
+        - VSS
+      created_at:
+        type: string
+        description: The time the backup was created, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+      datastore_id:
+        type: string
+        description: The unique identifier (UID) of the datastore that is associated with the instance
+      datastore_name:
+        type: string
+        description: The name of the datastore that is associated with the instance
+      expiration_time:
+        type: string
+        description: The time the backup expired (and was deleted), unless locked. This time is expressed in ISO-8601 form, based on Coordinated Universal Time (UTC).
+      external_store_name:
+        type: string
+        description: The name of the external_store
+      hypervisor_type:
+        type: string
+        description: The type of Hypervisor Management System (HMS) associated with the backup
+        enum:
+        - VSPHERE
+        - HYPERV
+      id:
+        type: string
+        description: the unique identifier (UID) of the backup
+      name:
+        type: string
+        description: The name of the backup
+      omnistack_cluster_id:
+        type: string
+        description: The unique identifier (UID) of the omnistack_cluster that is associated with the instance
+      omnistack_cluster_name:
+        type: string
+        description: The name of the omnistack_cluster that is associated with the instance
+      sent:
+        type: integer
+        format: int64
+        description: For a backup stored in a remote location, the number of bytes that transferred
+      sent_completion_time:
+        type: string
+        description: The time when the backup replication completed, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+      sent_duration:
+        type: integer
+        format: int64
+        description: The number of seconds that elapsed while replicating the backup
+      size:
+        type: integer
+        format: int64
+        description: The logical size of the backup
+      state:
+        type: string
+        description: The current state of the backup
+        enum:
+        - NEW
+        - SAVING
+        - FAILED
+        - PROTECTED
+        - UNKNOWN
+        - CANCELING
+        - CANCELED
+        - QUEUED
+        - REBUILDING
+        - DELETED
+        - DEGRADED
+      type:
+        type: string
+        description: The type of backup
+        enum:
+        - MANUAL
+        - POLICY
+        - UNSPECIFIED
+      unique_size_bytes:
+        type: integer
+        format: int64
+        description: The unique size of the backup
+      unique_size_timestamp:
+        type: string
+        description: The time the unique size of the backup was calculated, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+      virtual_machine_id:
+        type: string
+        description: The unique identifier (UID) of the virtual_machine that is associated with the instance
+      virtual_machine_name:
+        type: string
+        description: The name of the virtual_machine that is associated with the instance
+      virtual_machine_state:
+        type: string
+        description: The state of the virtual_machine
+        enum:
+        - ALIVE
+        - REMOVED
+        - DELETED
+      virtual_machine_type:
+        type: string
+        description: The type of the virtual_machine that is associated with the instance
+        enum:
+        - VM
+        - TEMPLATE
+        - UNKNOWN
+  MetricsDataMO:
+    type: object
+    required:
+    - date
+    - reads
+    - writes
+    properties:
+      date:
+        type: string
+        description: The date for the set of metrics, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+      reads:
+        type: integer
+        format: int64
+        description: The number of reads per second or latency (in microseconds) or throughput (in bytes per second)
+      writes:
+        type: integer
+        format: int64
+        description: The number of writes per second or latency (in microseconds) or throughput (in bytes per second)
+  move_virtual_machine:
+    type: object
+    required:
+    - destination_datastore_id
+    properties:
+      virtual_machine_name:
+        type: string
+        description: The name of the virtual_machine created from this action
+      destination_datastore_id:
+        type: string
+        description: The unique identifier (UID) of the destination datastore for the move
+    description: Moves a virtual machine to another datastore
+  CloneVMMO:
+    type: object
+    required:
+    - virtual_machine_name
+    properties:
+      virtual_machine_name:
+        type: string
+        description: The name of the virtual_machine created from this action
+      app_consistent:
+        type: boolean
+        example: false
+        description: '[deprecated] An indicator to show if the backup represents a snapshot of a virtual machine with data that was first flushed to disk'
+      consistency_type:
+        type: string
+        description: 'The type of backup used for the clone method (DEFAULT [crash-consistent], VSS [application-consistent using VSS], or NONE [application-consistent using a snapshot]).
+
+
+          NOTE: If the consistency_type and app_consistent values are both set, the value for consistency_type overrides the value for app_consistent.
+
+
+          If consisteny_type is not set and the app_consistent value is set to True, the consistency_type value equals DEFAULT (crash-consistent). If the app_consistent value is set to False, the consistency_type value equalsNONE (application-consistent using a snapshot'
+        enum:
+        - NONE
+        - DEFAULT
+        - FAILEDVSS
+        - NOT_APPLICABLE
+        - VSS
+  virtual_machine:
+    type: object
+    required:
+    - app_aware_vm_status
+    - cluster_group_ids
+    - compute_cluster_parent_hypervisor_object_id
+    - compute_cluster_parent_name
+    - created_at
+    - datastore_id
+    - datastore_name
+    - deleted_at
+    - host_id
+    - hypervisor_management_system
+    - hypervisor_management_system_name
+    - hypervisor_object_id
+    - hypervisor_type
+    - id
+    - name
+    - omnistack_cluster_id
+    - omnistack_cluster_name
+    - policy_id
+    - policy_name
+    - replica_set
+    - state
+    properties:
+      app_aware_vm_status:
+        type: string
+        description: The status of the ability of the virtual machine to take an application-consistent backup that uses Microsoft VSS
+        enum:
+        - UNKNOWN
+        - CAPABLE
+        - INVALID_CREDS
+        - VALID_CREDS
+        - VMWARE_TOOLS_UNAVAILABLE
+        - INVALID_OS
+        - UNKNOWN_FAULT
+      cluster_group_ids:
+        type: array
+        description: The unique identifiers (UIDs) of the cluster_groups associated with the virtual_machine
+        items:
+          type: string
+      compute_cluster_parent_hypervisor_object_id:
+        type: string
+        description: The unique identifier (UID) of the hypervisor-based instance that contains the omnistack_cluster that is associated with the instance
+      compute_cluster_parent_name:
+        type: string
+        description: The name of the hypervisor-based instance that contains the omnistack_cluster that is associated with the instance
+      created_at:
+        type: string
+        description: The time a virtual_machine was created, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+      datastore_id:
+        type: string
+        description: The unique identifier (UID) of the datastore that is associated with the instance
+      datastore_name:
+        type: string
+        description: The name of the datastore that is associated with the instance
+      deleted_at:
+        type: string
+        description: The time a virtual_machine was deleted, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+      ha_resynchronization_progress:
+        type: integer
+        format: int32
+        description: The HA resynchronization progress as a percentage (0-100)
+      ha_status:
+        type: string
+        description: The High Availability status of the virtual_machine
+        enum:
+        - UNKNOWN
+        - OUT_OF_SCOPE
+        - NOT_APPLICABLE
+        - DEGRADED
+        - SAFE
+        - SYNCING
+        - DEFUNCT
+      host_id:
+        type: string
+        description: The unique identifier (UID) of the virtual_machine host
+      host_name:
+        type: string
+        description: The name of the host that this virtual machine is currently assigned to
+      hypervisor_allocated_capacity:
+        type: integer
+        format: int64
+        description: The total number of bytes allocated to this virtual machine across all datastores
+      hypervisor_allocated_cpu:
+        type: integer
+        format: int64
+        description: The amount of CPU available to this virtual machine in MHz
+      hypervisor_consumed_cpu:
+        type: integer
+        format: int64
+        description: The amount of CPU consumed by this virtual machine in MHz
+      hypervisor_consumed_memory:
+        type: integer
+        format: int32
+        description: The number of MB actively used by this virtual machine
+      hypervisor_cpu_count:
+        type: integer
+        format: int32
+        description: The number of virtual CPUs allocated to this virtual machine
+      hypervisor_folder_name:
+        type: string
+        description: The name of the folder this virtual machine is stored in
+      hypervisor_free_space:
+        type: integer
+        format: int64
+        description: The number of bytes of free space available to this virtual machine across all datastores
+      hypervisor_instance_id:
+        type: string
+        description: The unique identifier (UID) of the hypervisor-based instance associated with a virtual_machine
+      hypervisor_is_template:
+        type: boolean
+        example: false
+        description: An indicator that shows if the virtual machine is a template
+      hypervisor_managed_by:
+        type: string
+        description: The managed by property of the virtual machine
+      hypervisor_management_system:
+        type: string
+        description: The IP address of the hypervisor-based instance associated with the virtual machine
+      hypervisor_management_system_name:
+        type: string
+        description: The name of the hypervisor-based instance associated with the virtual machine
+      hypervisor_object_id:
+        type: string
+        description: The unique identifier (UID) of the hypervisor-based instance associated with a virtual_machine
+      hypervisor_total_memory:
+        type: integer
+        format: int32
+        description: The number of MB allocated to this virtual machine
+      hypervisor_type:
+        type: string
+        description: The type of hypervisor associated with the virtual_machine
+        enum:
+        - VSPHERE
+        - HYPERV
+      hypervisor_uuid:
+        type: string
+        description: The SMBIOS unique identifier (UID) of the hypervisor-based instance associated with a virtual_machine
+      hypervisor_virtual_disk_count:
+        type: integer
+        format: int32
+        description: The number of virtual disks assigned to this virtual machine
+      hypervisor_virtual_machine_power_state:
+        type: string
+        description: The power state of the virtual machine (ON, OFF, SUSPENDED, or UNKNOWN)
+        enum:
+        - 'ON'
+        - 'OFF'
+        - SUSPENDED
+        - UNKNOWN
+      id:
+        type: string
+        description: The unique identifier (UID) of the virtual_machine
+      name:
+        type: string
+        description: The name of the virtual_machine
+      network_interfaces:
+        type: array
+        description: A virtualized network interface associated with the virtual_machine
+        items:
+          $ref: '#/definitions/NetworkInterface'
+      omnistack_cluster_id:
+        type: string
+        description: The unique identifier (UID) of the omnistack_cluster that is associated with the instance
+      omnistack_cluster_name:
+        type: string
+        description: The name of the omnistack_cluster that is associated with the instance
+      policy_id:
+        type: string
+        description: The unique identifier (UID) of the policy that is associated with the instance
+      policy_name:
+        type: string
+        description: The name of the policy that is associated with the instance
+      replica_set:
+        type: array
+        description: The primary and secondary hosts that store a replica of the data for this virtual_machine
+        items:
+          $ref: '#/definitions/ReplicaInfo'
+      state:
+        type: string
+        description: The state of the virtual_machine
+        enum:
+        - ALIVE
+        - REMOVED
+        - DELETED
+    description: An instance of a virtual_machine defined on this system
+  credentials_validation:
+    type: object
+    required:
+    - status
+    properties:
+      status:
+        type: string
+        description: The credentials validation status
+        enum:
+        - VM_POWERED_OFF
+        - INVALID
+        - VALID
+    description: Status of the virtual machine credentials validation operation
+  backup_parameters:
+    type: object
+    properties:
+      guest_username:
+        type: string
+        description: The user name of the virtual machine
+      guest_password:
+        type: string
+        description: The password of the virtual machine
+      override_guest_validation:
+        type: boolean
+        example: false
+        description: Set to true to disable virtual machine validation logic.
+      app_aware_type:
+        type: string
+        description: "Set the application aware backup type: \nVSS - Application-consistent backup using Microsoft VSS, \nDEFAULT - Crash-consistent backup, \nNONE - Application-consistent backup using a VMware snapshot."
+        enum:
+        - NONE
+        - DEFAULT
+        - FAILEDVSS
+        - NOT_APPLICABLE
+        - VSS
+    description: Set the virtual machine backup parameters used for application consistent backups.
+  BackupVMMO:
+    type: object
+    required:
+    - backup_name
+    properties:
+      backup_name:
+        type: string
+        description: The name of the new backup created from this action
+      destination_id:
+        type: string
+        description: The unique identifier (UID) of the omnistack_cluster that stores the new backup
+      app_consistent:
+        type: boolean
+        example: false
+        description: An indicator to show if the backup represents a snapshot of a virtual machine with data that was first flushed to disk
+      consistency_type:
+        type: string
+        description: The consistency type of the backup
+        enum:
+        - NONE
+        - DEFAULT
+        - FAILEDVSS
+        - NOT_APPLICABLE
+        - VSS
+      retention:
+        type: integer
+        format: int32
+        description: The number of minutes to keep backups
+      external_store_name:
+        type: string
+        description: The name of the external_store
+  NetworkInterface:
+    type: object
+    required:
+    - adapter_type
+    - device_number
+    - ipv4_addresses
+    - mac_address
+    - mac_generation
+    - network_label
+    properties:
+      adapter_type:
+        type: string
+        description: The adapter type of the network_interface
+        enum:
+        - E1000
+        - E1000E
+        - PCNET32
+        - VMXNET
+        - VNXNET2
+        - VMXNET3
+        - UNKNOWN
+      device_number:
+        type: string
+        description: The device number of the network_interface; empty if this represents a new network_interface
+      ipv4_addresses:
+        type: array
+        description: The IPV4 address(es) assigned to the network_interface
+        items:
+          type: string
+      mac_address:
+        type: string
+        description: If mac_generation is set to MANUAL, specifies the MAC address assigned to the network_interface
+      mac_generation:
+        type: string
+        description: Specifies how the MAC address for the network_interface is generated
+        enum:
+        - ASSIGNED
+        - GENERATED
+        - MANUAL
+        - UNKNOWN
+      network_label:
+        type: string
+        description: The network ID associated with the network_interface
+  policy_schedule_impact_report:
+    type: object
+    required:
+    - schedule_after_change
+    - schedule_before_change
+    properties:
+      schedule_after_change:
+        description: The policy backup schedule report
+        $ref: '#/definitions/policy_schedule_report'
+      schedule_before_change:
+        description: The policy backup schedule report
+        $ref: '#/definitions/policy_schedule_report'
+    description: The policy backup schedule reports for prior to and after applying proposed changes
+  validate_backup_credentials:
+    type: object
+    required:
+    - guest_password
+    - guest_username
+    properties:
+      guest_username:
+        type: string
+        description: The user name of the virtual machine
+      guest_password:
+        type: string
+        description: The password of the virtual machine
+    description: Validates the credentials for the virtual machine you want to backup
+  policy_schedule_report:
+    type: object
+    required:
+    - backup_rate_level
+    - daily_backup_rate
+    - daily_backup_rate_limit
+    - projected_retained_backups
+    - projected_retained_backups_level
+    - retained_backups_limit
+    properties:
+      backup_rate_level:
+        type: integer
+        format: int32
+        description: The ratio in percent of daily_backup_rate vs daily_backup_rate_limit (i.e. What % of the maximum limit is currently specified)
+      daily_backup_rate:
+        type: integer
+        format: int32
+        description: The average number of backups created in a day in the federation as determined by the current set of backup policies and their rules, and the virtual machines assigned to those backup policies
+      daily_backup_rate_limit:
+        type: integer
+        format: int32
+        description: The maximum number of policy backups allowed to be created in the federation each day
+      projected_retained_backups:
+        type: integer
+        format: int32
+        description: The projection of the maximum number of backups that could be retained given the frequency and retention time specified by the backup policies and the virtual machines assigned to those backup policies
+      projected_retained_backups_level:
+        type: integer
+        format: int32
+        description: The ratio in percent of projected_retained_backups vs retained_backups_limit (i.e. What % of the maximum limit is currently specified)
+      retained_backups_limit:
+        type: integer
+        format: int32
+        description: The maximum number of policy backups the federation is permitted to have at any given time
+    description: A policy on this system
+  vm_set_policy_vms:
+    type: object
+    required:
+    - policy_id
+    - virtual_machine_id
+    properties:
+      virtual_machine_id:
+        type: array
+        description: The unique identifier (UID) of each virtual_machine that you want to associate with the specified policy
+        items:
+          type: string
+      policy_id:
+        type: string
+        description: The unique identifier (UID) of the policy you want to access
+    description: Sets the backup policy for virtual machines
+  ReplicaInfo:
+    type: object
+    required:
+    - id
+    - role
+    properties:
+      id:
+        type: string
+        description: The unique identifier (UID) of the host storing the replica
+      role:
+        type: string
+        description: The role of the replica
+        enum:
+        - PRIMARY
+        - SECONDARY
+  set_policy:
+    type: object
+    required:
+    - policy_id
+    properties:
+      policy_id:
+        type: string
+        description: The unique identifier (UID) of the policy you want to access
+    description: Sets the backup policy for a virtual_machine or datastore
+  TaskMO:
+    type: object
+    required:
+    - affected_objects
+    - end_time
+    - id
+    - start_time
+    - state
+    properties:
+      affected_objects:
+        type: array
+        description: For a completed task, the unique identifiers (UIDs) and types of the objects affected by the operation
+        items:
+          $ref: '#/definitions/AffectedObjectMO'
+      end_time:
+        type: string
+        description: The time the task finished, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+      error_code:
+        type: integer
+        format: int32
+        description: The error code returned if a task failed
+      error_message:
+        type: string
+        description: The error message returned if a task fails
+      id:
+        type: string
+        description: The unique identifier (UID) of the task
+      start_time:
+        type: string
+        description: The time the task started, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+      state:
+        type: string
+        description: The current state of the task object
+        enum:
+        - IN_PROGRESS
+        - COMPLETED
+        - FAILED
+    description: A task that was created as a result of an operation performed on the system
+securityDefinitions:
+  OAuth2:
+    type: oauth2
+    tokenUrl: /oauth/token
+    flow: password
+    scopes:
+      read: Grants read access
+      write: Grants write access

@@ -1,0 +1,1776 @@
+swagger: '2.0'
+info:
+  description: "This API enables the programmatic management of key components of an HPE SimpliVity configuration.\n\nTo access the API, request an authentication token by issuing an authentication request in the following form, where the username/password combination is a set of valid management credentials for the applicable hypervisor environment:\n\n     curl -k https://simplivity@<host>/api/oauth/token -d grant_type=password -d username=<user> -d password=<pass>\n\nThen, you can pass in the resulting access_token returned in each HTTP header using Authorization: Bearer token. For example:\n\n     curl -H \"Authorization: Bearer 0a08c809-17ff-479f-b0a8-aedd4d8305a0\"\n\nThe access_token times out after 10 minutes of inactivity and expires after 24 hours.\n\nMake sure to use TLS version 1.2 or greater.\n\nThere are a wide range of possible return values.  Below is a list of the most common return values. \n\n    200 \"OK\" ⁃ This indicates that the request and action has completed with no issues.\n    201 \"Created\" ⁃ This indicates that the request has completed and a new resource has been created.\n    202 \"Accepted\" ⁃ This indicates that the request has been accepted for processing but the processing has not\n                     completed. This is a typical return when a task is generated.\n    400 \"Bad Request\" ⁃ The request cannot or will not be proccessed.  Usually due to a missing required parameter\n                        or invalid data in the parameter.\n    401 \"Unauthorized\" ⁃ The request has not been applied because it lacks authentication credentials for the\n                         target resource.\n    404 \"Not Found\" ⁃ The requested target doesn't exist or has been deleted.\n    405 \"Method Not Allowed\" ⁃ The method being requested is not valid for the target it is being performed on.\n    408 \"Request Timeout\" ⁃ The response took too long.\n    500 \"Internal Server Error\" ⁃ Indicates that the server encountered an unexpected condition that prevented it\n                                  from fulfilling the request.\n\n<a href=\"https://developer.hpe.com/platform/hpe-simplivity/home\" class=\"\toggleEndpointList\" data-id=\"errors\">Click here for a complete list of return codes and response formats</a>\n\n"
+  version: '1.25'
+  title: HPE OmniStack REST backups API
+  contact:
+    name: Hewlett Packard Enterprise
+  license:
+    name: HPE OmniStack REST API
+host: localhost
+basePath: ''
+tags:
+- name: backups
+  description: A backup is a complete, standalone image of a specific virtual machine, taken at a specific point in time.
+paths:
+  /backups:
+    get:
+      tags:
+      - backups
+      summary: Retrieves all backups defined on this system
+      operationId: listBackups
+      consumes:
+      - application/json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: id
+        in: query
+        description: 'the unique identifier (UID) of the backups to return
+
+
+          Accepts: Single value, comma-separated list'
+        required: false
+        type: string
+      - name: name
+        in: query
+        description: 'The name of the backups to return
+
+
+          Accepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard'
+        required: false
+        type: string
+      - name: sent_min
+        in: query
+        description: The minimum sent data size (in bytes) of the remote backups to return
+        required: false
+        type: integer
+        format: int64
+      - name: sent_max
+        in: query
+        description: The maximum sent data size (in bytes) of the remote backups to return
+        required: false
+        type: integer
+        format: int64
+      - name: state
+        in: query
+        description: 'The current state of the backups to return
+
+
+          Accepts: Single value, comma-separated list'
+        required: false
+        type: string
+      - name: type
+        in: query
+        description: 'The type of backups to return
+
+
+          Accepts: Single value, comma-separated list'
+        required: false
+        type: string
+      - name: omnistack_cluster_id
+        in: query
+        description: 'The unique identifier (UID) of the omnistack_cluster that is associated with the instances to return
+
+
+          Accepts: Single value, comma-separated list'
+        required: false
+        type: string
+      - name: omnistack_cluster_name
+        in: query
+        description: 'The name of the omnistack_cluster that is associated with the instances to return
+
+
+          Accepts: Single value, comma-separated list'
+        required: false
+        type: string
+      - name: compute_cluster_parent_hypervisor_object_id
+        in: query
+        description: 'The unique identifier (UID) of the hypervisor-based instance that contains the omnistack_cluster that is associated with the instances to return
+
+
+          Accepts: Single value, comma-separated list'
+        required: false
+        type: string
+      - name: compute_cluster_parent_name
+        in: query
+        description: 'The name of the hypervisor-based instance that contains the omnistack_cluster that is associated with the instances to return
+
+
+          Accepts: Single value, comma-separated list'
+        required: false
+        type: string
+      - name: datastore_id
+        in: query
+        description: 'The unique identifier (UID) of the datastore that is associated with the instances to return
+
+
+          Accepts: Single value, comma-separated list'
+        required: false
+        type: string
+      - name: datastore_name
+        in: query
+        description: 'The name of the datastore that is associated with the instances to return
+
+
+          Accepts: Single value, comma-separated list'
+        required: false
+        type: string
+      - name: expires_before
+        in: query
+        description: The latest expiration time before the backups to return expire, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+        required: false
+        type: string
+      - name: expires_after
+        in: query
+        description: The earliest expiration time after the backups to return expire, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+        required: false
+        type: string
+      - name: virtual_machine_id
+        in: query
+        description: 'The unique identifier (UID) of the virtual_machine that is associated with the instances to return
+
+
+          Accepts: Single value, comma-separated list'
+        required: false
+        type: string
+      - name: virtual_machine_name
+        in: query
+        description: 'The name of the virtual_machine that is associated with the instances to return
+
+
+          Accepts: Single value, comma-separated list'
+        required: false
+        type: string
+      - name: virtual_machine_type
+        in: query
+        description: 'The type of the virtual_machine that is associated with the instances to return
+
+
+          Accepts: Single value, comma-separated list'
+        required: false
+        type: string
+      - name: virtual_machine_state
+        in: query
+        description: 'The state of the virtual_machine that is associated with the instances to return
+
+
+          Accepts: Single value, comma-separated list'
+        required: false
+        type: string
+      - name: size_min
+        in: query
+        description: The minimum size (in bytes) of the backups to return
+        required: false
+        type: integer
+        format: int64
+      - name: size_max
+        in: query
+        description: The maximum size (in bytes) of the backups to return
+        required: false
+        type: integer
+        format: int64
+      - name: application_consistent
+        in: query
+        description: The application-consistent setting of the backups to return
+        required: false
+        type: boolean
+      - name: consistency_type
+        in: query
+        description: 'The consistency type of the backups to return
+
+
+          Accepts: Single value, comma-separated list'
+        required: false
+        type: string
+      - name: created_before
+        in: query
+        description: The latest creation time before the backups to return were created, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+        required: false
+        type: string
+      - name: created_after
+        in: query
+        description: The earliest creation time after the backups to return were created, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+        required: false
+        type: string
+      - name: sent_duration_min
+        in: query
+        description: The minimum number of seconds that elapsed while replicating the backups to return
+        required: false
+        type: integer
+        format: int64
+      - name: sent_duration_max
+        in: query
+        description: The maximum number of seconds that elapsed while replicating the backups to return
+        required: false
+        type: integer
+        format: int64
+      - name: sent_completion_before
+        in: query
+        description: The latest time before the replication of backups to return was completed, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+        required: false
+        type: string
+      - name: sent_completion_after
+        in: query
+        description: The earliest time after the replication of backups to return was completed, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+        required: false
+        type: string
+      - name: unique_size_bytes_min
+        in: query
+        description: The minimum unique size (in bytes) of the backups to return
+        required: false
+        type: integer
+        format: int64
+      - name: unique_size_bytes_max
+        in: query
+        description: The maximum unique size (in bytes) of the backups to return
+        required: false
+        type: integer
+        format: int64
+      - name: cluster_group_id
+        in: query
+        description: 'The unique identifiers (UIDs) of the cluster_groups associated with the backups to return
+
+
+          Accepts: Single value, comma-separated list'
+        required: false
+        type: string
+      - name: external_store_name
+        in: query
+        description: 'The name of the external_stores to return
+
+
+          Accepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard'
+        required: false
+        type: string
+      - name: backup_store_type
+        in: query
+        description: 'The storage type of the backups to return
+
+
+          Accepts: Single value, comma-separated list'
+        required: false
+        type: string
+      - name: associated_cluster
+        in: query
+        description: 'The cluster associated with the external_stores to return
+
+
+          Accepts: Single value, comma-separated list'
+        required: false
+        type: string
+      - name: fields
+        in: query
+        description: "A comma-separated list of fields to include in the returned objects\n\n Default: Returns all fields"
+        required: false
+        type: string
+      - name: limit
+        in: query
+        description: 'A positive integer that represents the maximum number of results to return
+
+
+          Default: 500'
+        required: false
+        type: integer
+        default: 500
+        format: int32
+      - name: offset
+        in: query
+        description: 'A positive integer that directs the service to start returning the &lt;offset value&gt; instance, up to the limit
+
+
+          Default: 0'
+        required: false
+        type: integer
+        default: 0
+        format: int32
+      - name: case
+        in: query
+        description: 'An indicator that specifies if the filter and sort results use a case-sensitive or insensitive manner
+
+
+          Valid values: sensitive or insensitive
+
+
+          Default: sensitive'
+        required: false
+        type: string
+        default: sensitive
+        enum:
+        - sensitive
+        - insensitive
+      - name: sort
+        in: query
+        description: The name of the field where the sort occurs
+        required: false
+        type: string
+      - name: order
+        in: query
+        description: 'The sort order preference
+
+
+          Valid values: ascending or descending
+
+
+          Default: descending'
+        required: false
+        type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/BackupMO'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /backups/delete:
+    post:
+      tags:
+      - backups
+      summary: Deletes the specified list of backup instances
+      operationId: deleteBackups
+      consumes:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - in: body
+        name: backups deletion information
+        description: 'backup_id: The list of the unique identifier (UID) of the backups that you want to delete'
+        required: true
+        schema:
+          $ref: '#/definitions/delete_backups'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/TaskMO'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /backups/set_retention:
+    post:
+      tags:
+      - backups
+      summary: Sets the retention time for the specified list of backups
+      operationId: setBackupRetention
+      consumes:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - in: body
+        name: backups retention information
+        description: "backup_id: The list of the unique identifier (UID) of the backups that you want to set the retention time for\n\nforce: An indicator to force a retention time modification even if this action results in deleting backups\n\nValid values:\n\nTrue: Sets the new retention time for the specified list of backups. This action may delete of one or more backups.\n\nFalse: Does not make the requested retention time modification if this results in deleting one or more backups. This operation returns a list of backups that the requested modification deletes. If the requested modification does not delete the backups, the retention time modification occurs.\n\nDefault: false\n\nretention: The number of minutes to keep backups\n\nforever: Retains backups indefinitely \n\nValid values:\n\nTrue: Sets the backup retention time to never expire.\n\nFalse: Sets the backup retention time according to the specified \"retention\".\n\nDefault: false"
+        required: true
+        schema:
+          $ref: '#/definitions/backup_retention_set'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/BackupMO'
+        '201':
+          description: Created
+        '202':
+          description: Accepted
+          schema:
+            $ref: '#/definitions/TaskMO'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /backups/{bkpId}:
+    get:
+      tags:
+      - backups
+      summary: Retrieves the specified backup
+      operationId: getBackup
+      consumes:
+      - application/json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: bkpId
+        in: path
+        description: The unique identifier (UID) of the backup that you want to retrieve
+        required: true
+        type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/BackupMO'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    delete:
+      tags:
+      - backups
+      summary: Deletes the specified backup
+      operationId: deleteBackup
+      consumes:
+      - application/json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: bkpId
+        in: path
+        description: The unique identifier (UID) of the backup that you want to retrieve
+        required: true
+        type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/TaskMO'
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  /backups/{bkpId}/calculate_unique_size:
+    post:
+      tags:
+      - backups
+      summary: Calculates the unique size of the specified backup
+      operationId: calculateUniqueSize
+      consumes:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: bkpId
+        in: path
+        description: The unique identifier (UID) of the backup that you want to perform the calculation on
+        required: true
+        type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/TaskMO'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /backups/{bkpId}/cancel:
+    post:
+      tags:
+      - backups
+      summary: Cancels the specified running backup
+      operationId: cancelBackup
+      consumes:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: bkpId
+        in: path
+        description: The unique identifier (UID) of the backup that you want to cancel
+        required: true
+        type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/TaskMO'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /backups/{bkpId}/copy:
+    post:
+      tags:
+      - backups
+      summary: Copies the specified backup to another omnistack_cluster or external_store
+      operationId: copyBackup
+      consumes:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: bkpId
+        in: path
+        description: The unique identifier (UID) of the backup you want to access
+        required: true
+        type: string
+      - in: body
+        name: backup copying information
+        description: 'destination_omnistack_cluster: The unique identifier (UID) of the destination omnistack_cluster or external_store name where you want to copy the backup'
+        required: true
+        schema:
+          $ref: '#/definitions/backup_copy'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/TaskMO'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /backups/{bkpId}/lock:
+    post:
+      tags:
+      - backups
+      summary: Saves the specified backup to prevent it from expiring
+      operationId: lockBackup
+      consumes:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: bkpId
+        in: path
+        description: The unique identifier (UID) of the backup you want to access
+        required: true
+        type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/TaskMO'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /backups/{bkpId}/rename:
+    post:
+      tags:
+      - backups
+      summary: Renames the specified backup
+      operationId: renameBackup
+      consumes:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: bkpId
+        in: path
+        description: The unique identifier (UID) of the backup you want to access
+        required: true
+        type: string
+      - in: body
+        name: backup renaming information
+        description: 'backup_name: The new name for the backup'
+        required: true
+        schema:
+          $ref: '#/definitions/rename_backup'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/TaskMO'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /backups/{bkpId}/restore:
+    post:
+      tags:
+      - backups
+      summary: Creates a new virtual machine or replaces the original virtual machine from the specified backup
+      operationId: restoreFromBackup
+      consumes:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: bkpId
+        in: path
+        description: The unique identifier (UID) of the backup that you want to retrieve
+        required: true
+        type: string
+      - name: restore_original
+        in: query
+        description: 'An indicator to show if the original virtual machine gets restored
+
+
+          Valid values:
+
+
+          True: Resets the original virtual machine to the same state it was in when the backup was created
+
+
+          False: Creates a new virtual machine from the backup with the provided name, optionally to a different datastore
+
+
+          Default: false'
+        required: true
+        type: boolean
+        default: false
+      - in: body
+        name: new virtual machine information
+        description: The information needed to name and optionally place the new virtual machine onto a different datastore
+        required: false
+        schema:
+          $ref: '#/definitions/restore_virtual_machine'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/TaskMO'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /backups/{bkpId}/restore_files:
+    post:
+      tags:
+      - backups
+      summary: Restore files from a specific partition
+      operationId: restoreFiles
+      consumes:
+      - application/vnd.simplivity.v1.19+json
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: bkpId
+        in: path
+        description: The unique identifier (UID) of the backup that you want to retrieve
+        required: true
+        type: string
+      - in: body
+        name: Restored file information
+        description: Virtual machine id and paths needed to restore the files
+        required: true
+        schema:
+          $ref: '#/definitions/restore_file'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/TaskMO'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /backups/{bkpId}/virtual_disk_partition_files:
+    get:
+      tags:
+      - backups
+      summary: Retrieves the virtual hard disk files from the backup
+      operationId: getBackupFiles
+      consumes:
+      - application/json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: bkpId
+        in: path
+        description: The unique identifier (UID) of the backup that you want to retrieve
+        required: true
+        type: string
+      - name: virtual_disk
+        in: query
+        description: The name of the virtual hard disk for the virtual machine
+        required: true
+        type: string
+      - name: partition_number
+        in: query
+        description: The partition number of the virtual disk associated with the backup
+        required: true
+        type: integer
+        format: int32
+      - name: file_path
+        in: query
+        description: The path in the partition that has the file information you want. e.g. for root directory use "/"
+        required: true
+        type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/BackupFileDataMO'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /backups/{bkpId}/virtual_disk_partitions:
+    get:
+      tags:
+      - backups
+      summary: Retrieves partition information for the virtual disk associated with the backup
+      operationId: getBackupPartitions
+      consumes:
+      - application/json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: bkpId
+        in: path
+        description: The unique identifier (UID) of the backup associated with the partitions
+        required: true
+        type: string
+      - name: virtual_disk
+        in: query
+        description: The name of the virtual hard disk for the virtual machine
+        required: true
+        type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/BackupPartitionDataMO'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /backups/{bkpId}/virtual_disks:
+    get:
+      tags:
+      - backups
+      summary: Retrieves the virtual hard disk files from the backup
+      operationId: getVirtualDisksFromBackup
+      consumes:
+      - application/json
+      produces:
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.9+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.3+json
+      - application/vnd.simplivity.v1.10+json
+      - application/vnd.simplivity.v1.6+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.19+json
+      - application/json
+      - application/vnd.simplivity.v1.5+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.2+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.7+json
+      - application/vnd.simplivity.v1.4+json
+      - application/vnd.simplivity.v1.1+json
+      - application/vnd.simplivity.v1+json
+      - application/vnd.simplivity.v1.8+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: bkpId
+        in: path
+        description: The unique identifier (UID) of the backup that you want to retrieve
+        required: true
+        type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/BackupVirtualDiskMO'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+definitions:
+  AffectedObjectMO:
+    type: object
+    required:
+    - object_id
+    - object_type
+    properties:
+      object_id:
+        type: string
+        description: The unique identifier (UID) of the object affected by the completed task
+      object_type:
+        type: string
+        description: The type of the object affected by the completed task (virtual_machine, datastore, omnistack_cluster, backup, host, policy, rule)
+  BackupMO:
+    type: object
+    required:
+    - application_consistent
+    - associated_cluster
+    - backup_store_type
+    - cluster_group_ids
+    - compute_cluster_parent_hypervisor_object_id
+    - compute_cluster_parent_name
+    - consistency_type
+    - created_at
+    - datastore_id
+    - datastore_name
+    - expiration_time
+    - hypervisor_type
+    - id
+    - name
+    - omnistack_cluster_id
+    - omnistack_cluster_name
+    - sent
+    - sent_completion_time
+    - sent_duration
+    - size
+    - state
+    - type
+    - unique_size_bytes
+    - unique_size_timestamp
+    - virtual_machine_id
+    - virtual_machine_name
+    - virtual_machine_state
+    - virtual_machine_type
+    properties:
+      application_consistent:
+        type: boolean
+        example: false
+        description: An indicator to show if the backup represents a snapshot of a virtual machine with data that was first flushed to disk
+      associated_cluster:
+        type: string
+        description: The cluster associated with the external_store
+      backup_store_type:
+        type: string
+        description: The storage type of the backup
+        enum:
+        - SimplivityStore
+        - StoreOnceOnPrem
+        - StoreOnceCloud
+        - Unknown
+      cluster_group_ids:
+        type: array
+        description: The unique identifiers (UIDs) of the cluster_groups associated with the backup
+        items:
+          type: string
+      compute_cluster_parent_hypervisor_object_id:
+        type: string
+        description: The unique identifier (UID) of the hypervisor-based instance that contains the omnistack_cluster that is associated with the instance
+      compute_cluster_parent_name:
+        type: string
+        description: The name of the hypervisor-based instance that contains the omnistack_cluster that is associated with the instance
+      consistency_type:
+        type: string
+        description: The consistency type of the backup
+        enum:
+        - NONE
+        - DEFAULT
+        - FAILEDVSS
+        - NOT_APPLICABLE
+        - VSS
+      created_at:
+        type: string
+        description: The time the backup was created, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+      datastore_id:
+        type: string
+        description: The unique identifier (UID) of the datastore that is associated with the instance
+      datastore_name:
+        type: string
+        description: The name of the datastore that is associated with the instance
+      expiration_time:
+        type: string
+        description: The time the backup expired (and was deleted), unless locked. This time is expressed in ISO-8601 form, based on Coordinated Universal Time (UTC).
+      external_store_name:
+        type: string
+        description: The name of the external_store
+      hypervisor_type:
+        type: string
+        description: The type of Hypervisor Management System (HMS) associated with the backup
+        enum:
+        - VSPHERE
+        - HYPERV
+      id:
+        type: string
+        description: the unique identifier (UID) of the backup
+      name:
+        type: string
+        description: The name of the backup
+      omnistack_cluster_id:
+        type: string
+        description: The unique identifier (UID) of the omnistack_cluster that is associated with the instance
+      omnistack_cluster_name:
+        type: string
+        description: The name of the omnistack_cluster that is associated with the instance
+      sent:
+        type: integer
+        format: int64
+        description: For a backup stored in a remote location, the number of bytes that transferred
+      sent_completion_time:
+        type: string
+        description: The time when the backup replication completed, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+      sent_duration:
+        type: integer
+        format: int64
+        description: The number of seconds that elapsed while replicating the backup
+      size:
+        type: integer
+        format: int64
+        description: The logical size of the backup
+      state:
+        type: string
+        description: The current state of the backup
+        enum:
+        - NEW
+        - SAVING
+        - FAILED
+        - PROTECTED
+        - UNKNOWN
+        - CANCELING
+        - CANCELED
+        - QUEUED
+        - REBUILDING
+        - DELETED
+        - DEGRADED
+      type:
+        type: string
+        description: The type of backup
+        enum:
+        - MANUAL
+        - POLICY
+        - UNSPECIFIED
+      unique_size_bytes:
+        type: integer
+        format: int64
+        description: The unique size of the backup
+      unique_size_timestamp:
+        type: string
+        description: The time the unique size of the backup was calculated, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+      virtual_machine_id:
+        type: string
+        description: The unique identifier (UID) of the virtual_machine that is associated with the instance
+      virtual_machine_name:
+        type: string
+        description: The name of the virtual_machine that is associated with the instance
+      virtual_machine_state:
+        type: string
+        description: The state of the virtual_machine
+        enum:
+        - ALIVE
+        - REMOVED
+        - DELETED
+      virtual_machine_type:
+        type: string
+        description: The type of the virtual_machine that is associated with the instance
+        enum:
+        - VM
+        - TEMPLATE
+        - UNKNOWN
+  restore_file:
+    type: object
+    required:
+    - paths
+    - virtual_machine_id
+    properties:
+      virtual_machine_id:
+        type: string
+        description: The identification number of the virtual machine where you want to restore the files
+      paths:
+        type: array
+        description: 'The paths to the files in this format: virtual_machine_disk_name/partition_number/path_to_file (for example, "vmdk1.vmdk/2/Documents/file.txt")'
+        items:
+          type: string
+    description: Restore files from a specific partition
+  BackupFileDataMO:
+    type: object
+    required:
+    - directory
+    - file_level_restore_available
+    - last_modified
+    - name
+    - size
+    - symbolic_link
+    properties:
+      directory:
+        type: boolean
+        example: false
+        description: Indicates if the file is a directory
+      file_level_restore_available:
+        type: boolean
+        example: false
+        description: Indicates if the file is supported for file level restore
+      last_modified:
+        type: string
+        description: 'The time when the file was last modified, expressed in ISO-8601 form, based on Coordinated Universal Time(UTC). Format: yyyy-mm-ddTHH:mm:ssZ'
+      name:
+        type: string
+        description: The name of the file
+      size:
+        type: integer
+        format: int64
+        description: The size of the file(in bytes)
+      symbolic_link:
+        type: boolean
+        example: false
+        description: Indicates if the file is a symbolic link
+  rename_backup:
+    type: object
+    required:
+    - backup_name
+    properties:
+      backup_name:
+        type: string
+        description: The new name for the backup
+    description: Renames the specified backup
+  BackupPartitionDataMO:
+    type: object
+    required:
+    - disk_type
+    - mountable
+    - partition_number
+    - size
+    properties:
+      disk_type:
+        type: string
+        description: The partition disk type (for example, GPT or BIOS)
+      mountable:
+        type: boolean
+        example: false
+        description: Indicates if the application can mount the partition
+      partition_number:
+        type: integer
+        format: int32
+        description: The partition number for the partition
+      size:
+        type: integer
+        format: int64
+        description: The size of the partition in bytes
+  backup_copy:
+    type: object
+    required:
+    - destination_id
+    - external_store_name
+    properties:
+      destination_id:
+        type: string
+        description: The unique identifier (UID) of the omnistack_cluster that stores the new backup
+      external_store_name:
+        type: string
+        description: The name of the external_store
+    description: Copies the specified backup to another omnistack_cluster or external_store
+  BackupVirtualDiskMO:
+    type: object
+    required:
+    - virtual_disks
+    properties:
+      virtual_disks:
+        type: array
+        description: List of backup virtual hard disk files
+        items:
+          type: object
+  backup_retention_set:
+    type: object
+    required:
+    - backup_id
+    - retention
+    properties:
+      backup_id:
+        type: array
+        description: The list of the unique identifier (UID) of the backups that you want to set the retention time for
+        items:
+          type: string
+      retention:
+        type: integer
+        format: int32
+        description: The number of minutes to keep backups
+      force:
+        type: boolean
+        example: false
+        description: An indicator to force a retention time modification even if this action results in deleting backups
+      forever:
+        type: boolean
+        example: false
+        description: 'Retains backups indefinitely '
+    description: Sets the retention time for the specified list of backups
+  delete_backups:
+    type: object
+    required:
+    - backup_id
+    properties:
+      backup_id:
+        type: array
+        description: The list of the unique identifier (UID) of the backups that you want to delete
+        items:
+          type: string
+      cluster_group_id:
+        type: string
+        description: The cluster group id of the backup list
+    description: Deletes the specified list of backup instances
+  TaskMO:
+    type: object
+    required:
+    - affected_objects
+    - end_time
+    - id
+    - start_time
+    - state
+    properties:
+      affected_objects:
+        type: array
+        description: For a completed task, the unique identifiers (UIDs) and types of the objects affected by the operation
+        items:
+          $ref: '#/definitions/AffectedObjectMO'
+      end_time:
+        type: string
+        description: The time the task finished, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+      error_code:
+        type: integer
+        format: int32
+        description: The error code returned if a task failed
+      error_message:
+        type: string
+        description: The error message returned if a task fails
+      id:
+        type: string
+        description: The unique identifier (UID) of the task
+      start_time:
+        type: string
+        description: The time the task started, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+      state:
+        type: string
+        description: The current state of the task object
+        enum:
+        - IN_PROGRESS
+        - COMPLETED
+        - FAILED
+    description: A task that was created as a result of an operation performed on the system
+  restore_virtual_machine:
+    type: object
+    required:
+    - virtual_machine_name
+    properties:
+      virtual_machine_name:
+        type: string
+        description: The name of the new virtual machine that this action creates
+      datastore_id:
+        type: string
+        description: '(Optional) The unique identifier (UID) of the datastore where the new virtual machine gets created
+
+
+          Default: Creates the virtual machine in the same datastore as the one used by the chosen backup'
+    description: Creates a new virtual machine or replaces the original virtual machine from the specified backup
+securityDefinitions:
+  OAuth2:
+    type: oauth2
+    tokenUrl: /oauth/token
+    flow: password
+    scopes:
+      read: Grants read access
+      write: Grants write access

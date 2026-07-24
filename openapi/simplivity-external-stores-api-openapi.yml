@@ -1,0 +1,512 @@
+swagger: '2.0'
+info:
+  description: "This API enables the programmatic management of key components of an HPE SimpliVity configuration.\n\nTo access the API, request an authentication token by issuing an authentication request in the following form, where the username/password combination is a set of valid management credentials for the applicable hypervisor environment:\n\n     curl -k https://simplivity@<host>/api/oauth/token -d grant_type=password -d username=<user> -d password=<pass>\n\nThen, you can pass in the resulting access_token returned in each HTTP header using Authorization: Bearer token. For example:\n\n     curl -H \"Authorization: Bearer 0a08c809-17ff-479f-b0a8-aedd4d8305a0\"\n\nThe access_token times out after 10 minutes of inactivity and expires after 24 hours.\n\nMake sure to use TLS version 1.2 or greater.\n\nThere are a wide range of possible return values.  Below is a list of the most common return values. \n\n    200 \"OK\" ⁃ This indicates that the request and action has completed with no issues.\n    201 \"Created\" ⁃ This indicates that the request has completed and a new resource has been created.\n    202 \"Accepted\" ⁃ This indicates that the request has been accepted for processing but the processing has not\n                     completed. This is a typical return when a task is generated.\n    400 \"Bad Request\" ⁃ The request cannot or will not be proccessed.  Usually due to a missing required parameter\n                        or invalid data in the parameter.\n    401 \"Unauthorized\" ⁃ The request has not been applied because it lacks authentication credentials for the\n                         target resource.\n    404 \"Not Found\" ⁃ The requested target doesn't exist or has been deleted.\n    405 \"Method Not Allowed\" ⁃ The method being requested is not valid for the target it is being performed on.\n    408 \"Request Timeout\" ⁃ The response took too long.\n    500 \"Internal Server Error\" ⁃ Indicates that the server encountered an unexpected condition that prevented it\n                                  from fulfilling the request.\n\n<a href=\"https://developer.hpe.com/platform/hpe-simplivity/home\" class=\"\toggleEndpointList\" data-id=\"errors\">Click here for a complete list of return codes and response formats</a>\n\n"
+  version: '1.25'
+  title: HPE OmniStack REST backups external_stores API
+  contact:
+    name: Hewlett Packard Enterprise
+  license:
+    name: HPE OmniStack REST API
+host: localhost
+basePath: ''
+tags:
+- name: external_stores
+  description: An external (non HPE SimpliVity) destination for storing backups, such as an HPE StoreOnce Catalyst store
+paths:
+  /external_stores:
+    get:
+      tags:
+      - external_stores
+      summary: Retrieves all external_stores
+      operationId: listExternalStores
+      consumes:
+      - application/json
+      produces:
+      - application/vnd.simplivity.v1.19+json
+      - application/vnd.simplivity.v1.23+json
+      - application/json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - name: name
+        in: query
+        description: 'The name of the external_stores to return
+
+
+          Accepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard'
+        required: false
+        type: string
+      - name: omnistack_cluster_id
+        in: query
+        description: The identifier of the cluster. This identifier is unique within the category namespace.
+        required: false
+        type: string
+      - name: management_ip
+        in: query
+        description: 'The IP address of the external store
+
+
+          Accepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard'
+        required: false
+        type: string
+      - name: cluster_group_id
+        in: query
+        description: 'The unique identifiers (UIDs) of the cluster_groups associated with the external stores to return
+
+
+          Accepts: Single value, comma-separated list'
+        required: false
+        type: string
+      - name: fields
+        in: query
+        description: "A comma-separated list of fields to include in the returned objects\n\n Default: Returns all fields"
+        required: false
+        type: string
+      - name: limit
+        in: query
+        description: 'A positive integer that represents the maximum number of results to return
+
+
+          Default: 500'
+        required: false
+        type: integer
+        default: 500
+        format: int32
+      - name: offset
+        in: query
+        description: 'A positive integer that directs the service to start returning the &lt;offset value&gt; instance, up to the limit
+
+
+          Default: 0'
+        required: false
+        type: integer
+        default: 0
+        format: int32
+      - name: case
+        in: query
+        description: 'An indicator that specifies if the filter and sort results use a case-sensitive or insensitive manner
+
+
+          Valid values: sensitive or insensitive
+
+
+          Default: sensitive'
+        required: false
+        type: string
+        default: sensitive
+        enum:
+        - sensitive
+        - insensitive
+      - name: sort
+        in: query
+        description: The name of the field where the sort occurs
+        required: false
+        type: string
+      - name: order
+        in: query
+        description: 'The sort order preference
+
+
+          Valid values: ascending or descending
+
+
+          Default: descending'
+        required: false
+        type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/external_store'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    post:
+      tags:
+      - external_stores
+      summary: Registers a new external store
+      operationId: registerExternalStores
+      consumes:
+      - application/vnd.simplivity.v1.19+json
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      produces:
+      - application/vnd.simplivity.v1.19+json
+      - application/vnd.simplivity.v1.23+json
+      - application/json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - in: body
+        name: external store information
+        description: 'management_ip: The IP address of the external store
+
+
+          management_port: The management IP port of the external store
+
+
+          Default: 9387
+
+
+          name: The name of the external_store
+
+
+          storage_port: The storage IP port of the external store
+
+
+          Default: 9388
+
+
+          omnistack_cluster_id: The UID of the omnistack_cluster associated with the external store
+
+
+          type: The type of external store
+
+
+          Default: StoreOnceOnPrem
+
+
+          username: The client name of the external store
+
+
+          password: The client password of the external store'
+        required: true
+        schema:
+          $ref: '#/definitions/register_external_store'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/TaskMO'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /external_stores/unregister:
+    post:
+      tags:
+      - external_stores
+      summary: Removes the external store as a backup destination for the cluster. Backups remain on the external store, but they can no longer be managed by HPE SimpliVity.
+      operationId: unregisterExternalStores
+      consumes:
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.19+json
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.20+json
+      - application/vnd.simplivity.v1.24+json
+      produces:
+      - application/vnd.simplivity.v1.19+json
+      - application/vnd.simplivity.v1.23+json
+      - application/json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - in: body
+        name: external store information
+        description: 'name: The name of the external_store
+
+
+          omnistack_cluster_id: The UID of the omnistack_cluster associated with the external store'
+        required: true
+        schema:
+          $ref: '#/definitions/unregister_external_store'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/TaskMO'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /external_stores/update_credentials:
+    post:
+      tags:
+      - external_stores
+      summary: Update the IP address or credentials that HPE SimpliVity uses to access the external store
+      operationId: updateExternalStoreCredentials
+      consumes:
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.19+json
+      - application/vnd.simplivity.v1.23+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.20+json
+      - application/vnd.simplivity.v1.24+json
+      produces:
+      - application/vnd.simplivity.v1.19+json
+      - application/vnd.simplivity.v1.23+json
+      - application/json
+      - application/vnd.simplivity.v1.18+json
+      - application/vnd.simplivity.v1.13+json
+      - application/vnd.simplivity.v1.16+json
+      - application/vnd.simplivity.v1.24+json
+      - application/vnd.simplivity.v1.14+json
+      - application/vnd.simplivity.v1.11+json
+      - application/vnd.simplivity.v1.17+json
+      - application/vnd.simplivity.v1.21+json
+      - application/vnd.simplivity.v1.22+json
+      - application/vnd.simplivity.v1.15+json
+      - application/vnd.simplivity.v1.25+json
+      - application/vnd.simplivity.v1.12+json
+      - application/vnd.simplivity.v1.20+json
+      parameters:
+      - in: body
+        name: external store credential information
+        description: 'name: The name of the external_store
+
+
+          username: The client name of the external store
+
+
+          password: The client password of the external store
+
+
+          management_ip: The IP address of the external store'
+        required: true
+        schema:
+          $ref: '#/definitions/update_external_store_credentials'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/TaskMO'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+definitions:
+  AffectedObjectMO:
+    type: object
+    required:
+    - object_id
+    - object_type
+    properties:
+      object_id:
+        type: string
+        description: The unique identifier (UID) of the object affected by the completed task
+      object_type:
+        type: string
+        description: The type of the object affected by the completed task (virtual_machine, datastore, omnistack_cluster, backup, host, policy, rule)
+  register_external_store:
+    type: object
+    required:
+    - management_ip
+    - name
+    - omnistack_cluster_id
+    - password
+    - username
+    properties:
+      management_ip:
+        type: string
+        description: The IP address of the external store
+      management_port:
+        type: integer
+        format: int32
+        description: The management IP port of the external store
+      name:
+        type: string
+        description: The name of the external_store
+      omnistack_cluster_id:
+        type: string
+        description: The UID of the omnistack_cluster associated with the external store
+      password:
+        type: string
+        description: The client password of the external store
+      storage_port:
+        type: integer
+        format: int32
+        description: The storage IP port of the external store
+      type:
+        type: string
+        description: The type of external store
+        enum:
+        - StoreOnceOnPrem
+        - StoreOnceCloud
+      username:
+        type: string
+        description: The client name of the external store
+    description: Registers a new external store
+  external_store:
+    type: object
+    required:
+    - cluster_group_ids
+    - management_ip
+    - name
+    - omnistack_cluster_id
+    properties:
+      cluster_group_ids:
+        type: array
+        description: The unique identifiers (UIDs) of the cluster_groups associated with the external store
+        items:
+          type: string
+      management_ip:
+        type: string
+        description: The IP address of the external store
+      management_port:
+        type: integer
+        format: int32
+        description: The management IP port of the external store
+      name:
+        type: string
+        description: The name of the external_store
+      omnistack_cluster_id:
+        type: string
+        description: The UID of the omnistack_cluster associated with the external store
+      storage_port:
+        type: integer
+        format: int32
+        description: The storage IP port of the external store
+      type:
+        type: string
+        description: The type of external store
+    description: An external_store
+  update_external_store_credentials:
+    type: object
+    required:
+    - name
+    - password
+    - username
+    properties:
+      management_ip:
+        type: string
+        description: The IP address of the external store
+      name:
+        type: string
+        description: The name of the external_store
+      password:
+        type: string
+        description: The client password of the external store
+      username:
+        type: string
+        description: The client name of the external store
+    description: Update the IP address or credentials that HPE SimpliVity uses to access the external store
+  unregister_external_store:
+    type: object
+    required:
+    - name
+    - omnistack_cluster_id
+    properties:
+      name:
+        type: string
+        description: The name of the external_store
+      omnistack_cluster_id:
+        type: string
+        description: The UID of the omnistack_cluster associated with the external store
+    description: Removes the external store as a backup destination for the cluster. Backups remain on the external store, but they can no longer be managed by HPE SimpliVity.
+  TaskMO:
+    type: object
+    required:
+    - affected_objects
+    - end_time
+    - id
+    - start_time
+    - state
+    properties:
+      affected_objects:
+        type: array
+        description: For a completed task, the unique identifiers (UIDs) and types of the objects affected by the operation
+        items:
+          $ref: '#/definitions/AffectedObjectMO'
+      end_time:
+        type: string
+        description: The time the task finished, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+      error_code:
+        type: integer
+        format: int32
+        description: The error code returned if a task failed
+      error_message:
+        type: string
+        description: The error message returned if a task fails
+      id:
+        type: string
+        description: The unique identifier (UID) of the task
+      start_time:
+        type: string
+        description: The time the task started, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+      state:
+        type: string
+        description: The current state of the task object
+        enum:
+        - IN_PROGRESS
+        - COMPLETED
+        - FAILED
+    description: A task that was created as a result of an operation performed on the system
+securityDefinitions:
+  OAuth2:
+    type: oauth2
+    tokenUrl: /oauth/token
+    flow: password
+    scopes:
+      read: Grants read access
+      write: Grants write access
