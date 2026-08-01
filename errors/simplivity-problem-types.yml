@@ -1,0 +1,31 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/simplivity-omnistack-openapi-original.json
+format: http-status
+note: The HPE OmniStack REST API returns standard HTTP status codes (not RFC 9457 application/problem+json).
+  Long-running operations return 202 Accepted with a TaskMO body whose state (IN_PROGRESS/COMPLETED/FAILED)
+  and error_code/message carry per-task failure detail; poll getTask for the outcome.
+problems:
+- status: 401
+  title: Unauthorized — missing, expired, or invalid OAuth2 bearer token (tokens expire after 10 min inactivity
+    / 24 h).
+- status: 403
+  title: Forbidden — the authenticated principal lacks the required read/write scope or role assignment.
+- status: 404
+  title: Not Found — the referenced object (backup, VM, datastore, host, policy, cluster) does not exist.
+task_errors:
+  envelope: TaskMO
+  fields:
+  - id
+  - state
+  - affected_objects
+  - error_code
+  - message
+  - start_time
+  - end_time
+  states:
+  - IN_PROGRESS
+  - COMPLETED
+  - FAILED
+  - TIMEDOUT
+  poll_operation: getTask

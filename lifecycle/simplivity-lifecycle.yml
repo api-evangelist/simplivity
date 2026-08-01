@@ -1,0 +1,24 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/simplivity-omnistack-openapi-original.json
+versioning:
+  scheme: spec-version
+  current: '1.25'
+  docs: https://github.com/HewlettPackard/hpe-simplivity-swagger
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: Deprecated operations are flagged in the OpenAPI deprecated field; HPE communicates removals through
+    OmniStack release notes.
+token_lifetime:
+  inactivity_timeout: 10 minutes
+  absolute_expiry: 24 hours
+sla:
+  url: null
+  note: On-premises appliance software; availability is a function of the customer cluster, not a hosted
+    SLA.
+status_page: null
+deprecated_operations:
+- openapi/simplivity-omnistack-openapi-original.json#getPolicyDatastores
+- openapi/simplivity-omnistack-openapi-original.json#getPolicyVirtualMachines
+- openapi/simplivity-omnistack-openapi-original.json#listVMBackups

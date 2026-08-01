@@ -1,0 +1,40 @@
+# SimpliVity (HPE OmniStack REST API)
+
+> SimpliVity is the hyperconverged infrastructure (HCI) pioneer acquired by Hewlett Packard Enterprise in 2017 and shipped as HPE SimpliVity. Its OmniStack data virtualization platform delivers built-in deduplication, compression, backup, replication, and disaster recovery for VMware and Hyper-V clusters. The programmatic surface is the HPE OmniStack REST API (v1.25), served on-appliance by the Management Virtual Appliance (MVA) and authenticated with an OAuth2 password grant issuing read/write bearer tokens.
+
+## APIs
+
+- [HPE OmniStack REST API (Swagger)](https://github.com/HewlettPackard/hpe-simplivity-swagger): 87 operations across backups, virtual_machines, datastores, hosts, omnistack_clusters, cluster_groups, policies, external_stores, security (certificates/roles), and tasks.
+
+## Specs
+
+- [OpenAPI/Swagger 2.0 (verbatim)](openapi/simplivity-omnistack-openapi-original.json)
+- [OpenAPI Overlay (AE enhancements)](overlays/simplivity-omnistack-overlay.yaml)
+
+## Auth & conventions
+
+- [Authentication profile](authentication/simplivity-authentication.yml): OAuth2 password grant, token endpoint /api/oauth/token, Authorization: Bearer, read/write scopes, TLS 1.2+, tokens expire after 10 min inactivity / 24 h.
+- [OAuth scopes](scopes/simplivity-scopes.yml)
+- [Conventions](conventions/simplivity-conventions.yml): offset/limit pagination, task-polling async model (202 + TaskMO, getTask), no idempotency-key mechanism.
+- [Error catalog](errors/simplivity-problem-types.yml): standard HTTP status codes; per-task failures in TaskMO.
+- [Lifecycle](lifecycle/simplivity-lifecycle.yml): spec version 1.25; 3 deprecated operations flagged.
+- [Data model](data-model/simplivity-data-model.yml)
+- [Conformance](conformance/simplivity-conformance.yml)
+
+## Agent
+
+- [MCP candidate tools](mcp/simplivity-mcp.yml)
+- [Agentic access contracts](agentic-access/simplivity-agentic-access.yml)
+- [Agent skills](skills/_index.yml)
+
+## SDKs
+
+- Python: https://pypi.org/project/simplivity/ (pip install simplivity)
+- Go: https://pkg.go.dev/github.com/HewlettPackard/simplivity-go
+- PowerShell: https://github.com/HewlettPackard/hpe-simplivity-powershell
+- Ansible: https://github.com/HewlettPackard/simplivity-ansible
+
+## Docs
+
+- [HPE SimpliVity](https://www.hpe.com/us/en/hpe-simplivity.html)
+- [HewlettPackard GitHub org](https://github.com/HewlettPackard)

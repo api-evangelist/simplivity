@@ -1,0 +1,275 @@
+generated: '2026-07-21'
+method: derived
+status: candidate
+source: openapi/simplivity-omnistack-openapi-original.json
+note: Candidate MCP tool surface derived one-to-one from HPE OmniStack REST API operations. HPE ships
+  no hosted MCP server; this is a governance starting point, not a published server.
+server:
+  name: simplivity-omnistack
+  transport: stdio
+tools:
+- name: listBackups
+  description: Retrieves all backups defined on this system
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#listBackups
+- name: deleteBackups
+  description: Deletes the specified list of backup instances
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#deleteBackups
+- name: setBackupRetention
+  description: Sets the retention time for the specified list of backups
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#setBackupRetention
+- name: getBackup
+  description: Retrieves the specified backup
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#getBackup
+- name: deleteBackup
+  description: Deletes the specified backup
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#deleteBackup
+- name: calculateUniqueSize
+  description: Calculates the unique size of the specified backup
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#calculateUniqueSize
+- name: cancelBackup
+  description: Cancels the specified running backup
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#cancelBackup
+- name: copyBackup
+  description: Copies the specified backup to another omnistack_cluster or external_store
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#copyBackup
+- name: lockBackup
+  description: Saves the specified backup to prevent it from expiring
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#lockBackup
+- name: renameBackup
+  description: Renames the specified backup
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#renameBackup
+- name: restoreFromBackup
+  description: Creates a new virtual machine or replaces the original virtual machine from the specified
+    backup
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#restoreFromBackup
+- name: restoreFiles
+  description: Restore files from a specific partition
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#restoreFiles
+- name: getBackupFiles
+  description: Retrieves the virtual hard disk files from the backup
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#getBackupFiles
+- name: getBackupPartitions
+  description: Retrieves partition information for the virtual disk associated with the backup
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#getBackupPartitions
+- name: getVirtualDisksFromBackup
+  description: Retrieves the virtual hard disk files from the backup
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#getVirtualDisksFromBackup
+- name: listClusterGroups
+  description: Retrieves all cluster_groups
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#listClusterGroups
+- name: renameClusterGroup
+  description: Renames the specified cluster_group
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#renameClusterGroup
+- name: listDatastores
+  description: Retrieves all datastores defined on this system
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#listDatastores
+- name: createDatastore
+  description: Creates a new datastore
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#createDatastore
+- name: getDatastore
+  description: Retrieves the specified datastore
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#getDatastore
+- name: deleteDatastore
+  description: Deletes a datastore
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#deleteDatastore
+- name: resizeDatastore
+  description: Resizes a datastore
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#resizeDatastore
+- name: setDatastorePolicy
+  description: Sets the backup policy for a datastore
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#setDatastorePolicy
+- name: shareDatastore
+  description: Share a datastore
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#shareDatastore
+- name: getStandardHosts
+  description: Gets the standard hosts that can share a datastore
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#getStandardHosts
+- name: unShareDatastore
+  description: Stop sharing a datastore
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#unShareDatastore
+- name: listExternalStores
+  description: Retrieves all external_stores
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#listExternalStores
+- name: registerExternalStores
+  description: Registers a new external store
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#registerExternalStores
+- name: unregisterExternalStores
+  description: Removes the external store as a backup destination for the cluster. Backups remain on the
+    external store, but they can no longer be managed by HPE SimpliVity.
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#unregisterExternalStores
+- name: updateExternalStoreCredentials
+  description: Update the IP address or credentials that HPE SimpliVity uses to access the external store
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#updateExternalStoreCredentials
+- name: listHosts
+  description: Retrieves all hosts defined on this system
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#listHosts
+- name: getHost
+  description: Retrieves the specified host
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#getHost
+- name: cancelShutdownVirtualControllerUsingPOST
+  description: Cancels the shutdown of the Virtual Controller
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#cancelShutdownVirtualControllerUsingPOST
+- name: getHostCapacity
+  description: Host Capacity
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#getHostCapacity
+- name: getHostHardware
+  description: Retrieves hardware information for the host
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#getHostHardware
+- name: getHostMetrics
+  description: Retrieves throughput, IOPS, and latency data for the host
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#getHostMetrics
+- name: removeHostFromFederation
+  description: Removes the specified host from the federation. The specified hostId must not be the host
+    executing the request.
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#removeHostFromFederation
+- name: shutdownVirtualControllerUsingPOST
+  description: Shuts down the Virtual Controller safely (by reaching HA compliance) or by force
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#shutdownVirtualControllerUsingPOST
+- name: getVirtualControllerShutdownStatusUsingGET
+  description: Retrieves the shutdown status of the Virtual Controller
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#getVirtualControllerShutdownStatusUsingGET
+- name: listClusters
+  description: Retrieves all defined omnistack_clusters on the system
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#listClusters
+- name: getTimeZones
+  description: Retrieves a list of all valid time zones
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#getTimeZones
+- name: getCluster
+  description: Retrieves the specified omnistack_cluster
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#getCluster
+- name: getConnectedClusters
+  description: Retrieves directly connected omnistack_clusters
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#getConnectedClusters
+- name: getClusterPerfomance
+  description: Retrieves throughput, IOPS, and latency data for the cluster
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#getClusterPerfomance
+- name: enableClusterIWO
+  description: Sets the IWO status of the omnistack_cluster
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#enableClusterIWO
+- name: setClusterTimeZone
+  description: Sets the time zone of the omnistack_cluster
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#setClusterTimeZone
+- name: getClustersThroughput
+  description: Calculates the throughput between each pair of omnistack_clusters in the federation
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#getClustersThroughput
+- name: listPolicies
+  description: Retrieves all policies defined on this system
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#listPolicies
+- name: createPolicy
+  description: Creates a new policy
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#createPolicy
+- name: getPolicyScheduleReport
+  description: Retrieves the policy schedule report
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#getPolicyScheduleReport
+- name: resumePolicy
+  description: Resumes policy-based backups on a specific targeted object
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#resumePolicy
+- name: suspendPolicy
+  description: Suspends policy-based backups on a specific targeted object
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#suspendPolicy
+- name: getPolicy
+  description: Retrieves the specified policy
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#getPolicy
+- name: deletePolicy
+  description: Removes a policy
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#deletePolicy
+- name: getPolicyDatastores
+  description: Retrieves the datastores using this policy
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#getPolicyDatastores
+- name: reportOnProposedRulesCreation
+  description: Generate a backup impact reported based on proposed creation of rules for the policy
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#reportOnProposedRulesCreation
+- name: reportOnProposedRulesEdits
+  description: Generate a backup impact reported based on proposed changes to the rules for the policy
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#reportOnProposedRulesEdits
+- name: renamePolicy
+  description: Renames the specified policy
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#renamePolicy
+- name: createRule
+  description: Creates one or more new rules or replaces existing rules with new rules for a policy
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#createRule
+- name: getRule
+  description: Retrieves the specified policy rule
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#getRule
+- name: updateRule
+  description: Edits an existing policy rule
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#updateRule
+- name: deleteRule
+  description: Removes a policy rule
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#deleteRule
+- name: reportOnProposedRuleDeletion
+  description: Generate a backup impact reported based on proposed deletion of a policy rule
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#reportOnProposedRuleDeletion
+- name: getPolicyVirtualMachines
+  description: Retrieves the virtual_machines using this policy
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#getPolicyVirtualMachines
+- name: getCertificates
+  description: Get all SSL certificates from the HPE SimpliVity trust store
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#getCertificates
+- name: addCertificate
+  description: Add an SSL certificate to the HPE SimpliVity trust store
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#addCertificate
+- name: addDEREncodedCertificate
+  description: Add a DER encoded SSL certificate to the HPE SimpliVity trust store
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#addDEREncodedCertificate
+- name: getCertificate
+  description: Get an SSL certificate from the HPE SimpliVity trust store
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#getCertificate
+- name: deleteCertificate
+  description: Delete an SSL certificate in the HPE SimpliVity trust store
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#deleteCertificate
+- name: getRoleAssignments
+  description: Get all HPE OmniStack role assignments
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#getRoleAssignments
+- name: addRoleAssignments
+  description: Add an HPE OmniStack role assignment
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#addRoleAssignments
+- name: removeRoleAssignments
+  description: Remove HPE OmniStack role assignments
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#removeRoleAssignments
+- name: getTask
+  description: Retrieves the specified task
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#getTask
+- name: listVms
+  description: Retrieves instances of HPE SimpliVity virtual machines defined on this system
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#listVms
+- name: reportOnProposedVMPolicySetting
+  description: Generate a backup impact reported based on proposed application of a policy to one or more
+    virtual machines
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#reportOnProposedVMPolicySetting
+- name: setPolicyForVms
+  description: Sets the backup policy for virtual machines
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#setPolicyForVms
+- name: getVm
+  description: Retrieves the specified virtual_machines
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#getVm
+- name: backupVm
+  description: Backs up a virtual machine
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#backupVm
+- name: setBackupParams
+  description: Set the virtual machine backup parameters used for application consistent backups.
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#setBackupParams
+- name: listVMBackups
+  description: Retrieves all backups associated with this virtual_machine
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#listVMBackups
+- name: cloneVm
+  description: Clones a virtual machine
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#cloneVm
+- name: getVmMetrics
+  description: Retrieves throughput, IOPS, and latency data for the virtual machine
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#getVmMetrics
+- name: moveVm
+  description: Moves a virtual machine to another datastore
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#moveVm
+- name: powerOffVMUsingPOST
+  description: Power off a VM
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#powerOffVMUsingPOST
+- name: powerOnVMUsingPOST
+  description: Power on a VM
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#powerOnVMUsingPOST
+- name: setPolicyForVm
+  description: Sets the backup policy for a virtual machine
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#setPolicyForVm
+- name: validateBackupCred
+  description: Validates the credentials for the virtual machine you want to backup
+  source_operation: openapi/simplivity-omnistack-openapi-original.json#validateBackupCred

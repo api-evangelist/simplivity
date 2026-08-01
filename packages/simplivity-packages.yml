@@ -1,0 +1,36 @@
+generated: '2026-07-21'
+method: searched
+source: https://github.com/HewlettPackard
+note: >-
+  First-party HPE SimpliVity client libraries and automation modules for the HPE
+  OmniStack REST API, published under the HewlettPackard GitHub organization.
+packages:
+- language: python
+  registry: pypi
+  name: simplivity
+  url: https://pypi.org/project/simplivity/
+  repository: https://github.com/HewlettPackard/simplivity-python
+  install: pip install simplivity
+  version: 1.1.1
+  license: Apache-2.0
+  official: true
+- language: go
+  registry: pkg.go.dev
+  name: github.com/HewlettPackard/simplivity-go
+  url: https://pkg.go.dev/github.com/HewlettPackard/simplivity-go
+  repository: https://github.com/HewlettPackard/simplivity-go
+  install: go get github.com/HewlettPackard/simplivity-go
+  official: true
+- language: powershell
+  registry: github
+  name: hpe-simplivity-powershell
+  url: https://github.com/HewlettPackard/hpe-simplivity-powershell
+  repository: https://github.com/HewlettPackard/hpe-simplivity-powershell
+  official: true
+- language: python
+  registry: github
+  name: simplivity-ansible
+  url: https://github.com/HewlettPackard/simplivity-ansible
+  repository: https://github.com/HewlettPackard/simplivity-ansible
+  note: Ansible modules for HPE SimpliVity automation.
+  official: true

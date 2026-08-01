@@ -1,0 +1,22 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/simplivity-omnistack-openapi-original.json
+schemes:
+- name: OAuth2
+  source: openapi/simplivity-omnistack-openapi-original.json
+  flows:
+  - flow: password
+    tokenUrl: /oauth/token
+scopes:
+- scope: read
+  description: Grants read access
+  flows:
+  - password
+  sources:
+  - openapi/simplivity-omnistack-openapi-original.json
+- scope: write
+  description: Grants write access
+  flows:
+  - password
+  sources:
+  - openapi/simplivity-omnistack-openapi-original.json

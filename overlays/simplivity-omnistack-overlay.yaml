@@ -1,0 +1,28 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for HPE OmniStack REST API (SimpliVity)
+  version: 1.0.0
+extends: openapi/simplivity-omnistack-openapi-original.json
+generated: '2026-07-21'
+method: generated
+actions:
+- target: $.info
+  update:
+    x-apievangelist-enriched: true
+    x-api-evangelist-provider: simplivity
+    x-onprem: true
+    x-auth-model: oauth2-password-grant
+    x-async-model: task-polling
+- target: $.info
+  update:
+    x-artifacts:
+      authentication: authentication/simplivity-authentication.yml
+      scopes: scopes/simplivity-scopes.yml
+      conventions: conventions/simplivity-conventions.yml
+      errors: errors/simplivity-problem-types.yml
+      lifecycle: lifecycle/simplivity-lifecycle.yml
+      data_model: data-model/simplivity-data-model.yml
+      conformance: conformance/simplivity-conformance.yml
+      mcp: mcp/simplivity-mcp.yml
+      agentic_access: agentic-access/simplivity-agentic-access.yml
+      skills: skills/_index.yml

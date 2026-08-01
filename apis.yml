@@ -1,7 +1,30 @@
 aid: simplivity
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/simplivity.png
 name: SimpliVity
-description: 'SimpliVity is a company surfaced as a portfolio company of accel and added to the API Evangelist
-  network as a stub for enrichment. Sector: big-data. This profile is a lead awaiting the enrichment pipeline.'
+description: >-
+  SimpliVity is the hyperconverged infrastructure (HCI) pioneer acquired by Hewlett
+  Packard Enterprise in 2017 and now shipped as HPE SimpliVity. Its data virtualization
+  platform runs on the OmniStack software stack, delivering built-in deduplication,
+  compression, backup, replication, and disaster recovery across VMware and Hyper-V
+  clusters. The programmatic surface is the HPE OmniStack REST API (v1.25), which
+  manages the key components of a SimpliVity configuration — virtual machines, backups,
+  backup policies, datastores, hosts, clusters/omnistack_clusters, cluster groups,
+  external stores, certificates, and long-running tasks. The API is served on-appliance
+  by the Management Virtual Appliance (MVA) and authenticated with an OAuth2 password
+  grant that issues read/write bearer tokens. HPE publishes first-party SDKs for
+  Python, Go, and PowerShell plus Ansible modules on the HewlettPackard GitHub org.
 url: https://raw.githubusercontent.com/api-evangelist/simplivity/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -11,16 +34,216 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
 - Big Data
-apis: []
+- Hyperconverged Infrastructure
+- Virtualization
+- Backup
+- Disaster Recovery
+- Data Center
+- Storage
+- Cloud Infrastructure
+- HPE
+apis:
+- aid: simplivity:simplivity-backups-api
+  name: SimpliVity backups API
+  description: >-
+    A backup is a complete, standalone image of a specific virtual machine, taken at a specific point
+    in time.
+  humanURL: https://github.com/HewlettPackard/hpe-simplivity-swagger
+  baseURL: https://management-virtual-appliance/api
+  tags:
+  - backups
+  properties:
+  - type: OpenAPI
+    url: openapi/simplivity-backups-api-openapi.yml
+  - type: Authentication
+    url: authentication/simplivity-authentication.yml
+  - type: OAuthScopes
+    url: scopes/simplivity-scopes.yml
+- aid: simplivity:simplivity-cluster-groups-api
+  name: SimpliVity cluster_groups API
+  description: >-
+    A set of omnistack_clusters that are able to perform backup and restore operations between each other
+  humanURL: https://github.com/HewlettPackard/hpe-simplivity-swagger
+  baseURL: https://management-virtual-appliance/api
+  tags:
+  - cluster_groups
+  properties:
+  - type: OpenAPI
+    url: openapi/simplivity-cluster-groups-api-openapi.yml
+  - type: Authentication
+    url: authentication/simplivity-authentication.yml
+  - type: OAuthScopes
+    url: scopes/simplivity-scopes.yml
+- aid: simplivity:simplivity-datastores-api
+  name: SimpliVity datastores API
+  description: A datastore is a data repository of files that constitute virtual machines.
+  humanURL: https://github.com/HewlettPackard/hpe-simplivity-swagger
+  baseURL: https://management-virtual-appliance/api
+  tags:
+  - datastores
+  properties:
+  - type: OpenAPI
+    url: openapi/simplivity-datastores-api-openapi.yml
+  - type: Authentication
+    url: authentication/simplivity-authentication.yml
+  - type: OAuthScopes
+    url: scopes/simplivity-scopes.yml
+- aid: simplivity:simplivity-external-stores-api
+  name: SimpliVity external_stores API
+  description: >-
+    An external (non HPE SimpliVity) destination for storing backups, such as an HPE StoreOnce Catalyst
+    store
+  humanURL: https://github.com/HewlettPackard/hpe-simplivity-swagger
+  baseURL: https://management-virtual-appliance/api
+  tags:
+  - external_stores
+  properties:
+  - type: OpenAPI
+    url: openapi/simplivity-external-stores-api-openapi.yml
+  - type: Authentication
+    url: authentication/simplivity-authentication.yml
+  - type: OAuthScopes
+    url: scopes/simplivity-scopes.yml
+- aid: simplivity:simplivity-hosts-api
+  name: SimpliVity hosts API
+  description: A host is a virtual object that uses HPE OmniStack software in a federation.
+  humanURL: https://github.com/HewlettPackard/hpe-simplivity-swagger
+  baseURL: https://management-virtual-appliance/api
+  tags:
+  - hosts
+  properties:
+  - type: OpenAPI
+    url: openapi/simplivity-hosts-api-openapi.yml
+  - type: Authentication
+    url: authentication/simplivity-authentication.yml
+  - type: OAuthScopes
+    url: scopes/simplivity-scopes.yml
+- aid: simplivity:simplivity-omnistack-clusters-api
+  name: SimpliVity omnistack_clusters API
+  description: >-
+    An omnistack_cluster is a logical grouping of systems that run the HPE OmniStack software. The user
+    defines an omnistack_cluster to efficiently share resources across the systems.
+  humanURL: https://github.com/HewlettPackard/hpe-simplivity-swagger
+  baseURL: https://management-virtual-appliance/api
+  tags:
+  - omnistack_clusters
+  properties:
+  - type: OpenAPI
+    url: openapi/simplivity-omnistack-clusters-api-openapi.yml
+  - type: Authentication
+    url: authentication/simplivity-authentication.yml
+  - type: OAuthScopes
+    url: scopes/simplivity-scopes.yml
+- aid: simplivity:simplivity-policies-api
+  name: SimpliVity policies API
+  description: >-
+    A policy contains backup rules that can be applied to an individual datastore or virtual_machine.
+  humanURL: https://github.com/HewlettPackard/hpe-simplivity-swagger
+  baseURL: https://management-virtual-appliance/api
+  tags:
+  - policies
+  properties:
+  - type: OpenAPI
+    url: openapi/simplivity-policies-api-openapi.yml
+  - type: Authentication
+    url: authentication/simplivity-authentication.yml
+  - type: OAuthScopes
+    url: scopes/simplivity-scopes.yml
+- aid: simplivity:simplivity-security-api
+  name: SimpliVity security API
+  description: Includes the REST APIs that support security operations for HPE SimpliVity objects
+  humanURL: https://github.com/HewlettPackard/hpe-simplivity-swagger
+  baseURL: https://management-virtual-appliance/api
+  tags:
+  - security
+  properties:
+  - type: OpenAPI
+    url: openapi/simplivity-security-api-openapi.yml
+  - type: Authentication
+    url: authentication/simplivity-authentication.yml
+  - type: OAuthScopes
+    url: scopes/simplivity-scopes.yml
+- aid: simplivity:simplivity-tasks-api
+  name: SimpliVity tasks API
+  description: >-
+    A task is created by the system to enable a client to track state changes where a managed object moves
+    when it is created or modified.
+  humanURL: https://github.com/HewlettPackard/hpe-simplivity-swagger
+  baseURL: https://management-virtual-appliance/api
+  tags:
+  - tasks
+  properties:
+  - type: OpenAPI
+    url: openapi/simplivity-tasks-api-openapi.yml
+  - type: Authentication
+    url: authentication/simplivity-authentication.yml
+  - type: OAuthScopes
+    url: scopes/simplivity-scopes.yml
+- aid: simplivity:simplivity-virtual-machines-api
+  name: SimpliVity virtual_machines API
+  description: >-
+    A virtual_machine represents a single virtual machine created within an HPE SimpliVity datastore.
+  humanURL: https://github.com/HewlettPackard/hpe-simplivity-swagger
+  baseURL: https://management-virtual-appliance/api
+  tags:
+  - virtual_machines
+  properties:
+  - type: OpenAPI
+    url: openapi/simplivity-virtual-machines-api-openapi.yml
+  - type: Authentication
+    url: authentication/simplivity-authentication.yml
+  - type: OAuthScopes
+    url: scopes/simplivity-scopes.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/simplivity-domain-security.yml
+- type: AgenticAccess
+  url: agentic-access/simplivity-agentic-access.yml
 - type: Website
-  url: http://www.simplivity.com
+  url: https://www.hpe.com/us/en/hpe-simplivity.html
+- type: Documentation
+  url: https://github.com/HewlettPackard/simplivity-python/blob/master/README.md
+- type: APIReference
+  url: https://github.com/HewlettPackard/hpe-simplivity-swagger
+- type: GitHubOrganization
+  url: https://github.com/HewlettPackard
+- type: SourceCode
+  url: https://github.com/HewlettPackard/simplivity-python
+- type: Packages
+  url: packages/simplivity-packages.yml
+- type: SDKs
+  url: packages/simplivity-packages.yml
+- type: MCPServer
+  url: mcp/simplivity-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/simplivity-llms.txt
+- type: Overlay
+  url: overlays/simplivity-omnistack-overlay.yaml
+- type: Conventions
+  url: conventions/simplivity-conventions.yml
+- type: Conformance
+  url: conformance/simplivity-conformance.yml
+- type: ErrorCatalog
+  url: errors/simplivity-problem-types.yml
+- type: DataModel
+  url: data-model/simplivity-data-model.yml
+- type: Lifecycle
+  url: lifecycle/simplivity-lifecycle.yml
+- type: Deprecation
+  url: lifecycle/simplivity-lifecycle.yml
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 16
+  pass: local-v1

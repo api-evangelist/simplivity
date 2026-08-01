@@ -1,0 +1,29 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/simplivity-omnistack-openapi-original.json
+standards:
+- id: oauth2
+  conforms: true
+  evidence: securityDefinitions declares OAuth2 password flow with read/write scopes, tokenUrl /oauth/token
+- id: oauth2-password-grant
+  conforms: true
+  evidence: RFC 6749 resource owner password credentials grant
+- id: bearer-token
+  conforms: true
+  evidence: 'Authorization: Bearer header per RFC 6750'
+- id: tls-1.2-plus
+  conforms: true
+  evidence: API description mandates TLS 1.2 or greater
+- id: oidc
+  conforms: false
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: errors returned as plain HTTP status, not application/problem+json
+- id: json-api
+  conforms: false
+- id: offset-pagination
+  conforms: true
+  evidence: offset/limit/sort/order params on list operations
+- id: async-task-polling
+  conforms: true
+  evidence: 202 + TaskMO; getTask polling

@@ -1,0 +1,19 @@
+generated: '2026-07-21'
+method: generated
+source: openapi/simplivity-omnistack-openapi-original.json
+note: >-
+  Agent Skills for the HPE OmniStack REST API. Every step is grounded in a real
+  operationId verified against the verbatim Swagger spec.
+skills:
+- file: simplivity-backup-and-restore-vm.md
+  name: Back up and restore a SimpliVity virtual machine
+  api: openapi/simplivity-omnistack-openapi-original.json
+  operations: [backupVm, getTask, listBackups, getBackup, restoreFromBackup]
+- file: simplivity-manage-backup-policy.md
+  name: Create a backup policy and apply it to a VM
+  api: openapi/simplivity-omnistack-openapi-original.json
+  operations: [createPolicy, createRule, getPolicyScheduleReport, listPolicies, setPolicyForVm]
+- file: simplivity-provision-datastore.md
+  name: Provision and manage a SimpliVity datastore
+  api: openapi/simplivity-omnistack-openapi-original.json
+  operations: [createDatastore, listDatastores, setDatastorePolicy, resizeDatastore, shareDatastore]

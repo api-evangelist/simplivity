@@ -1,0 +1,50 @@
+generated: '2026-07-21'
+method: derived
+source:
+- openapi/simplivity-omnistack-openapi-original.json
+- authentication/simplivity-authentication.yml
+- errors/simplivity-problem-types.yml
+- lifecycle/simplivity-lifecycle.yml
+authentication:
+  style: OAuth2 password grant -> Bearer token
+  token_endpoint: /api/oauth/token
+  header: 'Authorization: Bearer <access_token>'
+  scopes:
+  - read
+  - write
+  token_ttl: expires after 10 minutes of inactivity; absolute expiry 24 hours
+  transport: TLS 1.2 or greater required
+idempotency:
+  supported: false
+  note: No idempotency-key mechanism is defined. Mutating operations are not idempotent; long-running
+    writes are made safe via the async task model (poll getTask) and explicit cancel operations.
+async_operations:
+  model: task-based
+  signal: Long-running operations return 202 Accepted with a TaskMO id
+  poll_operation: getTask
+  terminal_states:
+  - COMPLETED
+  - FAILED
+  - TIMEDOUT
+pagination:
+  style: offset-limit
+  params:
+  - offset
+  - limit
+  - sort
+  - order
+  - fields
+  - case
+  - show_optional_fields
+  note: List operations accept offset/limit for paging and sort/order for ordering; fields selects a projection
+    and show_optional_fields expands optional attributes.
+versioning:
+  scheme: spec-version
+  current: '1.25'
+  note: Version tracks the OmniStack software release / REST API spec version, not a URL path segment.
+error_envelope:
+  api_errors: standard HTTP status codes (401/403/404/5xx) with a plain description; not RFC 9457
+  task_errors: TaskMO with state + error_code + message
+rate_limiting:
+  documented: false
+  note: No published rate-limit headers; API served on-appliance by the Management Virtual Appliance.

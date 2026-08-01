@@ -1,0 +1,32 @@
+{
+  "provider": "simplivity",
+  "sources": [
+    "simplivity-backups-api-openapi.yml",
+    "simplivity-cluster-groups-api-openapi.yml",
+    "simplivity-datastores-api-openapi.yml",
+    "simplivity-external-stores-api-openapi.yml",
+    "simplivity-hosts-api-openapi.yml",
+    "simplivity-omnistack-clusters-api-openapi.yml",
+    "simplivity-policies-api-openapi.yml",
+    "simplivity-security-api-openapi.yml",
+    "simplivity-tasks-api-openapi.yml",
+    "simplivity-virtual-machines-api-openapi.yml"
+  ],
+  "outputs": [
+    "simplivity-backups-api-openapi.yml",
+    "simplivity-cluster-groups-api-openapi.yml",
+    "simplivity-datastores-api-openapi.yml",
+    "simplivity-external-stores-api-openapi.yml",
+    "simplivity-hosts-api-openapi.yml",
+    "simplivity-omnistack-clusters-api-openapi.yml",
+    "simplivity-policies-api-openapi.yml",
+    "simplivity-security-api-openapi.yml",
+    "simplivity-tasks-api-openapi.yml",
+    "simplivity-virtual-machines-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

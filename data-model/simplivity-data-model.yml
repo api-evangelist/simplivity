@@ -1,0 +1,63 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/simplivity-omnistack-openapi-original.json
+note: Entity-relationship graph derived from HPE OmniStack REST API resource tags and object definitions.
+  Identifiers are opaque UUID strings; no id prefixes.
+entities:
+- virtual_machine
+- backup
+- datastore
+- host
+- omnistack_cluster
+- cluster_group
+- policy
+- rule
+- external_store
+- certificate
+- task
+relationships:
+- from: virtual_machine
+  to: backup
+  kind: has_many
+  via: backups of a VM
+- from: virtual_machine
+  to: policy
+  kind: belongs_to
+  via: policy_id
+- from: virtual_machine
+  to: datastore
+  kind: belongs_to
+  via: datastore_id
+- from: backup
+  to: virtual_machine
+  kind: belongs_to
+  via: virtual_machine_id
+- from: backup
+  to: external_store
+  kind: belongs_to
+  via: external_store_name (when offloaded)
+- from: datastore
+  to: policy
+  kind: belongs_to
+  via: policy_id
+- from: datastore
+  to: omnistack_cluster
+  kind: belongs_to
+  via: omnistack_cluster_id
+- from: host
+  to: omnistack_cluster
+  kind: belongs_to
+  via: compute_cluster / omnistack_cluster_id
+- from: policy
+  to: rule
+  kind: has_many
+  via: rules[]
+- from: cluster_group
+  to: omnistack_cluster
+  kind: has_many
+  via: member clusters
+- from: task
+  to: virtual_machine
+  kind: belongs_to
+  via: affected_objects
+definition_count: 70
