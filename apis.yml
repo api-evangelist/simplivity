@@ -204,6 +204,9 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: License
+  name: Apache-2.0
+  url: https://github.com/HewlettPackard/simplivity-python/blob/master/LICENSE
 - type: DomainSecurity
   url: security/simplivity-domain-security.yml
 - type: AgenticAccess
