@@ -1,0 +1,98 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "HPE OmniStack REST backups cluster_groups API",
+    "version": "1.25"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "cluster_groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieves all cluster_groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/cluster_groups",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier (UID) of the cluster_groups to return\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "The name of the cluster_groups to return\n\nAccepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A comma-separated list of fields to include in the returned objects\n\n Default: Returns all fields"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "A positive integer that represents the maximum number of results to return\n\nDefault: 500"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "A positive integer that directs the service to start returning the &lt;offset value&gt; instance, up to the limit\n\nDefault: 0"
+              },
+              {
+                "name": "case",
+                "value": "",
+                "type": "query",
+                "description": "An indicator that specifies if the filter and sort results use a case-sensitive or insensitive manner\n\nValid values: sensitive or insensitive\n\nDefault: sensitive"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "The name of the field where the sort occurs"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "The sort order preference\n\nValid values: ascending or descending\n\nDefault: descending"
+              }
+            ]
+          },
+          "docs": "Retrieves all cluster_groups"
+        },
+        {
+          "info": {
+            "name": "Renames the specified cluster_group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/cluster_groups/:clusterGroupId/rename",
+            "params": [
+              {
+                "name": "clusterGroupId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the cluster_group"
+              }
+            ]
+          },
+          "docs": "Renames the specified cluster_group"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

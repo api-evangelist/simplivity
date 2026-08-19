@@ -1,0 +1,551 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "HPE OmniStack REST backups API",
+    "version": "1.25"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "backups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieves all backups defined on this system",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/backups",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "the unique identifier (UID) of the backups to return\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "The name of the backups to return\n\nAccepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard"
+              },
+              {
+                "name": "sent_min",
+                "value": "",
+                "type": "query",
+                "description": "The minimum sent data size (in bytes) of the remote backups to return"
+              },
+              {
+                "name": "sent_max",
+                "value": "",
+                "type": "query",
+                "description": "The maximum sent data size (in bytes) of the remote backups to return"
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "The current state of the backups to return\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "The type of backups to return\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "omnistack_cluster_id",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier (UID) of the omnistack_cluster that is associated with the instances to return\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "omnistack_cluster_name",
+                "value": "",
+                "type": "query",
+                "description": "The name of the omnistack_cluster that is associated with the instances to return\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "compute_cluster_parent_hypervisor_object_id",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier (UID) of the hypervisor-based instance that contains the omnistack_cluster that is associated with the instances to return\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "compute_cluster_parent_name",
+                "value": "",
+                "type": "query",
+                "description": "The name of the hypervisor-based instance that contains the omnistack_cluster that is associated with the instances to return\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "datastore_id",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier (UID) of the datastore that is associated with the instances to return\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "datastore_name",
+                "value": "",
+                "type": "query",
+                "description": "The name of the datastore that is associated with the instances to return\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "expires_before",
+                "value": "",
+                "type": "query",
+                "description": "The latest expiration time before the backups to return expire, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)"
+              },
+              {
+                "name": "expires_after",
+                "value": "",
+                "type": "query",
+                "description": "The earliest expiration time after the backups to return expire, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)"
+              },
+              {
+                "name": "virtual_machine_id",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier (UID) of the virtual_machine that is associated with the instances to return\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "virtual_machine_name",
+                "value": "",
+                "type": "query",
+                "description": "The name of the virtual_machine that is associated with the instances to return\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "virtual_machine_type",
+                "value": "",
+                "type": "query",
+                "description": "The type of the virtual_machine that is associated with the instances to return\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "virtual_machine_state",
+                "value": "",
+                "type": "query",
+                "description": "The state of the virtual_machine that is associated with the instances to return\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "size_min",
+                "value": "",
+                "type": "query",
+                "description": "The minimum size (in bytes) of the backups to return"
+              },
+              {
+                "name": "size_max",
+                "value": "",
+                "type": "query",
+                "description": "The maximum size (in bytes) of the backups to return"
+              },
+              {
+                "name": "application_consistent",
+                "value": "",
+                "type": "query",
+                "description": "The application-consistent setting of the backups to return"
+              },
+              {
+                "name": "consistency_type",
+                "value": "",
+                "type": "query",
+                "description": "The consistency type of the backups to return\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "created_before",
+                "value": "",
+                "type": "query",
+                "description": "The latest creation time before the backups to return were created, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)"
+              },
+              {
+                "name": "created_after",
+                "value": "",
+                "type": "query",
+                "description": "The earliest creation time after the backups to return were created, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)"
+              },
+              {
+                "name": "sent_duration_min",
+                "value": "",
+                "type": "query",
+                "description": "The minimum number of seconds that elapsed while replicating the backups to return"
+              },
+              {
+                "name": "sent_duration_max",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of seconds that elapsed while replicating the backups to return"
+              },
+              {
+                "name": "sent_completion_before",
+                "value": "",
+                "type": "query",
+                "description": "The latest time before the replication of backups to return was completed, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)"
+              },
+              {
+                "name": "sent_completion_after",
+                "value": "",
+                "type": "query",
+                "description": "The earliest time after the replication of backups to return was completed, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)"
+              },
+              {
+                "name": "unique_size_bytes_min",
+                "value": "",
+                "type": "query",
+                "description": "The minimum unique size (in bytes) of the backups to return"
+              },
+              {
+                "name": "unique_size_bytes_max",
+                "value": "",
+                "type": "query",
+                "description": "The maximum unique size (in bytes) of the backups to return"
+              },
+              {
+                "name": "cluster_group_id",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifiers (UIDs) of the cluster_groups associated with the backups to return\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "external_store_name",
+                "value": "",
+                "type": "query",
+                "description": "The name of the external_stores to return\n\nAccepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard"
+              },
+              {
+                "name": "backup_store_type",
+                "value": "",
+                "type": "query",
+                "description": "The storage type of the backups to return\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "associated_cluster",
+                "value": "",
+                "type": "query",
+                "description": "The cluster associated with the external_stores to return\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A comma-separated list of fields to include in the returned objects\n\n Default: Returns all fields"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "A positive integer that represents the maximum number of results to return\n\nDefault: 500"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "A positive integer that directs the service to start returning the &lt;offset value&gt; instance, up to the limit\n\nDefault: 0"
+              },
+              {
+                "name": "case",
+                "value": "",
+                "type": "query",
+                "description": "An indicator that specifies if the filter and sort results use a case-sensitive or insensitive manner\n\nValid values: sensitive or insensitive\n\nDefault: sensitive"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "The name of the field where the sort occurs"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "The sort order preference\n\nValid values: ascending or descending\n\nDefault: descending"
+              }
+            ]
+          },
+          "docs": "Retrieves all backups defined on this system"
+        },
+        {
+          "info": {
+            "name": "Deletes the specified list of backup instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/backups/delete"
+          },
+          "docs": "Deletes the specified list of backup instances"
+        },
+        {
+          "info": {
+            "name": "Sets the retention time for the specified list of backups",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/backups/set_retention"
+          },
+          "docs": "Sets the retention time for the specified list of backups"
+        },
+        {
+          "info": {
+            "name": "Retrieves the specified backup",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/backups/:bkpId",
+            "params": [
+              {
+                "name": "bkpId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the backup that you want to retrieve"
+              }
+            ]
+          },
+          "docs": "Retrieves the specified backup"
+        },
+        {
+          "info": {
+            "name": "Deletes the specified backup",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/backups/:bkpId",
+            "params": [
+              {
+                "name": "bkpId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the backup that you want to retrieve"
+              }
+            ]
+          },
+          "docs": "Deletes the specified backup"
+        },
+        {
+          "info": {
+            "name": "Calculates the unique size of the specified backup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/backups/:bkpId/calculate_unique_size",
+            "params": [
+              {
+                "name": "bkpId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the backup that you want to perform the calculation on"
+              }
+            ]
+          },
+          "docs": "Calculates the unique size of the specified backup"
+        },
+        {
+          "info": {
+            "name": "Cancels the specified running backup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/backups/:bkpId/cancel",
+            "params": [
+              {
+                "name": "bkpId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the backup that you want to cancel"
+              }
+            ]
+          },
+          "docs": "Cancels the specified running backup"
+        },
+        {
+          "info": {
+            "name": "Copies the specified backup to another omnistack_cluster or external_store",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/backups/:bkpId/copy",
+            "params": [
+              {
+                "name": "bkpId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the backup you want to access"
+              }
+            ]
+          },
+          "docs": "Copies the specified backup to another omnistack_cluster or external_store"
+        },
+        {
+          "info": {
+            "name": "Saves the specified backup to prevent it from expiring",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/backups/:bkpId/lock",
+            "params": [
+              {
+                "name": "bkpId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the backup you want to access"
+              }
+            ]
+          },
+          "docs": "Saves the specified backup to prevent it from expiring"
+        },
+        {
+          "info": {
+            "name": "Renames the specified backup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/backups/:bkpId/rename",
+            "params": [
+              {
+                "name": "bkpId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the backup you want to access"
+              }
+            ]
+          },
+          "docs": "Renames the specified backup"
+        },
+        {
+          "info": {
+            "name": "Creates a new virtual machine or replaces the original virtual machine from the specified backup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/backups/:bkpId/restore",
+            "params": [
+              {
+                "name": "bkpId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the backup that you want to retrieve"
+              },
+              {
+                "name": "restore_original",
+                "value": "",
+                "type": "query",
+                "description": "An indicator to show if the original virtual machine gets restored\n\nValid values:\n\nTrue: Resets the original virtual machine to the same state it was in when the backup was created\n\nFalse: Creates a new virtual machine from the backup with the provided name, optionally to a different datastore\n\nDefault: false"
+              }
+            ]
+          },
+          "docs": "Creates a new virtual machine or replaces the original virtual machine from the specified backup"
+        },
+        {
+          "info": {
+            "name": "Restore files from a specific partition",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/backups/:bkpId/restore_files",
+            "params": [
+              {
+                "name": "bkpId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the backup that you want to retrieve"
+              }
+            ]
+          },
+          "docs": "Restore files from a specific partition"
+        },
+        {
+          "info": {
+            "name": "Retrieves the virtual hard disk files from the backup",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/backups/:bkpId/virtual_disk_partition_files",
+            "params": [
+              {
+                "name": "bkpId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the backup that you want to retrieve"
+              },
+              {
+                "name": "virtual_disk",
+                "value": "",
+                "type": "query",
+                "description": "The name of the virtual hard disk for the virtual machine"
+              },
+              {
+                "name": "partition_number",
+                "value": "",
+                "type": "query",
+                "description": "The partition number of the virtual disk associated with the backup"
+              },
+              {
+                "name": "file_path",
+                "value": "",
+                "type": "query",
+                "description": "The path in the partition that has the file information you want. e.g. for root directory use \"/\""
+              }
+            ]
+          },
+          "docs": "Retrieves the virtual hard disk files from the backup"
+        },
+        {
+          "info": {
+            "name": "Retrieves partition information for the virtual disk associated with the backup",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/backups/:bkpId/virtual_disk_partitions",
+            "params": [
+              {
+                "name": "bkpId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the backup associated with the partitions"
+              },
+              {
+                "name": "virtual_disk",
+                "value": "",
+                "type": "query",
+                "description": "The name of the virtual hard disk for the virtual machine"
+              }
+            ]
+          },
+          "docs": "Retrieves partition information for the virtual disk associated with the backup"
+        },
+        {
+          "info": {
+            "name": "Retrieves the virtual hard disk files from the backup",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/backups/:bkpId/virtual_disks",
+            "params": [
+              {
+                "name": "bkpId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the backup that you want to retrieve"
+              }
+            ]
+          },
+          "docs": "Retrieves the virtual hard disk files from the backup"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

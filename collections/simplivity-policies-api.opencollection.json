@@ -1,0 +1,427 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "HPE OmniStack REST backups policies API",
+    "version": "1.25"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "policies",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieves all policies defined on this system",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/policies",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier (UID) of the policy\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "The name of the policy\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "cluster_group_id",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifiers (UIDs) of the cluster_groups associated with the policies to return\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "owner_cluster_id",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier (UID) of the omnistack_cluster that owns the policy\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "owner_cluster_name",
+                "value": "",
+                "type": "query",
+                "description": "The name of the omnistack_cluster that owns the policy\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A comma-separated list of fields to include in the returned objects\n\n Default: Returns all fields"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "A positive integer that represents the maximum number of results to return\n\nDefault: 500"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "A positive integer that directs the service to start returning the &lt;offset value&gt; instance, up to the limit\n\nDefault: 0"
+              },
+              {
+                "name": "case",
+                "value": "",
+                "type": "query",
+                "description": "An indicator that specifies if the filter and sort results use a case-sensitive or insensitive manner\n\nValid values: sensitive or insensitive\n\nDefault: sensitive"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "The name of the field where the sort occurs"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "The sort order preference\n\nValid values: ascending or descending\n\nDefault: descending"
+              }
+            ]
+          },
+          "docs": "Retrieves all policies defined on this system"
+        },
+        {
+          "info": {
+            "name": "Creates a new policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policies",
+            "params": [
+              {
+                "name": "cluster_group_id",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier (UID) of the cluster_group"
+              }
+            ]
+          },
+          "docs": "Creates a new policy"
+        },
+        {
+          "info": {
+            "name": "Retrieves the policy schedule report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/policies/policy_schedule_report",
+            "params": [
+              {
+                "name": "cluster_group_id",
+                "value": "",
+                "type": "query",
+                "description": "cluster_group_id"
+              }
+            ]
+          },
+          "docs": "Retrieves the policy schedule report"
+        },
+        {
+          "info": {
+            "name": "Resumes policy-based backups on a specific targeted object",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policies/resume"
+          },
+          "docs": "Resumes policy-based backups on a specific targeted object"
+        },
+        {
+          "info": {
+            "name": "Suspends policy-based backups on a specific targeted object",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policies/suspend"
+          },
+          "docs": "Suspends policy-based backups on a specific targeted object"
+        },
+        {
+          "info": {
+            "name": "Retrieves the specified policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/policies/:policyId",
+            "params": [
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the policy you want to access"
+              }
+            ]
+          },
+          "docs": "Retrieves the specified policy"
+        },
+        {
+          "info": {
+            "name": "Removes a policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/policies/:policyId",
+            "params": [
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the policy you want to access"
+              }
+            ]
+          },
+          "docs": "Removes a policy"
+        },
+        {
+          "info": {
+            "name": "Retrieves the datastores using this policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/policies/:policyId/datastores",
+            "params": [
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the policy you want to access"
+              }
+            ]
+          },
+          "docs": "Deprecated as of version 1.4. Instead use GET /api/datastores?policy_id={policyId}"
+        },
+        {
+          "info": {
+            "name": "Generate a backup impact reported based on proposed creation of rules for the policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policies/:policyId/impact_report/create_rules",
+            "params": [
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the policy you want to access"
+              },
+              {
+                "name": "replace_all_rules",
+                "value": "",
+                "type": "query",
+                "description": "An indicator to replace the existing rules with new rules for a policy\n\nValid values:\n\nTrue: Replaces the existing rules with the new rules\n\nFalse: Adds new rules to the existing set of rules\n\nDefault: false"
+              }
+            ]
+          },
+          "docs": "Generate a backup impact reported based on proposed creation of rules for the policy"
+        },
+        {
+          "info": {
+            "name": "Generate a backup impact reported based on proposed changes to the rules for the policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policies/:policyId/impact_report/edit_rules",
+            "params": [
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the policy you want to access"
+              },
+              {
+                "name": "replace_all_rules",
+                "value": "",
+                "type": "query",
+                "description": "An indicator to replace the existing rules with new rules for a policy\n\nValid values:\n\nTrue: Replaces the existing rules with the new rules\n\nFalse: Adds new rules to the existing set of rules\n\nDefault: false"
+              }
+            ]
+          },
+          "docs": "Generate a backup impact reported based on proposed changes to the rules for the policy"
+        },
+        {
+          "info": {
+            "name": "Renames the specified policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policies/:policyId/rename",
+            "params": [
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the policy you want to access"
+              }
+            ]
+          },
+          "docs": "Renames the specified policy"
+        },
+        {
+          "info": {
+            "name": "Creates one or more new rules or replaces existing rules with new rules for a policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policies/:policyId/rules",
+            "params": [
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the policy you want to access"
+              },
+              {
+                "name": "replace_all_rules",
+                "value": "",
+                "type": "query",
+                "description": "An indicator to replace the existing rules with new rules for a policy\n\nValid values:\n\nTrue: Replaces the existing rules with the new rules\n\nFalse: Adds new rules to the existing set of rules\n\nDefault: false"
+              }
+            ]
+          },
+          "docs": "Creates one or more new rules or replaces existing rules with new rules for a policy"
+        },
+        {
+          "info": {
+            "name": "Retrieves the specified policy rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/policies/:policyId/rules/:ruleId",
+            "params": [
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the policy you want to access"
+              },
+              {
+                "name": "ruleId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the policy rule you want to access"
+              }
+            ]
+          },
+          "docs": "Retrieves the specified policy rule"
+        },
+        {
+          "info": {
+            "name": "Edits an existing policy rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/policies/:policyId/rules/:ruleId",
+            "params": [
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the policy you want to access"
+              },
+              {
+                "name": "ruleId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the policy rule you want to access"
+              }
+            ]
+          },
+          "docs": "Edits an existing policy rule"
+        },
+        {
+          "info": {
+            "name": "Removes a policy rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/policies/:policyId/rules/:ruleId",
+            "params": [
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the policy you want to access"
+              },
+              {
+                "name": "ruleId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the policy rule you want to access"
+              }
+            ]
+          },
+          "docs": "Removes a policy rule"
+        },
+        {
+          "info": {
+            "name": "Generate a backup impact reported based on proposed deletion of a policy rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/policies/:policyId/rules/:ruleId/impact_report/delete_rule",
+            "params": [
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the policy you want to access"
+              },
+              {
+                "name": "ruleId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the policy rule you want to access"
+              }
+            ]
+          },
+          "docs": "Generate a backup impact reported based on proposed deletion of a policy rule"
+        },
+        {
+          "info": {
+            "name": "Retrieves the virtual_machines using this policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/policies/:policyId/virtual_machines",
+            "params": [
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the policy you want to access"
+              }
+            ]
+          },
+          "docs": "Deprecated as of version 1.4. Instead use GET /api/virtual_machines?policy_id={policyId}"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

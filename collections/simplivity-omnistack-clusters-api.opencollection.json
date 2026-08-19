@@ -1,0 +1,306 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "HPE OmniStack REST backups omnistack_clusters API",
+    "version": "1.25"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "omnistack_clusters",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieves all defined omnistack_clusters on the system",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/omnistack_clusters",
+            "params": [
+              {
+                "name": "show_optional_fields",
+                "value": "",
+                "type": "query",
+                "description": "An indicator that specifies the capacity metrics, time_zone, upgrade_state, and upgrade_task_id of the omnistack_cluster\n\nNote: These values are computed from various sources. Consequently, the retrieval of these values may adversely affect the response time of a request."
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier (UID) of the omnistack_clusters to return\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "The name of the omnistack_clusters to return\n\nAccepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard"
+              },
+              {
+                "name": "hypervisor_object_id",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier (UID) of the hypervisor-based instance associated with the objects to return\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "hypervisor_object_parent_id",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier (UID) of the hypervisor-based instance that contains the objects to return\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "hypervisor_object_parent_name",
+                "value": "",
+                "type": "query",
+                "description": "The name of the hypervisor-based instance that contains the objects to return\n\nAccepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard"
+              },
+              {
+                "name": "hypervisor_management_system_name",
+                "value": "",
+                "type": "query",
+                "description": "The name of the hypervisor-based instance associated with the omnistack_cluster\n\nAccepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "The type of omnistack_clusters to return\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "cluster_group_id",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifiers (UIDs) of the cluster_groups associated with the omnistack_clusters to return\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "arbiter_address",
+                "value": "",
+                "type": "query",
+                "description": "The address of the Arbiter connected to the objects to return\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "arbiter_connected",
+                "value": "",
+                "type": "query",
+                "description": "An indicator to show if the omnistack_cluster is connected to Arbiter\n\n Valid values:\n\nTrue: Only returns omnistack_clusters connected to Arbiters that you identified in arbiter_address\n\nFalse: Only returns omnistack_clusters not connected to Arbiters that you identified in arbiter_address"
+              },
+              {
+                "name": "arbiter_required",
+                "value": "",
+                "type": "query",
+                "description": "An indicator to show if an Arbiter is required in this omnistack_cluster"
+              },
+              {
+                "name": "arbiter_configured",
+                "value": "",
+                "type": "query",
+                "description": "An indicator to show if an Arbiter is configured in this omnistack_cluster"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A comma-separated list of fields to include in the returned objects\n\n Default: Returns all fields"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "A positive integer that represents the maximum number of results to return\n\nDefault: 500"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "A positive integer that directs the service to start returning the &lt;offset value&gt; instance, up to the limit\n\nDefault: 0"
+              },
+              {
+                "name": "case",
+                "value": "",
+                "type": "query",
+                "description": "An indicator that specifies if the filter and sort results use a case-sensitive or insensitive manner\n\nValid values: sensitive or insensitive\n\nDefault: sensitive"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "The name of the field where the sort occurs"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "The sort order preference\n\nValid values: ascending or descending\n\nDefault: descending"
+              }
+            ]
+          },
+          "docs": "Retrieves all defined omnistack_clusters on the system"
+        },
+        {
+          "info": {
+            "name": "Retrieves a list of all valid time zones",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/omnistack_clusters/time_zone_list"
+          },
+          "docs": "Retrieves a list of all valid time zones"
+        },
+        {
+          "info": {
+            "name": "Retrieves the specified omnistack_cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/omnistack_clusters/:clusterId",
+            "params": [
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the omnistack_cluster that you want to retrieve"
+              }
+            ]
+          },
+          "docs": "Retrieves the specified omnistack_cluster"
+        },
+        {
+          "info": {
+            "name": "Retrieves directly connected omnistack_clusters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/omnistack_clusters/:clusterId/connected_clusters",
+            "params": [
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the omnistack_cluster that you want to retrieve"
+              }
+            ]
+          },
+          "docs": "Retrieves directly connected omnistack_clusters"
+        },
+        {
+          "info": {
+            "name": "Retrieves throughput, IOPS, and latency data for the cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/omnistack_clusters/:clusterId/metrics",
+            "params": [
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the omnistack_cluster"
+              },
+              {
+                "name": "time_offset",
+                "value": "",
+                "type": "query",
+                "description": "A time offset in seconds (from now) or a datetime, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)\n\nDefault: 0"
+              },
+              {
+                "name": "range",
+                "value": "",
+                "type": "query",
+                "description": "A range in seconds (the duration from the specified point in time)\n\nDefault: 43200"
+              },
+              {
+                "name": "resolution",
+                "value": "",
+                "type": "query",
+                "description": "The resolution (SECOND, MINUTE, HOUR, or DAY)\n\nDefault: MINUTE"
+              }
+            ]
+          },
+          "docs": "Retrieves throughput, IOPS, and latency data for the cluster"
+        },
+        {
+          "info": {
+            "name": "Sets the IWO status of the omnistack_cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/omnistack_clusters/:clusterId/set_iwo",
+            "params": [
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the omnistack_cluster"
+              }
+            ]
+          },
+          "docs": "Sets the IWO status of the omnistack_cluster"
+        },
+        {
+          "info": {
+            "name": "Sets the time zone of the omnistack_cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/omnistack_clusters/:clusterId/set_time_zone",
+            "params": [
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the omnistack_cluster"
+              }
+            ]
+          },
+          "docs": "Sets the time zone of the omnistack_cluster"
+        },
+        {
+          "info": {
+            "name": "Calculates the throughput between each pair of omnistack_clusters in the federation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/omnistack_clusters/:clusterId/throughput",
+            "params": [
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the omnistack_cluster"
+              },
+              {
+                "name": "destination_id",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier (UID) of the omnistack_clusters to return\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "time_offset",
+                "value": "",
+                "type": "query",
+                "description": "A time offset in seconds (from now) or a datetime, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)\n\nDefault: 0"
+              },
+              {
+                "name": "range",
+                "value": "",
+                "type": "query",
+                "description": "A range in seconds (the duration from the specified point in time)\n\nDefault: 43200"
+              }
+            ]
+          },
+          "docs": "Calculates the throughput between each pair of omnistack_clusters in the federation"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

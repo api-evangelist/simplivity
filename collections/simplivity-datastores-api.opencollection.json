@@ -1,0 +1,319 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "HPE OmniStack REST backups datastores API",
+    "version": "1.25"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "datastores",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieves all datastores defined on this system",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/datastores",
+            "params": [
+              {
+                "name": "show_optional_fields",
+                "value": "",
+                "type": "query",
+                "description": "An indicator to show the hypervisor_free_space of the datastore\n\nNote: This value is computed from various sources. Consequently, the retrieval of this value may adversely affect the response time of a request."
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier (UID) of the datastores to return\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "The name of the datastores to return\n\nAccepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard"
+              },
+              {
+                "name": "min_size",
+                "value": "",
+                "type": "query",
+                "description": "The minimum size (in bytes) of datastores to return"
+              },
+              {
+                "name": "max_size",
+                "value": "",
+                "type": "query",
+                "description": "The maximum size (in bytes) of datastores to return"
+              },
+              {
+                "name": "created_before",
+                "value": "",
+                "type": "query",
+                "description": "The latest creation time before the datastores to return were created, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)"
+              },
+              {
+                "name": "created_after",
+                "value": "",
+                "type": "query",
+                "description": "The earliest creation time after the datastores to return were created, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)"
+              },
+              {
+                "name": "omnistack_cluster_id",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier (UID) of the omnistack_cluster that is associated with the instances to return\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "omnistack_cluster_name",
+                "value": "",
+                "type": "query",
+                "description": "The name of the omnistack_cluster that is associated with the instances to return\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "compute_cluster_parent_hypervisor_object_id",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier (UID) of the hypervisor-based instance that contains the omnistack_cluster that is associated with the instances to return\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "compute_cluster_parent_name",
+                "value": "",
+                "type": "query",
+                "description": "The name of the hypervisor-based instance that contains the omnistack_cluster that is associated with the instances to return\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "hypervisor_management_system_name",
+                "value": "",
+                "type": "query",
+                "description": "The name of the Hypervisor Management System (HMS) associated with the datastore\n\nAccepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard"
+              },
+              {
+                "name": "policy_id",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier (UID) of the policy that is associated with the instances to return\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "policy_name",
+                "value": "",
+                "type": "query",
+                "description": "The name of the policy that is associated with the instances to return\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "hypervisor_object_id",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier (UID) of the hypervisor-based instance  that is associated with the instances to return\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "mount_directory",
+                "value": "",
+                "type": "query",
+                "description": "The mount point on the system associated with the datastores to return\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "cluster_group_id",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifiers (UIDs) of the cluster_groups associated with the datastores to return\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A comma-separated list of fields to include in the returned objects\n\n Default: Returns all fields"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "A positive integer that represents the maximum number of results to return\n\nDefault: 500"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "A positive integer that directs the service to start returning the &lt;offset value&gt; instance, up to the limit\n\nDefault: 0"
+              },
+              {
+                "name": "case",
+                "value": "",
+                "type": "query",
+                "description": "An indicator that specifies if the filter and sort results use a case-sensitive or insensitive manner\n\nValid values: sensitive or insensitive\n\nDefault: sensitive"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "The name of the field where the sort occurs"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "The sort order preference\n\nValid values: ascending or descending\n\nDefault: descending"
+              },
+              {
+                "name": "single_replica",
+                "value": "",
+                "type": "query",
+                "description": "Whether the datastore contains only single-replica virtual machines (no storage HA)"
+              }
+            ]
+          },
+          "docs": "Retrieves all datastores defined on this system"
+        },
+        {
+          "info": {
+            "name": "Creates a new datastore",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/datastores"
+          },
+          "docs": "Creates a new datastore"
+        },
+        {
+          "info": {
+            "name": "Retrieves the specified datastore",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/datastores/:datastoreId",
+            "params": [
+              {
+                "name": "datastoreId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the datastore that you want to retrieve"
+              }
+            ]
+          },
+          "docs": "Retrieves the specified datastore"
+        },
+        {
+          "info": {
+            "name": "Deletes a datastore",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/datastores/:datastoreId",
+            "params": [
+              {
+                "name": "datastoreId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the datastore"
+              }
+            ]
+          },
+          "docs": "Deletes a datastore"
+        },
+        {
+          "info": {
+            "name": "Resizes a datastore",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/datastores/:datastoreId/resize",
+            "params": [
+              {
+                "name": "datastoreId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the datastore"
+              }
+            ]
+          },
+          "docs": "Resizes a datastore"
+        },
+        {
+          "info": {
+            "name": "Sets the backup policy for a datastore",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/datastores/:datastoreId/set_policy",
+            "params": [
+              {
+                "name": "datastoreId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the datastore"
+              }
+            ]
+          },
+          "docs": "Sets the backup policy for a datastore"
+        },
+        {
+          "info": {
+            "name": "Share a datastore",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/datastores/:datastoreId/share",
+            "params": [
+              {
+                "name": "datastoreId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the datastore"
+              }
+            ]
+          },
+          "docs": "Share a datastore"
+        },
+        {
+          "info": {
+            "name": "Gets the standard hosts that can share a datastore",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/datastores/:datastoreId/standard_hosts",
+            "params": [
+              {
+                "name": "datastoreId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the datastore"
+              }
+            ]
+          },
+          "docs": "Gets the standard hosts that can share a datastore"
+        },
+        {
+          "info": {
+            "name": "Stop sharing a datastore",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/datastores/:datastoreId/unshare",
+            "params": [
+              {
+                "name": "datastoreId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the datastore"
+              }
+            ]
+          },
+          "docs": "Stop sharing a datastore"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

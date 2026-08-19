@@ -1,0 +1,2313 @@
+{
+  "item": [
+    {
+      "id": "d631377d-7bd2-4491-924a-6c3d4eeb4482",
+      "name": "omnistack_clusters",
+      "description": {
+        "content": "An omnistack_cluster is a logical grouping of systems that run the HPE OmniStack software. The user defines an omnistack_cluster to efficiently share resources across the systems.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "234723c8-e232-412c-b2bd-092677d22455",
+          "name": "Retrieves all defined omnistack_clusters on the system",
+          "request": {
+            "name": "Retrieves all defined omnistack_clusters on the system",
+            "description": {},
+            "url": {
+              "path": [
+                "omnistack_clusters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "show_optional_fields",
+                  "value": "false",
+                  "description": "An indicator that specifies the capacity metrics, time_zone, upgrade_state, and upgrade_task_id of the omnistack_cluster\n\nNote: These values are computed from various sources. Consequently, the retrieval of these values may adversely affect the response time of a request."
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "The unique identifier (UID) of the omnistack_clusters to return\n\nAccepts: Single value, comma-separated list"
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "The name of the omnistack_clusters to return\n\nAccepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard"
+                },
+                {
+                  "disabled": false,
+                  "key": "hypervisor_object_id",
+                  "value": "<string>",
+                  "description": "The unique identifier (UID) of the hypervisor-based instance associated with the objects to return\n\nAccepts: Single value, comma-separated list"
+                },
+                {
+                  "disabled": false,
+                  "key": "hypervisor_object_parent_id",
+                  "value": "<string>",
+                  "description": "The unique identifier (UID) of the hypervisor-based instance that contains the objects to return\n\nAccepts: Single value, comma-separated list"
+                },
+                {
+                  "disabled": false,
+                  "key": "hypervisor_object_parent_name",
+                  "value": "<string>",
+                  "description": "The name of the hypervisor-based instance that contains the objects to return\n\nAccepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard"
+                },
+                {
+                  "disabled": false,
+                  "key": "hypervisor_management_system_name",
+                  "value": "<string>",
+                  "description": "The name of the hypervisor-based instance associated with the omnistack_cluster\n\nAccepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "The type of omnistack_clusters to return\n\nAccepts: Single value, comma-separated list"
+                },
+                {
+                  "disabled": false,
+                  "key": "cluster_group_id",
+                  "value": "<string>",
+                  "description": "The unique identifiers (UIDs) of the cluster_groups associated with the omnistack_clusters to return\n\nAccepts: Single value, comma-separated list"
+                },
+                {
+                  "disabled": false,
+                  "key": "arbiter_address",
+                  "value": "<string>",
+                  "description": "The address of the Arbiter connected to the objects to return\n\nAccepts: Single value, comma-separated list"
+                },
+                {
+                  "disabled": false,
+                  "key": "arbiter_connected",
+                  "value": "<boolean>",
+                  "description": "An indicator to show if the omnistack_cluster is connected to Arbiter\n\n Valid values:\n\nTrue: Only returns omnistack_clusters connected to Arbiters that you identified in arbiter_address\n\nFalse: Only returns omnistack_clusters not connected to Arbiters that you identified in arbiter_address"
+                },
+                {
+                  "disabled": false,
+                  "key": "arbiter_required",
+                  "value": "<boolean>",
+                  "description": "An indicator to show if an Arbiter is required in this omnistack_cluster"
+                },
+                {
+                  "disabled": false,
+                  "key": "arbiter_configured",
+                  "value": "<boolean>",
+                  "description": "An indicator to show if an Arbiter is configured in this omnistack_cluster"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "A comma-separated list of fields to include in the returned objects\n\n Default: Returns all fields"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "500",
+                  "description": "A positive integer that represents the maximum number of results to return\n\nDefault: 500"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "A positive integer that directs the service to start returning the &lt;offset value&gt; instance, up to the limit\n\nDefault: 0"
+                },
+                {
+                  "disabled": false,
+                  "key": "case",
+                  "value": "sensitive",
+                  "description": "An indicator that specifies if the filter and sort results use a case-sensitive or insensitive manner\n\nValid values: sensitive or insensitive\n\nDefault: sensitive"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "The name of the field where the sort occurs"
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "<string>",
+                  "description": "The sort order preference\n\nValid values: ascending or descending\n\nDefault: descending"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5efc9962-db44-4015-ba95-340ff67812ee",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "omnistack_clusters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "show_optional_fields",
+                      "value": "false"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hypervisor_object_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hypervisor_object_parent_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hypervisor_object_parent_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hypervisor_management_system_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cluster_group_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "arbiter_address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "arbiter_connected",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "arbiter_required",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "arbiter_configured",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "500"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "case",
+                      "value": "sensitive"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"allocated_capacity\": 7169,\n  \"arbiter_address\": \"string\",\n  \"arbiter_configured\": false,\n  \"arbiter_connected\": false,\n  \"arbiter_required\": false,\n  \"capacity_savings\": 2167,\n  \"cluster_feature_level\": 1347,\n  \"cluster_group_ids\": [\n    \"string\",\n    \"string\"\n  ],\n  \"compression_ratio\": \"string\",\n  \"deduplication_ratio\": \"string\",\n  \"efficiency_ratio\": \"string\",\n  \"free_space\": 1420,\n  \"hypervisor_management_system\": \"string\",\n  \"hypervisor_management_system_name\": \"string\",\n  \"hypervisor_object_id\": \"string\",\n  \"hypervisor_object_parent_id\": \"string\",\n  \"hypervisor_object_parent_name\": \"string\",\n  \"hypervisor_type\": \"VSPHERE\",\n  \"id\": \"string\",\n  \"infosight_configuration\": {\n    \"infosight_claim_tag\": \"string\",\n    \"infosight_enabled\": false,\n    \"infosight_proxy_url\": \"string\",\n    \"infosight_registered\": false,\n    \"infosight_tenant_name\": \"string\"\n  },\n  \"iwo_enabled\": false,\n  \"local_backup_capacity\": 4727,\n  \"members\": [\n    \"string\",\n    \"string\"\n  ],\n  \"name\": \"string\",\n  \"remote_backup_capacity\": 4411,\n  \"stored_compressed_data\": 3210,\n  \"stored_uncompressed_data\": 2238,\n  \"stored_virtual_machine_data\": 8548,\n  \"type\": \"EXTINCT_CLOUD_TYPE\",\n  \"used_capacity\": 786,\n  \"used_logical_capacity\": 9696,\n  \"version\": \"string\",\n  \"iwo_active\": false,\n  \"time_zone\": \"string\",\n  \"upgrade_state\": \"FAIL_CAN_ROLLBACK\",\n  \"upgrade_task_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "edd718f5-d24d-4c6f-8410-3f6a63b3815b",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "omnistack_clusters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "show_optional_fields",
+                      "value": "false"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hypervisor_object_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hypervisor_object_parent_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hypervisor_object_parent_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hypervisor_management_system_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cluster_group_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "arbiter_address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "arbiter_connected",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "arbiter_required",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "arbiter_configured",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "500"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "case",
+                      "value": "sensitive"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d68242de-7cf4-4e3d-a391-f00faf1710d6",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "omnistack_clusters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "show_optional_fields",
+                      "value": "false"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hypervisor_object_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hypervisor_object_parent_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hypervisor_object_parent_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hypervisor_management_system_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cluster_group_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "arbiter_address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "arbiter_connected",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "arbiter_required",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "arbiter_configured",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "500"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "case",
+                      "value": "sensitive"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6054ce55-3f37-45fe-9c93-39955f9f4223",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "omnistack_clusters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "show_optional_fields",
+                      "value": "false"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hypervisor_object_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hypervisor_object_parent_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hypervisor_object_parent_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hypervisor_management_system_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cluster_group_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "arbiter_address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "arbiter_connected",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "arbiter_required",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "arbiter_configured",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "500"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "case",
+                      "value": "sensitive"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "73178549-7525-401f-ac18-e16a89de1eb4",
+          "name": "Retrieves a list of all valid time zones",
+          "request": {
+            "name": "Retrieves a list of all valid time zones",
+            "description": {},
+            "url": {
+              "path": [
+                "omnistack_clusters",
+                "time_zone_list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "17e5bb10-84dd-4193-a8e0-3ff8c9694201",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "omnistack_clusters",
+                    "time_zone_list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "65495913-41bd-4b04-a9a8-4e67b7fe2fb4",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "omnistack_clusters",
+                    "time_zone_list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8bf707da-34b3-4aa7-b387-35af4f3fe87f",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "omnistack_clusters",
+                    "time_zone_list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "81d66d6a-c165-44db-bace-ad9d6e2cc036",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "omnistack_clusters",
+                    "time_zone_list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3b70b6f4-7960-4094-89e7-62313b23d276",
+          "name": "Retrieves the specified omnistack_cluster",
+          "request": {
+            "name": "Retrieves the specified omnistack_cluster",
+            "description": {},
+            "url": {
+              "path": [
+                "omnistack_clusters",
+                ":clusterId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clusterId",
+                  "description": "(Required) The unique identifier (UID) of the omnistack_cluster that you want to retrieve"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "95c0fdd0-348c-4e12-9bc7-bcbc23ca879f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "omnistack_clusters",
+                    ":clusterId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clusterId",
+                      "description": "(Required) The unique identifier (UID) of the omnistack_cluster that you want to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"allocated_capacity\": 1825,\n  \"arbiter_address\": \"string\",\n  \"arbiter_configured\": false,\n  \"arbiter_connected\": false,\n  \"arbiter_required\": false,\n  \"capacity_savings\": 9458,\n  \"cluster_feature_level\": 638,\n  \"cluster_group_ids\": [\n    \"string\",\n    \"string\"\n  ],\n  \"compression_ratio\": \"string\",\n  \"deduplication_ratio\": \"string\",\n  \"efficiency_ratio\": \"string\",\n  \"free_space\": 3200,\n  \"hypervisor_management_system\": \"string\",\n  \"hypervisor_management_system_name\": \"string\",\n  \"hypervisor_object_id\": \"string\",\n  \"hypervisor_object_parent_id\": \"string\",\n  \"hypervisor_object_parent_name\": \"string\",\n  \"hypervisor_type\": \"VSPHERE\",\n  \"id\": \"string\",\n  \"infosight_configuration\": {\n    \"infosight_claim_tag\": \"string\",\n    \"infosight_enabled\": false,\n    \"infosight_proxy_url\": \"string\",\n    \"infosight_registered\": false,\n    \"infosight_tenant_name\": \"string\"\n  },\n  \"iwo_enabled\": false,\n  \"local_backup_capacity\": 3413,\n  \"members\": [\n    \"string\",\n    \"string\"\n  ],\n  \"name\": \"string\",\n  \"remote_backup_capacity\": 8293,\n  \"stored_compressed_data\": 5921,\n  \"stored_uncompressed_data\": 8980,\n  \"stored_virtual_machine_data\": 2320,\n  \"type\": \"EXTINCT_CLOUD_TYPE\",\n  \"used_capacity\": 9095,\n  \"used_logical_capacity\": 893,\n  \"version\": \"string\",\n  \"iwo_active\": false,\n  \"time_zone\": \"string\",\n  \"upgrade_state\": \"SUCCESS_MIXED_VERSION\",\n  \"upgrade_task_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bf32cb9e-737b-40f7-bbca-3e815d791602",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "omnistack_clusters",
+                    ":clusterId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clusterId",
+                      "description": "(Required) The unique identifier (UID) of the omnistack_cluster that you want to retrieve"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c010b25f-bb67-40f7-91a0-8a1d29f4c5c9",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "omnistack_clusters",
+                    ":clusterId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clusterId",
+                      "description": "(Required) The unique identifier (UID) of the omnistack_cluster that you want to retrieve"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6a4f58f5-59cb-4045-abd7-9803d9079c90",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "omnistack_clusters",
+                    ":clusterId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clusterId",
+                      "description": "(Required) The unique identifier (UID) of the omnistack_cluster that you want to retrieve"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1c7cfa22-4899-4133-b1ae-f5915e315c50",
+          "name": "Retrieves directly connected omnistack_clusters",
+          "request": {
+            "name": "Retrieves directly connected omnistack_clusters",
+            "description": {},
+            "url": {
+              "path": [
+                "omnistack_clusters",
+                ":clusterId",
+                "connected_clusters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clusterId",
+                  "description": "(Required) The unique identifier (UID) of the omnistack_cluster that you want to retrieve"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aa3de33c-889b-43ea-b77d-35719fba4fc1",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "omnistack_clusters",
+                    ":clusterId",
+                    "connected_clusters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clusterId",
+                      "description": "(Required) The unique identifier (UID) of the omnistack_cluster that you want to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"allocated_capacity\": 1825,\n  \"arbiter_address\": \"string\",\n  \"arbiter_configured\": false,\n  \"arbiter_connected\": false,\n  \"arbiter_required\": false,\n  \"capacity_savings\": 9458,\n  \"cluster_feature_level\": 638,\n  \"cluster_group_ids\": [\n    \"string\",\n    \"string\"\n  ],\n  \"compression_ratio\": \"string\",\n  \"deduplication_ratio\": \"string\",\n  \"efficiency_ratio\": \"string\",\n  \"free_space\": 3200,\n  \"hypervisor_management_system\": \"string\",\n  \"hypervisor_management_system_name\": \"string\",\n  \"hypervisor_object_id\": \"string\",\n  \"hypervisor_object_parent_id\": \"string\",\n  \"hypervisor_object_parent_name\": \"string\",\n  \"hypervisor_type\": \"VSPHERE\",\n  \"id\": \"string\",\n  \"infosight_configuration\": {\n    \"infosight_claim_tag\": \"string\",\n    \"infosight_enabled\": false,\n    \"infosight_proxy_url\": \"string\",\n    \"infosight_registered\": false,\n    \"infosight_tenant_name\": \"string\"\n  },\n  \"iwo_enabled\": false,\n  \"local_backup_capacity\": 3413,\n  \"members\": [\n    \"string\",\n    \"string\"\n  ],\n  \"name\": \"string\",\n  \"remote_backup_capacity\": 8293,\n  \"stored_compressed_data\": 5921,\n  \"stored_uncompressed_data\": 8980,\n  \"stored_virtual_machine_data\": 2320,\n  \"type\": \"EXTINCT_CLOUD_TYPE\",\n  \"used_capacity\": 9095,\n  \"used_logical_capacity\": 893,\n  \"version\": \"string\",\n  \"iwo_active\": false,\n  \"time_zone\": \"string\",\n  \"upgrade_state\": \"SUCCESS_MIXED_VERSION\",\n  \"upgrade_task_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a39dcae8-862d-4e52-bc72-032ca22a00f0",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "omnistack_clusters",
+                    ":clusterId",
+                    "connected_clusters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clusterId",
+                      "description": "(Required) The unique identifier (UID) of the omnistack_cluster that you want to retrieve"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2f65d8ad-3fe2-4282-8bf7-65a89a9df468",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "omnistack_clusters",
+                    ":clusterId",
+                    "connected_clusters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clusterId",
+                      "description": "(Required) The unique identifier (UID) of the omnistack_cluster that you want to retrieve"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d90dc5fb-cec5-4189-b37d-021cf385a9d3",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "omnistack_clusters",
+                    ":clusterId",
+                    "connected_clusters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clusterId",
+                      "description": "(Required) The unique identifier (UID) of the omnistack_cluster that you want to retrieve"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3d6efa26-1696-42a7-9140-5e697f604df0",
+          "name": "Retrieves throughput, IOPS, and latency data for the cluster",
+          "request": {
+            "name": "Retrieves throughput, IOPS, and latency data for the cluster",
+            "description": {},
+            "url": {
+              "path": [
+                "omnistack_clusters",
+                ":clusterId",
+                "metrics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "time_offset",
+                  "value": "0",
+                  "description": "A time offset in seconds (from now) or a datetime, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)\n\nDefault: 0"
+                },
+                {
+                  "disabled": false,
+                  "key": "range",
+                  "value": "43200",
+                  "description": "A range in seconds (the duration from the specified point in time)\n\nDefault: 43200"
+                },
+                {
+                  "disabled": false,
+                  "key": "resolution",
+                  "value": "MINUTE",
+                  "description": "The resolution (SECOND, MINUTE, HOUR, or DAY)\n\nDefault: MINUTE"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clusterId",
+                  "description": "(Required) The unique identifier (UID) of the omnistack_cluster"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5c59ab26-41c1-4844-b565-f4d7be2e0f40",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "omnistack_clusters",
+                    ":clusterId",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "time_offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "range",
+                      "value": "43200"
+                    },
+                    {
+                      "key": "resolution",
+                      "value": "MINUTE"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clusterId",
+                      "description": "(Required) The unique identifier (UID) of the omnistack_cluster"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"data_points\": [\n    {\n      \"date\": \"string\",\n      \"reads\": 4643,\n      \"writes\": 1984\n    },\n    {\n      \"date\": \"string\",\n      \"reads\": 1723,\n      \"writes\": 7844\n    }\n  ],\n  \"name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1b0f92e2-32d7-4cf2-b1f3-1a04300fffb0",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "omnistack_clusters",
+                    ":clusterId",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "time_offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "range",
+                      "value": "43200"
+                    },
+                    {
+                      "key": "resolution",
+                      "value": "MINUTE"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clusterId",
+                      "description": "(Required) The unique identifier (UID) of the omnistack_cluster"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5d141d8f-85db-46de-b33b-2584ff56c3f4",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "omnistack_clusters",
+                    ":clusterId",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "time_offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "range",
+                      "value": "43200"
+                    },
+                    {
+                      "key": "resolution",
+                      "value": "MINUTE"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clusterId",
+                      "description": "(Required) The unique identifier (UID) of the omnistack_cluster"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ac0dae94-1706-4bd1-84f1-e3b4c8252ab8",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "omnistack_clusters",
+                    ":clusterId",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "time_offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "range",
+                      "value": "43200"
+                    },
+                    {
+                      "key": "resolution",
+                      "value": "MINUTE"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clusterId",
+                      "description": "(Required) The unique identifier (UID) of the omnistack_cluster"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4469aa0b-33fe-458a-8c9f-3d3e9211b7e2",
+          "name": "Sets the IWO status of the omnistack_cluster",
+          "request": {
+            "name": "Sets the IWO status of the omnistack_cluster",
+            "description": {},
+            "url": {
+              "path": [
+                "omnistack_clusters",
+                ":clusterId",
+                "set_iwo"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clusterId",
+                  "description": "(Required) The unique identifier (UID) of the omnistack_cluster"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.simplivity.v1.17+json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"enabled\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d0f55d22-21a9-4946-a192-923011ad4b79",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "omnistack_clusters",
+                    ":clusterId",
+                    "set_iwo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clusterId",
+                      "description": "(Required) The unique identifier (UID) of the omnistack_cluster"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"enabled\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"affected_objects\": [\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    },\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    }\n  ],\n  \"end_time\": \"string\",\n  \"id\": \"string\",\n  \"start_time\": \"string\",\n  \"state\": \"IN_PROGRESS\",\n  \"error_code\": 4294,\n  \"error_message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1d793b40-1763-41be-8b55-591e1259ff45",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "omnistack_clusters",
+                    ":clusterId",
+                    "set_iwo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clusterId",
+                      "description": "(Required) The unique identifier (UID) of the omnistack_cluster"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"enabled\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8a42222a-06e4-4d4f-9354-5a37d8c52c17",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "omnistack_clusters",
+                    ":clusterId",
+                    "set_iwo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clusterId",
+                      "description": "(Required) The unique identifier (UID) of the omnistack_cluster"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"enabled\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ef4048c1-a420-4299-bdb9-ab34b41625e6",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "omnistack_clusters",
+                    ":clusterId",
+                    "set_iwo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clusterId",
+                      "description": "(Required) The unique identifier (UID) of the omnistack_cluster"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"enabled\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f8d7c320-7e1d-4a5b-9f63-87b487bc5321",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "omnistack_clusters",
+                    ":clusterId",
+                    "set_iwo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clusterId",
+                      "description": "(Required) The unique identifier (UID) of the omnistack_cluster"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"enabled\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "98185a81-7421-489d-a2d2-ff62d0488cdb",
+          "name": "Sets the time zone of the omnistack_cluster",
+          "request": {
+            "name": "Sets the time zone of the omnistack_cluster",
+            "description": {},
+            "url": {
+              "path": [
+                "omnistack_clusters",
+                ":clusterId",
+                "set_time_zone"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clusterId",
+                  "description": "(Required) The unique identifier (UID) of the omnistack_cluster"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.simplivity.v1.23+json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"time_zone\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9e1e1749-edb7-45e8-b277-b742c81082ba",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "omnistack_clusters",
+                    ":clusterId",
+                    "set_time_zone"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clusterId",
+                      "description": "(Required) The unique identifier (UID) of the omnistack_cluster"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"time_zone\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"affected_objects\": [\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    },\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    }\n  ],\n  \"end_time\": \"string\",\n  \"id\": \"string\",\n  \"start_time\": \"string\",\n  \"state\": \"FAILED\",\n  \"error_code\": 1642,\n  \"error_message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5d87b263-aae5-4b61-82a2-651c51218154",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "omnistack_clusters",
+                    ":clusterId",
+                    "set_time_zone"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clusterId",
+                      "description": "(Required) The unique identifier (UID) of the omnistack_cluster"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"time_zone\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "930c6d79-0264-4152-805f-ee3fd3d2396b",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "omnistack_clusters",
+                    ":clusterId",
+                    "set_time_zone"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clusterId",
+                      "description": "(Required) The unique identifier (UID) of the omnistack_cluster"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"time_zone\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "effaa48d-f054-4e8a-9ebb-e1dfdf56ef02",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "omnistack_clusters",
+                    ":clusterId",
+                    "set_time_zone"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clusterId",
+                      "description": "(Required) The unique identifier (UID) of the omnistack_cluster"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"time_zone\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5bfb7778-facb-4dd8-a915-024a66af51dc",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "omnistack_clusters",
+                    ":clusterId",
+                    "set_time_zone"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clusterId",
+                      "description": "(Required) The unique identifier (UID) of the omnistack_cluster"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"time_zone\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b31c4a57-6ed3-402d-8e8d-4b5d954ed153",
+          "name": "Calculates the throughput between each pair of omnistack_clusters in the federation",
+          "request": {
+            "name": "Calculates the throughput between each pair of omnistack_clusters in the federation",
+            "description": {},
+            "url": {
+              "path": [
+                "omnistack_clusters",
+                ":clusterId",
+                "throughput"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "destination_id",
+                  "value": "<string>",
+                  "description": "The unique identifier (UID) of the omnistack_clusters to return\n\nAccepts: Single value, comma-separated list"
+                },
+                {
+                  "disabled": false,
+                  "key": "time_offset",
+                  "value": "0",
+                  "description": "A time offset in seconds (from now) or a datetime, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)\n\nDefault: 0"
+                },
+                {
+                  "disabled": false,
+                  "key": "range",
+                  "value": "43200",
+                  "description": "A range in seconds (the duration from the specified point in time)\n\nDefault: 43200"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clusterId",
+                  "description": "(Required) The unique identifier (UID) of the omnistack_cluster"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "695d6694-2aea-412c-b37d-5b45aab07eaf",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "omnistack_clusters",
+                    ":clusterId",
+                    "throughput"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "destination_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "time_offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "range",
+                      "value": "43200"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clusterId",
+                      "description": "(Required) The unique identifier (UID) of the omnistack_cluster"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"cluster_throughput\": [\n    {\n      \"average_throughput\": 8749,\n      \"data\": {\n        \"data_points\": [\n          {\n            \"date\": \"string\",\n            \"value\": {}\n          },\n          {\n            \"date\": \"string\",\n            \"value\": {}\n          }\n        ],\n        \"date_of_maximum\": \"string\",\n        \"date_of_minimum\": \"string\",\n        \"maximum_throughput\": 9171,\n        \"minimum_throughput\": 9892\n      },\n      \"date\": \"string\",\n      \"destination_omnistack_cluster_hypervisor_object_parent_id\": \"string\",\n      \"destination_omnistack_cluster_hypervisor_object_parent_name\": \"string\",\n      \"destination_omnistack_cluster_id\": \"string\",\n      \"destination_omnistack_cluster_name\": \"string\",\n      \"source_omnistack_cluster_hypervisor_object_parent_id\": \"string\",\n      \"source_omnistack_cluster_hypervisor_object_parent_name\": \"string\",\n      \"source_omnistack_cluster_id\": \"string\",\n      \"source_omnistack_cluster_name\": \"string\"\n    },\n    {\n      \"average_throughput\": 9586,\n      \"data\": {\n        \"data_points\": [\n          {\n            \"date\": \"string\",\n            \"value\": {}\n          },\n          {\n            \"date\": \"string\",\n            \"value\": {}\n          }\n        ],\n        \"date_of_maximum\": \"string\",\n        \"date_of_minimum\": \"string\",\n        \"maximum_throughput\": 8088,\n        \"minimum_throughput\": 9993\n      },\n      \"date\": \"string\",\n      \"destination_omnistack_cluster_hypervisor_object_parent_id\": \"string\",\n      \"destination_omnistack_cluster_hypervisor_object_parent_name\": \"string\",\n      \"destination_omnistack_cluster_id\": \"string\",\n      \"destination_omnistack_cluster_name\": \"string\",\n      \"source_omnistack_cluster_hypervisor_object_parent_id\": \"string\",\n      \"source_omnistack_cluster_hypervisor_object_parent_name\": \"string\",\n      \"source_omnistack_cluster_id\": \"string\",\n      \"source_omnistack_cluster_name\": \"string\"\n    }\n  ],\n  \"end_time\": \"string\",\n  \"start_time\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1ef25d35-070f-4602-99c1-c7f1f59385f1",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "omnistack_clusters",
+                    ":clusterId",
+                    "throughput"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "destination_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "time_offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "range",
+                      "value": "43200"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clusterId",
+                      "description": "(Required) The unique identifier (UID) of the omnistack_cluster"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "612e2705-01d9-4b55-9f0b-ea716698a1b0",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "omnistack_clusters",
+                    ":clusterId",
+                    "throughput"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "destination_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "time_offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "range",
+                      "value": "43200"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clusterId",
+                      "description": "(Required) The unique identifier (UID) of the omnistack_cluster"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8c1e02fc-6037-46b4-836e-698f7f4d3eb4",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "omnistack_clusters",
+                    ":clusterId",
+                    "throughput"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "destination_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "time_offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "range",
+                      "value": "43200"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clusterId",
+                      "description": "(Required) The unique identifier (UID) of the omnistack_cluster"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "//localhost",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c4214b32-000f-4c71-a6e5-a46eac653542",
+    "name": "HPE OmniStack REST backups omnistack_clusters API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This API enables the programmatic management of key components of an HPE SimpliVity configuration.\n\nTo access the API, request an authentication token by issuing an authentication request in the following form, where the username/password combination is a set of valid management credentials for the applicable hypervisor environment:\n\n     curl -k https://simplivity@<host>/api/oauth/token -d grant_type=password -d username=<user> -d password=<pass>\n\nThen, you can pass in the resulting access_token returned in each HTTP header using Authorization: Bearer token. For example:\n\n     curl -H \"Authorization: Bearer 0a08c809-17ff-479f-b0a8-aedd4d8305a0\"\n\nThe access_token times out after 10 minutes of inactivity and expires after 24 hours.\n\nMake sure to use TLS version 1.2 or greater.\n\nThere are a wide range of possible return values.  Below is a list of the most common return values. \n\n    200 \"OK\" ⁃ This indicates that the request and action has completed with no issues.\n    201 \"Created\" ⁃ This indicates that the request has completed and a new resource has been created.\n    202 \"Accepted\" ⁃ This indicates that the request has been accepted for processing but the processing has not\n                     completed. This is a typical return when a task is generated.\n    400 \"Bad Request\" ⁃ The request cannot or will not be proccessed.  Usually due to a missing required parameter\n                        or invalid data in the parameter.\n    401 \"Unauthorized\" ⁃ The request has not been applied because it lacks authentication credentials for the\n                         target resource.\n    404 \"Not Found\" ⁃ The requested target doesn't exist or has been deleted.\n    405 \"Method Not Allowed\" ⁃ The method being requested is not valid for the target it is being performed on.\n    408 \"Request Timeout\" ⁃ The response took too long.\n    500 \"Internal Server Error\" ⁃ Indicates that the server encountered an unexpected condition that prevented it\n                                  from fulfilling the request.\n\n<a href=\"https://developer.hpe.com/platform/hpe-simplivity/home\" class=\"\toggleEndpointList\" data-id=\"errors\">Click here for a complete list of return codes and response formats</a>\n\n\n\nContact Support:\n Name: Hewlett Packard Enterprise",
+      "type": "text/plain"
+    }
+  }
+}

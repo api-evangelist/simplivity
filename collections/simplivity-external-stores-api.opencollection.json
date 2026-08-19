@@ -1,0 +1,124 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "HPE OmniStack REST backups external_stores API",
+    "version": "1.25"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "external_stores",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieves all external_stores",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/external_stores",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "The name of the external_stores to return\n\nAccepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard"
+              },
+              {
+                "name": "omnistack_cluster_id",
+                "value": "",
+                "type": "query",
+                "description": "The identifier of the cluster. This identifier is unique within the category namespace."
+              },
+              {
+                "name": "management_ip",
+                "value": "",
+                "type": "query",
+                "description": "The IP address of the external store\n\nAccepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard"
+              },
+              {
+                "name": "cluster_group_id",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifiers (UIDs) of the cluster_groups associated with the external stores to return\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A comma-separated list of fields to include in the returned objects\n\n Default: Returns all fields"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "A positive integer that represents the maximum number of results to return\n\nDefault: 500"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "A positive integer that directs the service to start returning the &lt;offset value&gt; instance, up to the limit\n\nDefault: 0"
+              },
+              {
+                "name": "case",
+                "value": "",
+                "type": "query",
+                "description": "An indicator that specifies if the filter and sort results use a case-sensitive or insensitive manner\n\nValid values: sensitive or insensitive\n\nDefault: sensitive"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "The name of the field where the sort occurs"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "The sort order preference\n\nValid values: ascending or descending\n\nDefault: descending"
+              }
+            ]
+          },
+          "docs": "Retrieves all external_stores"
+        },
+        {
+          "info": {
+            "name": "Registers a new external store",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/external_stores"
+          },
+          "docs": "Registers a new external store"
+        },
+        {
+          "info": {
+            "name": "Removes the external store as a backup destination for the cluster. Backups remain on the external store, but they can no longer be managed by HPE SimpliVity.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/external_stores/unregister"
+          },
+          "docs": "Removes the external store as a backup destination for the cluster. Backups remain on the external store, but they can no longer be managed by HPE SimpliVity."
+        },
+        {
+          "info": {
+            "name": "Update the IP address or credentials that HPE SimpliVity uses to access the external store",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/external_stores/update_credentials"
+          },
+          "docs": "Update the IP address or credentials that HPE SimpliVity uses to access the external store"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

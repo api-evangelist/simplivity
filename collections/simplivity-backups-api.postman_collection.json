@@ -1,0 +1,4652 @@
+{
+  "item": [
+    {
+      "id": "d9a81973-a1ce-4320-a4c8-87eb613573bd",
+      "name": "backups",
+      "description": {
+        "content": "A backup is a complete, standalone image of a specific virtual machine, taken at a specific point in time.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6528aa2d-efb3-47f4-a71b-dac5e0b6793a",
+          "name": "Retrieves all backups defined on this system",
+          "request": {
+            "name": "Retrieves all backups defined on this system",
+            "description": {},
+            "url": {
+              "path": [
+                "backups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "the unique identifier (UID) of the backups to return\n\nAccepts: Single value, comma-separated list"
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "The name of the backups to return\n\nAccepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard"
+                },
+                {
+                  "disabled": false,
+                  "key": "sent_min",
+                  "value": "<long>",
+                  "description": "The minimum sent data size (in bytes) of the remote backups to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "sent_max",
+                  "value": "<long>",
+                  "description": "The maximum sent data size (in bytes) of the remote backups to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>",
+                  "description": "The current state of the backups to return\n\nAccepts: Single value, comma-separated list"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "The type of backups to return\n\nAccepts: Single value, comma-separated list"
+                },
+                {
+                  "disabled": false,
+                  "key": "omnistack_cluster_id",
+                  "value": "<string>",
+                  "description": "The unique identifier (UID) of the omnistack_cluster that is associated with the instances to return\n\nAccepts: Single value, comma-separated list"
+                },
+                {
+                  "disabled": false,
+                  "key": "omnistack_cluster_name",
+                  "value": "<string>",
+                  "description": "The name of the omnistack_cluster that is associated with the instances to return\n\nAccepts: Single value, comma-separated list"
+                },
+                {
+                  "disabled": false,
+                  "key": "compute_cluster_parent_hypervisor_object_id",
+                  "value": "<string>",
+                  "description": "The unique identifier (UID) of the hypervisor-based instance that contains the omnistack_cluster that is associated with the instances to return\n\nAccepts: Single value, comma-separated list"
+                },
+                {
+                  "disabled": false,
+                  "key": "compute_cluster_parent_name",
+                  "value": "<string>",
+                  "description": "The name of the hypervisor-based instance that contains the omnistack_cluster that is associated with the instances to return\n\nAccepts: Single value, comma-separated list"
+                },
+                {
+                  "disabled": false,
+                  "key": "datastore_id",
+                  "value": "<string>",
+                  "description": "The unique identifier (UID) of the datastore that is associated with the instances to return\n\nAccepts: Single value, comma-separated list"
+                },
+                {
+                  "disabled": false,
+                  "key": "datastore_name",
+                  "value": "<string>",
+                  "description": "The name of the datastore that is associated with the instances to return\n\nAccepts: Single value, comma-separated list"
+                },
+                {
+                  "disabled": false,
+                  "key": "expires_before",
+                  "value": "<string>",
+                  "description": "The latest expiration time before the backups to return expire, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)"
+                },
+                {
+                  "disabled": false,
+                  "key": "expires_after",
+                  "value": "<string>",
+                  "description": "The earliest expiration time after the backups to return expire, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)"
+                },
+                {
+                  "disabled": false,
+                  "key": "virtual_machine_id",
+                  "value": "<string>",
+                  "description": "The unique identifier (UID) of the virtual_machine that is associated with the instances to return\n\nAccepts: Single value, comma-separated list"
+                },
+                {
+                  "disabled": false,
+                  "key": "virtual_machine_name",
+                  "value": "<string>",
+                  "description": "The name of the virtual_machine that is associated with the instances to return\n\nAccepts: Single value, comma-separated list"
+                },
+                {
+                  "disabled": false,
+                  "key": "virtual_machine_type",
+                  "value": "<string>",
+                  "description": "The type of the virtual_machine that is associated with the instances to return\n\nAccepts: Single value, comma-separated list"
+                },
+                {
+                  "disabled": false,
+                  "key": "virtual_machine_state",
+                  "value": "<string>",
+                  "description": "The state of the virtual_machine that is associated with the instances to return\n\nAccepts: Single value, comma-separated list"
+                },
+                {
+                  "disabled": false,
+                  "key": "size_min",
+                  "value": "<long>",
+                  "description": "The minimum size (in bytes) of the backups to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "size_max",
+                  "value": "<long>",
+                  "description": "The maximum size (in bytes) of the backups to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "application_consistent",
+                  "value": "<boolean>",
+                  "description": "The application-consistent setting of the backups to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "consistency_type",
+                  "value": "<string>",
+                  "description": "The consistency type of the backups to return\n\nAccepts: Single value, comma-separated list"
+                },
+                {
+                  "disabled": false,
+                  "key": "created_before",
+                  "value": "<string>",
+                  "description": "The latest creation time before the backups to return were created, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)"
+                },
+                {
+                  "disabled": false,
+                  "key": "created_after",
+                  "value": "<string>",
+                  "description": "The earliest creation time after the backups to return were created, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)"
+                },
+                {
+                  "disabled": false,
+                  "key": "sent_duration_min",
+                  "value": "<long>",
+                  "description": "The minimum number of seconds that elapsed while replicating the backups to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "sent_duration_max",
+                  "value": "<long>",
+                  "description": "The maximum number of seconds that elapsed while replicating the backups to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "sent_completion_before",
+                  "value": "<string>",
+                  "description": "The latest time before the replication of backups to return was completed, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)"
+                },
+                {
+                  "disabled": false,
+                  "key": "sent_completion_after",
+                  "value": "<string>",
+                  "description": "The earliest time after the replication of backups to return was completed, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)"
+                },
+                {
+                  "disabled": false,
+                  "key": "unique_size_bytes_min",
+                  "value": "<long>",
+                  "description": "The minimum unique size (in bytes) of the backups to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "unique_size_bytes_max",
+                  "value": "<long>",
+                  "description": "The maximum unique size (in bytes) of the backups to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "cluster_group_id",
+                  "value": "<string>",
+                  "description": "The unique identifiers (UIDs) of the cluster_groups associated with the backups to return\n\nAccepts: Single value, comma-separated list"
+                },
+                {
+                  "disabled": false,
+                  "key": "external_store_name",
+                  "value": "<string>",
+                  "description": "The name of the external_stores to return\n\nAccepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard"
+                },
+                {
+                  "disabled": false,
+                  "key": "backup_store_type",
+                  "value": "<string>",
+                  "description": "The storage type of the backups to return\n\nAccepts: Single value, comma-separated list"
+                },
+                {
+                  "disabled": false,
+                  "key": "associated_cluster",
+                  "value": "<string>",
+                  "description": "The cluster associated with the external_stores to return\n\nAccepts: Single value, comma-separated list"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "A comma-separated list of fields to include in the returned objects\n\n Default: Returns all fields"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "500",
+                  "description": "A positive integer that represents the maximum number of results to return\n\nDefault: 500"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "A positive integer that directs the service to start returning the &lt;offset value&gt; instance, up to the limit\n\nDefault: 0"
+                },
+                {
+                  "disabled": false,
+                  "key": "case",
+                  "value": "sensitive",
+                  "description": "An indicator that specifies if the filter and sort results use a case-sensitive or insensitive manner\n\nValid values: sensitive or insensitive\n\nDefault: sensitive"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "The name of the field where the sort occurs"
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "<string>",
+                  "description": "The sort order preference\n\nValid values: ascending or descending\n\nDefault: descending"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "60c3fe3a-154f-4837-aa70-743cdabfab3d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sent_min",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "sent_max",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "omnistack_cluster_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "omnistack_cluster_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compute_cluster_parent_hypervisor_object_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compute_cluster_parent_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "datastore_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "datastore_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expires_before",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expires_after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "virtual_machine_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "virtual_machine_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "virtual_machine_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "virtual_machine_state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size_min",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "size_max",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "application_consistent",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "consistency_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_before",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sent_duration_min",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "sent_duration_max",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "sent_completion_before",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sent_completion_after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "unique_size_bytes_min",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "unique_size_bytes_max",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "cluster_group_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "external_store_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "backup_store_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "associated_cluster",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "500"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "case",
+                      "value": "sensitive"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"application_consistent\": false,\n  \"associated_cluster\": \"string\",\n  \"backup_store_type\": \"Unknown\",\n  \"cluster_group_ids\": [\n    \"string\",\n    \"string\"\n  ],\n  \"compute_cluster_parent_hypervisor_object_id\": \"string\",\n  \"compute_cluster_parent_name\": \"string\",\n  \"consistency_type\": \"DEFAULT\",\n  \"created_at\": \"string\",\n  \"datastore_id\": \"string\",\n  \"datastore_name\": \"string\",\n  \"expiration_time\": \"string\",\n  \"hypervisor_type\": \"HYPERV\",\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"omnistack_cluster_id\": \"string\",\n  \"omnistack_cluster_name\": \"string\",\n  \"sent\": 4136,\n  \"sent_completion_time\": \"string\",\n  \"sent_duration\": 2321,\n  \"size\": 3781,\n  \"state\": \"PROTECTED\",\n  \"type\": \"UNSPECIFIED\",\n  \"unique_size_bytes\": 4513,\n  \"unique_size_timestamp\": \"string\",\n  \"virtual_machine_id\": \"string\",\n  \"virtual_machine_name\": \"string\",\n  \"virtual_machine_state\": \"ALIVE\",\n  \"virtual_machine_type\": \"UNKNOWN\",\n  \"external_store_name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ba8f9133-1879-4765-b2f7-b77b66125a1d",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sent_min",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "sent_max",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "omnistack_cluster_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "omnistack_cluster_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compute_cluster_parent_hypervisor_object_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compute_cluster_parent_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "datastore_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "datastore_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expires_before",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expires_after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "virtual_machine_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "virtual_machine_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "virtual_machine_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "virtual_machine_state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size_min",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "size_max",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "application_consistent",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "consistency_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_before",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sent_duration_min",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "sent_duration_max",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "sent_completion_before",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sent_completion_after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "unique_size_bytes_min",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "unique_size_bytes_max",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "cluster_group_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "external_store_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "backup_store_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "associated_cluster",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "500"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "case",
+                      "value": "sensitive"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4983bd42-ef8c-4b36-a240-b2fcc0014eee",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sent_min",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "sent_max",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "omnistack_cluster_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "omnistack_cluster_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compute_cluster_parent_hypervisor_object_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compute_cluster_parent_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "datastore_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "datastore_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expires_before",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expires_after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "virtual_machine_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "virtual_machine_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "virtual_machine_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "virtual_machine_state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size_min",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "size_max",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "application_consistent",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "consistency_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_before",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sent_duration_min",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "sent_duration_max",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "sent_completion_before",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sent_completion_after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "unique_size_bytes_min",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "unique_size_bytes_max",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "cluster_group_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "external_store_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "backup_store_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "associated_cluster",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "500"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "case",
+                      "value": "sensitive"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "35563cdf-0001-44e1-b2f3-80a0fe28c9e8",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sent_min",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "sent_max",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "omnistack_cluster_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "omnistack_cluster_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compute_cluster_parent_hypervisor_object_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compute_cluster_parent_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "datastore_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "datastore_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expires_before",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "expires_after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "virtual_machine_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "virtual_machine_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "virtual_machine_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "virtual_machine_state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "size_min",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "size_max",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "application_consistent",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "consistency_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_before",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sent_duration_min",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "sent_duration_max",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "sent_completion_before",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sent_completion_after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "unique_size_bytes_min",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "unique_size_bytes_max",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "cluster_group_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "external_store_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "backup_store_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "associated_cluster",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "500"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "case",
+                      "value": "sensitive"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8ace15c5-36fd-4477-934a-298d2c8f448a",
+          "name": "Deletes the specified list of backup instances",
+          "request": {
+            "name": "Deletes the specified list of backup instances",
+            "description": {},
+            "url": {
+              "path": [
+                "backups",
+                "delete"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.simplivity.v1.23+json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"backup_id\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"cluster_group_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "40b00b0c-7671-47e7-ae9b-7dc59c0a2ab5",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"backup_id\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"cluster_group_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"affected_objects\": [\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    },\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    }\n  ],\n  \"end_time\": \"string\",\n  \"id\": \"string\",\n  \"start_time\": \"string\",\n  \"state\": \"IN_PROGRESS\",\n  \"error_code\": 1392,\n  \"error_message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dcec7b1b-8c33-4929-9225-c212a0593b64",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"backup_id\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"cluster_group_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dda524be-c8ff-4868-8da6-d0664d1b026a",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"backup_id\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"cluster_group_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e0c93018-b81c-433e-ada6-8df59986272f",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"backup_id\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"cluster_group_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fbc602b2-eed1-4afa-808f-4475b2b20bf1",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"backup_id\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"cluster_group_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "75bced7a-653d-4d2e-a984-250e4550166d",
+          "name": "Sets the retention time for the specified list of backups",
+          "request": {
+            "name": "Sets the retention time for the specified list of backups",
+            "description": {},
+            "url": {
+              "path": [
+                "backups",
+                "set_retention"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.simplivity.v1.23+json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"backup_id\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"retention\": \"<integer>\",\n  \"force\": \"<boolean>\",\n  \"forever\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e0982208-447b-4102-9ef1-aa2a078abe30",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    "set_retention"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"backup_id\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"retention\": \"<integer>\",\n  \"force\": false,\n  \"forever\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"application_consistent\": false,\n  \"associated_cluster\": \"string\",\n  \"backup_store_type\": \"Unknown\",\n  \"cluster_group_ids\": [\n    \"string\",\n    \"string\"\n  ],\n  \"compute_cluster_parent_hypervisor_object_id\": \"string\",\n  \"compute_cluster_parent_name\": \"string\",\n  \"consistency_type\": \"DEFAULT\",\n  \"created_at\": \"string\",\n  \"datastore_id\": \"string\",\n  \"datastore_name\": \"string\",\n  \"expiration_time\": \"string\",\n  \"hypervisor_type\": \"HYPERV\",\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"omnistack_cluster_id\": \"string\",\n  \"omnistack_cluster_name\": \"string\",\n  \"sent\": 7943,\n  \"sent_completion_time\": \"string\",\n  \"sent_duration\": 9747,\n  \"size\": 4549,\n  \"state\": \"UNKNOWN\",\n  \"type\": \"UNSPECIFIED\",\n  \"unique_size_bytes\": 7001,\n  \"unique_size_timestamp\": \"string\",\n  \"virtual_machine_id\": \"string\",\n  \"virtual_machine_name\": \"string\",\n  \"virtual_machine_state\": \"REMOVED\",\n  \"virtual_machine_type\": \"UNKNOWN\",\n  \"external_store_name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a3a40e19-c24b-40ee-bfce-3449b2edf43f",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    "set_retention"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"backup_id\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"retention\": \"<integer>\",\n  \"force\": false,\n  \"forever\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4a070ef4-f976-447c-b46d-269a62a4e56d",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    "set_retention"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"backup_id\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"retention\": \"<integer>\",\n  \"force\": false,\n  \"forever\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"affected_objects\": [\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    },\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    }\n  ],\n  \"end_time\": \"string\",\n  \"id\": \"string\",\n  \"start_time\": \"string\",\n  \"state\": \"IN_PROGRESS\",\n  \"error_code\": 611,\n  \"error_message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5dc060b4-0e3b-47f6-857a-a1d549d931b9",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    "set_retention"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"backup_id\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"retention\": \"<integer>\",\n  \"force\": false,\n  \"forever\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bbe9596e-dfef-4f7d-a890-8197e4940714",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    "set_retention"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"backup_id\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"retention\": \"<integer>\",\n  \"force\": false,\n  \"forever\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c2dff1d8-dad6-445b-84a6-5f4e0e907ca1",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    "set_retention"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"backup_id\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"retention\": \"<integer>\",\n  \"force\": false,\n  \"forever\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1d912e64-fb77-4521-adaa-b1f01051a57a",
+          "name": "Retrieves the specified backup",
+          "request": {
+            "name": "Retrieves the specified backup",
+            "description": {},
+            "url": {
+              "path": [
+                "backups",
+                ":bkpId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "bkpId",
+                  "description": "(Required) The unique identifier (UID) of the backup that you want to retrieve"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "130c3e10-6575-4a4a-b035-2c070e57e6b3",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup that you want to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"application_consistent\": false,\n  \"associated_cluster\": \"string\",\n  \"backup_store_type\": \"Unknown\",\n  \"cluster_group_ids\": [\n    \"string\",\n    \"string\"\n  ],\n  \"compute_cluster_parent_hypervisor_object_id\": \"string\",\n  \"compute_cluster_parent_name\": \"string\",\n  \"consistency_type\": \"DEFAULT\",\n  \"created_at\": \"string\",\n  \"datastore_id\": \"string\",\n  \"datastore_name\": \"string\",\n  \"expiration_time\": \"string\",\n  \"hypervisor_type\": \"HYPERV\",\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"omnistack_cluster_id\": \"string\",\n  \"omnistack_cluster_name\": \"string\",\n  \"sent\": 7943,\n  \"sent_completion_time\": \"string\",\n  \"sent_duration\": 9747,\n  \"size\": 4549,\n  \"state\": \"UNKNOWN\",\n  \"type\": \"UNSPECIFIED\",\n  \"unique_size_bytes\": 7001,\n  \"unique_size_timestamp\": \"string\",\n  \"virtual_machine_id\": \"string\",\n  \"virtual_machine_name\": \"string\",\n  \"virtual_machine_state\": \"REMOVED\",\n  \"virtual_machine_type\": \"UNKNOWN\",\n  \"external_store_name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "722617af-dbd0-41e1-8822-70ecef18d88e",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup that you want to retrieve"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b84e6212-57ba-49d8-aa04-45b0746b92b8",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup that you want to retrieve"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "309bd0e0-793c-4a91-9199-d68baf863db7",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup that you want to retrieve"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5225e0da-efd7-4c51-866d-1f983686c431",
+          "name": "Deletes the specified backup",
+          "request": {
+            "name": "Deletes the specified backup",
+            "description": {},
+            "url": {
+              "path": [
+                "backups",
+                ":bkpId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "bkpId",
+                  "description": "(Required) The unique identifier (UID) of the backup that you want to retrieve"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2aab22d6-e79c-4bd2-8d52-3cdc5c8a3e28",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup that you want to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"affected_objects\": [\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    },\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    }\n  ],\n  \"end_time\": \"string\",\n  \"id\": \"string\",\n  \"start_time\": \"string\",\n  \"state\": \"IN_PROGRESS\",\n  \"error_code\": 611,\n  \"error_message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8576dbb7-0ba5-4716-a589-8d90267affb0",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup that you want to retrieve"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "617aa9cf-a20f-4f34-96e4-167a651ab38e",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup that you want to retrieve"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4dd481db-75db-4e1b-b554-b3f8ae3646b8",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup that you want to retrieve"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "907c7c2e-7fce-4d80-b86a-935c08894d43",
+          "name": "Calculates the unique size of the specified backup",
+          "request": {
+            "name": "Calculates the unique size of the specified backup",
+            "description": {},
+            "url": {
+              "path": [
+                "backups",
+                ":bkpId",
+                "calculate_unique_size"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "bkpId",
+                  "description": "(Required) The unique identifier (UID) of the backup that you want to perform the calculation on"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e9d73b2e-b8fc-4fc8-8676-5255ee8bed03",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId",
+                    "calculate_unique_size"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup that you want to perform the calculation on"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"affected_objects\": [\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    },\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    }\n  ],\n  \"end_time\": \"string\",\n  \"id\": \"string\",\n  \"start_time\": \"string\",\n  \"state\": \"IN_PROGRESS\",\n  \"error_code\": 611,\n  \"error_message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "95c05100-40e6-47b3-b168-ecf4850f9c8d",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId",
+                    "calculate_unique_size"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup that you want to perform the calculation on"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "823b51e3-0dc3-43f3-a5ca-4bacbf60b5de",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId",
+                    "calculate_unique_size"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup that you want to perform the calculation on"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c67f66e9-091b-48c0-8c03-43715f0a42f1",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId",
+                    "calculate_unique_size"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup that you want to perform the calculation on"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7b684bdf-ed79-4434-94d4-384d20f1a8d8",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId",
+                    "calculate_unique_size"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup that you want to perform the calculation on"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e5d21b17-a0b9-4634-a74c-1f58a4f8382a",
+          "name": "Cancels the specified running backup",
+          "request": {
+            "name": "Cancels the specified running backup",
+            "description": {},
+            "url": {
+              "path": [
+                "backups",
+                ":bkpId",
+                "cancel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "bkpId",
+                  "description": "(Required) The unique identifier (UID) of the backup that you want to cancel"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3cc67d28-b581-4e9e-ac0e-052aeb80a736",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup that you want to cancel"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"affected_objects\": [\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    },\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    }\n  ],\n  \"end_time\": \"string\",\n  \"id\": \"string\",\n  \"start_time\": \"string\",\n  \"state\": \"IN_PROGRESS\",\n  \"error_code\": 611,\n  \"error_message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "55ca913a-d270-48e5-852f-d0b7f747f2b5",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup that you want to cancel"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2818d244-e1d0-4c74-9d7f-7c2619a3c4c8",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup that you want to cancel"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1472ed3c-5249-4aa1-b1e2-af95f4d4ebab",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup that you want to cancel"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d3cc790c-c0e4-4b1a-bdc2-33039ab4acd0",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup that you want to cancel"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cb3fdf1d-78fb-4320-a0c5-2c51ae376a60",
+          "name": "Copies the specified backup to another omnistack_cluster or external_store",
+          "request": {
+            "name": "Copies the specified backup to another omnistack_cluster or external_store",
+            "description": {},
+            "url": {
+              "path": [
+                "backups",
+                ":bkpId",
+                "copy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "bkpId",
+                  "description": "(Required) The unique identifier (UID) of the backup you want to access"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.simplivity.v1.23+json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"destination_id\": \"<string>\",\n  \"external_store_name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "82383add-c74b-438e-8810-c0ac602a4b26",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId",
+                    "copy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup you want to access"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destination_id\": \"<string>\",\n  \"external_store_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"affected_objects\": [\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    },\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    }\n  ],\n  \"end_time\": \"string\",\n  \"id\": \"string\",\n  \"start_time\": \"string\",\n  \"state\": \"IN_PROGRESS\",\n  \"error_code\": 611,\n  \"error_message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f708beee-657e-4944-9df2-0b98e723c2c8",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId",
+                    "copy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup you want to access"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destination_id\": \"<string>\",\n  \"external_store_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7ea7ce9b-9c49-4bf5-b613-1a15af86da89",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId",
+                    "copy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup you want to access"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destination_id\": \"<string>\",\n  \"external_store_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a59f1c76-c4a8-448b-933d-0114e8793d60",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId",
+                    "copy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup you want to access"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destination_id\": \"<string>\",\n  \"external_store_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "74c312bc-7dc0-4d31-9072-09b8b4ec92d3",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId",
+                    "copy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup you want to access"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destination_id\": \"<string>\",\n  \"external_store_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c311d0b8-c7eb-4b6b-ac91-5275ebe0b721",
+          "name": "Saves the specified backup to prevent it from expiring",
+          "request": {
+            "name": "Saves the specified backup to prevent it from expiring",
+            "description": {},
+            "url": {
+              "path": [
+                "backups",
+                ":bkpId",
+                "lock"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "bkpId",
+                  "description": "(Required) The unique identifier (UID) of the backup you want to access"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3a1c4121-2f2d-4628-a767-0684248f467b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId",
+                    "lock"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup you want to access"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"affected_objects\": [\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    },\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    }\n  ],\n  \"end_time\": \"string\",\n  \"id\": \"string\",\n  \"start_time\": \"string\",\n  \"state\": \"IN_PROGRESS\",\n  \"error_code\": 611,\n  \"error_message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "480a856f-4a30-47d5-ae26-f14b16a310d4",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId",
+                    "lock"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup you want to access"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8b559f00-80c1-45e3-9635-e5648367470c",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId",
+                    "lock"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup you want to access"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "948ca430-e8e9-468c-b74f-ef9991bc6c41",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId",
+                    "lock"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup you want to access"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "24673280-6d14-45f5-aed9-523d0e34d1a3",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId",
+                    "lock"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup you want to access"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ee0739bc-be89-4655-9f71-4da75d9d98f4",
+          "name": "Renames the specified backup",
+          "request": {
+            "name": "Renames the specified backup",
+            "description": {},
+            "url": {
+              "path": [
+                "backups",
+                ":bkpId",
+                "rename"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "bkpId",
+                  "description": "(Required) The unique identifier (UID) of the backup you want to access"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.simplivity.v1.23+json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"backup_name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "787cac8c-fee2-4d08-bb87-76281cafba42",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId",
+                    "rename"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup you want to access"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"backup_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"affected_objects\": [\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    },\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    }\n  ],\n  \"end_time\": \"string\",\n  \"id\": \"string\",\n  \"start_time\": \"string\",\n  \"state\": \"IN_PROGRESS\",\n  \"error_code\": 611,\n  \"error_message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6a9aaa39-a24e-499e-b189-73afb549c1df",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId",
+                    "rename"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup you want to access"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"backup_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c30d058f-f4e3-45fc-bc79-d341d70d6f59",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId",
+                    "rename"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup you want to access"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"backup_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e9a8b399-572e-45d1-a567-b561dd2deeb1",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId",
+                    "rename"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup you want to access"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"backup_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b1840370-42f6-4863-812a-01fbaebef5ce",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId",
+                    "rename"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup you want to access"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"backup_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "29aa2c48-1086-43e6-9fb2-916d1bf2df61",
+          "name": "Creates a new virtual machine or replaces the original virtual machine from the specified backup",
+          "request": {
+            "name": "Creates a new virtual machine or replaces the original virtual machine from the specified backup",
+            "description": {},
+            "url": {
+              "path": [
+                "backups",
+                ":bkpId",
+                "restore"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "restore_original",
+                  "value": "false",
+                  "description": "(Required) An indicator to show if the original virtual machine gets restored\n\nValid values:\n\nTrue: Resets the original virtual machine to the same state it was in when the backup was created\n\nFalse: Creates a new virtual machine from the backup with the provided name, optionally to a different datastore\n\nDefault: false"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "bkpId",
+                  "description": "(Required) The unique identifier (UID) of the backup that you want to retrieve"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.simplivity.v1.23+json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"virtual_machine_name\": \"<string>\",\n  \"datastore_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5e373b00-384d-499c-8aad-1a3289641477",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId",
+                    "restore"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "restore_original",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup that you want to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"virtual_machine_name\": \"<string>\",\n  \"datastore_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"affected_objects\": [\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    },\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    }\n  ],\n  \"end_time\": \"string\",\n  \"id\": \"string\",\n  \"start_time\": \"string\",\n  \"state\": \"IN_PROGRESS\",\n  \"error_code\": 611,\n  \"error_message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5d664476-b5fb-46a0-b7c3-794924bf31b3",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId",
+                    "restore"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "restore_original",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup that you want to retrieve"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"virtual_machine_name\": \"<string>\",\n  \"datastore_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "196f005a-c4e8-430f-ac20-e20d06f0e749",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId",
+                    "restore"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "restore_original",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup that you want to retrieve"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"virtual_machine_name\": \"<string>\",\n  \"datastore_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6ea67712-f52d-46c1-8b75-76a383758240",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId",
+                    "restore"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "restore_original",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup that you want to retrieve"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"virtual_machine_name\": \"<string>\",\n  \"datastore_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a7503fab-8a13-4a31-9889-0d60b51d8ffe",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId",
+                    "restore"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "restore_original",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup that you want to retrieve"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"virtual_machine_name\": \"<string>\",\n  \"datastore_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cbd4a3d0-2668-4668-a216-e7cf876095b7",
+          "name": "Restore files from a specific partition",
+          "request": {
+            "name": "Restore files from a specific partition",
+            "description": {},
+            "url": {
+              "path": [
+                "backups",
+                ":bkpId",
+                "restore_files"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "bkpId",
+                  "description": "(Required) The unique identifier (UID) of the backup that you want to retrieve"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.simplivity.v1.19+json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"paths\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"virtual_machine_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "40829e6a-ef8b-4a04-bd37-febb50dc7e25",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId",
+                    "restore_files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup that you want to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"paths\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"virtual_machine_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"affected_objects\": [\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    },\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    }\n  ],\n  \"end_time\": \"string\",\n  \"id\": \"string\",\n  \"start_time\": \"string\",\n  \"state\": \"IN_PROGRESS\",\n  \"error_code\": 611,\n  \"error_message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1c3eb22d-66b2-43c0-9a88-ca3746d62f43",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId",
+                    "restore_files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup that you want to retrieve"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"paths\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"virtual_machine_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "32ec5b48-c360-450f-8e05-e96319fec6f1",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId",
+                    "restore_files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup that you want to retrieve"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"paths\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"virtual_machine_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a6043d57-a611-47d6-867a-c481f65db606",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId",
+                    "restore_files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup that you want to retrieve"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"paths\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"virtual_machine_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d98d50f8-4e1e-44f9-a229-c273258e988f",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId",
+                    "restore_files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup that you want to retrieve"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"paths\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"virtual_machine_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0b0fc78c-f620-4407-8a78-19291e666d5f",
+          "name": "Retrieves the virtual hard disk files from the backup",
+          "request": {
+            "name": "Retrieves the virtual hard disk files from the backup",
+            "description": {},
+            "url": {
+              "path": [
+                "backups",
+                ":bkpId",
+                "virtual_disk_partition_files"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "virtual_disk",
+                  "value": "<string>",
+                  "description": "(Required) The name of the virtual hard disk for the virtual machine"
+                },
+                {
+                  "disabled": false,
+                  "key": "partition_number",
+                  "value": "<integer>",
+                  "description": "(Required) The partition number of the virtual disk associated with the backup"
+                },
+                {
+                  "disabled": false,
+                  "key": "file_path",
+                  "value": "<string>",
+                  "description": "(Required) The path in the partition that has the file information you want. e.g. for root directory use \"/\""
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "bkpId",
+                  "description": "(Required) The unique identifier (UID) of the backup that you want to retrieve"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dd631b7f-3779-4ee8-84c9-590ec76ed550",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId",
+                    "virtual_disk_partition_files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "virtual_disk",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "partition_number",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "file_path",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup that you want to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"directory\": false,\n  \"file_level_restore_available\": false,\n  \"last_modified\": \"string\",\n  \"name\": \"string\",\n  \"size\": 628,\n  \"symbolic_link\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4fd37425-edcf-4150-a7b9-a3e2af18b1fe",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId",
+                    "virtual_disk_partition_files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "virtual_disk",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "partition_number",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "file_path",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup that you want to retrieve"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e324eed7-0b0c-43d6-a7a1-ad1100982f32",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId",
+                    "virtual_disk_partition_files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "virtual_disk",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "partition_number",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "file_path",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup that you want to retrieve"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f1734b0b-8f62-46c3-a48c-bf120ef3a6e4",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId",
+                    "virtual_disk_partition_files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "virtual_disk",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "partition_number",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "file_path",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup that you want to retrieve"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0e8f527e-3e83-4c1b-8150-67da0e558436",
+          "name": "Retrieves partition information for the virtual disk associated with the backup",
+          "request": {
+            "name": "Retrieves partition information for the virtual disk associated with the backup",
+            "description": {},
+            "url": {
+              "path": [
+                "backups",
+                ":bkpId",
+                "virtual_disk_partitions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "virtual_disk",
+                  "value": "<string>",
+                  "description": "(Required) The name of the virtual hard disk for the virtual machine"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "bkpId",
+                  "description": "(Required) The unique identifier (UID) of the backup associated with the partitions"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "422c10d4-f064-4dff-a3b3-29793400ad3d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId",
+                    "virtual_disk_partitions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "virtual_disk",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup associated with the partitions"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"disk_type\": \"string\",\n  \"mountable\": false,\n  \"partition_number\": 3897,\n  \"size\": 2038\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "56a891a9-133c-4b95-8fb7-397ef323e52c",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId",
+                    "virtual_disk_partitions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "virtual_disk",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup associated with the partitions"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e4690197-c894-4c04-8216-cae4dc7f5e39",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId",
+                    "virtual_disk_partitions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "virtual_disk",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup associated with the partitions"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bc00716d-9461-40d0-99dc-2c150a95577e",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId",
+                    "virtual_disk_partitions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "virtual_disk",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup associated with the partitions"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c1aa9114-c11a-4c14-b589-1ce553a88a8c",
+          "name": "Retrieves the virtual hard disk files from the backup",
+          "request": {
+            "name": "Retrieves the virtual hard disk files from the backup",
+            "description": {},
+            "url": {
+              "path": [
+                "backups",
+                ":bkpId",
+                "virtual_disks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "bkpId",
+                  "description": "(Required) The unique identifier (UID) of the backup that you want to retrieve"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ff0c951d-8d16-4812-b73e-4dc116364c0f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId",
+                    "virtual_disks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup that you want to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"virtual_disks\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7036aed2-d35b-424c-b7b1-e9223a49572a",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId",
+                    "virtual_disks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup that you want to retrieve"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b23015d7-354a-47e5-92bd-7d46bd0201d2",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId",
+                    "virtual_disks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup that you want to retrieve"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e1af2892-405d-4a29-a516-817c843466fa",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "backups",
+                    ":bkpId",
+                    "virtual_disks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bkpId",
+                      "description": "(Required) The unique identifier (UID) of the backup that you want to retrieve"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "//localhost",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "5b2411ab-ab72-47cb-8cf4-fdca6a41d73f",
+    "name": "HPE OmniStack REST backups API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This API enables the programmatic management of key components of an HPE SimpliVity configuration.\n\nTo access the API, request an authentication token by issuing an authentication request in the following form, where the username/password combination is a set of valid management credentials for the applicable hypervisor environment:\n\n     curl -k https://simplivity@<host>/api/oauth/token -d grant_type=password -d username=<user> -d password=<pass>\n\nThen, you can pass in the resulting access_token returned in each HTTP header using Authorization: Bearer token. For example:\n\n     curl -H \"Authorization: Bearer 0a08c809-17ff-479f-b0a8-aedd4d8305a0\"\n\nThe access_token times out after 10 minutes of inactivity and expires after 24 hours.\n\nMake sure to use TLS version 1.2 or greater.\n\nThere are a wide range of possible return values.  Below is a list of the most common return values. \n\n    200 \"OK\" ⁃ This indicates that the request and action has completed with no issues.\n    201 \"Created\" ⁃ This indicates that the request has completed and a new resource has been created.\n    202 \"Accepted\" ⁃ This indicates that the request has been accepted for processing but the processing has not\n                     completed. This is a typical return when a task is generated.\n    400 \"Bad Request\" ⁃ The request cannot or will not be proccessed.  Usually due to a missing required parameter\n                        or invalid data in the parameter.\n    401 \"Unauthorized\" ⁃ The request has not been applied because it lacks authentication credentials for the\n                         target resource.\n    404 \"Not Found\" ⁃ The requested target doesn't exist or has been deleted.\n    405 \"Method Not Allowed\" ⁃ The method being requested is not valid for the target it is being performed on.\n    408 \"Request Timeout\" ⁃ The response took too long.\n    500 \"Internal Server Error\" ⁃ Indicates that the server encountered an unexpected condition that prevented it\n                                  from fulfilling the request.\n\n<a href=\"https://developer.hpe.com/platform/hpe-simplivity/home\" class=\"\toggleEndpointList\" data-id=\"errors\">Click here for a complete list of return codes and response formats</a>\n\n\n\nContact Support:\n Name: Hewlett Packard Enterprise",
+      "type": "text/plain"
+    }
+  }
+}

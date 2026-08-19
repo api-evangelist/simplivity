@@ -1,0 +1,4610 @@
+{
+  "item": [
+    {
+      "id": "e3a28ffd-e597-4558-9c56-2dde4504931a",
+      "name": "policies",
+      "description": {
+        "content": "A policy contains backup rules that can be applied to an individual datastore or virtual_machine.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e61163a7-2def-46d1-a8f8-11065f8834cc",
+          "name": "Retrieves all policies defined on this system",
+          "request": {
+            "name": "Retrieves all policies defined on this system",
+            "description": {},
+            "url": {
+              "path": [
+                "policies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "The unique identifier (UID) of the policy\n\nAccepts: Single value, comma-separated list"
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "The name of the policy\n\nAccepts: Single value, comma-separated list"
+                },
+                {
+                  "disabled": false,
+                  "key": "cluster_group_id",
+                  "value": "<string>",
+                  "description": "The unique identifiers (UIDs) of the cluster_groups associated with the policies to return\n\nAccepts: Single value, comma-separated list"
+                },
+                {
+                  "disabled": false,
+                  "key": "owner_cluster_id",
+                  "value": "<string>",
+                  "description": "The unique identifier (UID) of the omnistack_cluster that owns the policy\n\nAccepts: Single value, comma-separated list"
+                },
+                {
+                  "disabled": false,
+                  "key": "owner_cluster_name",
+                  "value": "<string>",
+                  "description": "The name of the omnistack_cluster that owns the policy\n\nAccepts: Single value, comma-separated list"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "A comma-separated list of fields to include in the returned objects\n\n Default: Returns all fields"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "500",
+                  "description": "A positive integer that represents the maximum number of results to return\n\nDefault: 500"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "A positive integer that directs the service to start returning the &lt;offset value&gt; instance, up to the limit\n\nDefault: 0"
+                },
+                {
+                  "disabled": false,
+                  "key": "case",
+                  "value": "sensitive",
+                  "description": "An indicator that specifies if the filter and sort results use a case-sensitive or insensitive manner\n\nValid values: sensitive or insensitive\n\nDefault: sensitive"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "The name of the field where the sort occurs"
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "<string>",
+                  "description": "The sort order preference\n\nValid values: ascending or descending\n\nDefault: descending"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c9f39b27-778e-4f49-8c31-c5b8ad1c2e2e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cluster_group_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "owner_cluster_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "owner_cluster_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "500"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "case",
+                      "value": "sensitive"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"cluster_group_ids\": [\n    \"string\",\n    \"string\"\n  ],\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"owner_cluster_id\": \"string\",\n  \"owner_cluster_name\": \"string\",\n  \"rules\": [\n    {\n      \"frequency\": 9609,\n      \"retention\": 1597,\n      \"destination_id\": \"string\",\n      \"id\": \"string\",\n      \"number\": 1390,\n      \"destination_name\": \"string\",\n      \"days\": \"string\",\n      \"max_backups\": 1933,\n      \"external_store_name\": \"string\",\n      \"start_time\": \"string\",\n      \"end_time\": \"string\",\n      \"application_consistent\": false,\n      \"consistency_type\": \"FAILEDVSS\"\n    },\n    {\n      \"frequency\": 2879,\n      \"retention\": 3159,\n      \"destination_id\": \"string\",\n      \"id\": \"string\",\n      \"number\": 1741,\n      \"destination_name\": \"string\",\n      \"days\": \"string\",\n      \"max_backups\": 3468,\n      \"external_store_name\": \"string\",\n      \"start_time\": \"string\",\n      \"end_time\": \"string\",\n      \"application_consistent\": false,\n      \"consistency_type\": \"VSS\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1ded018c-202b-4911-968b-cd9d8d3baeb1",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cluster_group_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "owner_cluster_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "owner_cluster_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "500"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "case",
+                      "value": "sensitive"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0bf5ed22-f3e4-4285-9be5-9aa32438ae28",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cluster_group_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "owner_cluster_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "owner_cluster_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "500"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "case",
+                      "value": "sensitive"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "95cdeebd-59dd-4581-a85c-e440fa99f997",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cluster_group_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "owner_cluster_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "owner_cluster_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "500"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "case",
+                      "value": "sensitive"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c960d24d-b003-426a-8d7f-31d109c16d8d",
+          "name": "Creates a new policy",
+          "request": {
+            "name": "Creates a new policy",
+            "description": {},
+            "url": {
+              "path": [
+                "policies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cluster_group_id",
+                  "value": "<string>",
+                  "description": "The unique identifier (UID) of the cluster_group"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.simplivity.v1.23+json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "59ba8c85-ec12-49f7-a83f-e0c75493510b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cluster_group_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"affected_objects\": [\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    },\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    }\n  ],\n  \"end_time\": \"string\",\n  \"id\": \"string\",\n  \"start_time\": \"string\",\n  \"state\": \"FAILED\",\n  \"error_code\": 1760,\n  \"error_message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f1c45d55-b83a-47a2-9477-ce7ff89b7baf",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cluster_group_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "993a3224-31f0-4181-98fc-dc54e7ec4a4e",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cluster_group_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "001fcb04-d10f-4455-8d93-23b041313b33",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cluster_group_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "853920e4-ef46-4a96-a876-af8d54d9c580",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cluster_group_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "43162b24-1596-4cfc-babc-d51b7e35a84c",
+          "name": "Retrieves the policy schedule report",
+          "request": {
+            "name": "Retrieves the policy schedule report",
+            "description": {},
+            "url": {
+              "path": [
+                "policies",
+                "policy_schedule_report"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cluster_group_id",
+                  "value": "<string>",
+                  "description": "cluster_group_id"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e6ad9d8d-c89f-4899-979e-4ad86edd230f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    "policy_schedule_report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cluster_group_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"backup_rate_level\": 859,\n  \"daily_backup_rate\": 9882,\n  \"daily_backup_rate_limit\": 3720,\n  \"projected_retained_backups\": 7103,\n  \"projected_retained_backups_level\": 4713,\n  \"retained_backups_limit\": 9716\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4aa91946-7c8b-4458-b35d-58e6de9f8efe",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    "policy_schedule_report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cluster_group_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4dd3bd3b-6bd5-4d84-9856-515f494499f7",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    "policy_schedule_report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cluster_group_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7fd986b6-ddc1-45e1-8a05-2af64ca1e2cf",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    "policy_schedule_report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cluster_group_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "28c12cee-1c9a-446f-8b19-0b7888544bc4",
+          "name": "Resumes policy-based backups on a specific targeted object",
+          "request": {
+            "name": "Resumes policy-based backups on a specific targeted object",
+            "description": {},
+            "url": {
+              "path": [
+                "policies",
+                "resume"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.simplivity.v1.23+json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"target_object_type\": \"<string>\",\n  \"target_object_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cf35cc51-36f1-4661-9ecb-85229196dc9d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    "resume"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"target_object_type\": \"<string>\",\n  \"target_object_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"affected_objects\": [\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    },\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    }\n  ],\n  \"end_time\": \"string\",\n  \"id\": \"string\",\n  \"start_time\": \"string\",\n  \"state\": \"FAILED\",\n  \"error_code\": 6619,\n  \"error_message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2cc20d4b-503c-43f0-99e8-4411fb349c44",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    "resume"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"target_object_type\": \"<string>\",\n  \"target_object_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8b799d34-c707-4d1c-a929-28de41081224",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    "resume"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"target_object_type\": \"<string>\",\n  \"target_object_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "585b9d14-8e21-49d8-aab7-ca0479b30605",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    "resume"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"target_object_type\": \"<string>\",\n  \"target_object_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "aa5f502b-ba0c-43d1-8c2a-324f146d7cc1",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    "resume"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"target_object_type\": \"<string>\",\n  \"target_object_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e5d7d53e-dae1-44c0-b143-e9f67534e876",
+          "name": "Suspends policy-based backups on a specific targeted object",
+          "request": {
+            "name": "Suspends policy-based backups on a specific targeted object",
+            "description": {},
+            "url": {
+              "path": [
+                "policies",
+                "suspend"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.simplivity.v1.23+json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"target_object_type\": \"<string>\",\n  \"target_object_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1e44abba-ca6b-40ea-b640-b17388df7155",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    "suspend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"target_object_type\": \"<string>\",\n  \"target_object_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"affected_objects\": [\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    },\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    }\n  ],\n  \"end_time\": \"string\",\n  \"id\": \"string\",\n  \"start_time\": \"string\",\n  \"state\": \"FAILED\",\n  \"error_code\": 6619,\n  \"error_message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "12c8ab57-1ee3-4ddf-aa92-7746c2e67d82",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    "suspend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"target_object_type\": \"<string>\",\n  \"target_object_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "66163636-fe80-47bc-920a-856697116eab",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    "suspend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"target_object_type\": \"<string>\",\n  \"target_object_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "abb85017-abef-43ce-b8e1-1152a6a23b72",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    "suspend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"target_object_type\": \"<string>\",\n  \"target_object_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b589bdeb-ffed-4901-afd9-a8058058aff1",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    "suspend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"target_object_type\": \"<string>\",\n  \"target_object_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6de82fbb-15f5-4630-977e-ea5ec24789c7",
+          "name": "Retrieves the specified policy",
+          "request": {
+            "name": "Retrieves the specified policy",
+            "description": {},
+            "url": {
+              "path": [
+                "policies",
+                ":policyId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policyId",
+                  "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e811d585-a669-46a8-9e77-e33abac1464c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"cluster_group_ids\": [\n    \"string\",\n    \"string\"\n  ],\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"owner_cluster_id\": \"string\",\n  \"owner_cluster_name\": \"string\",\n  \"rules\": [\n    {\n      \"frequency\": 2231,\n      \"retention\": 4705,\n      \"destination_id\": \"string\",\n      \"id\": \"string\",\n      \"number\": 2004,\n      \"destination_name\": \"string\",\n      \"days\": \"string\",\n      \"max_backups\": 996,\n      \"external_store_name\": \"string\",\n      \"start_time\": \"string\",\n      \"end_time\": \"string\",\n      \"application_consistent\": false,\n      \"consistency_type\": \"FAILEDVSS\"\n    },\n    {\n      \"frequency\": 4373,\n      \"retention\": 2036,\n      \"destination_id\": \"string\",\n      \"id\": \"string\",\n      \"number\": 9397,\n      \"destination_name\": \"string\",\n      \"days\": \"string\",\n      \"max_backups\": 4471,\n      \"external_store_name\": \"string\",\n      \"start_time\": \"string\",\n      \"end_time\": \"string\",\n      \"application_consistent\": false,\n      \"consistency_type\": \"NONE\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9c77fccf-7117-4596-9ff4-b1194819de99",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3892add0-451b-4793-8c76-ad28b3b270e4",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5f29c0f4-f985-4518-876c-83d2d42e85bc",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "249e199c-cebe-409c-aa5d-46e7899c8c3b",
+          "name": "Removes a policy",
+          "request": {
+            "name": "Removes a policy",
+            "description": {},
+            "url": {
+              "path": [
+                "policies",
+                ":policyId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policyId",
+                  "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1f847da6-014f-41d1-aaa4-737eafa6b49c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"affected_objects\": [\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    },\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    }\n  ],\n  \"end_time\": \"string\",\n  \"id\": \"string\",\n  \"start_time\": \"string\",\n  \"state\": \"FAILED\",\n  \"error_code\": 6619,\n  \"error_message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2e3c23dc-c9d7-4eca-8cdf-c38d982c2031",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b959f72c-0a2d-43e5-bb24-ae062e41ad41",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1e8b0132-8611-4a1c-a6b2-f6c7e36ea2f5",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "51b877e8-f12d-4b4b-81fd-f39102322c88",
+          "name": "Retrieves the datastores using this policy",
+          "request": {
+            "name": "Retrieves the datastores using this policy",
+            "description": {
+              "content": "Deprecated as of version 1.4. Instead use GET /api/datastores?policy_id={policyId}",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "policies",
+                ":policyId",
+                "datastores"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policyId",
+                  "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "068235bf-c1dc-479e-99e8-aaebc51d9bd5",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId",
+                    "datastores"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"cluster_group_ids\": [\n    \"string\",\n    \"string\"\n  ],\n  \"compute_cluster_parent_hypervisor_object_id\": \"string\",\n  \"compute_cluster_parent_name\": \"string\",\n  \"created_at\": \"string\",\n  \"hypervisor_management_system\": \"string\",\n  \"hypervisor_management_system_name\": \"string\",\n  \"hypervisor_object_id\": \"string\",\n  \"hypervisor_type\": \"HYPERV\",\n  \"id\": \"string\",\n  \"mount_directory\": \"string\",\n  \"name\": \"string\",\n  \"omnistack_cluster_id\": \"string\",\n  \"omnistack_cluster_name\": \"string\",\n  \"policy_id\": \"string\",\n  \"policy_name\": \"string\",\n  \"shares\": [\n    {\n      \"address\": \"string\",\n      \"host\": \"string\",\n      \"rw\": \"string\"\n    },\n    {\n      \"address\": \"string\",\n      \"host\": \"string\",\n      \"rw\": \"string\"\n    }\n  ],\n  \"size\": 3456,\n  \"deleted\": false,\n  \"hypervisor_free_space\": 7586,\n  \"single_replica\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "21b08bd3-8aef-4ba6-b7d6-f2c6c2be5c0b",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId",
+                    "datastores"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5ba6e8b6-cf4e-4fc4-a98e-8657db680f81",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId",
+                    "datastores"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cea549d2-9c3b-4c45-83f8-e762870597e7",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId",
+                    "datastores"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4dadabd2-6763-42ab-8dfc-6186009eed5c",
+          "name": "Generate a backup impact reported based on proposed creation of rules for the policy",
+          "request": {
+            "name": "Generate a backup impact reported based on proposed creation of rules for the policy",
+            "description": {},
+            "url": {
+              "path": [
+                "policies",
+                ":policyId",
+                "impact_report",
+                "create_rules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "replace_all_rules",
+                  "value": "false",
+                  "description": "(Required) An indicator to replace the existing rules with new rules for a policy\n\nValid values:\n\nTrue: Replaces the existing rules with the new rules\n\nFalse: Adds new rules to the existing set of rules\n\nDefault: false"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policyId",
+                  "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.simplivity.v1.19+json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"frequency\": \"<integer>\",\n    \"retention\": \"<integer>\",\n    \"destination_id\": \"<string>\",\n    \"days\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"application_consistent\": \"<boolean>\",\n    \"consistency_type\": \"<string>\",\n    \"external_store_name\": \"<string>\"\n  },\n  {\n    \"frequency\": \"<integer>\",\n    \"retention\": \"<integer>\",\n    \"destination_id\": \"<string>\",\n    \"days\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"application_consistent\": \"<boolean>\",\n    \"consistency_type\": \"<string>\",\n    \"external_store_name\": \"<string>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dd2befe6-15c6-4a6c-b51b-a547a63e6838",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId",
+                    "impact_report",
+                    "create_rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "replace_all_rules",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"frequency\": \"<integer>\",\n    \"retention\": \"<integer>\",\n    \"destination_id\": \"<string>\",\n    \"days\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"application_consistent\": false,\n    \"consistency_type\": \"<string>\",\n    \"external_store_name\": \"<string>\"\n  },\n  {\n    \"frequency\": \"<integer>\",\n    \"retention\": \"<integer>\",\n    \"destination_id\": \"<string>\",\n    \"days\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"application_consistent\": false,\n    \"consistency_type\": \"<string>\",\n    \"external_store_name\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"schedule_after_change\": {\n    \"backup_rate_level\": 1490,\n    \"daily_backup_rate\": 88,\n    \"daily_backup_rate_limit\": 3441,\n    \"projected_retained_backups\": 4901,\n    \"projected_retained_backups_level\": 5881,\n    \"retained_backups_limit\": 717\n  },\n  \"schedule_before_change\": {\n    \"backup_rate_level\": 9760,\n    \"daily_backup_rate\": 9868,\n    \"daily_backup_rate_limit\": 9039,\n    \"projected_retained_backups\": 8766,\n    \"projected_retained_backups_level\": 8573,\n    \"retained_backups_limit\": 8996\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a11c7ad9-46cf-418d-8339-708a731a6acd",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId",
+                    "impact_report",
+                    "create_rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "replace_all_rules",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"frequency\": \"<integer>\",\n    \"retention\": \"<integer>\",\n    \"destination_id\": \"<string>\",\n    \"days\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"application_consistent\": false,\n    \"consistency_type\": \"<string>\",\n    \"external_store_name\": \"<string>\"\n  },\n  {\n    \"frequency\": \"<integer>\",\n    \"retention\": \"<integer>\",\n    \"destination_id\": \"<string>\",\n    \"days\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"application_consistent\": false,\n    \"consistency_type\": \"<string>\",\n    \"external_store_name\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1378110a-49c6-4df6-949b-c3f21b6df6d8",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId",
+                    "impact_report",
+                    "create_rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "replace_all_rules",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"frequency\": \"<integer>\",\n    \"retention\": \"<integer>\",\n    \"destination_id\": \"<string>\",\n    \"days\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"application_consistent\": false,\n    \"consistency_type\": \"<string>\",\n    \"external_store_name\": \"<string>\"\n  },\n  {\n    \"frequency\": \"<integer>\",\n    \"retention\": \"<integer>\",\n    \"destination_id\": \"<string>\",\n    \"days\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"application_consistent\": false,\n    \"consistency_type\": \"<string>\",\n    \"external_store_name\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cbf47664-61e7-47e9-ae5f-b875c055769e",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId",
+                    "impact_report",
+                    "create_rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "replace_all_rules",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"frequency\": \"<integer>\",\n    \"retention\": \"<integer>\",\n    \"destination_id\": \"<string>\",\n    \"days\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"application_consistent\": false,\n    \"consistency_type\": \"<string>\",\n    \"external_store_name\": \"<string>\"\n  },\n  {\n    \"frequency\": \"<integer>\",\n    \"retention\": \"<integer>\",\n    \"destination_id\": \"<string>\",\n    \"days\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"application_consistent\": false,\n    \"consistency_type\": \"<string>\",\n    \"external_store_name\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9c0eebb5-f803-437b-8877-72804060efc0",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId",
+                    "impact_report",
+                    "create_rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "replace_all_rules",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"frequency\": \"<integer>\",\n    \"retention\": \"<integer>\",\n    \"destination_id\": \"<string>\",\n    \"days\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"application_consistent\": false,\n    \"consistency_type\": \"<string>\",\n    \"external_store_name\": \"<string>\"\n  },\n  {\n    \"frequency\": \"<integer>\",\n    \"retention\": \"<integer>\",\n    \"destination_id\": \"<string>\",\n    \"days\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"application_consistent\": false,\n    \"consistency_type\": \"<string>\",\n    \"external_store_name\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0f447f8d-ceba-4419-a594-f6d208d3cdd4",
+          "name": "Generate a backup impact reported based on proposed changes to the rules for the policy",
+          "request": {
+            "name": "Generate a backup impact reported based on proposed changes to the rules for the policy",
+            "description": {},
+            "url": {
+              "path": [
+                "policies",
+                ":policyId",
+                "impact_report",
+                "edit_rules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "replace_all_rules",
+                  "value": "false",
+                  "description": "(Required) An indicator to replace the existing rules with new rules for a policy\n\nValid values:\n\nTrue: Replaces the existing rules with the new rules\n\nFalse: Adds new rules to the existing set of rules\n\nDefault: false"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policyId",
+                  "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.simplivity.v1.19+json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"frequency\": \"<integer>\",\n    \"retention\": \"<integer>\",\n    \"rule_id\": \"<string>\",\n    \"destination_id\": \"<string>\",\n    \"days\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"application_consistent\": \"<boolean>\",\n    \"consistency_type\": \"<string>\",\n    \"external_store_name\": \"<string>\"\n  },\n  {\n    \"frequency\": \"<integer>\",\n    \"retention\": \"<integer>\",\n    \"rule_id\": \"<string>\",\n    \"destination_id\": \"<string>\",\n    \"days\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"application_consistent\": \"<boolean>\",\n    \"consistency_type\": \"<string>\",\n    \"external_store_name\": \"<string>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f92d5881-ced4-495a-ac95-12e34c7a1643",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId",
+                    "impact_report",
+                    "edit_rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "replace_all_rules",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"frequency\": \"<integer>\",\n    \"retention\": \"<integer>\",\n    \"rule_id\": \"<string>\",\n    \"destination_id\": \"<string>\",\n    \"days\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"application_consistent\": false,\n    \"consistency_type\": \"<string>\",\n    \"external_store_name\": \"<string>\"\n  },\n  {\n    \"frequency\": \"<integer>\",\n    \"retention\": \"<integer>\",\n    \"rule_id\": \"<string>\",\n    \"destination_id\": \"<string>\",\n    \"days\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"application_consistent\": false,\n    \"consistency_type\": \"<string>\",\n    \"external_store_name\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"schedule_after_change\": {\n    \"backup_rate_level\": 1490,\n    \"daily_backup_rate\": 88,\n    \"daily_backup_rate_limit\": 3441,\n    \"projected_retained_backups\": 4901,\n    \"projected_retained_backups_level\": 5881,\n    \"retained_backups_limit\": 717\n  },\n  \"schedule_before_change\": {\n    \"backup_rate_level\": 9760,\n    \"daily_backup_rate\": 9868,\n    \"daily_backup_rate_limit\": 9039,\n    \"projected_retained_backups\": 8766,\n    \"projected_retained_backups_level\": 8573,\n    \"retained_backups_limit\": 8996\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e408a740-48ab-45d5-978b-0ef6b0138587",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId",
+                    "impact_report",
+                    "edit_rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "replace_all_rules",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"frequency\": \"<integer>\",\n    \"retention\": \"<integer>\",\n    \"rule_id\": \"<string>\",\n    \"destination_id\": \"<string>\",\n    \"days\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"application_consistent\": false,\n    \"consistency_type\": \"<string>\",\n    \"external_store_name\": \"<string>\"\n  },\n  {\n    \"frequency\": \"<integer>\",\n    \"retention\": \"<integer>\",\n    \"rule_id\": \"<string>\",\n    \"destination_id\": \"<string>\",\n    \"days\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"application_consistent\": false,\n    \"consistency_type\": \"<string>\",\n    \"external_store_name\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "72c2fba2-ea14-4732-805b-ad1e662de503",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId",
+                    "impact_report",
+                    "edit_rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "replace_all_rules",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"frequency\": \"<integer>\",\n    \"retention\": \"<integer>\",\n    \"rule_id\": \"<string>\",\n    \"destination_id\": \"<string>\",\n    \"days\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"application_consistent\": false,\n    \"consistency_type\": \"<string>\",\n    \"external_store_name\": \"<string>\"\n  },\n  {\n    \"frequency\": \"<integer>\",\n    \"retention\": \"<integer>\",\n    \"rule_id\": \"<string>\",\n    \"destination_id\": \"<string>\",\n    \"days\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"application_consistent\": false,\n    \"consistency_type\": \"<string>\",\n    \"external_store_name\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "41a7a45a-228b-44f1-b59c-d14c126cd414",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId",
+                    "impact_report",
+                    "edit_rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "replace_all_rules",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"frequency\": \"<integer>\",\n    \"retention\": \"<integer>\",\n    \"rule_id\": \"<string>\",\n    \"destination_id\": \"<string>\",\n    \"days\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"application_consistent\": false,\n    \"consistency_type\": \"<string>\",\n    \"external_store_name\": \"<string>\"\n  },\n  {\n    \"frequency\": \"<integer>\",\n    \"retention\": \"<integer>\",\n    \"rule_id\": \"<string>\",\n    \"destination_id\": \"<string>\",\n    \"days\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"application_consistent\": false,\n    \"consistency_type\": \"<string>\",\n    \"external_store_name\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dfb71ac5-63b6-44fe-92f9-040294dcf1f4",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId",
+                    "impact_report",
+                    "edit_rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "replace_all_rules",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"frequency\": \"<integer>\",\n    \"retention\": \"<integer>\",\n    \"rule_id\": \"<string>\",\n    \"destination_id\": \"<string>\",\n    \"days\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"application_consistent\": false,\n    \"consistency_type\": \"<string>\",\n    \"external_store_name\": \"<string>\"\n  },\n  {\n    \"frequency\": \"<integer>\",\n    \"retention\": \"<integer>\",\n    \"rule_id\": \"<string>\",\n    \"destination_id\": \"<string>\",\n    \"days\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"application_consistent\": false,\n    \"consistency_type\": \"<string>\",\n    \"external_store_name\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b7836236-6c5a-41ec-a9b5-69e9bab3689b",
+          "name": "Renames the specified policy",
+          "request": {
+            "name": "Renames the specified policy",
+            "description": {},
+            "url": {
+              "path": [
+                "policies",
+                ":policyId",
+                "rename"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policyId",
+                  "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.simplivity.v1.23+json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "86b6c37b-0381-4f59-bb9a-24e0e4337277",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId",
+                    "rename"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"affected_objects\": [\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    },\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    }\n  ],\n  \"end_time\": \"string\",\n  \"id\": \"string\",\n  \"start_time\": \"string\",\n  \"state\": \"FAILED\",\n  \"error_code\": 6619,\n  \"error_message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7f8f1dd6-625f-4ab4-b5f9-116b15d20ba1",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId",
+                    "rename"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a840f89c-c311-4dc1-85e8-59bfdaff8c65",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId",
+                    "rename"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0c6d57f3-4723-40e5-af06-0388ffef149e",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId",
+                    "rename"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "07023151-765a-4264-aa42-18a1ff908a11",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId",
+                    "rename"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "229255c6-b79e-4cb8-8db5-53dfcedee1b3",
+          "name": "Creates one or more new rules or replaces existing rules with new rules for a policy",
+          "request": {
+            "name": "Creates one or more new rules or replaces existing rules with new rules for a policy",
+            "description": {},
+            "url": {
+              "path": [
+                "policies",
+                ":policyId",
+                "rules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "replace_all_rules",
+                  "value": "false",
+                  "description": "(Required) An indicator to replace the existing rules with new rules for a policy\n\nValid values:\n\nTrue: Replaces the existing rules with the new rules\n\nFalse: Adds new rules to the existing set of rules\n\nDefault: false"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policyId",
+                  "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.simplivity.v1.23+json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"frequency\": \"<integer>\",\n    \"retention\": \"<integer>\",\n    \"destination_id\": \"<string>\",\n    \"days\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"application_consistent\": \"<boolean>\",\n    \"consistency_type\": \"<string>\",\n    \"external_store_name\": \"<string>\"\n  },\n  {\n    \"frequency\": \"<integer>\",\n    \"retention\": \"<integer>\",\n    \"destination_id\": \"<string>\",\n    \"days\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"application_consistent\": \"<boolean>\",\n    \"consistency_type\": \"<string>\",\n    \"external_store_name\": \"<string>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "951cf9ab-3942-442b-83db-3bb0f15983c3",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId",
+                    "rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "replace_all_rules",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"frequency\": \"<integer>\",\n    \"retention\": \"<integer>\",\n    \"destination_id\": \"<string>\",\n    \"days\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"application_consistent\": false,\n    \"consistency_type\": \"<string>\",\n    \"external_store_name\": \"<string>\"\n  },\n  {\n    \"frequency\": \"<integer>\",\n    \"retention\": \"<integer>\",\n    \"destination_id\": \"<string>\",\n    \"days\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"application_consistent\": false,\n    \"consistency_type\": \"<string>\",\n    \"external_store_name\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"affected_objects\": [\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    },\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    }\n  ],\n  \"end_time\": \"string\",\n  \"id\": \"string\",\n  \"start_time\": \"string\",\n  \"state\": \"FAILED\",\n  \"error_code\": 6619,\n  \"error_message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c53c55a2-794a-4b8c-b07a-7e95e4fb024b",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId",
+                    "rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "replace_all_rules",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"frequency\": \"<integer>\",\n    \"retention\": \"<integer>\",\n    \"destination_id\": \"<string>\",\n    \"days\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"application_consistent\": false,\n    \"consistency_type\": \"<string>\",\n    \"external_store_name\": \"<string>\"\n  },\n  {\n    \"frequency\": \"<integer>\",\n    \"retention\": \"<integer>\",\n    \"destination_id\": \"<string>\",\n    \"days\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"application_consistent\": false,\n    \"consistency_type\": \"<string>\",\n    \"external_store_name\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "badcb6da-4b9c-43dd-ac7d-f9ed46ab52a8",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId",
+                    "rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "replace_all_rules",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"frequency\": \"<integer>\",\n    \"retention\": \"<integer>\",\n    \"destination_id\": \"<string>\",\n    \"days\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"application_consistent\": false,\n    \"consistency_type\": \"<string>\",\n    \"external_store_name\": \"<string>\"\n  },\n  {\n    \"frequency\": \"<integer>\",\n    \"retention\": \"<integer>\",\n    \"destination_id\": \"<string>\",\n    \"days\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"application_consistent\": false,\n    \"consistency_type\": \"<string>\",\n    \"external_store_name\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d72f7956-4c8f-4ae1-aee9-a9e50de24e0d",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId",
+                    "rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "replace_all_rules",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"frequency\": \"<integer>\",\n    \"retention\": \"<integer>\",\n    \"destination_id\": \"<string>\",\n    \"days\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"application_consistent\": false,\n    \"consistency_type\": \"<string>\",\n    \"external_store_name\": \"<string>\"\n  },\n  {\n    \"frequency\": \"<integer>\",\n    \"retention\": \"<integer>\",\n    \"destination_id\": \"<string>\",\n    \"days\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"application_consistent\": false,\n    \"consistency_type\": \"<string>\",\n    \"external_store_name\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6e7945e1-1d25-4d08-95a4-5cbd330165d3",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId",
+                    "rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "replace_all_rules",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"frequency\": \"<integer>\",\n    \"retention\": \"<integer>\",\n    \"destination_id\": \"<string>\",\n    \"days\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"application_consistent\": false,\n    \"consistency_type\": \"<string>\",\n    \"external_store_name\": \"<string>\"\n  },\n  {\n    \"frequency\": \"<integer>\",\n    \"retention\": \"<integer>\",\n    \"destination_id\": \"<string>\",\n    \"days\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"application_consistent\": false,\n    \"consistency_type\": \"<string>\",\n    \"external_store_name\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "76aa35d2-7bb2-4e7f-8ee7-def4696da3fb",
+          "name": "Retrieves the specified policy rule",
+          "request": {
+            "name": "Retrieves the specified policy rule",
+            "description": {},
+            "url": {
+              "path": [
+                "policies",
+                ":policyId",
+                "rules",
+                ":ruleId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policyId",
+                  "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ruleId",
+                  "description": "(Required) The unique identifier (UID) of the policy rule you want to access"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0c956d90-b478-4cea-942d-5b45176b469d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId",
+                    "rules",
+                    ":ruleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) The unique identifier (UID) of the policy rule you want to access"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"frequency\": 4670,\n  \"retention\": 9895,\n  \"destination_id\": \"string\",\n  \"id\": \"string\",\n  \"number\": 311,\n  \"destination_name\": \"string\",\n  \"days\": \"string\",\n  \"max_backups\": 6952,\n  \"external_store_name\": \"string\",\n  \"start_time\": \"string\",\n  \"end_time\": \"string\",\n  \"application_consistent\": false,\n  \"consistency_type\": \"NOT_APPLICABLE\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "89333852-6068-440d-a925-219fc2ca2595",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId",
+                    "rules",
+                    ":ruleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) The unique identifier (UID) of the policy rule you want to access"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "42ae23d0-16b4-47de-a9ac-a43019e10ed1",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId",
+                    "rules",
+                    ":ruleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) The unique identifier (UID) of the policy rule you want to access"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "47467566-0503-4108-8995-f9f77dcd3b2c",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId",
+                    "rules",
+                    ":ruleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) The unique identifier (UID) of the policy rule you want to access"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9be786d3-7b6f-4faa-903c-9e7716f8629e",
+          "name": "Edits an existing policy rule",
+          "request": {
+            "name": "Edits an existing policy rule",
+            "description": {},
+            "url": {
+              "path": [
+                "policies",
+                ":policyId",
+                "rules",
+                ":ruleId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policyId",
+                  "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ruleId",
+                  "description": "(Required) The unique identifier (UID) of the policy rule you want to access"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.simplivity.v1.23+json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"frequency\": \"<integer>\",\n  \"retention\": \"<integer>\",\n  \"destination_id\": \"<string>\",\n  \"days\": \"<string>\",\n  \"start_time\": \"<string>\",\n  \"end_time\": \"<string>\",\n  \"application_consistent\": \"<boolean>\",\n  \"consistency_type\": \"<string>\",\n  \"external_store_name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "978ef463-38d1-4463-9c2e-ffb79cc42722",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId",
+                    "rules",
+                    ":ruleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) The unique identifier (UID) of the policy rule you want to access"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"frequency\": \"<integer>\",\n  \"retention\": \"<integer>\",\n  \"destination_id\": \"<string>\",\n  \"days\": \"<string>\",\n  \"start_time\": \"<string>\",\n  \"end_time\": \"<string>\",\n  \"application_consistent\": false,\n  \"consistency_type\": \"<string>\",\n  \"external_store_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"affected_objects\": [\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    },\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    }\n  ],\n  \"end_time\": \"string\",\n  \"id\": \"string\",\n  \"start_time\": \"string\",\n  \"state\": \"FAILED\",\n  \"error_code\": 6619,\n  \"error_message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d5d6bcef-b74d-412b-b624-5f5d098e7b73",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId",
+                    "rules",
+                    ":ruleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) The unique identifier (UID) of the policy rule you want to access"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"frequency\": \"<integer>\",\n  \"retention\": \"<integer>\",\n  \"destination_id\": \"<string>\",\n  \"days\": \"<string>\",\n  \"start_time\": \"<string>\",\n  \"end_time\": \"<string>\",\n  \"application_consistent\": false,\n  \"consistency_type\": \"<string>\",\n  \"external_store_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "856b6fc6-2bc7-4ba7-a4bb-6f2ffc06375d",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId",
+                    "rules",
+                    ":ruleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) The unique identifier (UID) of the policy rule you want to access"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"frequency\": \"<integer>\",\n  \"retention\": \"<integer>\",\n  \"destination_id\": \"<string>\",\n  \"days\": \"<string>\",\n  \"start_time\": \"<string>\",\n  \"end_time\": \"<string>\",\n  \"application_consistent\": false,\n  \"consistency_type\": \"<string>\",\n  \"external_store_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "03a840be-b806-4a02-846e-795b8d59f406",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId",
+                    "rules",
+                    ":ruleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) The unique identifier (UID) of the policy rule you want to access"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"frequency\": \"<integer>\",\n  \"retention\": \"<integer>\",\n  \"destination_id\": \"<string>\",\n  \"days\": \"<string>\",\n  \"start_time\": \"<string>\",\n  \"end_time\": \"<string>\",\n  \"application_consistent\": false,\n  \"consistency_type\": \"<string>\",\n  \"external_store_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b916ba9a-4c7f-4d21-b3f8-9228085dbd16",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId",
+                    "rules",
+                    ":ruleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) The unique identifier (UID) of the policy rule you want to access"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"frequency\": \"<integer>\",\n  \"retention\": \"<integer>\",\n  \"destination_id\": \"<string>\",\n  \"days\": \"<string>\",\n  \"start_time\": \"<string>\",\n  \"end_time\": \"<string>\",\n  \"application_consistent\": false,\n  \"consistency_type\": \"<string>\",\n  \"external_store_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dd4bb094-e1cb-4cea-84f1-a53340c5baef",
+          "name": "Removes a policy rule",
+          "request": {
+            "name": "Removes a policy rule",
+            "description": {},
+            "url": {
+              "path": [
+                "policies",
+                ":policyId",
+                "rules",
+                ":ruleId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policyId",
+                  "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ruleId",
+                  "description": "(Required) The unique identifier (UID) of the policy rule you want to access"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8a5807d4-f5ef-4eba-a136-ce0c5cbb1579",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId",
+                    "rules",
+                    ":ruleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) The unique identifier (UID) of the policy rule you want to access"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"affected_objects\": [\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    },\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    }\n  ],\n  \"end_time\": \"string\",\n  \"id\": \"string\",\n  \"start_time\": \"string\",\n  \"state\": \"FAILED\",\n  \"error_code\": 6619,\n  \"error_message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "67bfbd9c-ac90-413d-92cd-18fbc59f1953",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId",
+                    "rules",
+                    ":ruleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) The unique identifier (UID) of the policy rule you want to access"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "87f27754-1c7c-442c-9917-2c624ba1649c",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId",
+                    "rules",
+                    ":ruleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) The unique identifier (UID) of the policy rule you want to access"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "165cce01-5c9d-4a9d-b8c7-f7dc3072eea1",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId",
+                    "rules",
+                    ":ruleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) The unique identifier (UID) of the policy rule you want to access"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4d63e9e9-8fec-4733-8b7c-d67945cf9452",
+          "name": "Generate a backup impact reported based on proposed deletion of a policy rule",
+          "request": {
+            "name": "Generate a backup impact reported based on proposed deletion of a policy rule",
+            "description": {},
+            "url": {
+              "path": [
+                "policies",
+                ":policyId",
+                "rules",
+                ":ruleId",
+                "impact_report",
+                "delete_rule"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policyId",
+                  "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ruleId",
+                  "description": "(Required) The unique identifier (UID) of the policy rule you want to access"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c3639895-eceb-4345-9359-78dc259682d2",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId",
+                    "rules",
+                    ":ruleId",
+                    "impact_report",
+                    "delete_rule"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) The unique identifier (UID) of the policy rule you want to access"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"schedule_after_change\": {\n    \"backup_rate_level\": 1490,\n    \"daily_backup_rate\": 88,\n    \"daily_backup_rate_limit\": 3441,\n    \"projected_retained_backups\": 4901,\n    \"projected_retained_backups_level\": 5881,\n    \"retained_backups_limit\": 717\n  },\n  \"schedule_before_change\": {\n    \"backup_rate_level\": 9760,\n    \"daily_backup_rate\": 9868,\n    \"daily_backup_rate_limit\": 9039,\n    \"projected_retained_backups\": 8766,\n    \"projected_retained_backups_level\": 8573,\n    \"retained_backups_limit\": 8996\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "80d9eaa3-acb9-4f99-acbe-3c9ba8000dee",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId",
+                    "rules",
+                    ":ruleId",
+                    "impact_report",
+                    "delete_rule"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) The unique identifier (UID) of the policy rule you want to access"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ac4d27eb-c583-46ca-bf6f-3e991ea6526b",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId",
+                    "rules",
+                    ":ruleId",
+                    "impact_report",
+                    "delete_rule"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) The unique identifier (UID) of the policy rule you want to access"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4e168518-caba-4101-833f-b5bbcb128bc1",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId",
+                    "rules",
+                    ":ruleId",
+                    "impact_report",
+                    "delete_rule"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) The unique identifier (UID) of the policy rule you want to access"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9bb61f86-8012-41e5-9c31-f9b61ff6cc8f",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId",
+                    "rules",
+                    ":ruleId",
+                    "impact_report",
+                    "delete_rule"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) The unique identifier (UID) of the policy rule you want to access"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8bf2a49a-a7d9-4aa2-8c8e-65e5ebfffe72",
+          "name": "Retrieves the virtual_machines using this policy",
+          "request": {
+            "name": "Retrieves the virtual_machines using this policy",
+            "description": {
+              "content": "Deprecated as of version 1.4. Instead use GET /api/virtual_machines?policy_id={policyId}",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "policies",
+                ":policyId",
+                "virtual_machines"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policyId",
+                  "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9a2e3dce-0c56-4e4d-8010-6409555a3a40",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId",
+                    "virtual_machines"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"app_aware_vm_status\": \"UNKNOWN\",\n  \"cluster_group_ids\": [\n    \"string\",\n    \"string\"\n  ],\n  \"compute_cluster_parent_hypervisor_object_id\": \"string\",\n  \"compute_cluster_parent_name\": \"string\",\n  \"created_at\": \"string\",\n  \"datastore_id\": \"string\",\n  \"datastore_name\": \"string\",\n  \"deleted_at\": \"string\",\n  \"host_id\": \"string\",\n  \"hypervisor_management_system\": \"string\",\n  \"hypervisor_management_system_name\": \"string\",\n  \"hypervisor_object_id\": \"string\",\n  \"hypervisor_type\": \"VSPHERE\",\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"omnistack_cluster_id\": \"string\",\n  \"omnistack_cluster_name\": \"string\",\n  \"policy_id\": \"string\",\n  \"policy_name\": \"string\",\n  \"replica_set\": [\n    {\n      \"id\": \"string\",\n      \"role\": \"PRIMARY\"\n    },\n    {\n      \"id\": \"string\",\n      \"role\": \"PRIMARY\"\n    }\n  ],\n  \"state\": \"DELETED\",\n  \"ha_resynchronization_progress\": 9019,\n  \"ha_status\": \"SAFE\",\n  \"host_name\": \"string\",\n  \"hypervisor_allocated_capacity\": 8613,\n  \"hypervisor_allocated_cpu\": 1334,\n  \"hypervisor_consumed_cpu\": 378,\n  \"hypervisor_consumed_memory\": 4573,\n  \"hypervisor_cpu_count\": 4400,\n  \"hypervisor_folder_name\": \"string\",\n  \"hypervisor_free_space\": 887,\n  \"hypervisor_instance_id\": \"string\",\n  \"hypervisor_is_template\": false,\n  \"hypervisor_managed_by\": \"string\",\n  \"hypervisor_total_memory\": 9330,\n  \"hypervisor_uuid\": \"string\",\n  \"hypervisor_virtual_disk_count\": 164,\n  \"hypervisor_virtual_machine_power_state\": \"OFF\",\n  \"network_interfaces\": [\n    {\n      \"adapter_type\": \"VMXNET3\",\n      \"device_number\": \"string\",\n      \"ipv4_addresses\": [\n        \"string\",\n        \"string\"\n      ],\n      \"mac_address\": \"string\",\n      \"mac_generation\": \"MANUAL\",\n      \"network_label\": \"string\"\n    },\n    {\n      \"adapter_type\": \"E1000\",\n      \"device_number\": \"string\",\n      \"ipv4_addresses\": [\n        \"string\",\n        \"string\"\n      ],\n      \"mac_address\": \"string\",\n      \"mac_generation\": \"GENERATED\",\n      \"network_label\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "216176ba-415a-46e1-b172-1c6c9205c0e3",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId",
+                    "virtual_machines"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2a281260-babd-4f08-b6cd-f756adef1950",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId",
+                    "virtual_machines"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "72f7aefd-218d-4288-822f-153e8ae479c0",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "policies",
+                    ":policyId",
+                    "virtual_machines"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) The unique identifier (UID) of the policy you want to access"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "//localhost",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "eb604535-5606-4970-b4a7-66d145aad2ac",
+    "name": "HPE OmniStack REST backups policies API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This API enables the programmatic management of key components of an HPE SimpliVity configuration.\n\nTo access the API, request an authentication token by issuing an authentication request in the following form, where the username/password combination is a set of valid management credentials for the applicable hypervisor environment:\n\n     curl -k https://simplivity@<host>/api/oauth/token -d grant_type=password -d username=<user> -d password=<pass>\n\nThen, you can pass in the resulting access_token returned in each HTTP header using Authorization: Bearer token. For example:\n\n     curl -H \"Authorization: Bearer 0a08c809-17ff-479f-b0a8-aedd4d8305a0\"\n\nThe access_token times out after 10 minutes of inactivity and expires after 24 hours.\n\nMake sure to use TLS version 1.2 or greater.\n\nThere are a wide range of possible return values.  Below is a list of the most common return values. \n\n    200 \"OK\" ⁃ This indicates that the request and action has completed with no issues.\n    201 \"Created\" ⁃ This indicates that the request has completed and a new resource has been created.\n    202 \"Accepted\" ⁃ This indicates that the request has been accepted for processing but the processing has not\n                     completed. This is a typical return when a task is generated.\n    400 \"Bad Request\" ⁃ The request cannot or will not be proccessed.  Usually due to a missing required parameter\n                        or invalid data in the parameter.\n    401 \"Unauthorized\" ⁃ The request has not been applied because it lacks authentication credentials for the\n                         target resource.\n    404 \"Not Found\" ⁃ The requested target doesn't exist or has been deleted.\n    405 \"Method Not Allowed\" ⁃ The method being requested is not valid for the target it is being performed on.\n    408 \"Request Timeout\" ⁃ The response took too long.\n    500 \"Internal Server Error\" ⁃ Indicates that the server encountered an unexpected condition that prevented it\n                                  from fulfilling the request.\n\n<a href=\"https://developer.hpe.com/platform/hpe-simplivity/home\" class=\"\toggleEndpointList\" data-id=\"errors\">Click here for a complete list of return codes and response formats</a>\n\n\n\nContact Support:\n Name: Hewlett Packard Enterprise",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "HPE OmniStack REST backups tasks API",
+    "version": "1.25"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "tasks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieves the specified task",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/tasks/:taskId",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the task that you want to retrieve"
+              }
+            ]
+          },
+          "docs": "Retrieves the specified task"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -273,3 +273,9 @@ tools:
 - name: validateBackupCred
   description: Validates the credentials for the virtual machine you want to backup
   source_operation: openapi/simplivity-omnistack-openapi-original.json#validateBackupCred
+deployment:
+  mode: none
+  verified: derived
+  tools: 87
+  checked: '2026-08-12'
+  source: catalog MCP census

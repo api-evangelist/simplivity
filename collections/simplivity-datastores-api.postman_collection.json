@@ -1,0 +1,2741 @@
+{
+  "item": [
+    {
+      "id": "e3fdca2c-3882-47d8-8c2a-8c935a649558",
+      "name": "datastores",
+      "description": {
+        "content": "A datastore is a data repository of files that constitute virtual machines.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "27037587-2f04-4cd7-9644-35e10197523e",
+          "name": "Retrieves all datastores defined on this system",
+          "request": {
+            "name": "Retrieves all datastores defined on this system",
+            "description": {},
+            "url": {
+              "path": [
+                "datastores"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "show_optional_fields",
+                  "value": "false",
+                  "description": "An indicator to show the hypervisor_free_space of the datastore\n\nNote: This value is computed from various sources. Consequently, the retrieval of this value may adversely affect the response time of a request."
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "The unique identifier (UID) of the datastores to return\n\nAccepts: Single value, comma-separated list"
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "The name of the datastores to return\n\nAccepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard"
+                },
+                {
+                  "disabled": false,
+                  "key": "min_size",
+                  "value": "<long>",
+                  "description": "The minimum size (in bytes) of datastores to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "max_size",
+                  "value": "<long>",
+                  "description": "The maximum size (in bytes) of datastores to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "created_before",
+                  "value": "<string>",
+                  "description": "The latest creation time before the datastores to return were created, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)"
+                },
+                {
+                  "disabled": false,
+                  "key": "created_after",
+                  "value": "<string>",
+                  "description": "The earliest creation time after the datastores to return were created, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)"
+                },
+                {
+                  "disabled": false,
+                  "key": "omnistack_cluster_id",
+                  "value": "<string>",
+                  "description": "The unique identifier (UID) of the omnistack_cluster that is associated with the instances to return\n\nAccepts: Single value, comma-separated list"
+                },
+                {
+                  "disabled": false,
+                  "key": "omnistack_cluster_name",
+                  "value": "<string>",
+                  "description": "The name of the omnistack_cluster that is associated with the instances to return\n\nAccepts: Single value, comma-separated list"
+                },
+                {
+                  "disabled": false,
+                  "key": "compute_cluster_parent_hypervisor_object_id",
+                  "value": "<string>",
+                  "description": "The unique identifier (UID) of the hypervisor-based instance that contains the omnistack_cluster that is associated with the instances to return\n\nAccepts: Single value, comma-separated list"
+                },
+                {
+                  "disabled": false,
+                  "key": "compute_cluster_parent_name",
+                  "value": "<string>",
+                  "description": "The name of the hypervisor-based instance that contains the omnistack_cluster that is associated with the instances to return\n\nAccepts: Single value, comma-separated list"
+                },
+                {
+                  "disabled": false,
+                  "key": "hypervisor_management_system_name",
+                  "value": "<string>",
+                  "description": "The name of the Hypervisor Management System (HMS) associated with the datastore\n\nAccepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard"
+                },
+                {
+                  "disabled": false,
+                  "key": "policy_id",
+                  "value": "<string>",
+                  "description": "The unique identifier (UID) of the policy that is associated with the instances to return\n\nAccepts: Single value, comma-separated list"
+                },
+                {
+                  "disabled": false,
+                  "key": "policy_name",
+                  "value": "<string>",
+                  "description": "The name of the policy that is associated with the instances to return\n\nAccepts: Single value, comma-separated list"
+                },
+                {
+                  "disabled": false,
+                  "key": "hypervisor_object_id",
+                  "value": "<string>",
+                  "description": "The unique identifier (UID) of the hypervisor-based instance  that is associated with the instances to return\n\nAccepts: Single value, comma-separated list"
+                },
+                {
+                  "disabled": false,
+                  "key": "mount_directory",
+                  "value": "<string>",
+                  "description": "The mount point on the system associated with the datastores to return\n\nAccepts: Single value, comma-separated list"
+                },
+                {
+                  "disabled": false,
+                  "key": "cluster_group_id",
+                  "value": "<string>",
+                  "description": "The unique identifiers (UIDs) of the cluster_groups associated with the datastores to return\n\nAccepts: Single value, comma-separated list"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "A comma-separated list of fields to include in the returned objects\n\n Default: Returns all fields"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "500",
+                  "description": "A positive integer that represents the maximum number of results to return\n\nDefault: 500"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "A positive integer that directs the service to start returning the &lt;offset value&gt; instance, up to the limit\n\nDefault: 0"
+                },
+                {
+                  "disabled": false,
+                  "key": "case",
+                  "value": "sensitive",
+                  "description": "An indicator that specifies if the filter and sort results use a case-sensitive or insensitive manner\n\nValid values: sensitive or insensitive\n\nDefault: sensitive"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "The name of the field where the sort occurs"
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "<string>",
+                  "description": "The sort order preference\n\nValid values: ascending or descending\n\nDefault: descending"
+                },
+                {
+                  "disabled": false,
+                  "key": "single_replica",
+                  "value": "<boolean>",
+                  "description": "Whether the datastore contains only single-replica virtual machines (no storage HA)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "63a92bbe-acf4-4016-8061-59b5ca4dd58f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datastores"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "show_optional_fields",
+                      "value": "false"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "min_size",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "max_size",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "created_before",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "omnistack_cluster_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "omnistack_cluster_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compute_cluster_parent_hypervisor_object_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compute_cluster_parent_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hypervisor_management_system_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "policy_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "policy_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hypervisor_object_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "mount_directory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cluster_group_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "500"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "case",
+                      "value": "sensitive"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "single_replica",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"cluster_group_ids\": [\n    \"string\",\n    \"string\"\n  ],\n  \"compute_cluster_parent_hypervisor_object_id\": \"string\",\n  \"compute_cluster_parent_name\": \"string\",\n  \"created_at\": \"string\",\n  \"hypervisor_management_system\": \"string\",\n  \"hypervisor_management_system_name\": \"string\",\n  \"hypervisor_object_id\": \"string\",\n  \"hypervisor_type\": \"VSPHERE\",\n  \"id\": \"string\",\n  \"mount_directory\": \"string\",\n  \"name\": \"string\",\n  \"omnistack_cluster_id\": \"string\",\n  \"omnistack_cluster_name\": \"string\",\n  \"policy_id\": \"string\",\n  \"policy_name\": \"string\",\n  \"shares\": [\n    {\n      \"address\": \"string\",\n      \"host\": \"string\",\n      \"rw\": \"string\"\n    },\n    {\n      \"address\": \"string\",\n      \"host\": \"string\",\n      \"rw\": \"string\"\n    }\n  ],\n  \"size\": 1212,\n  \"deleted\": false,\n  \"hypervisor_free_space\": 459,\n  \"single_replica\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "81554788-92ad-422e-a34f-33d1c147aac7",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datastores"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "show_optional_fields",
+                      "value": "false"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "min_size",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "max_size",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "created_before",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "omnistack_cluster_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "omnistack_cluster_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compute_cluster_parent_hypervisor_object_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compute_cluster_parent_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hypervisor_management_system_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "policy_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "policy_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hypervisor_object_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "mount_directory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cluster_group_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "500"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "case",
+                      "value": "sensitive"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "single_replica",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "50d83bf0-89b1-4d0d-afaa-ffc5c106991d",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datastores"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "show_optional_fields",
+                      "value": "false"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "min_size",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "max_size",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "created_before",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "omnistack_cluster_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "omnistack_cluster_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compute_cluster_parent_hypervisor_object_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compute_cluster_parent_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hypervisor_management_system_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "policy_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "policy_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hypervisor_object_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "mount_directory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cluster_group_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "500"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "case",
+                      "value": "sensitive"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "single_replica",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5e36d964-a8ea-48c4-9f45-6971dbd380f4",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datastores"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "show_optional_fields",
+                      "value": "false"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "min_size",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "max_size",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "created_before",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "omnistack_cluster_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "omnistack_cluster_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compute_cluster_parent_hypervisor_object_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "compute_cluster_parent_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hypervisor_management_system_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "policy_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "policy_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hypervisor_object_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "mount_directory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cluster_group_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "500"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "case",
+                      "value": "sensitive"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "single_replica",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5fa4046f-d263-42ae-913a-f552a6052822",
+          "name": "Creates a new datastore",
+          "request": {
+            "name": "Creates a new datastore",
+            "description": {},
+            "url": {
+              "path": [
+                "datastores"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.simplivity.v1.23+json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"omnistack_cluster_id\": \"<string>\",\n  \"policy_id\": \"<string>\",\n  \"size\": \"<long>\",\n  \"single_replica\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f99fdcb2-942f-48bf-bb79-2611e051a9ba",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datastores"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"omnistack_cluster_id\": \"<string>\",\n  \"policy_id\": \"<string>\",\n  \"size\": \"<long>\",\n  \"single_replica\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"affected_objects\": [\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    },\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    }\n  ],\n  \"end_time\": \"string\",\n  \"id\": \"string\",\n  \"start_time\": \"string\",\n  \"state\": \"COMPLETED\",\n  \"error_code\": 7816,\n  \"error_message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2a64a1c0-e5a0-42f9-99ef-6e3a184adc5b",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datastores"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"omnistack_cluster_id\": \"<string>\",\n  \"policy_id\": \"<string>\",\n  \"size\": \"<long>\",\n  \"single_replica\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5ac8897d-5db5-49ea-96be-4a4a8d0f942e",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datastores"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"omnistack_cluster_id\": \"<string>\",\n  \"policy_id\": \"<string>\",\n  \"size\": \"<long>\",\n  \"single_replica\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0fd30b36-f904-4fb3-96a6-2dd037695b7f",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datastores"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"omnistack_cluster_id\": \"<string>\",\n  \"policy_id\": \"<string>\",\n  \"size\": \"<long>\",\n  \"single_replica\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6c2e8620-3c7f-4563-b1a1-51008b0dd371",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datastores"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"omnistack_cluster_id\": \"<string>\",\n  \"policy_id\": \"<string>\",\n  \"size\": \"<long>\",\n  \"single_replica\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "be0b796e-e5a0-4efc-be86-dbb6589c2d4d",
+          "name": "Retrieves the specified datastore",
+          "request": {
+            "name": "Retrieves the specified datastore",
+            "description": {},
+            "url": {
+              "path": [
+                "datastores",
+                ":datastoreId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "datastoreId",
+                  "description": "(Required) The unique identifier (UID) of the datastore that you want to retrieve"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ae82b3f9-53de-4aa7-8c71-5d847e2addd1",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datastores",
+                    ":datastoreId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datastoreId",
+                      "description": "(Required) The unique identifier (UID) of the datastore that you want to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"cluster_group_ids\": [\n    \"string\",\n    \"string\"\n  ],\n  \"compute_cluster_parent_hypervisor_object_id\": \"string\",\n  \"compute_cluster_parent_name\": \"string\",\n  \"created_at\": \"string\",\n  \"hypervisor_management_system\": \"string\",\n  \"hypervisor_management_system_name\": \"string\",\n  \"hypervisor_object_id\": \"string\",\n  \"hypervisor_type\": \"HYPERV\",\n  \"id\": \"string\",\n  \"mount_directory\": \"string\",\n  \"name\": \"string\",\n  \"omnistack_cluster_id\": \"string\",\n  \"omnistack_cluster_name\": \"string\",\n  \"policy_id\": \"string\",\n  \"policy_name\": \"string\",\n  \"shares\": [\n    {\n      \"address\": \"string\",\n      \"host\": \"string\",\n      \"rw\": \"string\"\n    },\n    {\n      \"address\": \"string\",\n      \"host\": \"string\",\n      \"rw\": \"string\"\n    }\n  ],\n  \"size\": 6140,\n  \"deleted\": false,\n  \"hypervisor_free_space\": 29,\n  \"single_replica\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6a18ddb6-c6ee-4514-a723-02d1d2581d1f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datastores",
+                    ":datastoreId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datastoreId",
+                      "description": "(Required) The unique identifier (UID) of the datastore that you want to retrieve"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9c8c0450-940b-4b63-86de-e607b70f260a",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datastores",
+                    ":datastoreId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datastoreId",
+                      "description": "(Required) The unique identifier (UID) of the datastore that you want to retrieve"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e0ae0167-e939-4008-9480-92d8abffd376",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datastores",
+                    ":datastoreId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datastoreId",
+                      "description": "(Required) The unique identifier (UID) of the datastore that you want to retrieve"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3d1dc118-f99f-4122-bf4c-c56a2f9b570b",
+          "name": "Deletes a datastore",
+          "request": {
+            "name": "Deletes a datastore",
+            "description": {},
+            "url": {
+              "path": [
+                "datastores",
+                ":datastoreId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "datastoreId",
+                  "description": "(Required) The unique identifier (UID) of the datastore"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dacc5975-aa6b-48c8-b987-6b632332380f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datastores",
+                    ":datastoreId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datastoreId",
+                      "description": "(Required) The unique identifier (UID) of the datastore"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"affected_objects\": [\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    },\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    }\n  ],\n  \"end_time\": \"string\",\n  \"id\": \"string\",\n  \"start_time\": \"string\",\n  \"state\": \"COMPLETED\",\n  \"error_code\": 2663,\n  \"error_message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e02eeb86-15cc-499b-a8b7-782e5b33fb51",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datastores",
+                    ":datastoreId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datastoreId",
+                      "description": "(Required) The unique identifier (UID) of the datastore"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2dfaf2e1-384a-48cd-95fd-d2f97c3ef48d",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datastores",
+                    ":datastoreId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datastoreId",
+                      "description": "(Required) The unique identifier (UID) of the datastore"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9b3073e9-68b5-4b99-8019-9b78d980af36",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datastores",
+                    ":datastoreId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datastoreId",
+                      "description": "(Required) The unique identifier (UID) of the datastore"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "edffb7af-1fd9-4136-bb7b-a255b296e965",
+          "name": "Resizes a datastore",
+          "request": {
+            "name": "Resizes a datastore",
+            "description": {},
+            "url": {
+              "path": [
+                "datastores",
+                ":datastoreId",
+                "resize"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "datastoreId",
+                  "description": "(Required) The unique identifier (UID) of the datastore"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.simplivity.v1.23+json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"size\": \"<long>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "84747ef2-3882-40ab-bf0c-709130952de3",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datastores",
+                    ":datastoreId",
+                    "resize"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datastoreId",
+                      "description": "(Required) The unique identifier (UID) of the datastore"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"size\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"affected_objects\": [\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    },\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    }\n  ],\n  \"end_time\": \"string\",\n  \"id\": \"string\",\n  \"start_time\": \"string\",\n  \"state\": \"COMPLETED\",\n  \"error_code\": 2663,\n  \"error_message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "753c3a44-3a52-4d6f-9316-509e17158899",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datastores",
+                    ":datastoreId",
+                    "resize"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datastoreId",
+                      "description": "(Required) The unique identifier (UID) of the datastore"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"size\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c38e3196-4f16-4c64-b02d-2d0535fca951",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datastores",
+                    ":datastoreId",
+                    "resize"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datastoreId",
+                      "description": "(Required) The unique identifier (UID) of the datastore"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"size\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7e39c414-186a-49e1-9d26-854cbf0de3bc",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datastores",
+                    ":datastoreId",
+                    "resize"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datastoreId",
+                      "description": "(Required) The unique identifier (UID) of the datastore"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"size\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6600a9a6-1ec0-4d47-a42c-0cb2f6a44d2c",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datastores",
+                    ":datastoreId",
+                    "resize"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datastoreId",
+                      "description": "(Required) The unique identifier (UID) of the datastore"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"size\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2310fdad-44b5-4e29-be27-d93f65825798",
+          "name": "Sets the backup policy for a datastore",
+          "request": {
+            "name": "Sets the backup policy for a datastore",
+            "description": {},
+            "url": {
+              "path": [
+                "datastores",
+                ":datastoreId",
+                "set_policy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "datastoreId",
+                  "description": "(Required) The unique identifier (UID) of the datastore"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.simplivity.v1.23+json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"policy_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "43518330-be66-47f8-9844-1e65591b95b4",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datastores",
+                    ":datastoreId",
+                    "set_policy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datastoreId",
+                      "description": "(Required) The unique identifier (UID) of the datastore"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"policy_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"affected_objects\": [\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    },\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    }\n  ],\n  \"end_time\": \"string\",\n  \"id\": \"string\",\n  \"start_time\": \"string\",\n  \"state\": \"COMPLETED\",\n  \"error_code\": 2663,\n  \"error_message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ee153821-da68-4990-a1cf-5ea8e60c02c5",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datastores",
+                    ":datastoreId",
+                    "set_policy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datastoreId",
+                      "description": "(Required) The unique identifier (UID) of the datastore"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"policy_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6b68f3f9-0d1a-4b34-b780-34ab3b82316c",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datastores",
+                    ":datastoreId",
+                    "set_policy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datastoreId",
+                      "description": "(Required) The unique identifier (UID) of the datastore"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"policy_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b57fcf69-41bc-4121-89dd-c89262d00f91",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datastores",
+                    ":datastoreId",
+                    "set_policy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datastoreId",
+                      "description": "(Required) The unique identifier (UID) of the datastore"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"policy_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8d9d84be-affd-4675-878a-095b2cc20811",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datastores",
+                    ":datastoreId",
+                    "set_policy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datastoreId",
+                      "description": "(Required) The unique identifier (UID) of the datastore"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"policy_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "94e227ce-e358-4121-bee5-841a33f24e5e",
+          "name": "Share a datastore",
+          "request": {
+            "name": "Share a datastore",
+            "description": {},
+            "url": {
+              "path": [
+                "datastores",
+                ":datastoreId",
+                "share"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "datastoreId",
+                  "description": "(Required) The unique identifier (UID) of the datastore"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.simplivity.v1.19+json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"host_name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "46f2e6ca-1907-4899-8f17-f463f22db717",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datastores",
+                    ":datastoreId",
+                    "share"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datastoreId",
+                      "description": "(Required) The unique identifier (UID) of the datastore"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"host_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"affected_objects\": [\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    },\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    }\n  ],\n  \"end_time\": \"string\",\n  \"id\": \"string\",\n  \"start_time\": \"string\",\n  \"state\": \"COMPLETED\",\n  \"error_code\": 2663,\n  \"error_message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3d13257d-1be9-4392-8832-605c1787922e",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datastores",
+                    ":datastoreId",
+                    "share"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datastoreId",
+                      "description": "(Required) The unique identifier (UID) of the datastore"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"host_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f81c2e82-d900-4436-ae35-d0196ea0250b",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datastores",
+                    ":datastoreId",
+                    "share"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datastoreId",
+                      "description": "(Required) The unique identifier (UID) of the datastore"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"host_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7dfd41a9-fb74-4404-99db-ca1d8b8ec157",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datastores",
+                    ":datastoreId",
+                    "share"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datastoreId",
+                      "description": "(Required) The unique identifier (UID) of the datastore"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"host_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "11cebafd-8148-4789-bcd2-6bef919d9255",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datastores",
+                    ":datastoreId",
+                    "share"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datastoreId",
+                      "description": "(Required) The unique identifier (UID) of the datastore"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"host_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5aaa050e-6a27-4394-9391-9f80c31b2324",
+          "name": "Gets the standard hosts that can share a datastore",
+          "request": {
+            "name": "Gets the standard hosts that can share a datastore",
+            "description": {},
+            "url": {
+              "path": [
+                "datastores",
+                ":datastoreId",
+                "standard_hosts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "datastoreId",
+                  "description": "(Required) The unique identifier (UID) of the datastore"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2e322092-ddc0-48dd-8683-366035626c80",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datastores",
+                    ":datastoreId",
+                    "standard_hosts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datastoreId",
+                      "description": "(Required) The unique identifier (UID) of the datastore"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"hypervisor_object_id\": \"string\",\n  \"ip_address\": \"string\",\n  \"name\": \"string\",\n  \"shared\": false,\n  \"virtual_machine_count\": 8948\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e74d2937-cdc8-4d8d-a1df-b8cbec4adc62",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datastores",
+                    ":datastoreId",
+                    "standard_hosts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datastoreId",
+                      "description": "(Required) The unique identifier (UID) of the datastore"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dffd65ac-7436-4860-869a-fd792b259518",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datastores",
+                    ":datastoreId",
+                    "standard_hosts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datastoreId",
+                      "description": "(Required) The unique identifier (UID) of the datastore"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "96181a6c-bfe8-446e-af27-d288da595732",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datastores",
+                    ":datastoreId",
+                    "standard_hosts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datastoreId",
+                      "description": "(Required) The unique identifier (UID) of the datastore"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2141650d-f693-474f-bb21-cbcde21d549e",
+          "name": "Stop sharing a datastore",
+          "request": {
+            "name": "Stop sharing a datastore",
+            "description": {},
+            "url": {
+              "path": [
+                "datastores",
+                ":datastoreId",
+                "unshare"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "datastoreId",
+                  "description": "(Required) The unique identifier (UID) of the datastore"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.simplivity.v1.19+json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"host_name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "96bb5f9d-c173-4c5d-b90c-930cd03906df",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datastores",
+                    ":datastoreId",
+                    "unshare"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datastoreId",
+                      "description": "(Required) The unique identifier (UID) of the datastore"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"host_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"affected_objects\": [\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    },\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    }\n  ],\n  \"end_time\": \"string\",\n  \"id\": \"string\",\n  \"start_time\": \"string\",\n  \"state\": \"COMPLETED\",\n  \"error_code\": 2663,\n  \"error_message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9f3385c9-3543-4c1c-a71a-e5e74acf46ec",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datastores",
+                    ":datastoreId",
+                    "unshare"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datastoreId",
+                      "description": "(Required) The unique identifier (UID) of the datastore"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"host_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fa19322f-ccf8-4741-8761-ff059397d04a",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datastores",
+                    ":datastoreId",
+                    "unshare"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datastoreId",
+                      "description": "(Required) The unique identifier (UID) of the datastore"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"host_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fcd5a09a-0cab-4404-bac4-1631a518b9f1",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datastores",
+                    ":datastoreId",
+                    "unshare"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datastoreId",
+                      "description": "(Required) The unique identifier (UID) of the datastore"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"host_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9e84f9ee-8f54-4884-8a40-4680c8d5495f",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datastores",
+                    ":datastoreId",
+                    "unshare"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datastoreId",
+                      "description": "(Required) The unique identifier (UID) of the datastore"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"host_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "//localhost",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ed8f789b-337e-4f95-9292-5cea0c57ac39",
+    "name": "HPE OmniStack REST backups datastores API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This API enables the programmatic management of key components of an HPE SimpliVity configuration.\n\nTo access the API, request an authentication token by issuing an authentication request in the following form, where the username/password combination is a set of valid management credentials for the applicable hypervisor environment:\n\n     curl -k https://simplivity@<host>/api/oauth/token -d grant_type=password -d username=<user> -d password=<pass>\n\nThen, you can pass in the resulting access_token returned in each HTTP header using Authorization: Bearer token. For example:\n\n     curl -H \"Authorization: Bearer 0a08c809-17ff-479f-b0a8-aedd4d8305a0\"\n\nThe access_token times out after 10 minutes of inactivity and expires after 24 hours.\n\nMake sure to use TLS version 1.2 or greater.\n\nThere are a wide range of possible return values.  Below is a list of the most common return values. \n\n    200 \"OK\" ⁃ This indicates that the request and action has completed with no issues.\n    201 \"Created\" ⁃ This indicates that the request has completed and a new resource has been created.\n    202 \"Accepted\" ⁃ This indicates that the request has been accepted for processing but the processing has not\n                     completed. This is a typical return when a task is generated.\n    400 \"Bad Request\" ⁃ The request cannot or will not be proccessed.  Usually due to a missing required parameter\n                        or invalid data in the parameter.\n    401 \"Unauthorized\" ⁃ The request has not been applied because it lacks authentication credentials for the\n                         target resource.\n    404 \"Not Found\" ⁃ The requested target doesn't exist or has been deleted.\n    405 \"Method Not Allowed\" ⁃ The method being requested is not valid for the target it is being performed on.\n    408 \"Request Timeout\" ⁃ The response took too long.\n    500 \"Internal Server Error\" ⁃ Indicates that the server encountered an unexpected condition that prevented it\n                                  from fulfilling the request.\n\n<a href=\"https://developer.hpe.com/platform/hpe-simplivity/home\" class=\"\toggleEndpointList\" data-id=\"errors\">Click here for a complete list of return codes and response formats</a>\n\n\n\nContact Support:\n Name: Hewlett Packard Enterprise",
+      "type": "text/plain"
+    }
+  }
+}

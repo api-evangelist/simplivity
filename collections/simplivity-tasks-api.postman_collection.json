@@ -1,0 +1,231 @@
+{
+  "item": [
+    {
+      "id": "6ed27bc1-c081-4b69-9c44-66add684ef78",
+      "name": "tasks",
+      "description": {
+        "content": "A task is created by the system to enable a client to track state changes where a managed object moves when it is created or modified.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "19248170-8e6e-4036-9891-d715865370be",
+          "name": "Retrieves the specified task",
+          "request": {
+            "name": "Retrieves the specified task",
+            "description": {},
+            "url": {
+              "path": [
+                "tasks",
+                ":taskId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "taskId",
+                  "description": "(Required) The unique identifier (UID) of the task that you want to retrieve"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.simplivity.v1.23+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "416f092f-9275-4cf7-a569-3d72e703e1a7",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tasks",
+                    ":taskId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taskId",
+                      "description": "(Required) The unique identifier (UID) of the task that you want to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.simplivity.v1.23+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.simplivity.v1.23+json"
+                }
+              ],
+              "body": "{\n  \"affected_objects\": [\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    },\n    {\n      \"object_id\": \"string\",\n      \"object_type\": \"string\"\n    }\n  ],\n  \"end_time\": \"string\",\n  \"id\": \"string\",\n  \"start_time\": \"string\",\n  \"state\": \"IN_PROGRESS\",\n  \"error_code\": 7179,\n  \"error_message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d6f51afa-d0c3-4e0f-9b2f-9953659eb187",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tasks",
+                    ":taskId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taskId",
+                      "description": "(Required) The unique identifier (UID) of the task that you want to retrieve"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "00540b27-0781-473f-b11b-f9622bc6e916",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tasks",
+                    ":taskId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taskId",
+                      "description": "(Required) The unique identifier (UID) of the task that you want to retrieve"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4c73ef93-c297-41c9-80f2-2ea80fd3d2db",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tasks",
+                    ":taskId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taskId",
+                      "description": "(Required) The unique identifier (UID) of the task that you want to retrieve"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "//localhost",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a32e4b01-d48d-4000-9b34-b3a7e863b973",
+    "name": "HPE OmniStack REST backups tasks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This API enables the programmatic management of key components of an HPE SimpliVity configuration.\n\nTo access the API, request an authentication token by issuing an authentication request in the following form, where the username/password combination is a set of valid management credentials for the applicable hypervisor environment:\n\n     curl -k https://simplivity@<host>/api/oauth/token -d grant_type=password -d username=<user> -d password=<pass>\n\nThen, you can pass in the resulting access_token returned in each HTTP header using Authorization: Bearer token. For example:\n\n     curl -H \"Authorization: Bearer 0a08c809-17ff-479f-b0a8-aedd4d8305a0\"\n\nThe access_token times out after 10 minutes of inactivity and expires after 24 hours.\n\nMake sure to use TLS version 1.2 or greater.\n\nThere are a wide range of possible return values.  Below is a list of the most common return values. \n\n    200 \"OK\" ⁃ This indicates that the request and action has completed with no issues.\n    201 \"Created\" ⁃ This indicates that the request has completed and a new resource has been created.\n    202 \"Accepted\" ⁃ This indicates that the request has been accepted for processing but the processing has not\n                     completed. This is a typical return when a task is generated.\n    400 \"Bad Request\" ⁃ The request cannot or will not be proccessed.  Usually due to a missing required parameter\n                        or invalid data in the parameter.\n    401 \"Unauthorized\" ⁃ The request has not been applied because it lacks authentication credentials for the\n                         target resource.\n    404 \"Not Found\" ⁃ The requested target doesn't exist or has been deleted.\n    405 \"Method Not Allowed\" ⁃ The method being requested is not valid for the target it is being performed on.\n    408 \"Request Timeout\" ⁃ The response took too long.\n    500 \"Internal Server Error\" ⁃ Indicates that the server encountered an unexpected condition that prevented it\n                                  from fulfilling the request.\n\n<a href=\"https://developer.hpe.com/platform/hpe-simplivity/home\" class=\"\toggleEndpointList\" data-id=\"errors\">Click here for a complete list of return codes and response formats</a>\n\n\n\nContact Support:\n Name: Hewlett Packard Enterprise",
+      "type": "text/plain"
+    }
+  }
+}

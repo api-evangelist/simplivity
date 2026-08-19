@@ -1,0 +1,122 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "HPE OmniStack REST backups security API",
+    "version": "1.25"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "security",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all SSL certificates from the HPE SimpliVity trust store",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/security/certificates"
+          },
+          "docs": "Get all SSL certificates from the HPE SimpliVity trust store"
+        },
+        {
+          "info": {
+            "name": "Add an SSL certificate to the HPE SimpliVity trust store",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/security/certificates"
+          },
+          "docs": "Add an SSL certificate to the HPE SimpliVity trust store"
+        },
+        {
+          "info": {
+            "name": "Add a DER encoded SSL certificate to the HPE SimpliVity trust store",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/security/certificates/upload_der_encoded_certificate"
+          },
+          "docs": "Add a DER encoded SSL certificate to the HPE SimpliVity trust store"
+        },
+        {
+          "info": {
+            "name": "Get an SSL certificate from the HPE SimpliVity trust store",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/security/certificates/:certId",
+            "params": [
+              {
+                "name": "certId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (SHA-1 thumbprint) of the certificate that you want to retrieve"
+              }
+            ]
+          },
+          "docs": "Get an SSL certificate from the HPE SimpliVity trust store"
+        },
+        {
+          "info": {
+            "name": "Delete an SSL certificate in the HPE SimpliVity trust store",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/security/certificates/:certId",
+            "params": [
+              {
+                "name": "certId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (SHA-1 thumbprint) of the certificate that you want to delete"
+              }
+            ]
+          },
+          "docs": "Delete an SSL certificate in the HPE SimpliVity trust store"
+        },
+        {
+          "info": {
+            "name": "Get all HPE OmniStack role assignments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/security/rbac/policies/role_assignments"
+          },
+          "docs": "Get all HPE OmniStack role assignments"
+        },
+        {
+          "info": {
+            "name": "Add an HPE OmniStack role assignment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/security/rbac/policies/role_assignments"
+          },
+          "docs": "Add an HPE OmniStack role assignment"
+        },
+        {
+          "info": {
+            "name": "Remove HPE OmniStack role assignments",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/security/rbac/policies/role_assignments/remove"
+          },
+          "docs": "Remove HPE OmniStack role assignments"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

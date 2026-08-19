@@ -1,0 +1,442 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "HPE OmniStack REST backups virtual_machines API",
+    "version": "1.25"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "virtual_machines",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieves instances of HPE SimpliVity virtual machines defined on this system",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/virtual_machines",
+            "params": [
+              {
+                "name": "show_optional_fields",
+                "value": "",
+                "type": "query",
+                "description": "An indicator to show or not show the ha_status, ha_resynchronization_progress, hypervisor_virtual_machine_power_state, and hypervisor_is_template\n\nNote: These values are computed from various sources. Consequently, the retrieval of these values may adversely affect the response time of a request."
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier (UID) of the virtual_machines to return\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "The name of the virtual_machines to return\n\nAccepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard"
+              },
+              {
+                "name": "omnistack_cluster_id",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier (UID) of the omnistack_cluster that is associated with the instances to return\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "omnistack_cluster_name",
+                "value": "",
+                "type": "query",
+                "description": "The name of the omnistack_cluster that is associated with the instances to return\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "compute_cluster_parent_hypervisor_object_id",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier (UID) of the hypervisor-based instance that contains the omnistack_cluster that is associated with the instances to return\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "compute_cluster_parent_name",
+                "value": "",
+                "type": "query",
+                "description": "The name of the hypervisor-based instance that contains the omnistack_cluster that is associated with the instances to return\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "hypervisor_management_system",
+                "value": "",
+                "type": "query",
+                "description": "The IP address of the hypervisor-based instance associated with the virtual machine\n\nAccepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard"
+              },
+              {
+                "name": "hypervisor_management_system_name",
+                "value": "",
+                "type": "query",
+                "description": "The name of the hypervisor-based instance associated with the virtual machine\n\nAccepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard"
+              },
+              {
+                "name": "datastore_id",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier (UID) of the datastore that is associated with the instances to return\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "datastore_name",
+                "value": "",
+                "type": "query",
+                "description": "The name of the datastore that is associated with the instances to return\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "policy_id",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier (UID) of the policy that is associated with the instances to return\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "policy_name",
+                "value": "",
+                "type": "query",
+                "description": "The name of the policy that is associated with the instances to return\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "hypervisor_object_id",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier (UID) of the hypervisor-based instance  that is associated with the instances to return\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "created_after",
+                "value": "",
+                "type": "query",
+                "description": "The earliest creation time after the virtual machines to return were created, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)"
+              },
+              {
+                "name": "created_before",
+                "value": "",
+                "type": "query",
+                "description": "The latest creation time before the virtual machines to return were created, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)"
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "The state of the virtual_machine that is associated with the instances to return\n\nAccepts: Single value, comma-separated list\n\nValid values: ALIVE, REMOVED, DELETED\n\nDefault: ALIVE"
+              },
+              {
+                "name": "app_aware_vm_status",
+                "value": "",
+                "type": "query",
+                "description": "The status of the ability of the virtual machine to take an application-consistent backup that uses Microsoft VSS\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "hypervisor_is_template",
+                "value": "",
+                "type": "query",
+                "description": "An indicator that shows if the virtual machine is a template"
+              },
+              {
+                "name": "host_id",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier (UID) of the virtual_machine host"
+              },
+              {
+                "name": "cluster_group_id",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifiers (UIDs) of the cluster_groups associated with the virtual_machines to return\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A comma-separated list of fields to include in the returned objects\n\n Default: Returns all fields"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "A positive integer that represents the maximum number of results to return\n\nDefault: 500"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "A positive integer that directs the service to start returning the &lt;offset value&gt; instance, up to the limit\n\nDefault: 0"
+              },
+              {
+                "name": "case",
+                "value": "",
+                "type": "query",
+                "description": "An indicator that specifies if the filter and sort results use a case-sensitive or insensitive manner\n\nValid values: sensitive or insensitive\n\nDefault: sensitive"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "The name of the field where the sort occurs"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "The sort order preference\n\nValid values: ascending or descending\n\nDefault: descending"
+              }
+            ]
+          },
+          "docs": "Retrieves instances of HPE SimpliVity virtual machines defined on this system"
+        },
+        {
+          "info": {
+            "name": "Generate a backup impact reported based on proposed application of a policy to one or more virtual machines",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/virtual_machines/policy_impact_report/apply_policy"
+          },
+          "docs": "Generate a backup impact reported based on proposed application of a policy to one or more virtual machines"
+        },
+        {
+          "info": {
+            "name": "Sets the backup policy for virtual machines",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/virtual_machines/set_policy"
+          },
+          "docs": "Sets the backup policy for virtual machines"
+        },
+        {
+          "info": {
+            "name": "Retrieves the specified virtual_machines",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/virtual_machines/:vmId",
+            "params": [
+              {
+                "name": "vmId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the virtual_machine that you want to retrieve"
+              }
+            ]
+          },
+          "docs": "Retrieves the specified virtual_machines"
+        },
+        {
+          "info": {
+            "name": "Backs up a virtual machine",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/virtual_machines/:vmId/backup",
+            "params": [
+              {
+                "name": "vmId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the virtual_machine you want to access"
+              }
+            ]
+          },
+          "docs": "Backs up a virtual machine"
+        },
+        {
+          "info": {
+            "name": "Set the virtual machine backup parameters used for application consistent backups.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/virtual_machines/:vmId/backup_parameters",
+            "params": [
+              {
+                "name": "vmId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the virtual_machine you want to access"
+              }
+            ]
+          },
+          "docs": "Set the virtual machine backup parameters used for application consistent backups."
+        },
+        {
+          "info": {
+            "name": "Retrieves all backups associated with this virtual_machine",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/virtual_machines/:vmId/backups",
+            "params": [
+              {
+                "name": "vmId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the virtual_machine that you want to retrieve"
+              }
+            ]
+          },
+          "docs": "Deprecated as of version 1.4. Instead use GET /api/backups?virtual_machine_id={vmId}"
+        },
+        {
+          "info": {
+            "name": "Clones a virtual machine",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/virtual_machines/:vmId/clone",
+            "params": [
+              {
+                "name": "vmId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the virtual_machine you want to access"
+              }
+            ]
+          },
+          "docs": "Clones a virtual machine"
+        },
+        {
+          "info": {
+            "name": "Retrieves throughput, IOPS, and latency data for the virtual machine",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/virtual_machines/:vmId/metrics",
+            "params": [
+              {
+                "name": "vmId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the virtual_machine"
+              },
+              {
+                "name": "time_offset",
+                "value": "",
+                "type": "query",
+                "description": "A time offset in seconds (from now) or a datetime, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)\n\nDefault: 0"
+              },
+              {
+                "name": "range",
+                "value": "",
+                "type": "query",
+                "description": "A range in seconds (the duration from the specified point in time)\n\nDefault: 43200"
+              },
+              {
+                "name": "resolution",
+                "value": "",
+                "type": "query",
+                "description": "The resolution (SECOND, MINUTE, HOUR, or DAY)\n\nDefault: MINUTE"
+              }
+            ]
+          },
+          "docs": "Retrieves throughput, IOPS, and latency data for the virtual machine"
+        },
+        {
+          "info": {
+            "name": "Moves a virtual machine to another datastore",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/virtual_machines/:vmId/move",
+            "params": [
+              {
+                "name": "vmId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the virtual_machine you want to access"
+              }
+            ]
+          },
+          "docs": "Moves a virtual machine to another datastore"
+        },
+        {
+          "info": {
+            "name": "Power off a VM",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/virtual_machines/:vmId/power_off",
+            "params": [
+              {
+                "name": "vmId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the virtual_machine you want to access"
+              }
+            ]
+          },
+          "docs": "Power off a VM"
+        },
+        {
+          "info": {
+            "name": "Power on a VM",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/virtual_machines/:vmId/power_on",
+            "params": [
+              {
+                "name": "vmId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the virtual_machine you want to access"
+              }
+            ]
+          },
+          "docs": "Power on a VM"
+        },
+        {
+          "info": {
+            "name": "Sets the backup policy for a virtual machine",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/virtual_machines/:vmId/set_policy",
+            "params": [
+              {
+                "name": "vmId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the virtual_machine you want to access"
+              }
+            ]
+          },
+          "docs": "Sets the backup policy for a virtual machine"
+        },
+        {
+          "info": {
+            "name": "Validates the credentials for the virtual machine you want to backup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/virtual_machines/:vmId/validate_backup_credentials",
+            "params": [
+              {
+                "name": "vmId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the virtual_machine you want to access"
+              }
+            ]
+          },
+          "docs": "Validates the credentials for the virtual machine you want to backup"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

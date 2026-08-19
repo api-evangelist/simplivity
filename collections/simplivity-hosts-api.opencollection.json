@@ -1,0 +1,447 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "HPE OmniStack REST backups hosts API",
+    "version": "1.25"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "hosts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieves all hosts defined on this system",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/hosts",
+            "params": [
+              {
+                "name": "show_optional_fields",
+                "value": "",
+                "type": "query",
+                "description": "An indicator to show the capacity metrics of the host\n\nNote: These values are computed from various sources. Consequently, the retrieval of these values may adversely affect the response time of a request."
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier (UID) of the host\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "The name of the host\n\nAccepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "The type of host\n\nAccepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard"
+              },
+              {
+                "name": "model",
+                "value": "",
+                "type": "query",
+                "description": "The model of the host\n\nAccepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "query",
+                "description": "The version of the host\n\nAccepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard"
+              },
+              {
+                "name": "hypervisor_management_system",
+                "value": "",
+                "type": "query",
+                "description": "The IP address of the Hypervisor Management System (HMS) associated with the host\n\nAccepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard"
+              },
+              {
+                "name": "hypervisor_management_system_name",
+                "value": "",
+                "type": "query",
+                "description": "The name of the Hypervisor Management System (HMS) associated with the host\n\nAccepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard"
+              },
+              {
+                "name": "hypervisor_object_id",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier (UID) of the hypervisor-based instance associated with the host\n\nAccepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard"
+              },
+              {
+                "name": "compute_cluster_name",
+                "value": "",
+                "type": "query",
+                "description": "The name of the compute cluster associated with the host\n\nAccepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard"
+              },
+              {
+                "name": "compute_cluster_hypervisor_object_id",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier (UID) of the Hypervisor Management System (HMS) for the associated compute cluster\n\nAccepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard"
+              },
+              {
+                "name": "management_ip",
+                "value": "",
+                "type": "query",
+                "description": "The IP address of the HPE OmniStack management module that runs on the host\n\nAccepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard"
+              },
+              {
+                "name": "storage_ip",
+                "value": "",
+                "type": "query",
+                "description": "The IP address of the HPE OmniStack storage module that runs on the host\n\nAccepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard"
+              },
+              {
+                "name": "federation_ip",
+                "value": "",
+                "type": "query",
+                "description": "The IP address of the federation\n\nAccepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard"
+              },
+              {
+                "name": "virtual_controller_name",
+                "value": "",
+                "type": "query",
+                "description": "The name of the Virtual Controller that runs on the host\n\nAccepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard"
+              },
+              {
+                "name": "compute_cluster_parent_name",
+                "value": "",
+                "type": "query",
+                "description": "The name of the hypervisor-based instance that contains the omnistack_cluster that is associated with the instance\n\nAccepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard"
+              },
+              {
+                "name": "compute_cluster_parent_hypervisor_object_id",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier (UID) of the hypervisor-based instance that contains the omnistack_cluster that is associated with the instance\n\nAccepts: Single value, comma-separated list, pattern using one or more asterisk characters as a wildcard"
+              },
+              {
+                "name": "policy_enabled",
+                "value": "",
+                "type": "query",
+                "description": "An indicator to show the status of the backup policy for the host\n\nValid values:\n\nTrue: The backup policy for the host is enabled.\n\nFalse: The backup policy for the host is disabled."
+              },
+              {
+                "name": "current_feature_level_min",
+                "value": "",
+                "type": "query",
+                "description": "The minimum current feature level of the HPE OmniStack software running on the host"
+              },
+              {
+                "name": "current_feature_level_max",
+                "value": "",
+                "type": "query",
+                "description": "The maximum current feature level of the HPE OmniStack software running on the host"
+              },
+              {
+                "name": "potential_feature_level_min",
+                "value": "",
+                "type": "query",
+                "description": "The minimum potential feature level of the HPE OmniStack software running on the host"
+              },
+              {
+                "name": "potential_feature_level_max",
+                "value": "",
+                "type": "query",
+                "description": "The maximum potential feature level of the HPE OmniStack software running on the host"
+              },
+              {
+                "name": "cluster_feature_level_min",
+                "value": "",
+                "type": "query",
+                "description": "The minimum cluster feature level of the HPE OmniStack software running on the host"
+              },
+              {
+                "name": "cluster_feature_level_max",
+                "value": "",
+                "type": "query",
+                "description": "The maximum cluster feature level of the HPE OmniStack software running on the host"
+              },
+              {
+                "name": "upgrade_state",
+                "value": "",
+                "type": "query",
+                "description": "The state of the most recent HPE OmniStack software upgrade for this host (SUCCESS, FAIL, IN_PROGRESS, NOOP, UNKNOWN)\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "can_rollback",
+                "value": "",
+                "type": "query",
+                "description": "An indicator to show if the current HPE OmniStack software running on the host can roll back to the previous version\n\nValid values:\n\nTrue: The current HPE OmniStack software for the host can roll back to the previous version.\n\nFalse: The current HPE OmniStack software for the host cannot roll back to the previous version."
+              },
+              {
+                "name": "omnistack_cluster_id",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier (UID) of the omnistack_cluster associated with the host"
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "The current state of the host"
+              },
+              {
+                "name": "cluster_group_id",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifiers (UIDs) of the cluster_groups associated with the hosts to return\n\nAccepts: Single value, comma-separated list"
+              },
+              {
+                "name": "availability_zone_planned",
+                "value": "",
+                "type": "query",
+                "description": "The planned-assigned availability zone. This will become the effectively-assigned zone once the zone changes are realized."
+              },
+              {
+                "name": "availability_zone_effective",
+                "value": "",
+                "type": "query",
+                "description": "The effectively-assigned availability zone"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A comma-separated list of fields to include in the returned objects\n\n Default: Returns all fields"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "A positive integer that represents the maximum number of results to return\n\nDefault: 500"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "A positive integer that directs the service to start returning the &lt;offset value&gt; instance, up to the limit\n\nDefault: 0"
+              },
+              {
+                "name": "case",
+                "value": "",
+                "type": "query",
+                "description": "An indicator that specifies if the filter and sort results use a case-sensitive or insensitive manner\n\nValid values: sensitive or insensitive\n\nDefault: sensitive"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "The name of the field where the sort occurs"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "The sort order preference\n\nValid values: ascending or descending\n\nDefault: descending"
+              }
+            ]
+          },
+          "docs": "Retrieves all hosts defined on this system"
+        },
+        {
+          "info": {
+            "name": "Retrieves the specified host",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/hosts/:hostId",
+            "params": [
+              {
+                "name": "hostId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the host that you want to retrieve"
+              }
+            ]
+          },
+          "docs": "Retrieves the specified host"
+        },
+        {
+          "info": {
+            "name": "Cancels the shutdown of the Virtual Controller",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/hosts/:hostId/cancel_virtual_controller_shutdown",
+            "params": [
+              {
+                "name": "hostId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the host"
+              }
+            ]
+          },
+          "docs": "Cancels the shutdown of the Virtual Controller"
+        },
+        {
+          "info": {
+            "name": "Host Capacity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/hosts/:hostId/capacity",
+            "params": [
+              {
+                "name": "hostId",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the host. This identifier is unique within the category namespace."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "A comma-separated list of fields to include in the returned objects\n\n Default: Returns all fields"
+              },
+              {
+                "name": "time_offset",
+                "value": "",
+                "type": "query",
+                "description": "A time offset in seconds (from now) or a datetime, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)\n\nDefault: 0"
+              },
+              {
+                "name": "range",
+                "value": "",
+                "type": "query",
+                "description": "A range in seconds (the duration from the specified point in time)\n\nDefault: 43200"
+              },
+              {
+                "name": "resolution",
+                "value": "",
+                "type": "query",
+                "description": "The resolution (SECOND, MINUTE, HOUR, or DAY)\n\nDefault: MINUTE"
+              }
+            ]
+          },
+          "docs": "Host Capacity"
+        },
+        {
+          "info": {
+            "name": "Retrieves hardware information for the host",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/hosts/:hostId/hardware",
+            "params": [
+              {
+                "name": "hostId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the host that you want to retrieve"
+              }
+            ]
+          },
+          "docs": "Retrieves hardware information for the host"
+        },
+        {
+          "info": {
+            "name": "Retrieves throughput, IOPS, and latency data for the host",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/hosts/:hostId/metrics",
+            "params": [
+              {
+                "name": "hostId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the host"
+              },
+              {
+                "name": "time_offset",
+                "value": "",
+                "type": "query",
+                "description": "A time offset in seconds (from now) or a datetime, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)\n\nDefault: 0"
+              },
+              {
+                "name": "range",
+                "value": "",
+                "type": "query",
+                "description": "A range in seconds (the duration from the specified point in time)\n\nDefault: 43200"
+              },
+              {
+                "name": "resolution",
+                "value": "",
+                "type": "query",
+                "description": "The resolution (SECOND, MINUTE, HOUR, or DAY)\n\nDefault: MINUTE"
+              }
+            ]
+          },
+          "docs": "Retrieves throughput, IOPS, and latency data for the host"
+        },
+        {
+          "info": {
+            "name": "Removes the specified host from the federation. The specified hostId must not be the host executing the request.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/hosts/:hostId/remove_from_federation",
+            "params": [
+              {
+                "name": "hostId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the host"
+              }
+            ]
+          },
+          "docs": "Removes the specified host from the federation. The specified hostId must not be the host executing the request."
+        },
+        {
+          "info": {
+            "name": "Shuts down the Virtual Controller safely (by reaching HA compliance) or by force",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/hosts/:hostId/shutdown_virtual_controller",
+            "params": [
+              {
+                "name": "hostId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the host"
+              }
+            ]
+          },
+          "docs": "Shuts down the Virtual Controller safely (by reaching HA compliance) or by force"
+        },
+        {
+          "info": {
+            "name": "Retrieves the shutdown status of the Virtual Controller",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/hosts/:hostId/virtual_controller_shutdown_status",
+            "params": [
+              {
+                "name": "hostId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UID) of the host"
+              }
+            ]
+          },
+          "docs": "Retrieves the shutdown status of the Virtual Controller"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
