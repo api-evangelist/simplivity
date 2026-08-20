@@ -42,6 +42,17 @@ tags:
 - Virtualization
 - Backup
 - Disaster Recovery
+- Data-Center
+- Storage
+- Cloud Infrastructure
+- HPE
+tags_raw:
+- Company
+- Big Data
+- Hyperconverged Infrastructure
+- Virtualization
+- Backup
+- Disaster Recovery
 - Data Center
 - Storage
 - Cloud Infrastructure
@@ -55,6 +66,8 @@ apis:
   humanURL: https://github.com/HewlettPackard/hpe-simplivity-swagger
   baseURL: https://management-virtual-appliance/api
   tags:
+  - Backups
+  tags_raw:
   - backups
   properties:
   - type: OpenAPI
@@ -70,6 +83,8 @@ apis:
   humanURL: https://github.com/HewlettPackard/hpe-simplivity-swagger
   baseURL: https://management-virtual-appliance/api
   tags:
+  - ClusterGroups
+  tags_raw:
   - cluster_groups
   properties:
   - type: OpenAPI
@@ -84,6 +99,8 @@ apis:
   humanURL: https://github.com/HewlettPackard/hpe-simplivity-swagger
   baseURL: https://management-virtual-appliance/api
   tags:
+  - Datastores
+  tags_raw:
   - datastores
   properties:
   - type: OpenAPI
@@ -99,7 +116,8 @@ apis:
     store
   humanURL: https://github.com/HewlettPackard/hpe-simplivity-swagger
   baseURL: https://management-virtual-appliance/api
-  tags:
+  tags: []
+  tags_raw:
   - external_stores
   properties:
   - type: OpenAPI
@@ -114,6 +132,8 @@ apis:
   humanURL: https://github.com/HewlettPackard/hpe-simplivity-swagger
   baseURL: https://management-virtual-appliance/api
   tags:
+  - Hosts
+  tags_raw:
   - hosts
   properties:
   - type: OpenAPI
@@ -129,7 +149,8 @@ apis:
     defines an omnistack_cluster to efficiently share resources across the systems.
   humanURL: https://github.com/HewlettPackard/hpe-simplivity-swagger
   baseURL: https://management-virtual-appliance/api
-  tags:
+  tags: []
+  tags_raw:
   - omnistack_clusters
   properties:
   - type: OpenAPI
@@ -145,6 +166,8 @@ apis:
   humanURL: https://github.com/HewlettPackard/hpe-simplivity-swagger
   baseURL: https://management-virtual-appliance/api
   tags:
+  - Policies
+  tags_raw:
   - policies
   properties:
   - type: OpenAPI
@@ -159,6 +182,8 @@ apis:
   humanURL: https://github.com/HewlettPackard/hpe-simplivity-swagger
   baseURL: https://management-virtual-appliance/api
   tags:
+  - Security
+  tags_raw:
   - security
   properties:
   - type: OpenAPI
@@ -175,6 +200,8 @@ apis:
   humanURL: https://github.com/HewlettPackard/hpe-simplivity-swagger
   baseURL: https://management-virtual-appliance/api
   tags:
+  - Task
+  tags_raw:
   - tasks
   properties:
   - type: OpenAPI
@@ -190,6 +217,8 @@ apis:
   humanURL: https://github.com/HewlettPackard/hpe-simplivity-swagger
   baseURL: https://management-virtual-appliance/api
   tags:
+  - Virtual Machines
+  tags_raw:
   - virtual_machines
   properties:
   - type: OpenAPI
