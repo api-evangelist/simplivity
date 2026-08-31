@@ -79,7 +79,7 @@ apis:
   humanURL: https://github.com/HewlettPackard/hpe-simplivity-swagger
   baseURL: https://management-virtual-appliance/api
   tags:
-  - Backups
+  - backups
   tags_raw:
   - backups
   properties:
@@ -95,8 +95,7 @@ apis:
     A set of omnistack_clusters that are able to perform backup and restore operations between each other
   humanURL: https://github.com/HewlettPackard/hpe-simplivity-swagger
   baseURL: https://management-virtual-appliance/api
-  tags:
-  - ClusterGroups
+  tags: []
   tags_raw:
   - cluster_groups
   properties:
@@ -112,7 +111,7 @@ apis:
   humanURL: https://github.com/HewlettPackard/hpe-simplivity-swagger
   baseURL: https://management-virtual-appliance/api
   tags:
-  - Datastores
+  - datastores
   tags_raw:
   - datastores
   properties:
@@ -229,8 +228,7 @@ apis:
     A virtual_machine represents a single virtual machine created within an HPE SimpliVity datastore.
   humanURL: https://github.com/HewlettPackard/hpe-simplivity-swagger
   baseURL: https://management-virtual-appliance/api
-  tags:
-  - Virtual Machines
+  tags: []
   tags_raw:
   - virtual_machines
   properties:
@@ -246,6 +244,11 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: ParentCompany
+  url: https://apis.io/providers/hewlett-packard-enterprise/
+  name: Hewlett Packard Enterprise
+  x-relationship: acquired
+  x-evidence: "SimpliVity is the hyperconverged infrastructure (HCI) pioneer acquired by Hewlett Packard Enterprise in 2017 and now shipped as HPE SimpliVity."
 - type: IssueTracker
   url: https://github.com/HewlettPackard/simplivity-python/issues
 - type: Releases
