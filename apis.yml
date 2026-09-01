@@ -79,7 +79,7 @@ apis:
   humanURL: https://github.com/HewlettPackard/hpe-simplivity-swagger
   baseURL: https://management-virtual-appliance/api
   tags:
-  - backups
+  - Backups
   tags_raw:
   - backups
   properties:
@@ -95,7 +95,8 @@ apis:
     A set of omnistack_clusters that are able to perform backup and restore operations between each other
   humanURL: https://github.com/HewlettPackard/hpe-simplivity-swagger
   baseURL: https://management-virtual-appliance/api
-  tags: []
+  tags:
+  - ClusterGroups
   tags_raw:
   - cluster_groups
   properties:
@@ -111,7 +112,7 @@ apis:
   humanURL: https://github.com/HewlettPackard/hpe-simplivity-swagger
   baseURL: https://management-virtual-appliance/api
   tags:
-  - datastores
+  - Datastores
   tags_raw:
   - datastores
   properties:
@@ -228,7 +229,8 @@ apis:
     A virtual_machine represents a single virtual machine created within an HPE SimpliVity datastore.
   humanURL: https://github.com/HewlettPackard/hpe-simplivity-swagger
   baseURL: https://management-virtual-appliance/api
-  tags: []
+  tags:
+  - Virtual Machines
   tags_raw:
   - virtual_machines
   properties:
