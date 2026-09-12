@@ -27,6 +27,18 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
+  "notes": [
+    "simplivity-backups-api-openapi.yml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "simplivity-cluster-groups-api-openapi.yml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "simplivity-datastores-api-openapi.yml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "simplivity-external-stores-api-openapi.yml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "simplivity-hosts-api-openapi.yml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "simplivity-omnistack-clusters-api-openapi.yml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "simplivity-policies-api-openapi.yml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "simplivity-security-api-openapi.yml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "simplivity-tasks-api-openapi.yml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "simplivity-virtual-machines-api-openapi.yml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
   "skipped": []
 }

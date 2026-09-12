@@ -3,8 +3,8 @@ info:
   title: API Evangelist enhancements for HPE OmniStack REST API (SimpliVity)
   version: 1.0.0
 extends: openapi/simplivity-omnistack-openapi-original.json
-generated: '2026-07-21'
-method: generated
+x-generated: '2026-07-21'
+x-method: generated
 actions:
 - target: $.info
   update:

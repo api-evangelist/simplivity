@@ -304,3 +304,5 @@ x-enrichment:
   status: enriched
   artifacts_added: 16
   pass: local-v1
+x-parent: hpe
+x-relationship: product
