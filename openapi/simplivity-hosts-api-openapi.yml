@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  description: "This API enables the programmatic management of key components of an HPE SimpliVity configuration.\n\nTo access the API, request an authentication token by issuing an authentication request in the following form, where the username/password combination is a set of valid management credentials for the applicable hypervisor environment:\n\n     curl -k https://simplivity@<host>/api/oauth/token -d grant_type=password -d username=<user> -d password=<pass>\n\nThen, you can pass in the resulting access_token returned in each HTTP header using Authorization: Bearer token. For example:\n\n     curl -H \"Authorization: Bearer 0a08c809-17ff-479f-b0a8-aedd4d8305a0\"\n\nThe access_token times out after 10 minutes of inactivity and expires after 24 hours.\n\nMake sure to use TLS version 1.2 or greater.\n\nThere are a wide range of possible return values.  Below is a list of the most common return values. \n\n    200 \"OK\" ⁃ This indicates that the request and action has completed with no issues.\n    201 \"Created\" ⁃ This indicates that the request has completed and a new resource has been created.\n    202 \"Accepted\" ⁃ This indicates that the request has been accepted for processing but the processing has not\n                     completed. This is a typical return when a task is generated.\n    400 \"Bad Request\" ⁃ The request cannot or will not be proccessed.  Usually due to a missing required parameter\n                        or invalid data in the parameter.\n    401 \"Unauthorized\" ⁃ The request has not been applied because it lacks authentication credentials for the\n                         target resource.\n    404 \"Not Found\" ⁃ The requested target doesn't exist or has been deleted.\n    405 \"Method Not Allowed\" ⁃ The method being requested is not valid for the target it is being performed on.\n    408 \"Request Timeout\" ⁃ The response took too long.\n    500 \"Internal Server Error\" ⁃ Indicates that the server encountered an unexpected condition that prevented it\n                                  from fulfilling the request.\n\n<a href=\"https://developer.hpe.com/platform/hpe-simplivity/home\" class=\"\toggleEndpointList\" data-id=\"errors\">Click here for a complete list of return codes and response formats</a>\n\n"
+  description: This API enables the programmatic management of key components of an HPE SimpliVity configuration.
   version: '1.25'
-  title: HPE OmniStack REST backups Hosts API
+  title: HPE OmniStack REST Hosts API
   contact:
     name: Hewlett Packard Enterprise
   license:
@@ -10,13 +10,13 @@ info:
 servers:
 - url: https://localhost
 tags:
-- name: hosts
+- name: Hosts
   description: A host is a virtual object that uses HPE OmniStack software in a federation.
 paths:
   /hosts:
     get:
       tags:
-      - hosts
+      - Hosts
       summary: Retrieves all hosts defined on this system
       operationId: listHosts
       parameters:
@@ -444,7 +444,7 @@ paths:
   /hosts/{hostId}:
     get:
       tags:
-      - hosts
+      - Hosts
       summary: Retrieves the specified host
       operationId: getHost
       parameters:
@@ -548,7 +548,7 @@ paths:
   /hosts/{hostId}/cancel_virtual_controller_shutdown:
     post:
       tags:
-      - hosts
+      - Hosts
       summary: Cancels the shutdown of the Virtual Controller
       operationId: cancelShutdownVirtualControllerUsingPOST
       parameters:
@@ -654,7 +654,7 @@ paths:
   /hosts/{hostId}/capacity:
     get:
       tags:
-      - hosts
+      - Hosts
       summary: Host Capacity
       operationId: getHostCapacity
       parameters:
@@ -795,7 +795,7 @@ paths:
   /hosts/{hostId}/hardware:
     get:
       tags:
-      - hosts
+      - Hosts
       summary: Retrieves hardware information for the host
       operationId: getHostHardware
       parameters:
@@ -899,7 +899,7 @@ paths:
   /hosts/{hostId}/metrics:
     get:
       tags:
-      - hosts
+      - Hosts
       summary: Retrieves throughput, IOPS, and latency data for the host
       operationId: getHostMetrics
       parameters:
@@ -1034,8 +1034,8 @@ paths:
   /hosts/{hostId}/remove_from_federation:
     post:
       tags:
-      - hosts
-      summary: Removes the specified host from the federation. The specified hostId must not be the host executing the request.
+      - Hosts
+      summary: Removes the specified host from the federation.
       operationId: removeHostFromFederation
       parameters:
       - name: hostId
@@ -1291,7 +1291,7 @@ paths:
   /hosts/{hostId}/shutdown_virtual_controller:
     post:
       tags:
-      - hosts
+      - Hosts
       summary: Shuts down the Virtual Controller safely (by reaching HA compliance) or by force
       operationId: shutdownVirtualControllerUsingPOST
       parameters:
@@ -1416,7 +1416,7 @@ paths:
   /hosts/{hostId}/virtual_controller_shutdown_status:
     get:
       tags:
-      - hosts
+      - Hosts
       summary: Retrieves the shutdown status of the Virtual Controller
       operationId: getVirtualControllerShutdownStatusUsingGET
       parameters:
@@ -1519,25 +1519,6 @@ paths:
           description: Not Found
 components:
   schemas:
-    ShutdownVirtualControllerMO:
-      type: object
-      properties:
-        ha_wait:
-          type: boolean
-          example: true
-          description: 'An indicator to show if the user wants to shut down the Virtual Controller safely or forcefully.
-
-
-            Valid values:
-
-
-            True: Virtual Controller waits for the virtual machines to reach HA compliance before shutting down
-
-
-            False: Virtual Controller forced to shut down without waiting for HA compliance
-
-
-            Default: True'
     analytics_info:
       type: object
       required:
@@ -1553,142 +1534,44 @@ components:
           type: string
           description: The name of the set of metrics (iops, throughput, latency)
       description: The metrics information
-    ShutdownStatusMO:
+    TaskMO:
       type: object
       required:
-      - status
+      - affected_objects
+      - end_time
+      - id
+      - start_time
+      - state
       properties:
-        status:
-          type: string
-          description: Indicates the shutdown status of the Virtual Controller
-          enum:
-          - NONE
-          - IN_PROGRESS
-          - CANCEL_IN_PROGRESS
-          - FORCE_IN_PROGRESS
-          - HA
-    capacity_info:
-      type: object
-      required:
-      - data_points
-      - name
-      properties:
-        data_points:
+        affected_objects:
           type: array
-          description: The metrics data points
+          description: For a completed task, the unique identifiers (UIDs) and types of the objects affected by the operation
           items:
-            $ref: '#/components/schemas/MetricsRawDataMO'
-        name:
+            $ref: '#/components/schemas/AffectedObjectMO'
+        end_time:
           type: string
-          description: The name of the set of metrics (stored_compressed_data, compression_ratio, deduplication_ratio, capacity_savings, efficiency_ratio, local_backup_capacity, used_logical_capacity, remote_backup_capacity, stored_virtual_machine_data, stored_uncompressed_data, used_capacity, free_space, allocated_capacity)
-      description: The metrics information
-    MetricsRawDataMO:
-      type: object
-      required:
-      - date
-      - value
-      properties:
-        date:
-          type: string
-          description: The date for the set of metrics, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
-        value:
-          type: object
-          description: A metrics result value
-    host_hardware:
-      type: object
-      required:
-      - battery
-      - firmware_revision
-      - host_id
-      - logical_drives
-      - manufacturer
-      - model_number
-      - name
-      - raid_card
-      - serial_number
-      - status
-      properties:
-        accelerator_card:
-          description: The accelerator card information for the host
-          $ref: '#/components/schemas/accelerator_card'
-        battery:
-          description: The backup battery unit information for the host
-          $ref: '#/components/schemas/battery'
-        firmware_revision:
-          type: string
-          description: The firmware revision of the hardware component
-        host_id:
-          type: string
-          description: The unique identifier (UID) of the host
-        logical_drives:
-          description: A list of logical drives for the host
-          $ref: '#/components/schemas/logical_drive'
-        manufacturer:
-          type: string
-          description: The manufacturer of the hardware component
-        model_number:
-          type: string
-          description: The model number of the hardware component
-        name:
-          type: string
-          description: The name of the host
-        raid_card:
-          description: The storage adapter information for the host
-          $ref: '#/components/schemas/storage_adapter'
-        serial_number:
-          type: string
-          description: The serial number of the hardware component
-        status:
-          type: string
-          description: The status of the hardware component (GREEN, YELLOW, RED, or UNKNOWN)
-      description: A list of hardware modules for the host
-    logical_drive:
-      type: object
-      required:
-      - cache_state
-      - capacity
-      - drive_sets
-      - firmware_revision
-      - health
-      - manufacturer
-      - model_number
-      - name
-      - serial_number
-      - status
-      properties:
-        cache_state:
-          type: string
-          description: The cache state for the drive
-        capacity:
+          description: The time the task finished, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+        error_code:
           type: integer
-          format: int64
-          description: The capacity of the drive (in bytes)
-        drive_sets:
-          description: A list of the drive sets
-          $ref: '#/components/schemas/drive_set'
-        firmware_revision:
+          format: int32
+          description: The error code returned if a task failed
+        error_message:
           type: string
-          description: The firmware revision of the hardware component
-        health:
+          description: The error message returned if a task fails
+        id:
           type: string
-          description: The health status for the hardware component (HEALTHY, INITIALIZING, REBUILDING, WARNING, DEGRADED, UNCONFIGURED, MISSING, OFFLINE, FAILED, or HEALTH UNKNOWN)
-        manufacturer:
+          description: The unique identifier (UID) of the task
+        start_time:
           type: string
-          description: The manufacturer of the hardware component
-        model_number:
+          description: The time the task started, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+        state:
           type: string
-          description: The model number of the hardware component
-        name:
-          type: integer
-          format: int64
-          description: The name of the drive
-        serial_number:
-          type: string
-          description: The serial number of the hardware component
-        status:
-          type: string
-          description: The status of the hardware component (GREEN, YELLOW, RED, or UNKNOWN)
-      description: A host that is defined on this system
+          description: The current state of the task object
+          enum:
+          - IN_PROGRESS
+          - COMPLETED
+          - FAILED
+      description: A task that was created as a result of an operation performed on the system
     AffectedObjectMO:
       type: object
       required:
@@ -1701,6 +1584,32 @@ components:
         object_type:
           type: string
           description: The type of the object affected by the completed task (virtual_machine, datastore, omnistack_cluster, backup, host, policy, rule)
+    accelerator_card:
+      type: object
+      required:
+      - firmware_revision
+      - model_number
+      - serial_number
+      - status
+      - temperature
+      properties:
+        firmware_revision:
+          type: string
+          description: The firmware revision of the hardware component
+        model_number:
+          type: string
+          description: The model number of the hardware component
+        serial_number:
+          type: string
+          description: The serial number of the hardware component
+        status:
+          type: string
+          description: The status of the hardware component (GREEN, YELLOW, RED, or UNKNOWN)
+        temperature:
+          type: integer
+          format: int32
+          description: The temperature of the hardware component
+      description: The accelerator card information for the host
     host:
       type: object
       required:
@@ -1928,32 +1837,53 @@ components:
           type: string
           description: The name of the Virtual Controller that runs on the host
       description: A host that is defined on this system
-    MetricsDataMO:
+    logical_drive:
       type: object
       required:
-      - date
-      - reads
-      - writes
+      - cache_state
+      - capacity
+      - drive_sets
+      - firmware_revision
+      - health
+      - manufacturer
+      - model_number
+      - name
+      - serial_number
+      - status
       properties:
-        date:
+        cache_state:
           type: string
-          description: The date for the set of metrics, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
-        reads:
+          description: The cache state for the drive
+        capacity:
           type: integer
           format: int64
-          description: The number of reads per second or latency (in microseconds) or throughput (in bytes per second)
-        writes:
+          description: The capacity of the drive (in bytes)
+        drive_sets:
+          description: A list of the drive sets
+          $ref: '#/components/schemas/drive_set'
+        firmware_revision:
+          type: string
+          description: The firmware revision of the hardware component
+        health:
+          type: string
+          description: The health status for the hardware component (HEALTHY, INITIALIZING, REBUILDING, WARNING, DEGRADED, UNCONFIGURED, MISSING, OFFLINE, FAILED, or HEALTH UNKNOWN)
+        manufacturer:
+          type: string
+          description: The manufacturer of the hardware component
+        model_number:
+          type: string
+          description: The model number of the hardware component
+        name:
           type: integer
           format: int64
-          description: The number of writes per second or latency (in microseconds) or throughput (in bytes per second)
-    remove_from_federation:
-      type: object
-      properties:
-        force:
-          type: boolean
-          example: false
-          description: An indicator to force a retention time modification even if this action results in deleting backups
-      description: Removes the specified host from the federation. The specified hostId must not be the host executing the request.
+          description: The name of the drive
+        serial_number:
+          type: string
+          description: The serial number of the hardware component
+        status:
+          type: string
+          description: The status of the hardware component (GREEN, YELLOW, RED, or UNKNOWN)
+      description: A host that is defined on this system
     battery:
       type: object
       required:
@@ -1992,44 +1922,58 @@ components:
           type: string
           description: The status of the hardware component (GREEN, YELLOW, RED, or UNKNOWN)
       description: The backup battery unit information for the host
-    TaskMO:
+    ShutdownVirtualControllerMO:
+      type: object
+      properties:
+        ha_wait:
+          type: boolean
+          example: true
+          description: 'An indicator to show if the user wants to shut down the Virtual Controller safely or forcefully.
+
+
+            Valid values:
+
+
+            True: Virtual Controller waits for the virtual machines to reach HA compliance before shutting down
+
+
+            False: Virtual Controller forced to shut down without waiting for HA compliance
+
+
+            Default: True'
+    remove_from_federation:
+      type: object
+      properties:
+        force:
+          type: boolean
+          example: false
+          description: An indicator to force a retention time modification even if this action results in deleting backups
+      description: Removes the specified host from the federation. The specified hostId must not be the host executing the request.
+    ShutdownResponseMO:
       type: object
       required:
-      - affected_objects
-      - end_time
-      - id
-      - start_time
-      - state
+      - status
       properties:
-        affected_objects:
-          type: array
-          description: For a completed task, the unique identifiers (UIDs) and types of the objects affected by the operation
-          items:
-            $ref: '#/components/schemas/AffectedObjectMO'
-        end_time:
+        status:
           type: string
-          description: The time the task finished, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
-        error_code:
-          type: integer
-          format: int32
-          description: The error code returned if a task failed
-        error_message:
-          type: string
-          description: The error message returned if a task fails
-        id:
-          type: string
-          description: The unique identifier (UID) of the task
-        start_time:
-          type: string
-          description: The time the task started, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
-        state:
-          type: string
-          description: The current state of the task object
+          description: The status of the process to shut down, cancel, or force the shutdown of the Virtual Controller
           enum:
+          - SUCCESS
+          - FAILURE
+          - UNKNOWN
           - IN_PROGRESS
-          - COMPLETED
-          - FAILED
-      description: A task that was created as a result of an operation performed on the system
+    MetricsRawDataMO:
+      type: object
+      required:
+      - date
+      - value
+      properties:
+        date:
+          type: string
+          description: The date for the set of metrics, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+        value:
+          type: object
+          description: A metrics result value
     physical_drive:
       type: object
       required:
@@ -2103,19 +2047,6 @@ components:
           type: string
           description: The WWN number for the driver
       description: The physical drive
-    ShutdownResponseMO:
-      type: object
-      required:
-      - status
-      properties:
-        status:
-          type: string
-          description: The status of the process to shut down, cancel, or force the shutdown of the Virtual Controller
-          enum:
-          - SUCCESS
-          - FAILURE
-          - UNKNOWN
-          - IN_PROGRESS
     drive_set:
       type: object
       required:
@@ -2154,6 +2085,35 @@ components:
           type: string
           description: The status of the hardware component (GREEN, YELLOW, RED, or UNKNOWN)
       description: The drive set information
+    capacity_info:
+      type: object
+      required:
+      - data_points
+      - name
+      properties:
+        data_points:
+          type: array
+          description: The metrics data points
+          items:
+            $ref: '#/components/schemas/MetricsRawDataMO'
+        name:
+          type: string
+          description: The name of the set of metrics (stored_compressed_data, compression_ratio, deduplication_ratio, capacity_savings, efficiency_ratio, local_backup_capacity, used_logical_capacity, remote_backup_capacity, stored_virtual_machine_data, stored_uncompressed_data, used_capacity, free_space, allocated_capacity)
+      description: The metrics information
+    ShutdownStatusMO:
+      type: object
+      required:
+      - status
+      properties:
+        status:
+          type: string
+          description: Indicates the shutdown status of the Virtual Controller
+          enum:
+          - NONE
+          - IN_PROGRESS
+          - CANCEL_IN_PROGRESS
+          - FORCE_IN_PROGRESS
+          - HA
     storage_adapter:
       type: object
       required:
@@ -2187,32 +2147,72 @@ components:
           type: string
           description: The status of the hardware component (GREEN, YELLOW, RED, or UNKNOWN)
       description: The storage adapter information for the host
-    accelerator_card:
+    host_hardware:
       type: object
       required:
+      - battery
       - firmware_revision
+      - host_id
+      - logical_drives
+      - manufacturer
       - model_number
+      - name
+      - raid_card
       - serial_number
       - status
-      - temperature
       properties:
+        accelerator_card:
+          description: The accelerator card information for the host
+          $ref: '#/components/schemas/accelerator_card'
+        battery:
+          description: The backup battery unit information for the host
+          $ref: '#/components/schemas/battery'
         firmware_revision:
           type: string
           description: The firmware revision of the hardware component
+        host_id:
+          type: string
+          description: The unique identifier (UID) of the host
+        logical_drives:
+          description: A list of logical drives for the host
+          $ref: '#/components/schemas/logical_drive'
+        manufacturer:
+          type: string
+          description: The manufacturer of the hardware component
         model_number:
           type: string
           description: The model number of the hardware component
+        name:
+          type: string
+          description: The name of the host
+        raid_card:
+          description: The storage adapter information for the host
+          $ref: '#/components/schemas/storage_adapter'
         serial_number:
           type: string
           description: The serial number of the hardware component
         status:
           type: string
           description: The status of the hardware component (GREEN, YELLOW, RED, or UNKNOWN)
-        temperature:
+      description: A list of hardware modules for the host
+    MetricsDataMO:
+      type: object
+      required:
+      - date
+      - reads
+      - writes
+      properties:
+        date:
+          type: string
+          description: The date for the set of metrics, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+        reads:
           type: integer
-          format: int32
-          description: The temperature of the hardware component
-      description: The accelerator card information for the host
+          format: int64
+          description: The number of reads per second or latency (in microseconds) or throughput (in bytes per second)
+        writes:
+          type: integer
+          format: int64
+          description: The number of writes per second or latency (in microseconds) or throughput (in bytes per second)
   securitySchemes:
     OAuth2:
       type: oauth2

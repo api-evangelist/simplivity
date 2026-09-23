@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  description: "This API enables the programmatic management of key components of an HPE SimpliVity configuration.\n\nTo access the API, request an authentication token by issuing an authentication request in the following form, where the username/password combination is a set of valid management credentials for the applicable hypervisor environment:\n\n     curl -k https://simplivity@<host>/api/oauth/token -d grant_type=password -d username=<user> -d password=<pass>\n\nThen, you can pass in the resulting access_token returned in each HTTP header using Authorization: Bearer token. For example:\n\n     curl -H \"Authorization: Bearer 0a08c809-17ff-479f-b0a8-aedd4d8305a0\"\n\nThe access_token times out after 10 minutes of inactivity and expires after 24 hours.\n\nMake sure to use TLS version 1.2 or greater.\n\nThere are a wide range of possible return values.  Below is a list of the most common return values. \n\n    200 \"OK\" ⁃ This indicates that the request and action has completed with no issues.\n    201 \"Created\" ⁃ This indicates that the request has completed and a new resource has been created.\n    202 \"Accepted\" ⁃ This indicates that the request has been accepted for processing but the processing has not\n                     completed. This is a typical return when a task is generated.\n    400 \"Bad Request\" ⁃ The request cannot or will not be proccessed.  Usually due to a missing required parameter\n                        or invalid data in the parameter.\n    401 \"Unauthorized\" ⁃ The request has not been applied because it lacks authentication credentials for the\n                         target resource.\n    404 \"Not Found\" ⁃ The requested target doesn't exist or has been deleted.\n    405 \"Method Not Allowed\" ⁃ The method being requested is not valid for the target it is being performed on.\n    408 \"Request Timeout\" ⁃ The response took too long.\n    500 \"Internal Server Error\" ⁃ Indicates that the server encountered an unexpected condition that prevented it\n                                  from fulfilling the request.\n\n<a href=\"https://developer.hpe.com/platform/hpe-simplivity/home\" class=\"\toggleEndpointList\" data-id=\"errors\">Click here for a complete list of return codes and response formats</a>\n\n"
+  description: This API enables the programmatic management of key components of an HPE SimpliVity configuration.
   version: '1.25'
   title: HPE OmniStack REST Backups API
   contact:
@@ -10,13 +10,13 @@ info:
 servers:
 - url: https://localhost
 tags:
-- name: backups
+- name: Backups
   description: A backup is a complete, standalone image of a specific virtual machine, taken at a specific point in time.
 paths:
   /backups:
     get:
       tags:
-      - backups
+      - Backups
       summary: Retrieves all backups defined on this system
       operationId: listBackups
       parameters:
@@ -445,7 +445,7 @@ paths:
   /backups/delete:
     post:
       tags:
-      - backups
+      - Backups
       summary: Deletes the specified list of backup instances
       operationId: deleteBackups
       responses:
@@ -626,7 +626,7 @@ paths:
   /backups/set_retention:
     post:
       tags:
-      - backups
+      - Backups
       summary: Sets the retention time for the specified list of backups
       operationId: setBackupRetention
       responses:
@@ -891,7 +891,7 @@ paths:
   /backups/{bkpId}:
     get:
       tags:
-      - backups
+      - Backups
       summary: Retrieves the specified backup
       operationId: getBackup
       parameters:
@@ -994,7 +994,7 @@ paths:
           description: Not Found
     delete:
       tags:
-      - backups
+      - Backups
       summary: Deletes the specified backup
       operationId: deleteBackup
       parameters:
@@ -1098,7 +1098,7 @@ paths:
   /backups/{bkpId}/calculate_unique_size:
     post:
       tags:
-      - backups
+      - Backups
       summary: Calculates the unique size of the specified backup
       operationId: calculateUniqueSize
       parameters:
@@ -1204,7 +1204,7 @@ paths:
   /backups/{bkpId}/cancel:
     post:
       tags:
-      - backups
+      - Backups
       summary: Cancels the specified running backup
       operationId: cancelBackup
       parameters:
@@ -1310,7 +1310,7 @@ paths:
   /backups/{bkpId}/copy:
     post:
       tags:
-      - backups
+      - Backups
       summary: Copies the specified backup to another omnistack_cluster or external_store
       operationId: copyBackup
       parameters:
@@ -1498,7 +1498,7 @@ paths:
   /backups/{bkpId}/lock:
     post:
       tags:
-      - backups
+      - Backups
       summary: Saves the specified backup to prevent it from expiring
       operationId: lockBackup
       parameters:
@@ -1604,7 +1604,7 @@ paths:
   /backups/{bkpId}/rename:
     post:
       tags:
-      - backups
+      - Backups
       summary: Renames the specified backup
       operationId: renameBackup
       parameters:
@@ -1792,8 +1792,8 @@ paths:
   /backups/{bkpId}/restore:
     post:
       tags:
-      - backups
-      summary: Creates a new virtual machine or replaces the original virtual machine from the specified backup
+      - Backups
+      summary: Creates a new virtual machine or replaces the original virtual machine from the…
       operationId: restoreFromBackup
       parameters:
       - name: bkpId
@@ -1998,7 +1998,7 @@ paths:
   /backups/{bkpId}/restore_files:
     post:
       tags:
-      - backups
+      - Backups
       summary: Restore files from a specific partition
       operationId: restoreFiles
       parameters:
@@ -2159,7 +2159,7 @@ paths:
   /backups/{bkpId}/virtual_disk_partition_files:
     get:
       tags:
-      - backups
+      - Backups
       summary: Retrieves the virtual hard disk files from the backup
       operationId: getBackupFiles
       parameters:
@@ -2282,7 +2282,7 @@ paths:
   /backups/{bkpId}/virtual_disk_partitions:
     get:
       tags:
-      - backups
+      - Backups
       summary: Retrieves partition information for the virtual disk associated with the backup
       operationId: getBackupPartitions
       parameters:
@@ -2392,7 +2392,7 @@ paths:
   /backups/{bkpId}/virtual_disks:
     get:
       tags:
-      - backups
+      - Backups
       summary: Retrieves the virtual hard disk files from the backup
       operationId: getVirtualDisksFromBackup
       parameters:
@@ -2495,211 +2495,6 @@ paths:
           description: Not Found
 components:
   schemas:
-    BackupPartitionDataMO:
-      type: object
-      required:
-      - disk_type
-      - mountable
-      - partition_number
-      - size
-      properties:
-        disk_type:
-          type: string
-          description: The partition disk type (for example, GPT or BIOS)
-        mountable:
-          type: boolean
-          example: false
-          description: Indicates if the application can mount the partition
-        partition_number:
-          type: integer
-          format: int32
-          description: The partition number for the partition
-        size:
-          type: integer
-          format: int64
-          description: The size of the partition in bytes
-    BackupVirtualDiskMO:
-      type: object
-      required:
-      - virtual_disks
-      properties:
-        virtual_disks:
-          type: array
-          description: List of backup virtual hard disk files
-          items:
-            type: object
-    restore_file:
-      type: object
-      required:
-      - paths
-      - virtual_machine_id
-      properties:
-        virtual_machine_id:
-          type: string
-          description: The identification number of the virtual machine where you want to restore the files
-        paths:
-          type: array
-          description: 'The paths to the files in this format: virtual_machine_disk_name/partition_number/path_to_file (for example, "vmdk1.vmdk/2/Documents/file.txt")'
-          items:
-            type: string
-      description: Restore files from a specific partition
-    AffectedObjectMO:
-      type: object
-      required:
-      - object_id
-      - object_type
-      properties:
-        object_id:
-          type: string
-          description: The unique identifier (UID) of the object affected by the completed task
-        object_type:
-          type: string
-          description: The type of the object affected by the completed task (virtual_machine, datastore, omnistack_cluster, backup, host, policy, rule)
-    backup_copy:
-      type: object
-      required:
-      - destination_id
-      - external_store_name
-      properties:
-        destination_id:
-          type: string
-          description: The unique identifier (UID) of the omnistack_cluster that stores the new backup
-        external_store_name:
-          type: string
-          description: The name of the external_store
-      description: Copies the specified backup to another omnistack_cluster or external_store
-    backup_retention_set:
-      type: object
-      required:
-      - backup_id
-      - retention
-      properties:
-        backup_id:
-          type: array
-          description: The list of the unique identifier (UID) of the backups that you want to set the retention time for
-          items:
-            type: string
-        retention:
-          type: integer
-          format: int32
-          description: The number of minutes to keep backups
-        force:
-          type: boolean
-          example: false
-          description: An indicator to force a retention time modification even if this action results in deleting backups
-        forever:
-          type: boolean
-          example: false
-          description: 'Retains backups indefinitely '
-      description: Sets the retention time for the specified list of backups
-    TaskMO:
-      type: object
-      required:
-      - affected_objects
-      - end_time
-      - id
-      - start_time
-      - state
-      properties:
-        affected_objects:
-          type: array
-          description: For a completed task, the unique identifiers (UIDs) and types of the objects affected by the operation
-          items:
-            $ref: '#/components/schemas/AffectedObjectMO'
-        end_time:
-          type: string
-          description: The time the task finished, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
-        error_code:
-          type: integer
-          format: int32
-          description: The error code returned if a task failed
-        error_message:
-          type: string
-          description: The error message returned if a task fails
-        id:
-          type: string
-          description: The unique identifier (UID) of the task
-        start_time:
-          type: string
-          description: The time the task started, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
-        state:
-          type: string
-          description: The current state of the task object
-          enum:
-          - IN_PROGRESS
-          - COMPLETED
-          - FAILED
-      description: A task that was created as a result of an operation performed on the system
-    BackupFileDataMO:
-      type: object
-      required:
-      - directory
-      - file_level_restore_available
-      - last_modified
-      - name
-      - size
-      - symbolic_link
-      properties:
-        directory:
-          type: boolean
-          example: false
-          description: Indicates if the file is a directory
-        file_level_restore_available:
-          type: boolean
-          example: false
-          description: Indicates if the file is supported for file level restore
-        last_modified:
-          type: string
-          description: 'The time when the file was last modified, expressed in ISO-8601 form, based on Coordinated Universal Time(UTC). Format: yyyy-mm-ddTHH:mm:ssZ'
-        name:
-          type: string
-          description: The name of the file
-        size:
-          type: integer
-          format: int64
-          description: The size of the file(in bytes)
-        symbolic_link:
-          type: boolean
-          example: false
-          description: Indicates if the file is a symbolic link
-    delete_backups:
-      type: object
-      required:
-      - backup_id
-      properties:
-        backup_id:
-          type: array
-          description: The list of the unique identifier (UID) of the backups that you want to delete
-          items:
-            type: string
-        cluster_group_id:
-          type: string
-          description: The cluster group id of the backup list
-      description: Deletes the specified list of backup instances
-    restore_virtual_machine:
-      type: object
-      required:
-      - virtual_machine_name
-      properties:
-        virtual_machine_name:
-          type: string
-          description: The name of the new virtual machine that this action creates
-        datastore_id:
-          type: string
-          description: '(Optional) The unique identifier (UID) of the datastore where the new virtual machine gets created
-
-
-            Default: Creates the virtual machine in the same datastore as the one used by the chosen backup'
-      description: Creates a new virtual machine or replaces the original virtual machine from the specified backup
-    rename_backup:
-      type: object
-      required:
-      - backup_name
-      properties:
-        backup_name:
-          type: string
-          description: The new name for the backup
-      description: Renames the specified backup
     BackupMO:
       type: object
       required:
@@ -2864,6 +2659,211 @@ components:
           - VM
           - TEMPLATE
           - UNKNOWN
+    restore_virtual_machine:
+      type: object
+      required:
+      - virtual_machine_name
+      properties:
+        virtual_machine_name:
+          type: string
+          description: The name of the new virtual machine that this action creates
+        datastore_id:
+          type: string
+          description: '(Optional) The unique identifier (UID) of the datastore where the new virtual machine gets created
+
+
+            Default: Creates the virtual machine in the same datastore as the one used by the chosen backup'
+      description: Creates a new virtual machine or replaces the original virtual machine from the specified backup
+    TaskMO:
+      type: object
+      required:
+      - affected_objects
+      - end_time
+      - id
+      - start_time
+      - state
+      properties:
+        affected_objects:
+          type: array
+          description: For a completed task, the unique identifiers (UIDs) and types of the objects affected by the operation
+          items:
+            $ref: '#/components/schemas/AffectedObjectMO'
+        end_time:
+          type: string
+          description: The time the task finished, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+        error_code:
+          type: integer
+          format: int32
+          description: The error code returned if a task failed
+        error_message:
+          type: string
+          description: The error message returned if a task fails
+        id:
+          type: string
+          description: The unique identifier (UID) of the task
+        start_time:
+          type: string
+          description: The time the task started, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+        state:
+          type: string
+          description: The current state of the task object
+          enum:
+          - IN_PROGRESS
+          - COMPLETED
+          - FAILED
+      description: A task that was created as a result of an operation performed on the system
+    AffectedObjectMO:
+      type: object
+      required:
+      - object_id
+      - object_type
+      properties:
+        object_id:
+          type: string
+          description: The unique identifier (UID) of the object affected by the completed task
+        object_type:
+          type: string
+          description: The type of the object affected by the completed task (virtual_machine, datastore, omnistack_cluster, backup, host, policy, rule)
+    delete_backups:
+      type: object
+      required:
+      - backup_id
+      properties:
+        backup_id:
+          type: array
+          description: The list of the unique identifier (UID) of the backups that you want to delete
+          items:
+            type: string
+        cluster_group_id:
+          type: string
+          description: The cluster group id of the backup list
+      description: Deletes the specified list of backup instances
+    BackupVirtualDiskMO:
+      type: object
+      required:
+      - virtual_disks
+      properties:
+        virtual_disks:
+          type: array
+          description: List of backup virtual hard disk files
+          items:
+            type: object
+    backup_retention_set:
+      type: object
+      required:
+      - backup_id
+      - retention
+      properties:
+        backup_id:
+          type: array
+          description: The list of the unique identifier (UID) of the backups that you want to set the retention time for
+          items:
+            type: string
+        retention:
+          type: integer
+          format: int32
+          description: The number of minutes to keep backups
+        force:
+          type: boolean
+          example: false
+          description: An indicator to force a retention time modification even if this action results in deleting backups
+        forever:
+          type: boolean
+          example: false
+          description: 'Retains backups indefinitely '
+      description: Sets the retention time for the specified list of backups
+    backup_copy:
+      type: object
+      required:
+      - destination_id
+      - external_store_name
+      properties:
+        destination_id:
+          type: string
+          description: The unique identifier (UID) of the omnistack_cluster that stores the new backup
+        external_store_name:
+          type: string
+          description: The name of the external_store
+      description: Copies the specified backup to another omnistack_cluster or external_store
+    BackupFileDataMO:
+      type: object
+      required:
+      - directory
+      - file_level_restore_available
+      - last_modified
+      - name
+      - size
+      - symbolic_link
+      properties:
+        directory:
+          type: boolean
+          example: false
+          description: Indicates if the file is a directory
+        file_level_restore_available:
+          type: boolean
+          example: false
+          description: Indicates if the file is supported for file level restore
+        last_modified:
+          type: string
+          description: 'The time when the file was last modified, expressed in ISO-8601 form, based on Coordinated Universal Time(UTC). Format: yyyy-mm-ddTHH:mm:ssZ'
+        name:
+          type: string
+          description: The name of the file
+        size:
+          type: integer
+          format: int64
+          description: The size of the file(in bytes)
+        symbolic_link:
+          type: boolean
+          example: false
+          description: Indicates if the file is a symbolic link
+    restore_file:
+      type: object
+      required:
+      - paths
+      - virtual_machine_id
+      properties:
+        virtual_machine_id:
+          type: string
+          description: The identification number of the virtual machine where you want to restore the files
+        paths:
+          type: array
+          description: 'The paths to the files in this format: virtual_machine_disk_name/partition_number/path_to_file (for example, "vmdk1.vmdk/2/Documents/file.txt")'
+          items:
+            type: string
+      description: Restore files from a specific partition
+    BackupPartitionDataMO:
+      type: object
+      required:
+      - disk_type
+      - mountable
+      - partition_number
+      - size
+      properties:
+        disk_type:
+          type: string
+          description: The partition disk type (for example, GPT or BIOS)
+        mountable:
+          type: boolean
+          example: false
+          description: Indicates if the application can mount the partition
+        partition_number:
+          type: integer
+          format: int32
+          description: The partition number for the partition
+        size:
+          type: integer
+          format: int64
+          description: The size of the partition in bytes
+    rename_backup:
+      type: object
+      required:
+      - backup_name
+      properties:
+        backup_name:
+          type: string
+          description: The new name for the backup
+      description: Renames the specified backup
   securitySchemes:
     OAuth2:
       type: oauth2

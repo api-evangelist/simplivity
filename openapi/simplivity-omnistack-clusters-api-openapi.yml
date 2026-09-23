@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  description: "This API enables the programmatic management of key components of an HPE SimpliVity configuration.\n\nTo access the API, request an authentication token by issuing an authentication request in the following form, where the username/password combination is a set of valid management credentials for the applicable hypervisor environment:\n\n     curl -k https://simplivity@<host>/api/oauth/token -d grant_type=password -d username=<user> -d password=<pass>\n\nThen, you can pass in the resulting access_token returned in each HTTP header using Authorization: Bearer token. For example:\n\n     curl -H \"Authorization: Bearer 0a08c809-17ff-479f-b0a8-aedd4d8305a0\"\n\nThe access_token times out after 10 minutes of inactivity and expires after 24 hours.\n\nMake sure to use TLS version 1.2 or greater.\n\nThere are a wide range of possible return values.  Below is a list of the most common return values. \n\n    200 \"OK\" ⁃ This indicates that the request and action has completed with no issues.\n    201 \"Created\" ⁃ This indicates that the request has completed and a new resource has been created.\n    202 \"Accepted\" ⁃ This indicates that the request has been accepted for processing but the processing has not\n                     completed. This is a typical return when a task is generated.\n    400 \"Bad Request\" ⁃ The request cannot or will not be proccessed.  Usually due to a missing required parameter\n                        or invalid data in the parameter.\n    401 \"Unauthorized\" ⁃ The request has not been applied because it lacks authentication credentials for the\n                         target resource.\n    404 \"Not Found\" ⁃ The requested target doesn't exist or has been deleted.\n    405 \"Method Not Allowed\" ⁃ The method being requested is not valid for the target it is being performed on.\n    408 \"Request Timeout\" ⁃ The response took too long.\n    500 \"Internal Server Error\" ⁃ Indicates that the server encountered an unexpected condition that prevented it\n                                  from fulfilling the request.\n\n<a href=\"https://developer.hpe.com/platform/hpe-simplivity/home\" class=\"\toggleEndpointList\" data-id=\"errors\">Click here for a complete list of return codes and response formats</a>\n\n"
+  description: This API enables the programmatic management of key components of an HPE SimpliVity configuration.
   version: '1.25'
-  title: HPE OmniStack REST backups Omnistack Clusters API
+  title: HPE OmniStack REST Omnistack Clusters API
   contact:
     name: Hewlett Packard Enterprise
   license:
@@ -1063,7 +1063,7 @@ paths:
     get:
       tags:
       - omnistack_clusters
-      summary: Calculates the throughput between each pair of omnistack_clusters in the federation
+      summary: Calculates the throughput between each pair of omnistack_clusters in the…
       operationId: getClustersThroughput
       parameters:
       - name: clusterId
@@ -1195,46 +1195,6 @@ paths:
           description: Not Found
 components:
   schemas:
-    omnistack_cluster_to_cluster_throughput:
-      type: object
-      required:
-      - cluster_throughput
-      - end_time
-      - start_time
-      properties:
-        cluster_throughput:
-          type: array
-          description: The array of data objects representing the calculated metric values
-          items:
-            $ref: '#/components/schemas/omnistack_cluster_throughput'
-        end_time:
-          type: string
-          description: The end time of the performance data used to compute the metric value
-        start_time:
-          type: string
-          description: The start time of the performance data used to compute the metric value
-      description: Calculated throughput between source and destination omnistack_clusters
-    infosight_configuration:
-      type: object
-      properties:
-        infosight_claim_tag:
-          type: string
-          description: The claim tag for the customer in HPE InfoSight
-        infosight_enabled:
-          type: boolean
-          example: false
-          description: The flag that indicates the HPE Omnistack host should transmit data to HPE InfoSight
-        infosight_proxy_url:
-          type: string
-          description: The proxy server URL for HPE InfoSight to use
-        infosight_registered:
-          type: boolean
-          example: false
-          description: The flag that indicates the cluster is registered with the HPE InfoSight service
-        infosight_tenant_name:
-          type: string
-          description: The tenant name for the customer in HPE InfoSight
-      description: The current configuration of the HPE InfoSight service
     analytics_info:
       type: object
       required:
@@ -1250,47 +1210,44 @@ components:
           type: string
           description: The name of the set of metrics (iops, throughput, latency)
       description: The metrics information
-    cluster_throughput_data:
+    TaskMO:
       type: object
       required:
-      - data_points
-      - date_of_maximum
-      - date_of_minimum
-      - maximum_throughput
-      - minimum_throughput
+      - affected_objects
+      - end_time
+      - id
+      - start_time
+      - state
       properties:
-        data_points:
+        affected_objects:
           type: array
-          description: The metrics data points
+          description: For a completed task, the unique identifiers (UIDs) and types of the objects affected by the operation
           items:
-            $ref: '#/components/schemas/MetricsRawDataMO'
-        date_of_maximum:
+            $ref: '#/components/schemas/AffectedObjectMO'
+        end_time:
           type: string
-          description: The date for the set of metrics, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
-        date_of_minimum:
-          type: string
-          description: The date for the set of metrics, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
-        maximum_throughput:
+          description: The time the task finished, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+        error_code:
           type: integer
-          format: int64
-          description: The maximum throughput (in bytes per second) from source to destination omnistack_cluster
-        minimum_throughput:
-          type: integer
-          format: int64
-          description: The minimum throughput (in bytes per second) from source to destination omnistack_cluster
-      description: The metrics information
-    MetricsRawDataMO:
-      type: object
-      required:
-      - date
-      - value
-      properties:
-        date:
+          format: int32
+          description: The error code returned if a task failed
+        error_message:
           type: string
-          description: The date for the set of metrics, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
-        value:
-          type: object
-          description: A metrics result value
+          description: The error message returned if a task fails
+        id:
+          type: string
+          description: The unique identifier (UID) of the task
+        start_time:
+          type: string
+          description: The time the task started, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+        state:
+          type: string
+          description: The current state of the task object
+          enum:
+          - IN_PROGRESS
+          - COMPLETED
+          - FAILED
+      description: A task that was created as a result of an operation performed on the system
     AffectedObjectMO:
       type: object
       required:
@@ -1303,24 +1260,6 @@ components:
         object_type:
           type: string
           description: The type of the object affected by the completed task (virtual_machine, datastore, omnistack_cluster, backup, host, policy, rule)
-    MetricsDataMO:
-      type: object
-      required:
-      - date
-      - reads
-      - writes
-      properties:
-        date:
-          type: string
-          description: The date for the set of metrics, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
-        reads:
-          type: integer
-          format: int64
-          description: The number of reads per second or latency (in microseconds) or throughput (in bytes per second)
-        writes:
-          type: integer
-          format: int64
-          description: The number of writes per second or latency (in microseconds) or throughput (in bytes per second)
     set_time_zone:
       type: object
       required:
@@ -1510,6 +1449,105 @@ components:
           type: string
           description: The HPE OmniStack software version running on this omnistack_cluster or 'MIXED' if the HPE SimpliVity hosts run different versions
       description: An omnistack_cluster defined on this system
+    cluster_throughput_data:
+      type: object
+      required:
+      - data_points
+      - date_of_maximum
+      - date_of_minimum
+      - maximum_throughput
+      - minimum_throughput
+      properties:
+        data_points:
+          type: array
+          description: The metrics data points
+          items:
+            $ref: '#/components/schemas/MetricsRawDataMO'
+        date_of_maximum:
+          type: string
+          description: The date for the set of metrics, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+        date_of_minimum:
+          type: string
+          description: The date for the set of metrics, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+        maximum_throughput:
+          type: integer
+          format: int64
+          description: The maximum throughput (in bytes per second) from source to destination omnistack_cluster
+        minimum_throughput:
+          type: integer
+          format: int64
+          description: The minimum throughput (in bytes per second) from source to destination omnistack_cluster
+      description: The metrics information
+    omnistack_cluster_to_cluster_throughput:
+      type: object
+      required:
+      - cluster_throughput
+      - end_time
+      - start_time
+      properties:
+        cluster_throughput:
+          type: array
+          description: The array of data objects representing the calculated metric values
+          items:
+            $ref: '#/components/schemas/omnistack_cluster_throughput'
+        end_time:
+          type: string
+          description: The end time of the performance data used to compute the metric value
+        start_time:
+          type: string
+          description: The start time of the performance data used to compute the metric value
+      description: Calculated throughput between source and destination omnistack_clusters
+    MetricsRawDataMO:
+      type: object
+      required:
+      - date
+      - value
+      properties:
+        date:
+          type: string
+          description: The date for the set of metrics, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+        value:
+          type: object
+          description: A metrics result value
+    MetricsDataMO:
+      type: object
+      required:
+      - date
+      - reads
+      - writes
+      properties:
+        date:
+          type: string
+          description: The date for the set of metrics, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+        reads:
+          type: integer
+          format: int64
+          description: The number of reads per second or latency (in microseconds) or throughput (in bytes per second)
+        writes:
+          type: integer
+          format: int64
+          description: The number of writes per second or latency (in microseconds) or throughput (in bytes per second)
+    infosight_configuration:
+      type: object
+      properties:
+        infosight_claim_tag:
+          type: string
+          description: The claim tag for the customer in HPE InfoSight
+        infosight_enabled:
+          type: boolean
+          example: false
+          description: The flag that indicates the HPE Omnistack host should transmit data to HPE InfoSight
+        infosight_proxy_url:
+          type: string
+          description: The proxy server URL for HPE InfoSight to use
+        infosight_registered:
+          type: boolean
+          example: false
+          description: The flag that indicates the cluster is registered with the HPE InfoSight service
+        infosight_tenant_name:
+          type: string
+          description: The tenant name for the customer in HPE InfoSight
+      description: The current configuration of the HPE InfoSight service
     omnistack_cluster_throughput:
       type: object
       required:
@@ -1560,44 +1598,6 @@ components:
           type: string
           description: The name of the source omnistack_cluster
       description: Calculated throughput between source and destination omnistack_clusters
-    TaskMO:
-      type: object
-      required:
-      - affected_objects
-      - end_time
-      - id
-      - start_time
-      - state
-      properties:
-        affected_objects:
-          type: array
-          description: For a completed task, the unique identifiers (UIDs) and types of the objects affected by the operation
-          items:
-            $ref: '#/components/schemas/AffectedObjectMO'
-        end_time:
-          type: string
-          description: The time the task finished, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
-        error_code:
-          type: integer
-          format: int32
-          description: The error code returned if a task failed
-        error_message:
-          type: string
-          description: The error message returned if a task fails
-        id:
-          type: string
-          description: The unique identifier (UID) of the task
-        start_time:
-          type: string
-          description: The time the task started, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
-        state:
-          type: string
-          description: The current state of the task object
-          enum:
-          - IN_PROGRESS
-          - COMPLETED
-          - FAILED
-      description: A task that was created as a result of an operation performed on the system
     enabled:
       type: object
       required:
