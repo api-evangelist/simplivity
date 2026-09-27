@@ -750,15 +750,6 @@ paths:
         required: true
 components:
   schemas:
-    add_certificate:
-      type: object
-      required:
-      - certificate
-      properties:
-        certificate:
-          type: string
-          description: A Base64 encoded SSL certificate
-      description: Add an SSL certificate to the HPE SimpliVity trust store
     role_assignments:
       type: object
       required:
@@ -795,6 +786,15 @@ components:
           type: string
           description: The serial number of the SSL certificate
       description: An SSL Certificate
+    add_certificate:
+      type: object
+      required:
+      - certificate
+      properties:
+        certificate:
+          type: string
+          description: A Base64 encoded SSL certificate
+      description: Add an SSL certificate to the HPE SimpliVity trust store
   securitySchemes:
     OAuth2:
       type: oauth2

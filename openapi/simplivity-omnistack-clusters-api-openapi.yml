@@ -1195,80 +1195,6 @@ paths:
           description: Not Found
 components:
   schemas:
-    analytics_info:
-      type: object
-      required:
-      - data_points
-      - name
-      properties:
-        data_points:
-          type: array
-          description: The metrics data points
-          items:
-            $ref: '#/components/schemas/MetricsDataMO'
-        name:
-          type: string
-          description: The name of the set of metrics (iops, throughput, latency)
-      description: The metrics information
-    TaskMO:
-      type: object
-      required:
-      - affected_objects
-      - end_time
-      - id
-      - start_time
-      - state
-      properties:
-        affected_objects:
-          type: array
-          description: For a completed task, the unique identifiers (UIDs) and types of the objects affected by the operation
-          items:
-            $ref: '#/components/schemas/AffectedObjectMO'
-        end_time:
-          type: string
-          description: The time the task finished, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
-        error_code:
-          type: integer
-          format: int32
-          description: The error code returned if a task failed
-        error_message:
-          type: string
-          description: The error message returned if a task fails
-        id:
-          type: string
-          description: The unique identifier (UID) of the task
-        start_time:
-          type: string
-          description: The time the task started, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
-        state:
-          type: string
-          description: The current state of the task object
-          enum:
-          - IN_PROGRESS
-          - COMPLETED
-          - FAILED
-      description: A task that was created as a result of an operation performed on the system
-    AffectedObjectMO:
-      type: object
-      required:
-      - object_id
-      - object_type
-      properties:
-        object_id:
-          type: string
-          description: The unique identifier (UID) of the object affected by the completed task
-        object_type:
-          type: string
-          description: The type of the object affected by the completed task (virtual_machine, datastore, omnistack_cluster, backup, host, policy, rule)
-    set_time_zone:
-      type: object
-      required:
-      - time_zone
-      properties:
-        time_zone:
-          type: string
-          description: Sets the time zone of the omnistack_cluster
-      description: Sets the time zone of the omnistack_cluster
     omnistack_cluster:
       type: object
       required:
@@ -1449,6 +1375,98 @@ components:
           type: string
           description: The HPE OmniStack software version running on this omnistack_cluster or 'MIXED' if the HPE SimpliVity hosts run different versions
       description: An omnistack_cluster defined on this system
+    infosight_configuration:
+      type: object
+      properties:
+        infosight_claim_tag:
+          type: string
+          description: The claim tag for the customer in HPE InfoSight
+        infosight_enabled:
+          type: boolean
+          example: false
+          description: The flag that indicates the HPE Omnistack host should transmit data to HPE InfoSight
+        infosight_proxy_url:
+          type: string
+          description: The proxy server URL for HPE InfoSight to use
+        infosight_registered:
+          type: boolean
+          example: false
+          description: The flag that indicates the cluster is registered with the HPE InfoSight service
+        infosight_tenant_name:
+          type: string
+          description: The tenant name for the customer in HPE InfoSight
+      description: The current configuration of the HPE InfoSight service
+    MetricsRawDataMO:
+      type: object
+      required:
+      - date
+      - value
+      properties:
+        date:
+          type: string
+          description: The date for the set of metrics, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+        value:
+          type: object
+          description: A metrics result value
+    TaskMO:
+      type: object
+      required:
+      - affected_objects
+      - end_time
+      - id
+      - start_time
+      - state
+      properties:
+        affected_objects:
+          type: array
+          description: For a completed task, the unique identifiers (UIDs) and types of the objects affected by the operation
+          items:
+            $ref: '#/components/schemas/AffectedObjectMO'
+        end_time:
+          type: string
+          description: The time the task finished, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+        error_code:
+          type: integer
+          format: int32
+          description: The error code returned if a task failed
+        error_message:
+          type: string
+          description: The error message returned if a task fails
+        id:
+          type: string
+          description: The unique identifier (UID) of the task
+        start_time:
+          type: string
+          description: The time the task started, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+        state:
+          type: string
+          description: The current state of the task object
+          enum:
+          - IN_PROGRESS
+          - COMPLETED
+          - FAILED
+      description: A task that was created as a result of an operation performed on the system
+    AffectedObjectMO:
+      type: object
+      required:
+      - object_id
+      - object_type
+      properties:
+        object_id:
+          type: string
+          description: The unique identifier (UID) of the object affected by the completed task
+        object_type:
+          type: string
+          description: The type of the object affected by the completed task (virtual_machine, datastore, omnistack_cluster, backup, host, policy, rule)
+    set_time_zone:
+      type: object
+      required:
+      - time_zone
+      properties:
+        time_zone:
+          type: string
+          description: Sets the time zone of the omnistack_cluster
+      description: Sets the time zone of the omnistack_cluster
     cluster_throughput_data:
       type: object
       required:
@@ -1478,37 +1496,34 @@ components:
           format: int64
           description: The minimum throughput (in bytes per second) from source to destination omnistack_cluster
       description: The metrics information
-    omnistack_cluster_to_cluster_throughput:
+    enabled:
       type: object
       required:
-      - cluster_throughput
-      - end_time
-      - start_time
+      - enabled
       properties:
-        cluster_throughput:
-          type: array
-          description: The array of data objects representing the calculated metric values
-          items:
-            $ref: '#/components/schemas/omnistack_cluster_throughput'
-        end_time:
-          type: string
-          description: The end time of the performance data used to compute the metric value
-        start_time:
-          type: string
-          description: The start time of the performance data used to compute the metric value
-      description: Calculated throughput between source and destination omnistack_clusters
-    MetricsRawDataMO:
-      type: object
-      required:
-      - date
-      - value
-      properties:
-        date:
-          type: string
-          description: The date for the set of metrics, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
-        value:
-          type: object
-          description: A metrics result value
+        enabled:
+          type: boolean
+          example: false
+          description: 'An indicator to show the status of IWO for the omnistack_cluster
+
+
+            Valid values:
+
+
+            True: IWO is enabled for the omnistack_cluster.
+
+
+            False: IWO is disabled for the omnistack_cluster.'
+      description: 'An indicator to show the status of IWO for the omnistack_cluster
+
+
+        Valid values:
+
+
+        True: IWO is enabled for the omnistack_cluster.
+
+
+        False: IWO is disabled for the omnistack_cluster.'
     MetricsDataMO:
       type: object
       required:
@@ -1527,27 +1542,21 @@ components:
           type: integer
           format: int64
           description: The number of writes per second or latency (in microseconds) or throughput (in bytes per second)
-    infosight_configuration:
+    analytics_info:
       type: object
+      required:
+      - data_points
+      - name
       properties:
-        infosight_claim_tag:
+        data_points:
+          type: array
+          description: The metrics data points
+          items:
+            $ref: '#/components/schemas/MetricsDataMO'
+        name:
           type: string
-          description: The claim tag for the customer in HPE InfoSight
-        infosight_enabled:
-          type: boolean
-          example: false
-          description: The flag that indicates the HPE Omnistack host should transmit data to HPE InfoSight
-        infosight_proxy_url:
-          type: string
-          description: The proxy server URL for HPE InfoSight to use
-        infosight_registered:
-          type: boolean
-          example: false
-          description: The flag that indicates the cluster is registered with the HPE InfoSight service
-        infosight_tenant_name:
-          type: string
-          description: The tenant name for the customer in HPE InfoSight
-      description: The current configuration of the HPE InfoSight service
+          description: The name of the set of metrics (iops, throughput, latency)
+      description: The metrics information
     omnistack_cluster_throughput:
       type: object
       required:
@@ -1598,34 +1607,25 @@ components:
           type: string
           description: The name of the source omnistack_cluster
       description: Calculated throughput between source and destination omnistack_clusters
-    enabled:
+    omnistack_cluster_to_cluster_throughput:
       type: object
       required:
-      - enabled
+      - cluster_throughput
+      - end_time
+      - start_time
       properties:
-        enabled:
-          type: boolean
-          example: false
-          description: 'An indicator to show the status of IWO for the omnistack_cluster
-
-
-            Valid values:
-
-
-            True: IWO is enabled for the omnistack_cluster.
-
-
-            False: IWO is disabled for the omnistack_cluster.'
-      description: 'An indicator to show the status of IWO for the omnistack_cluster
-
-
-        Valid values:
-
-
-        True: IWO is enabled for the omnistack_cluster.
-
-
-        False: IWO is disabled for the omnistack_cluster.'
+        cluster_throughput:
+          type: array
+          description: The array of data objects representing the calculated metric values
+          items:
+            $ref: '#/components/schemas/omnistack_cluster_throughput'
+        end_time:
+          type: string
+          description: The end time of the performance data used to compute the metric value
+        start_time:
+          type: string
+          description: The start time of the performance data used to compute the metric value
+      description: Calculated throughput between source and destination omnistack_clusters
   securitySchemes:
     OAuth2:
       type: oauth2

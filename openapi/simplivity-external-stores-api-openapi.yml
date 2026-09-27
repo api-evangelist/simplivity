@@ -537,26 +537,6 @@ paths:
         required: true
 components:
   schemas:
-    update_external_store_credentials:
-      type: object
-      required:
-      - name
-      - password
-      - username
-      properties:
-        management_ip:
-          type: string
-          description: The IP address of the external store
-        name:
-          type: string
-          description: The name of the external_store
-        password:
-          type: string
-          description: The client password of the external store
-        username:
-          type: string
-          description: The client name of the external store
-      description: Update the IP address or credentials that HPE SimpliVity uses to access the external store
     TaskMO:
       type: object
       required:
@@ -607,6 +587,65 @@ components:
         object_type:
           type: string
           description: The type of the object affected by the completed task (virtual_machine, datastore, omnistack_cluster, backup, host, policy, rule)
+    update_external_store_credentials:
+      type: object
+      required:
+      - name
+      - password
+      - username
+      properties:
+        management_ip:
+          type: string
+          description: The IP address of the external store
+        name:
+          type: string
+          description: The name of the external_store
+        password:
+          type: string
+          description: The client password of the external store
+        username:
+          type: string
+          description: The client name of the external store
+      description: Update the IP address or credentials that HPE SimpliVity uses to access the external store
+    register_external_store:
+      type: object
+      required:
+      - management_ip
+      - name
+      - omnistack_cluster_id
+      - password
+      - username
+      properties:
+        management_ip:
+          type: string
+          description: The IP address of the external store
+        management_port:
+          type: integer
+          format: int32
+          description: The management IP port of the external store
+        name:
+          type: string
+          description: The name of the external_store
+        omnistack_cluster_id:
+          type: string
+          description: The UID of the omnistack_cluster associated with the external store
+        password:
+          type: string
+          description: The client password of the external store
+        storage_port:
+          type: integer
+          format: int32
+          description: The storage IP port of the external store
+        type:
+          type: string
+          description: The type of external store
+          enum:
+          - StoreOnceOnPrem
+          - StoreOnceCloud
+        username:
+          type: string
+          description: The client name of the external store
+      description: Registers a new external store
     external_store:
       type: object
       required:
@@ -654,45 +693,6 @@ components:
           type: string
           description: The UID of the omnistack_cluster associated with the external store
       description: Removes the external store as a backup destination for the cluster. Backups remain on the external store, but they can no longer be managed by HPE SimpliVity.
-    register_external_store:
-      type: object
-      required:
-      - management_ip
-      - name
-      - omnistack_cluster_id
-      - password
-      - username
-      properties:
-        management_ip:
-          type: string
-          description: The IP address of the external store
-        management_port:
-          type: integer
-          format: int32
-          description: The management IP port of the external store
-        name:
-          type: string
-          description: The name of the external_store
-        omnistack_cluster_id:
-          type: string
-          description: The UID of the omnistack_cluster associated with the external store
-        password:
-          type: string
-          description: The client password of the external store
-        storage_port:
-          type: integer
-          format: int32
-          description: The storage IP port of the external store
-        type:
-          type: string
-          description: The type of external store
-          enum:
-          - StoreOnceOnPrem
-          - StoreOnceCloud
-        username:
-          type: string
-          description: The client name of the external store
-      description: Registers a new external store
   securitySchemes:
     OAuth2:
       type: oauth2

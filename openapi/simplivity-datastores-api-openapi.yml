@@ -1529,6 +1529,40 @@ paths:
         required: true
 components:
   schemas:
+    standard_host:
+      type: object
+      required:
+      - hypervisor_object_id
+      - ip_address
+      - name
+      properties:
+        hypervisor_object_id:
+          type: string
+          description: The unique identifier (UID) of the standard host
+        ip_address:
+          type: string
+          description: The IP address of the standard host
+        name:
+          type: string
+          description: The name of the standard host
+        shared:
+          type: boolean
+          example: false
+          description: Confirms that the standard host shares a datastore
+        virtual_machine_count:
+          type: integer
+          format: int32
+          description: The number of virtual machines on this host
+      description: A standard host (host without HPE Omnistack software) defined on this system.
+    unshare_datastore:
+      type: object
+      required:
+      - host_name
+      properties:
+        host_name:
+          type: string
+          description: The name of the standard host that needs to stop sharing a datastore
+      description: Stop sharing a datastore
     TaskMO:
       type: object
       required:
@@ -1567,31 +1601,41 @@ components:
           - COMPLETED
           - FAILED
       description: A task that was created as a result of an operation performed on the system
-    standard_host:
+    share_datastore:
       type: object
       required:
-      - hypervisor_object_id
-      - ip_address
-      - name
+      - host_name
       properties:
-        hypervisor_object_id:
+        host_name:
           type: string
-          description: The unique identifier (UID) of the standard host
-        ip_address:
-          type: string
-          description: The IP address of the standard host
+          description: The name of the standard host that you want sharing a datastore
+      description: Share a datastore
+    create_datastore:
+      type: object
+      required:
+      - name
+      - omnistack_cluster_id
+      - policy_id
+      - size
+      properties:
         name:
           type: string
-          description: The name of the standard host
-        shared:
+          description: The name of the datastore
+        omnistack_cluster_id:
+          type: string
+          description: The unique identifier (UID) of the omnistack_cluster associated with the datastore
+        policy_id:
+          type: string
+          description: The unique identifier (UID) of the policy associated with the datastore
+        single_replica:
           type: boolean
           example: false
-          description: Confirms that the standard host shares a datastore
-        virtual_machine_count:
+          description: An indicator to show if this is a single-replica datastore
+        size:
           type: integer
-          format: int32
-          description: The number of virtual machines on this host
-      description: A standard host (host without HPE Omnistack software) defined on this system.
+          format: int64
+          description: The size (in bytes) of the datastore
+      description: Creates a new datastore
     resize_datastore:
       type: object
       required:
@@ -1628,18 +1672,6 @@ components:
 
             False: The datastore is being shared in read-only mode.'
       description: An object (host) that shares the datastore
-    AffectedObjectMO:
-      type: object
-      required:
-      - object_id
-      - object_type
-      properties:
-        object_id:
-          type: string
-          description: The unique identifier (UID) of the object affected by the completed task
-        object_type:
-          type: string
-          description: The type of the object affected by the completed task (virtual_machine, datastore, omnistack_cluster, backup, host, policy, rule)
     datastore:
       type: object
       required:
@@ -1733,24 +1765,6 @@ components:
           format: int64
           description: The size (in bytes) of the datastore
       description: An instance of a datastore that is defined on this system
-    share_datastore:
-      type: object
-      required:
-      - host_name
-      properties:
-        host_name:
-          type: string
-          description: The name of the standard host that you want sharing a datastore
-      description: Share a datastore
-    unshare_datastore:
-      type: object
-      required:
-      - host_name
-      properties:
-        host_name:
-          type: string
-          description: The name of the standard host that needs to stop sharing a datastore
-      description: Stop sharing a datastore
     set_policy:
       type: object
       required:
@@ -1760,32 +1774,18 @@ components:
           type: string
           description: The unique identifier (UID) of the policy you want to access
       description: Sets the backup policy for a virtual_machine or datastore
-    create_datastore:
+    AffectedObjectMO:
       type: object
       required:
-      - name
-      - omnistack_cluster_id
-      - policy_id
-      - size
+      - object_id
+      - object_type
       properties:
-        name:
+        object_id:
           type: string
-          description: The name of the datastore
-        omnistack_cluster_id:
+          description: The unique identifier (UID) of the object affected by the completed task
+        object_type:
           type: string
-          description: The unique identifier (UID) of the omnistack_cluster associated with the datastore
-        policy_id:
-          type: string
-          description: The unique identifier (UID) of the policy associated with the datastore
-        single_replica:
-          type: boolean
-          example: false
-          description: An indicator to show if this is a single-replica datastore
-        size:
-          type: integer
-          format: int64
-          description: The size (in bytes) of the datastore
-      description: Creates a new datastore
+          description: The type of the object affected by the completed task (virtual_machine, datastore, omnistack_cluster, backup, host, policy, rule)
   securitySchemes:
     OAuth2:
       type: oauth2

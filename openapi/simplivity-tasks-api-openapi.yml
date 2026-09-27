@@ -119,6 +119,18 @@ paths:
           description: Not Found
 components:
   schemas:
+    AffectedObjectMO:
+      type: object
+      required:
+      - object_id
+      - object_type
+      properties:
+        object_id:
+          type: string
+          description: The unique identifier (UID) of the object affected by the completed task
+        object_type:
+          type: string
+          description: The type of the object affected by the completed task (virtual_machine, datastore, omnistack_cluster, backup, host, policy, rule)
     TaskMO:
       type: object
       required:
@@ -157,18 +169,6 @@ components:
           - COMPLETED
           - FAILED
       description: A task that was created as a result of an operation performed on the system
-    AffectedObjectMO:
-      type: object
-      required:
-      - object_id
-      - object_type
-      properties:
-        object_id:
-          type: string
-          description: The unique identifier (UID) of the object affected by the completed task
-        object_type:
-          type: string
-          description: The type of the object affected by the completed task (virtual_machine, datastore, omnistack_cluster, backup, host, policy, rule)
   securitySchemes:
     OAuth2:
       type: oauth2

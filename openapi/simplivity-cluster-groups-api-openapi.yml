@@ -318,6 +318,25 @@ paths:
         required: true
 components:
   schemas:
+    clusterGroup:
+      type: object
+      required:
+      - clusters
+      - id
+      - name
+      properties:
+        clusters:
+          type: array
+          description: The unique identifiers (UIDs) of the omnistack_clusters that are defined in the cluster_group
+          items:
+            type: string
+        id:
+          type: string
+          description: The unique identifier (UID) of the cluster_group
+        name:
+          type: string
+          description: The name of the cluster_group
+      description: A cluster_group
     rename_cluster_group:
       type: object
       required:
@@ -332,6 +351,18 @@ components:
           type: string
           description: The new name for the cluster_group
       description: Renames the specified cluster_group
+    AffectedObjectMO:
+      type: object
+      required:
+      - object_id
+      - object_type
+      properties:
+        object_id:
+          type: string
+          description: The unique identifier (UID) of the object affected by the completed task
+        object_type:
+          type: string
+          description: The type of the object affected by the completed task (virtual_machine, datastore, omnistack_cluster, backup, host, policy, rule)
     TaskMO:
       type: object
       required:
@@ -370,37 +401,6 @@ components:
           - COMPLETED
           - FAILED
       description: A task that was created as a result of an operation performed on the system
-    clusterGroup:
-      type: object
-      required:
-      - clusters
-      - id
-      - name
-      properties:
-        clusters:
-          type: array
-          description: The unique identifiers (UIDs) of the omnistack_clusters that are defined in the cluster_group
-          items:
-            type: string
-        id:
-          type: string
-          description: The unique identifier (UID) of the cluster_group
-        name:
-          type: string
-          description: The name of the cluster_group
-      description: A cluster_group
-    AffectedObjectMO:
-      type: object
-      required:
-      - object_id
-      - object_type
-      properties:
-        object_id:
-          type: string
-          description: The unique identifier (UID) of the object affected by the completed task
-        object_type:
-          type: string
-          description: The type of the object affected by the completed task (virtual_machine, datastore, omnistack_cluster, backup, host, policy, rule)
   securitySchemes:
     OAuth2:
       type: oauth2
