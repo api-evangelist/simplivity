@@ -318,6 +318,20 @@ paths:
         required: true
 components:
   schemas:
+    rename_cluster_group:
+      type: object
+      required:
+      - cluster_group_name
+      properties:
+        id:
+          type: string
+        revision:
+          type: integer
+          format: int32
+        cluster_group_name:
+          type: string
+          description: The new name for the cluster_group
+      description: Renames the specified cluster_group
     clusterGroup:
       type: object
       required:
@@ -337,20 +351,6 @@ components:
           type: string
           description: The name of the cluster_group
       description: A cluster_group
-    rename_cluster_group:
-      type: object
-      required:
-      - cluster_group_name
-      properties:
-        id:
-          type: string
-        revision:
-          type: integer
-          format: int32
-        cluster_group_name:
-          type: string
-          description: The new name for the cluster_group
-      description: Renames the specified cluster_group
     AffectedObjectMO:
       type: object
       required:

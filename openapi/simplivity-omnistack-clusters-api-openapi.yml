@@ -1195,6 +1195,47 @@ paths:
           description: Not Found
 components:
   schemas:
+    MetricsRawDataMO:
+      type: object
+      required:
+      - date
+      - value
+      properties:
+        date:
+          type: string
+          description: The date for the set of metrics, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+        value:
+          type: object
+          description: A metrics result value
+    cluster_throughput_data:
+      type: object
+      required:
+      - data_points
+      - date_of_maximum
+      - date_of_minimum
+      - maximum_throughput
+      - minimum_throughput
+      properties:
+        data_points:
+          type: array
+          description: The metrics data points
+          items:
+            $ref: '#/components/schemas/MetricsRawDataMO'
+        date_of_maximum:
+          type: string
+          description: The date for the set of metrics, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+        date_of_minimum:
+          type: string
+          description: The date for the set of metrics, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+        maximum_throughput:
+          type: integer
+          format: int64
+          description: The maximum throughput (in bytes per second) from source to destination omnistack_cluster
+        minimum_throughput:
+          type: integer
+          format: int64
+          description: The minimum throughput (in bytes per second) from source to destination omnistack_cluster
+      description: The metrics information
     omnistack_cluster:
       type: object
       required:
@@ -1396,56 +1437,6 @@ components:
           type: string
           description: The tenant name for the customer in HPE InfoSight
       description: The current configuration of the HPE InfoSight service
-    MetricsRawDataMO:
-      type: object
-      required:
-      - date
-      - value
-      properties:
-        date:
-          type: string
-          description: The date for the set of metrics, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
-        value:
-          type: object
-          description: A metrics result value
-    TaskMO:
-      type: object
-      required:
-      - affected_objects
-      - end_time
-      - id
-      - start_time
-      - state
-      properties:
-        affected_objects:
-          type: array
-          description: For a completed task, the unique identifiers (UIDs) and types of the objects affected by the operation
-          items:
-            $ref: '#/components/schemas/AffectedObjectMO'
-        end_time:
-          type: string
-          description: The time the task finished, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
-        error_code:
-          type: integer
-          format: int32
-          description: The error code returned if a task failed
-        error_message:
-          type: string
-          description: The error message returned if a task fails
-        id:
-          type: string
-          description: The unique identifier (UID) of the task
-        start_time:
-          type: string
-          description: The time the task started, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
-        state:
-          type: string
-          description: The current state of the task object
-          enum:
-          - IN_PROGRESS
-          - COMPLETED
-          - FAILED
-      description: A task that was created as a result of an operation performed on the system
     AffectedObjectMO:
       type: object
       required:
@@ -1458,44 +1449,6 @@ components:
         object_type:
           type: string
           description: The type of the object affected by the completed task (virtual_machine, datastore, omnistack_cluster, backup, host, policy, rule)
-    set_time_zone:
-      type: object
-      required:
-      - time_zone
-      properties:
-        time_zone:
-          type: string
-          description: Sets the time zone of the omnistack_cluster
-      description: Sets the time zone of the omnistack_cluster
-    cluster_throughput_data:
-      type: object
-      required:
-      - data_points
-      - date_of_maximum
-      - date_of_minimum
-      - maximum_throughput
-      - minimum_throughput
-      properties:
-        data_points:
-          type: array
-          description: The metrics data points
-          items:
-            $ref: '#/components/schemas/MetricsRawDataMO'
-        date_of_maximum:
-          type: string
-          description: The date for the set of metrics, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
-        date_of_minimum:
-          type: string
-          description: The date for the set of metrics, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
-        maximum_throughput:
-          type: integer
-          format: int64
-          description: The maximum throughput (in bytes per second) from source to destination omnistack_cluster
-        minimum_throughput:
-          type: integer
-          format: int64
-          description: The minimum throughput (in bytes per second) from source to destination omnistack_cluster
-      description: The metrics information
     enabled:
       type: object
       required:
@@ -1524,39 +1477,15 @@ components:
 
 
         False: IWO is disabled for the omnistack_cluster.'
-    MetricsDataMO:
+    set_time_zone:
       type: object
       required:
-      - date
-      - reads
-      - writes
+      - time_zone
       properties:
-        date:
+        time_zone:
           type: string
-          description: The date for the set of metrics, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
-        reads:
-          type: integer
-          format: int64
-          description: The number of reads per second or latency (in microseconds) or throughput (in bytes per second)
-        writes:
-          type: integer
-          format: int64
-          description: The number of writes per second or latency (in microseconds) or throughput (in bytes per second)
-    analytics_info:
-      type: object
-      required:
-      - data_points
-      - name
-      properties:
-        data_points:
-          type: array
-          description: The metrics data points
-          items:
-            $ref: '#/components/schemas/MetricsDataMO'
-        name:
-          type: string
-          description: The name of the set of metrics (iops, throughput, latency)
-      description: The metrics information
+          description: Sets the time zone of the omnistack_cluster
+      description: Sets the time zone of the omnistack_cluster
     omnistack_cluster_throughput:
       type: object
       required:
@@ -1626,6 +1555,77 @@ components:
           type: string
           description: The start time of the performance data used to compute the metric value
       description: Calculated throughput between source and destination omnistack_clusters
+    MetricsDataMO:
+      type: object
+      required:
+      - date
+      - reads
+      - writes
+      properties:
+        date:
+          type: string
+          description: The date for the set of metrics, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+        reads:
+          type: integer
+          format: int64
+          description: The number of reads per second or latency (in microseconds) or throughput (in bytes per second)
+        writes:
+          type: integer
+          format: int64
+          description: The number of writes per second or latency (in microseconds) or throughput (in bytes per second)
+    TaskMO:
+      type: object
+      required:
+      - affected_objects
+      - end_time
+      - id
+      - start_time
+      - state
+      properties:
+        affected_objects:
+          type: array
+          description: For a completed task, the unique identifiers (UIDs) and types of the objects affected by the operation
+          items:
+            $ref: '#/components/schemas/AffectedObjectMO'
+        end_time:
+          type: string
+          description: The time the task finished, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+        error_code:
+          type: integer
+          format: int32
+          description: The error code returned if a task failed
+        error_message:
+          type: string
+          description: The error message returned if a task fails
+        id:
+          type: string
+          description: The unique identifier (UID) of the task
+        start_time:
+          type: string
+          description: The time the task started, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+        state:
+          type: string
+          description: The current state of the task object
+          enum:
+          - IN_PROGRESS
+          - COMPLETED
+          - FAILED
+      description: A task that was created as a result of an operation performed on the system
+    analytics_info:
+      type: object
+      required:
+      - data_points
+      - name
+      properties:
+        data_points:
+          type: array
+          description: The metrics data points
+          items:
+            $ref: '#/components/schemas/MetricsDataMO'
+        name:
+          type: string
+          description: The name of the set of metrics (iops, throughput, latency)
+      description: The metrics information
   securitySchemes:
     OAuth2:
       type: oauth2

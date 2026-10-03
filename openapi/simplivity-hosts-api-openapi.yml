@@ -1519,6 +1519,147 @@ paths:
           description: Not Found
 components:
   schemas:
+    MetricsDataMO:
+      type: object
+      required:
+      - date
+      - reads
+      - writes
+      properties:
+        date:
+          type: string
+          description: The date for the set of metrics, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+        reads:
+          type: integer
+          format: int64
+          description: The number of reads per second or latency (in microseconds) or throughput (in bytes per second)
+        writes:
+          type: integer
+          format: int64
+          description: The number of writes per second or latency (in microseconds) or throughput (in bytes per second)
+    MetricsRawDataMO:
+      type: object
+      required:
+      - date
+      - value
+      properties:
+        date:
+          type: string
+          description: The date for the set of metrics, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+        value:
+          type: object
+          description: A metrics result value
+    ShutdownStatusMO:
+      type: object
+      required:
+      - status
+      properties:
+        status:
+          type: string
+          description: Indicates the shutdown status of the Virtual Controller
+          enum:
+          - NONE
+          - IN_PROGRESS
+          - CANCEL_IN_PROGRESS
+          - FORCE_IN_PROGRESS
+          - HA
+    accelerator_card:
+      type: object
+      required:
+      - firmware_revision
+      - model_number
+      - serial_number
+      - status
+      - temperature
+      properties:
+        firmware_revision:
+          type: string
+          description: The firmware revision of the hardware component
+        model_number:
+          type: string
+          description: The model number of the hardware component
+        serial_number:
+          type: string
+          description: The serial number of the hardware component
+        status:
+          type: string
+          description: The status of the hardware component (GREEN, YELLOW, RED, or UNKNOWN)
+        temperature:
+          type: integer
+          format: int32
+          description: The temperature of the hardware component
+      description: The accelerator card information for the host
+    storage_adapter:
+      type: object
+      required:
+      - firmware_revision
+      - has_bbu
+      - manufacturer
+      - model_number
+      - product_name
+      - serial_number
+      - status
+      properties:
+        firmware_revision:
+          type: string
+          description: The firmware revision of the hardware component
+        has_bbu:
+          type: string
+          description: An indicator that specifies whether the hardware component has a backup battery unit
+        manufacturer:
+          type: string
+          description: The manufacturer of the hardware component
+        model_number:
+          type: string
+          description: The model number of the hardware component
+        product_name:
+          type: string
+          description: The product name for the hardware component
+        serial_number:
+          type: string
+          description: The serial number of the hardware component
+        status:
+          type: string
+          description: The status of the hardware component (GREEN, YELLOW, RED, or UNKNOWN)
+      description: The storage adapter information for the host
+    drive_set:
+      type: object
+      required:
+      - drive_number
+      - firmware_revision
+      - health
+      - manufacturer
+      - model_number
+      - physical_drives
+      - serial_number
+      - status
+      properties:
+        drive_number:
+          type: integer
+          format: int32
+          description: The drive number
+        firmware_revision:
+          type: string
+          description: The firmware revision of the hardware component
+        health:
+          type: string
+          description: The health status for the hardware component (HEALTHY, INITIALIZING, REBUILDING, WARNING, DEGRADED, UNCONFIGURED, MISSING, OFFLINE, FAILED, or HEALTH UNKNOWN)
+        manufacturer:
+          type: string
+          description: The manufacturer of the hardware component
+        model_number:
+          type: string
+          description: The model number of the hardware component
+        physical_drives:
+          description: A list of physical drives
+          $ref: '#/components/schemas/physical_drive'
+        serial_number:
+          type: string
+          description: The serial number of the hardware component
+        status:
+          type: string
+          description: The status of the hardware component (GREEN, YELLOW, RED, or UNKNOWN)
+      description: The drive set information
     physical_drive:
       type: object
       required:
@@ -1592,77 +1733,6 @@ components:
           type: string
           description: The WWN number for the driver
       description: The physical drive
-    storage_adapter:
-      type: object
-      required:
-      - firmware_revision
-      - has_bbu
-      - manufacturer
-      - model_number
-      - product_name
-      - serial_number
-      - status
-      properties:
-        firmware_revision:
-          type: string
-          description: The firmware revision of the hardware component
-        has_bbu:
-          type: string
-          description: An indicator that specifies whether the hardware component has a backup battery unit
-        manufacturer:
-          type: string
-          description: The manufacturer of the hardware component
-        model_number:
-          type: string
-          description: The model number of the hardware component
-        product_name:
-          type: string
-          description: The product name for the hardware component
-        serial_number:
-          type: string
-          description: The serial number of the hardware component
-        status:
-          type: string
-          description: The status of the hardware component (GREEN, YELLOW, RED, or UNKNOWN)
-      description: The storage adapter information for the host
-    drive_set:
-      type: object
-      required:
-      - drive_number
-      - firmware_revision
-      - health
-      - manufacturer
-      - model_number
-      - physical_drives
-      - serial_number
-      - status
-      properties:
-        drive_number:
-          type: integer
-          format: int32
-          description: The drive number
-        firmware_revision:
-          type: string
-          description: The firmware revision of the hardware component
-        health:
-          type: string
-          description: The health status for the hardware component (HEALTHY, INITIALIZING, REBUILDING, WARNING, DEGRADED, UNCONFIGURED, MISSING, OFFLINE, FAILED, or HEALTH UNKNOWN)
-        manufacturer:
-          type: string
-          description: The manufacturer of the hardware component
-        model_number:
-          type: string
-          description: The model number of the hardware component
-        physical_drives:
-          description: A list of physical drives
-          $ref: '#/components/schemas/physical_drive'
-        serial_number:
-          type: string
-          description: The serial number of the hardware component
-        status:
-          type: string
-          description: The status of the hardware component (GREEN, YELLOW, RED, or UNKNOWN)
-      description: The drive set information
     remove_from_federation:
       type: object
       properties:
@@ -1671,208 +1741,6 @@ components:
           example: false
           description: An indicator to force a retention time modification even if this action results in deleting backups
       description: Removes the specified host from the federation. The specified hostId must not be the host executing the request.
-    capacity_info:
-      type: object
-      required:
-      - data_points
-      - name
-      properties:
-        data_points:
-          type: array
-          description: The metrics data points
-          items:
-            $ref: '#/components/schemas/MetricsRawDataMO'
-        name:
-          type: string
-          description: The name of the set of metrics (stored_compressed_data, compression_ratio, deduplication_ratio, capacity_savings, efficiency_ratio, local_backup_capacity, used_logical_capacity, remote_backup_capacity, stored_virtual_machine_data, stored_uncompressed_data, used_capacity, free_space, allocated_capacity)
-      description: The metrics information
-    MetricsRawDataMO:
-      type: object
-      required:
-      - date
-      - value
-      properties:
-        date:
-          type: string
-          description: The date for the set of metrics, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
-        value:
-          type: object
-          description: A metrics result value
-    ShutdownVirtualControllerMO:
-      type: object
-      properties:
-        ha_wait:
-          type: boolean
-          example: true
-          description: 'An indicator to show if the user wants to shut down the Virtual Controller safely or forcefully.
-
-
-            Valid values:
-
-
-            True: Virtual Controller waits for the virtual machines to reach HA compliance before shutting down
-
-
-            False: Virtual Controller forced to shut down without waiting for HA compliance
-
-
-            Default: True'
-    TaskMO:
-      type: object
-      required:
-      - affected_objects
-      - end_time
-      - id
-      - start_time
-      - state
-      properties:
-        affected_objects:
-          type: array
-          description: For a completed task, the unique identifiers (UIDs) and types of the objects affected by the operation
-          items:
-            $ref: '#/components/schemas/AffectedObjectMO'
-        end_time:
-          type: string
-          description: The time the task finished, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
-        error_code:
-          type: integer
-          format: int32
-          description: The error code returned if a task failed
-        error_message:
-          type: string
-          description: The error message returned if a task fails
-        id:
-          type: string
-          description: The unique identifier (UID) of the task
-        start_time:
-          type: string
-          description: The time the task started, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
-        state:
-          type: string
-          description: The current state of the task object
-          enum:
-          - IN_PROGRESS
-          - COMPLETED
-          - FAILED
-      description: A task that was created as a result of an operation performed on the system
-    host_hardware:
-      type: object
-      required:
-      - battery
-      - firmware_revision
-      - host_id
-      - logical_drives
-      - manufacturer
-      - model_number
-      - name
-      - raid_card
-      - serial_number
-      - status
-      properties:
-        accelerator_card:
-          description: The accelerator card information for the host
-          $ref: '#/components/schemas/accelerator_card'
-        battery:
-          description: The backup battery unit information for the host
-          $ref: '#/components/schemas/battery'
-        firmware_revision:
-          type: string
-          description: The firmware revision of the hardware component
-        host_id:
-          type: string
-          description: The unique identifier (UID) of the host
-        logical_drives:
-          description: A list of logical drives for the host
-          $ref: '#/components/schemas/logical_drive'
-        manufacturer:
-          type: string
-          description: The manufacturer of the hardware component
-        model_number:
-          type: string
-          description: The model number of the hardware component
-        name:
-          type: string
-          description: The name of the host
-        raid_card:
-          description: The storage adapter information for the host
-          $ref: '#/components/schemas/storage_adapter'
-        serial_number:
-          type: string
-          description: The serial number of the hardware component
-        status:
-          type: string
-          description: The status of the hardware component (GREEN, YELLOW, RED, or UNKNOWN)
-      description: A list of hardware modules for the host
-    ShutdownStatusMO:
-      type: object
-      required:
-      - status
-      properties:
-        status:
-          type: string
-          description: Indicates the shutdown status of the Virtual Controller
-          enum:
-          - NONE
-          - IN_PROGRESS
-          - CANCEL_IN_PROGRESS
-          - FORCE_IN_PROGRESS
-          - HA
-    AffectedObjectMO:
-      type: object
-      required:
-      - object_id
-      - object_type
-      properties:
-        object_id:
-          type: string
-          description: The unique identifier (UID) of the object affected by the completed task
-        object_type:
-          type: string
-          description: The type of the object affected by the completed task (virtual_machine, datastore, omnistack_cluster, backup, host, policy, rule)
-    MetricsDataMO:
-      type: object
-      required:
-      - date
-      - reads
-      - writes
-      properties:
-        date:
-          type: string
-          description: The date for the set of metrics, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
-        reads:
-          type: integer
-          format: int64
-          description: The number of reads per second or latency (in microseconds) or throughput (in bytes per second)
-        writes:
-          type: integer
-          format: int64
-          description: The number of writes per second or latency (in microseconds) or throughput (in bytes per second)
-    accelerator_card:
-      type: object
-      required:
-      - firmware_revision
-      - model_number
-      - serial_number
-      - status
-      - temperature
-      properties:
-        firmware_revision:
-          type: string
-          description: The firmware revision of the hardware component
-        model_number:
-          type: string
-          description: The model number of the hardware component
-        serial_number:
-          type: string
-          description: The serial number of the hardware component
-        status:
-          type: string
-          description: The status of the hardware component (GREEN, YELLOW, RED, or UNKNOWN)
-        temperature:
-          type: integer
-          format: int32
-          description: The temperature of the hardware component
-      description: The accelerator card information for the host
     ShutdownResponseMO:
       type: object
       required:
@@ -1886,106 +1754,6 @@ components:
           - FAILURE
           - UNKNOWN
           - IN_PROGRESS
-    battery:
-      type: object
-      required:
-      - firmware_revision
-      - health
-      - manufacturer
-      - manufacturing_date
-      - model_number
-      - percent_charged
-      - serial_number
-      - status
-      properties:
-        firmware_revision:
-          type: string
-          description: The firmware revision of the hardware component
-        health:
-          type: string
-          description: The health status for the battery (HEALTHY, MISSING, FAILED, DEGRADED, or UNKNOWN)
-        manufacturer:
-          type: string
-          description: The manufacturer of the hardware component
-        manufacturing_date:
-          type: string
-          description: The manufacturing date of the battery
-        model_number:
-          type: string
-          description: The model number of the hardware component
-        percent_charged:
-          type: integer
-          format: int32
-          description: The charged percentage for the battery
-        serial_number:
-          type: string
-          description: The serial number of the hardware component
-        status:
-          type: string
-          description: The status of the hardware component (GREEN, YELLOW, RED, or UNKNOWN)
-      description: The backup battery unit information for the host
-    analytics_info:
-      type: object
-      required:
-      - data_points
-      - name
-      properties:
-        data_points:
-          type: array
-          description: The metrics data points
-          items:
-            $ref: '#/components/schemas/MetricsDataMO'
-        name:
-          type: string
-          description: The name of the set of metrics (iops, throughput, latency)
-      description: The metrics information
-    logical_drive:
-      type: object
-      required:
-      - cache_state
-      - capacity
-      - drive_sets
-      - firmware_revision
-      - health
-      - manufacturer
-      - model_number
-      - name
-      - serial_number
-      - status
-      properties:
-        cache_state:
-          type: string
-          description: The cache state for the drive
-        capacity:
-          type: integer
-          format: int64
-          description: The capacity of the drive (in bytes)
-        drive_sets:
-          description: A list of the drive sets
-          $ref: '#/components/schemas/drive_set'
-        firmware_revision:
-          type: string
-          description: The firmware revision of the hardware component
-        health:
-          type: string
-          description: The health status for the hardware component (HEALTHY, INITIALIZING, REBUILDING, WARNING, DEGRADED, UNCONFIGURED, MISSING, OFFLINE, FAILED, or HEALTH UNKNOWN)
-        manufacturer:
-          type: string
-          description: The manufacturer of the hardware component
-        model_number:
-          type: string
-          description: The model number of the hardware component
-        name:
-          type: integer
-          format: int64
-          description: The name of the drive
-        serial_number:
-          type: string
-          description: The serial number of the hardware component
-        status:
-          type: string
-          description: The status of the hardware component (GREEN, YELLOW, RED, or UNKNOWN)
-      description: A host that is defined on this system
     host:
       type: object
       required:
@@ -2213,6 +1981,238 @@ components:
           type: string
           description: The name of the Virtual Controller that runs on the host
       description: A host that is defined on this system
+    AffectedObjectMO:
+      type: object
+      required:
+      - object_id
+      - object_type
+      properties:
+        object_id:
+          type: string
+          description: The unique identifier (UID) of the object affected by the completed task
+        object_type:
+          type: string
+          description: The type of the object affected by the completed task (virtual_machine, datastore, omnistack_cluster, backup, host, policy, rule)
+    ShutdownVirtualControllerMO:
+      type: object
+      properties:
+        ha_wait:
+          type: boolean
+          example: true
+          description: 'An indicator to show if the user wants to shut down the Virtual Controller safely or forcefully.
+
+
+            Valid values:
+
+
+            True: Virtual Controller waits for the virtual machines to reach HA compliance before shutting down
+
+
+            False: Virtual Controller forced to shut down without waiting for HA compliance
+
+
+            Default: True'
+    capacity_info:
+      type: object
+      required:
+      - data_points
+      - name
+      properties:
+        data_points:
+          type: array
+          description: The metrics data points
+          items:
+            $ref: '#/components/schemas/MetricsRawDataMO'
+        name:
+          type: string
+          description: The name of the set of metrics (stored_compressed_data, compression_ratio, deduplication_ratio, capacity_savings, efficiency_ratio, local_backup_capacity, used_logical_capacity, remote_backup_capacity, stored_virtual_machine_data, stored_uncompressed_data, used_capacity, free_space, allocated_capacity)
+      description: The metrics information
+    battery:
+      type: object
+      required:
+      - firmware_revision
+      - health
+      - manufacturer
+      - manufacturing_date
+      - model_number
+      - percent_charged
+      - serial_number
+      - status
+      properties:
+        firmware_revision:
+          type: string
+          description: The firmware revision of the hardware component
+        health:
+          type: string
+          description: The health status for the battery (HEALTHY, MISSING, FAILED, DEGRADED, or UNKNOWN)
+        manufacturer:
+          type: string
+          description: The manufacturer of the hardware component
+        manufacturing_date:
+          type: string
+          description: The manufacturing date of the battery
+        model_number:
+          type: string
+          description: The model number of the hardware component
+        percent_charged:
+          type: integer
+          format: int32
+          description: The charged percentage for the battery
+        serial_number:
+          type: string
+          description: The serial number of the hardware component
+        status:
+          type: string
+          description: The status of the hardware component (GREEN, YELLOW, RED, or UNKNOWN)
+      description: The backup battery unit information for the host
+    host_hardware:
+      type: object
+      required:
+      - battery
+      - firmware_revision
+      - host_id
+      - logical_drives
+      - manufacturer
+      - model_number
+      - name
+      - raid_card
+      - serial_number
+      - status
+      properties:
+        accelerator_card:
+          description: The accelerator card information for the host
+          $ref: '#/components/schemas/accelerator_card'
+        battery:
+          description: The backup battery unit information for the host
+          $ref: '#/components/schemas/battery'
+        firmware_revision:
+          type: string
+          description: The firmware revision of the hardware component
+        host_id:
+          type: string
+          description: The unique identifier (UID) of the host
+        logical_drives:
+          description: A list of logical drives for the host
+          $ref: '#/components/schemas/logical_drive'
+        manufacturer:
+          type: string
+          description: The manufacturer of the hardware component
+        model_number:
+          type: string
+          description: The model number of the hardware component
+        name:
+          type: string
+          description: The name of the host
+        raid_card:
+          description: The storage adapter information for the host
+          $ref: '#/components/schemas/storage_adapter'
+        serial_number:
+          type: string
+          description: The serial number of the hardware component
+        status:
+          type: string
+          description: The status of the hardware component (GREEN, YELLOW, RED, or UNKNOWN)
+      description: A list of hardware modules for the host
+    logical_drive:
+      type: object
+      required:
+      - cache_state
+      - capacity
+      - drive_sets
+      - firmware_revision
+      - health
+      - manufacturer
+      - model_number
+      - name
+      - serial_number
+      - status
+      properties:
+        cache_state:
+          type: string
+          description: The cache state for the drive
+        capacity:
+          type: integer
+          format: int64
+          description: The capacity of the drive (in bytes)
+        drive_sets:
+          description: A list of the drive sets
+          $ref: '#/components/schemas/drive_set'
+        firmware_revision:
+          type: string
+          description: The firmware revision of the hardware component
+        health:
+          type: string
+          description: The health status for the hardware component (HEALTHY, INITIALIZING, REBUILDING, WARNING, DEGRADED, UNCONFIGURED, MISSING, OFFLINE, FAILED, or HEALTH UNKNOWN)
+        manufacturer:
+          type: string
+          description: The manufacturer of the hardware component
+        model_number:
+          type: string
+          description: The model number of the hardware component
+        name:
+          type: integer
+          format: int64
+          description: The name of the drive
+        serial_number:
+          type: string
+          description: The serial number of the hardware component
+        status:
+          type: string
+          description: The status of the hardware component (GREEN, YELLOW, RED, or UNKNOWN)
+      description: A host that is defined on this system
+    TaskMO:
+      type: object
+      required:
+      - affected_objects
+      - end_time
+      - id
+      - start_time
+      - state
+      properties:
+        affected_objects:
+          type: array
+          description: For a completed task, the unique identifiers (UIDs) and types of the objects affected by the operation
+          items:
+            $ref: '#/components/schemas/AffectedObjectMO'
+        end_time:
+          type: string
+          description: The time the task finished, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+        error_code:
+          type: integer
+          format: int32
+          description: The error code returned if a task failed
+        error_message:
+          type: string
+          description: The error message returned if a task fails
+        id:
+          type: string
+          description: The unique identifier (UID) of the task
+        start_time:
+          type: string
+          description: The time the task started, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+        state:
+          type: string
+          description: The current state of the task object
+          enum:
+          - IN_PROGRESS
+          - COMPLETED
+          - FAILED
+      description: A task that was created as a result of an operation performed on the system
+    analytics_info:
+      type: object
+      required:
+      - data_points
+      - name
+      properties:
+        data_points:
+          type: array
+          description: The metrics data points
+          items:
+            $ref: '#/components/schemas/MetricsDataMO'
+        name:
+          type: string
+          description: The name of the set of metrics (iops, throughput, latency)
+      description: The metrics information
   securitySchemes:
     OAuth2:
       type: oauth2

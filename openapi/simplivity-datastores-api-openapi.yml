@@ -1529,123 +1529,15 @@ paths:
         required: true
 components:
   schemas:
-    standard_host:
+    set_policy:
       type: object
       required:
-      - hypervisor_object_id
-      - ip_address
-      - name
-      properties:
-        hypervisor_object_id:
-          type: string
-          description: The unique identifier (UID) of the standard host
-        ip_address:
-          type: string
-          description: The IP address of the standard host
-        name:
-          type: string
-          description: The name of the standard host
-        shared:
-          type: boolean
-          example: false
-          description: Confirms that the standard host shares a datastore
-        virtual_machine_count:
-          type: integer
-          format: int32
-          description: The number of virtual machines on this host
-      description: A standard host (host without HPE Omnistack software) defined on this system.
-    unshare_datastore:
-      type: object
-      required:
-      - host_name
-      properties:
-        host_name:
-          type: string
-          description: The name of the standard host that needs to stop sharing a datastore
-      description: Stop sharing a datastore
-    TaskMO:
-      type: object
-      required:
-      - affected_objects
-      - end_time
-      - id
-      - start_time
-      - state
-      properties:
-        affected_objects:
-          type: array
-          description: For a completed task, the unique identifiers (UIDs) and types of the objects affected by the operation
-          items:
-            $ref: '#/components/schemas/AffectedObjectMO'
-        end_time:
-          type: string
-          description: The time the task finished, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
-        error_code:
-          type: integer
-          format: int32
-          description: The error code returned if a task failed
-        error_message:
-          type: string
-          description: The error message returned if a task fails
-        id:
-          type: string
-          description: The unique identifier (UID) of the task
-        start_time:
-          type: string
-          description: The time the task started, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
-        state:
-          type: string
-          description: The current state of the task object
-          enum:
-          - IN_PROGRESS
-          - COMPLETED
-          - FAILED
-      description: A task that was created as a result of an operation performed on the system
-    share_datastore:
-      type: object
-      required:
-      - host_name
-      properties:
-        host_name:
-          type: string
-          description: The name of the standard host that you want sharing a datastore
-      description: Share a datastore
-    create_datastore:
-      type: object
-      required:
-      - name
-      - omnistack_cluster_id
       - policy_id
-      - size
       properties:
-        name:
-          type: string
-          description: The name of the datastore
-        omnistack_cluster_id:
-          type: string
-          description: The unique identifier (UID) of the omnistack_cluster associated with the datastore
         policy_id:
           type: string
-          description: The unique identifier (UID) of the policy associated with the datastore
-        single_replica:
-          type: boolean
-          example: false
-          description: An indicator to show if this is a single-replica datastore
-        size:
-          type: integer
-          format: int64
-          description: The size (in bytes) of the datastore
-      description: Creates a new datastore
-    resize_datastore:
-      type: object
-      required:
-      - size
-      properties:
-        size:
-          type: integer
-          format: int64
-          description: The size (in bytes) of the datastore
-      description: Resizes a datastore
+          description: The unique identifier (UID) of the policy you want to access
+      description: Sets the backup policy for a virtual_machine or datastore
     share:
       type: object
       required:
@@ -1672,6 +1564,61 @@ components:
 
             False: The datastore is being shared in read-only mode.'
       description: An object (host) that shares the datastore
+    standard_host:
+      type: object
+      required:
+      - hypervisor_object_id
+      - ip_address
+      - name
+      properties:
+        hypervisor_object_id:
+          type: string
+          description: The unique identifier (UID) of the standard host
+        ip_address:
+          type: string
+          description: The IP address of the standard host
+        name:
+          type: string
+          description: The name of the standard host
+        shared:
+          type: boolean
+          example: false
+          description: Confirms that the standard host shares a datastore
+        virtual_machine_count:
+          type: integer
+          format: int32
+          description: The number of virtual machines on this host
+      description: A standard host (host without HPE Omnistack software) defined on this system.
+    AffectedObjectMO:
+      type: object
+      required:
+      - object_id
+      - object_type
+      properties:
+        object_id:
+          type: string
+          description: The unique identifier (UID) of the object affected by the completed task
+        object_type:
+          type: string
+          description: The type of the object affected by the completed task (virtual_machine, datastore, omnistack_cluster, backup, host, policy, rule)
+    share_datastore:
+      type: object
+      required:
+      - host_name
+      properties:
+        host_name:
+          type: string
+          description: The name of the standard host that you want sharing a datastore
+      description: Share a datastore
+    unshare_datastore:
+      type: object
+      required:
+      - host_name
+      properties:
+        host_name:
+          type: string
+          description: The name of the standard host that needs to stop sharing a datastore
+      description: Stop sharing a datastore
     datastore:
       type: object
       required:
@@ -1765,27 +1712,80 @@ components:
           format: int64
           description: The size (in bytes) of the datastore
       description: An instance of a datastore that is defined on this system
-    set_policy:
+    resize_datastore:
       type: object
       required:
-      - policy_id
+      - size
       properties:
+        size:
+          type: integer
+          format: int64
+          description: The size (in bytes) of the datastore
+      description: Resizes a datastore
+    create_datastore:
+      type: object
+      required:
+      - name
+      - omnistack_cluster_id
+      - policy_id
+      - size
+      properties:
+        name:
+          type: string
+          description: The name of the datastore
+        omnistack_cluster_id:
+          type: string
+          description: The unique identifier (UID) of the omnistack_cluster associated with the datastore
         policy_id:
           type: string
-          description: The unique identifier (UID) of the policy you want to access
-      description: Sets the backup policy for a virtual_machine or datastore
-    AffectedObjectMO:
+          description: The unique identifier (UID) of the policy associated with the datastore
+        single_replica:
+          type: boolean
+          example: false
+          description: An indicator to show if this is a single-replica datastore
+        size:
+          type: integer
+          format: int64
+          description: The size (in bytes) of the datastore
+      description: Creates a new datastore
+    TaskMO:
       type: object
       required:
-      - object_id
-      - object_type
+      - affected_objects
+      - end_time
+      - id
+      - start_time
+      - state
       properties:
-        object_id:
+        affected_objects:
+          type: array
+          description: For a completed task, the unique identifiers (UIDs) and types of the objects affected by the operation
+          items:
+            $ref: '#/components/schemas/AffectedObjectMO'
+        end_time:
           type: string
-          description: The unique identifier (UID) of the object affected by the completed task
-        object_type:
+          description: The time the task finished, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+        error_code:
+          type: integer
+          format: int32
+          description: The error code returned if a task failed
+        error_message:
           type: string
-          description: The type of the object affected by the completed task (virtual_machine, datastore, omnistack_cluster, backup, host, policy, rule)
+          description: The error message returned if a task fails
+        id:
+          type: string
+          description: The unique identifier (UID) of the task
+        start_time:
+          type: string
+          description: The time the task started, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+        state:
+          type: string
+          description: The current state of the task object
+          enum:
+          - IN_PROGRESS
+          - COMPLETED
+          - FAILED
+      description: A task that was created as a result of an operation performed on the system
   securitySchemes:
     OAuth2:
       type: oauth2

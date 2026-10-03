@@ -537,44 +537,40 @@ paths:
         required: true
 components:
   schemas:
-    TaskMO:
+    external_store:
       type: object
       required:
-      - affected_objects
-      - end_time
-      - id
-      - start_time
-      - state
+      - cluster_group_ids
+      - management_ip
+      - name
+      - omnistack_cluster_id
       properties:
-        affected_objects:
+        cluster_group_ids:
           type: array
-          description: For a completed task, the unique identifiers (UIDs) and types of the objects affected by the operation
+          description: The unique identifiers (UIDs) of the cluster_groups associated with the external store
           items:
-            $ref: '#/components/schemas/AffectedObjectMO'
-        end_time:
+            type: string
+        management_ip:
           type: string
-          description: The time the task finished, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
-        error_code:
+          description: The IP address of the external store
+        management_port:
           type: integer
           format: int32
-          description: The error code returned if a task failed
-        error_message:
+          description: The management IP port of the external store
+        name:
           type: string
-          description: The error message returned if a task fails
-        id:
+          description: The name of the external_store
+        omnistack_cluster_id:
           type: string
-          description: The unique identifier (UID) of the task
-        start_time:
+          description: The UID of the omnistack_cluster associated with the external store
+        storage_port:
+          type: integer
+          format: int32
+          description: The storage IP port of the external store
+        type:
           type: string
-          description: The time the task started, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
-        state:
-          type: string
-          description: The current state of the task object
-          enum:
-          - IN_PROGRESS
-          - COMPLETED
-          - FAILED
-      description: A task that was created as a result of an operation performed on the system
+          description: The type of external store
+      description: An external_store
     AffectedObjectMO:
       type: object
       required:
@@ -587,6 +583,19 @@ components:
         object_type:
           type: string
           description: The type of the object affected by the completed task (virtual_machine, datastore, omnistack_cluster, backup, host, policy, rule)
+    unregister_external_store:
+      type: object
+      required:
+      - name
+      - omnistack_cluster_id
+      properties:
+        name:
+          type: string
+          description: The name of the external_store
+        omnistack_cluster_id:
+          type: string
+          description: The UID of the omnistack_cluster associated with the external store
+      description: Removes the external store as a backup destination for the cluster. Backups remain on the external store, but they can no longer be managed by HPE SimpliVity.
     update_external_store_credentials:
       type: object
       required:
@@ -646,53 +655,44 @@ components:
           type: string
           description: The client name of the external store
       description: Registers a new external store
-    external_store:
+    TaskMO:
       type: object
       required:
-      - cluster_group_ids
-      - management_ip
-      - name
-      - omnistack_cluster_id
+      - affected_objects
+      - end_time
+      - id
+      - start_time
+      - state
       properties:
-        cluster_group_ids:
+        affected_objects:
           type: array
-          description: The unique identifiers (UIDs) of the cluster_groups associated with the external store
+          description: For a completed task, the unique identifiers (UIDs) and types of the objects affected by the operation
           items:
-            type: string
-        management_ip:
+            $ref: '#/components/schemas/AffectedObjectMO'
+        end_time:
           type: string
-          description: The IP address of the external store
-        management_port:
+          description: The time the task finished, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+        error_code:
           type: integer
           format: int32
-          description: The management IP port of the external store
-        name:
+          description: The error code returned if a task failed
+        error_message:
           type: string
-          description: The name of the external_store
-        omnistack_cluster_id:
+          description: The error message returned if a task fails
+        id:
           type: string
-          description: The UID of the omnistack_cluster associated with the external store
-        storage_port:
-          type: integer
-          format: int32
-          description: The storage IP port of the external store
-        type:
+          description: The unique identifier (UID) of the task
+        start_time:
           type: string
-          description: The type of external store
-      description: An external_store
-    unregister_external_store:
-      type: object
-      required:
-      - name
-      - omnistack_cluster_id
-      properties:
-        name:
+          description: The time the task started, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+        state:
           type: string
-          description: The name of the external_store
-        omnistack_cluster_id:
-          type: string
-          description: The UID of the omnistack_cluster associated with the external store
-      description: Removes the external store as a backup destination for the cluster. Backups remain on the external store, but they can no longer be managed by HPE SimpliVity.
+          description: The current state of the task object
+          enum:
+          - IN_PROGRESS
+          - COMPLETED
+          - FAILED
+      description: A task that was created as a result of an operation performed on the system
   securitySchemes:
     OAuth2:
       type: oauth2

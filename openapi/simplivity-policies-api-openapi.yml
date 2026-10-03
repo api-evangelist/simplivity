@@ -2853,6 +2853,156 @@ paths:
       deprecated: true
 components:
   schemas:
+    NetworkInterface:
+      type: object
+      required:
+      - adapter_type
+      - device_number
+      - ipv4_addresses
+      - mac_address
+      - mac_generation
+      - network_label
+      properties:
+        adapter_type:
+          type: string
+          description: The adapter type of the network_interface
+          enum:
+          - E1000
+          - E1000E
+          - PCNET32
+          - VMXNET
+          - VNXNET2
+          - VMXNET3
+          - UNKNOWN
+        device_number:
+          type: string
+          description: The device number of the network_interface; empty if this represents a new network_interface
+        ipv4_addresses:
+          type: array
+          description: The IPV4 address(es) assigned to the network_interface
+          items:
+            type: string
+        mac_address:
+          type: string
+          description: If mac_generation is set to MANUAL, specifies the MAC address assigned to the network_interface
+        mac_generation:
+          type: string
+          description: Specifies how the MAC address for the network_interface is generated
+          enum:
+          - ASSIGNED
+          - GENERATED
+          - MANUAL
+          - UNKNOWN
+        network_label:
+          type: string
+          description: The network ID associated with the network_interface
+    policy_schedule_impact_report:
+      type: object
+      required:
+      - schedule_after_change
+      - schedule_before_change
+      properties:
+        schedule_after_change:
+          description: The policy backup schedule report
+          $ref: '#/components/schemas/policy_schedule_report'
+        schedule_before_change:
+          description: The policy backup schedule report
+          $ref: '#/components/schemas/policy_schedule_report'
+      description: The policy backup schedule reports for prior to and after applying proposed changes
+    share:
+      type: object
+      required:
+      - address
+      - host
+      - rw
+      properties:
+        address:
+          type: string
+          description: The network address of the host that shares the datastore
+        host:
+          type: string
+          description: The name of the host that shares the datastore
+        rw:
+          type: string
+          description: 'An indicator that shows the mode of the datastore
+
+
+            Valid values:
+
+
+            True: The datastore is being shared in read/write mode.
+
+
+            False: The datastore is being shared in read-only mode.'
+      description: An object (host) that shares the datastore
+    policy:
+      type: object
+      required:
+      - cluster_group_ids
+      - id
+      - name
+      - owner_cluster_id
+      - owner_cluster_name
+      - rules
+      properties:
+        cluster_group_ids:
+          type: array
+          description: The unique identifiers (UIDs) of the cluster_groups associated with the policy
+          items:
+            type: string
+        owner_cluster_id:
+          type: string
+          description: The unique identifier (UID) of the omnistack_cluster that owns the policy
+        owner_cluster_name:
+          type: string
+          description: The name of the omnistack_cluster that owns the policy
+        id:
+          type: string
+          description: The unique identifier (UID) of the policy
+        name:
+          type: string
+          description: The name of the policy
+        rules:
+          type: array
+          description: The rules for the policy
+          items:
+            $ref: '#/components/schemas/rule'
+      description: A policy on this system
+    policy_schedule_report:
+      type: object
+      required:
+      - backup_rate_level
+      - daily_backup_rate
+      - daily_backup_rate_limit
+      - projected_retained_backups
+      - projected_retained_backups_level
+      - retained_backups_limit
+      properties:
+        backup_rate_level:
+          type: integer
+          format: int32
+          description: The ratio in percent of daily_backup_rate vs daily_backup_rate_limit (i.e. What % of the maximum limit is currently specified)
+        daily_backup_rate:
+          type: integer
+          format: int32
+          description: The average number of backups created in a day in the federation as determined by the current set of backup policies and their rules, and the virtual machines assigned to those backup policies
+        daily_backup_rate_limit:
+          type: integer
+          format: int32
+          description: The maximum number of policy backups allowed to be created in the federation each day
+        projected_retained_backups:
+          type: integer
+          format: int32
+          description: The projection of the maximum number of backups that could be retained given the frequency and retention time specified by the backup policies and the virtual machines assigned to those backup policies
+        projected_retained_backups_level:
+          type: integer
+          format: int32
+          description: The ratio in percent of projected_retained_backups vs retained_backups_limit (i.e. What % of the maximum limit is currently specified)
+        retained_backups_limit:
+          type: integer
+          format: int32
+          description: The maximum number of policy backups the federation is permitted to have at any given time
+      description: A policy on this system
     rule:
       type: object
       required:
@@ -2910,44 +3060,6 @@ components:
           - NOT_APPLICABLE
           - VSS
       description: A backup policy rule defined on this system
-    TaskMO:
-      type: object
-      required:
-      - affected_objects
-      - end_time
-      - id
-      - start_time
-      - state
-      properties:
-        affected_objects:
-          type: array
-          description: For a completed task, the unique identifiers (UIDs) and types of the objects affected by the operation
-          items:
-            $ref: '#/components/schemas/AffectedObjectMO'
-        end_time:
-          type: string
-          description: The time the task finished, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
-        error_code:
-          type: integer
-          format: int32
-          description: The error code returned if a task failed
-        error_message:
-          type: string
-          description: The error message returned if a task fails
-        id:
-          type: string
-          description: The unique identifier (UID) of the task
-        start_time:
-          type: string
-          description: The time the task started, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
-        state:
-          type: string
-          description: The current state of the task object
-          enum:
-          - IN_PROGRESS
-          - COMPLETED
-          - FAILED
-      description: A task that was created as a result of an operation performed on the system
     AffectedObjectMO:
       type: object
       required:
@@ -2960,41 +3072,55 @@ components:
         object_type:
           type: string
           description: The type of the object affected by the completed task (virtual_machine, datastore, omnistack_cluster, backup, host, policy, rule)
-    policy_schedule_report:
+    report_on_proposed_rules_edits:
       type: object
       required:
-      - backup_rate_level
-      - daily_backup_rate
-      - daily_backup_rate_limit
-      - projected_retained_backups
-      - projected_retained_backups_level
-      - retained_backups_limit
+      - frequency
+      - retention
+      - rule_id
       properties:
-        backup_rate_level:
+        destination_id:
+          type: string
+          description: The unique identifier (UID) of the omnistack_cluster to store the backup
+        rule_id:
+          type: string
+          description: The unique identifier (UID) of the policy rule
+        frequency:
           type: integer
           format: int32
-          description: The ratio in percent of daily_backup_rate vs daily_backup_rate_limit (i.e. What % of the maximum limit is currently specified)
-        daily_backup_rate:
+          description: The number of minutes between backups
+        retention:
           type: integer
           format: int32
-          description: The average number of backups created in a day in the federation as determined by the current set of backup policies and their rules, and the virtual machines assigned to those backup policies
-        daily_backup_rate_limit:
-          type: integer
-          format: int32
-          description: The maximum number of policy backups allowed to be created in the federation each day
-        projected_retained_backups:
-          type: integer
-          format: int32
-          description: The projection of the maximum number of backups that could be retained given the frequency and retention time specified by the backup policies and the virtual machines assigned to those backup policies
-        projected_retained_backups_level:
-          type: integer
-          format: int32
-          description: The ratio in percent of projected_retained_backups vs retained_backups_limit (i.e. What % of the maximum limit is currently specified)
-        retained_backups_limit:
-          type: integer
-          format: int32
-          description: The maximum number of policy backups the federation is permitted to have at any given time
-      description: A policy on this system
+          description: The number of minutes to keep backups
+        days:
+          type: string
+          description: The days of the week (for example, Mon,Fri), or month (for example, 1,15) to take backups or "last" to specify the last day of each month
+        start_time:
+          type: string
+          description: The time to start the backups, for example, 14:30. This time is local to the time zone of the Hypervisor Management System (HMS).
+        end_time:
+          type: string
+          description: The time to stop backing up, for example, 14:30. This time is local to the time zone of the Hypervisor Management System (HMS).
+        application_consistent:
+          type: boolean
+          example: false
+          description: Set to false for crash-consistent backups. Set to true for application-consistent backups (for example, VSS or snapshot backups).
+        consistency_type:
+          type: string
+          description: Set to DEFAULT for a snapshot backup. Set to VSS for a Microsoft Volume Shadow Copy Service backup. Set to NONE for crash-consistent backups.
+          enum:
+          - NONE
+          - DEFAULT
+          - FAILEDVSS
+          - NOT_APPLICABLE
+          - VSS
+        external_store_name:
+          type: string
+          description: 'The external store to hold the backup.
+
+            Cannot be specified if destination_id is set.'
+      description: Generate a backup impact reported based on proposed changes to the rules for the policy
     ReplicaInfo:
       type: object
       required:
@@ -3010,6 +3136,123 @@ components:
           enum:
           - PRIMARY
           - SECONDARY
+    datastore:
+      type: object
+      required:
+      - cluster_group_ids
+      - compute_cluster_parent_hypervisor_object_id
+      - compute_cluster_parent_name
+      - created_at
+      - hypervisor_management_system
+      - hypervisor_management_system_name
+      - hypervisor_object_id
+      - hypervisor_type
+      - id
+      - mount_directory
+      - name
+      - omnistack_cluster_id
+      - omnistack_cluster_name
+      - policy_id
+      - policy_name
+      - shares
+      - size
+      properties:
+        cluster_group_ids:
+          type: array
+          description: The unique identifiers (UIDs) of the cluster_groups associated with the datastore
+          items:
+            type: string
+        compute_cluster_parent_hypervisor_object_id:
+          type: string
+          description: The unique identifier (UID) of the hypervisor-based instance that contains the omnistack_cluster that is associated with the instance
+        compute_cluster_parent_name:
+          type: string
+          description: The name of the hypervisor-based instance that contains the omnistack_cluster that is associated with the instance
+        created_at:
+          type: string
+          description: The time the datastore was created, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+        deleted:
+          type: boolean
+          example: false
+          description: '[deprecated] An indicator to show if the datastore is deleted'
+        hypervisor_free_space:
+          type: integer
+          format: int64
+          description: The amount of free space (in bytes) available in the datastore
+        hypervisor_management_system:
+          type: string
+          description: The IP address of the Hypervisor Management System (HMS) associated with the datastore
+        hypervisor_management_system_name:
+          type: string
+          description: The name of the Hypervisor Management System (HMS) associated with the datastore
+        hypervisor_object_id:
+          type: string
+          description: The unique identifier (UID) of the hypervisor-based instance associated with the datastore
+        hypervisor_type:
+          type: string
+          description: The type of Hypervisor Management System (HMS) associated with the datastore
+          enum:
+          - VSPHERE
+          - HYPERV
+        id:
+          type: string
+          description: The unique identifier (UID) of the datastore
+        mount_directory:
+          type: string
+          description: The mount point on the system associated with the datastore
+        name:
+          type: string
+          description: The name of the datastore
+        omnistack_cluster_id:
+          type: string
+          description: The unique identifier (UID) of the omnistack_cluster associated with the datastore
+        omnistack_cluster_name:
+          type: string
+          description: The name of the omnistack_cluster associated with the datastore
+        policy_id:
+          type: string
+          description: The unique identifier (UID) of the policy associated with the datastore
+        policy_name:
+          type: string
+          description: The name of the policy associated with the datastore
+        shares:
+          type: array
+          description: A list of hosts that access the datastore, but do not run HPE OmniStack software
+          items:
+            $ref: '#/components/schemas/share'
+        single_replica:
+          type: boolean
+          example: false
+          description: Whether the datastore contains only single-replica virtual machines (no storage HA)
+        size:
+          type: integer
+          format: int64
+          description: The size (in bytes) of the datastore
+      description: An instance of a datastore that is defined on this system
+    create_or_rename_policy:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: The name of the policy
+      description: Creates a new policy
+    suspend_or_resume_policy:
+      type: object
+      required:
+      - target_object_type
+      properties:
+        target_object_type:
+          type: string
+          description: The type of object where policy backups should be suspended or resumed
+        target_object_id:
+          type: string
+          description: 'The unique identifier (UID) of the omnistack_cluster or host that suspends or resumes policy backups
+
+
+            Note: An empty ID is valid if the target_object_type is federation.'
+      description: Suspends or resumes policy backups
     create_or_edit_rule:
       type: object
       required:
@@ -3055,75 +3298,6 @@ components:
 
             Cannot be specified if destination_id is set.'
       description: Creates a policy rule
-    share:
-      type: object
-      required:
-      - address
-      - host
-      - rw
-      properties:
-        address:
-          type: string
-          description: The network address of the host that shares the datastore
-        host:
-          type: string
-          description: The name of the host that shares the datastore
-        rw:
-          type: string
-          description: 'An indicator that shows the mode of the datastore
-
-
-            Valid values:
-
-
-            True: The datastore is being shared in read/write mode.
-
-
-            False: The datastore is being shared in read-only mode.'
-      description: An object (host) that shares the datastore
-    NetworkInterface:
-      type: object
-      required:
-      - adapter_type
-      - device_number
-      - ipv4_addresses
-      - mac_address
-      - mac_generation
-      - network_label
-      properties:
-        adapter_type:
-          type: string
-          description: The adapter type of the network_interface
-          enum:
-          - E1000
-          - E1000E
-          - PCNET32
-          - VMXNET
-          - VNXNET2
-          - VMXNET3
-          - UNKNOWN
-        device_number:
-          type: string
-          description: The device number of the network_interface; empty if this represents a new network_interface
-        ipv4_addresses:
-          type: array
-          description: The IPV4 address(es) assigned to the network_interface
-          items:
-            type: string
-        mac_address:
-          type: string
-          description: If mac_generation is set to MANUAL, specifies the MAC address assigned to the network_interface
-        mac_generation:
-          type: string
-          description: Specifies how the MAC address for the network_interface is generated
-          enum:
-          - ASSIGNED
-          - GENERATED
-          - MANUAL
-          - UNKNOWN
-        network_label:
-          type: string
-          description: The network ID associated with the network_interface
     virtual_machine:
       type: object
       required:
@@ -3311,218 +3485,44 @@ components:
           - REMOVED
           - DELETED
       description: An instance of a virtual_machine defined on this system
-    suspend_or_resume_policy:
+    TaskMO:
       type: object
       required:
-      - target_object_type
-      properties:
-        target_object_type:
-          type: string
-          description: The type of object where policy backups should be suspended or resumed
-        target_object_id:
-          type: string
-          description: 'The unique identifier (UID) of the omnistack_cluster or host that suspends or resumes policy backups
-
-
-            Note: An empty ID is valid if the target_object_type is federation.'
-      description: Suspends or resumes policy backups
-    datastore:
-      type: object
-      required:
-      - cluster_group_ids
-      - compute_cluster_parent_hypervisor_object_id
-      - compute_cluster_parent_name
-      - created_at
-      - hypervisor_management_system
-      - hypervisor_management_system_name
-      - hypervisor_object_id
-      - hypervisor_type
+      - affected_objects
+      - end_time
       - id
-      - mount_directory
-      - name
-      - omnistack_cluster_id
-      - omnistack_cluster_name
-      - policy_id
-      - policy_name
-      - shares
-      - size
+      - start_time
+      - state
       properties:
-        cluster_group_ids:
+        affected_objects:
           type: array
-          description: The unique identifiers (UIDs) of the cluster_groups associated with the datastore
+          description: For a completed task, the unique identifiers (UIDs) and types of the objects affected by the operation
           items:
-            type: string
-        compute_cluster_parent_hypervisor_object_id:
-          type: string
-          description: The unique identifier (UID) of the hypervisor-based instance that contains the omnistack_cluster that is associated with the instance
-        compute_cluster_parent_name:
-          type: string
-          description: The name of the hypervisor-based instance that contains the omnistack_cluster that is associated with the instance
-        created_at:
-          type: string
-          description: The time the datastore was created, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
-        deleted:
-          type: boolean
-          example: false
-          description: '[deprecated] An indicator to show if the datastore is deleted'
-        hypervisor_free_space:
-          type: integer
-          format: int64
-          description: The amount of free space (in bytes) available in the datastore
-        hypervisor_management_system:
-          type: string
-          description: The IP address of the Hypervisor Management System (HMS) associated with the datastore
-        hypervisor_management_system_name:
-          type: string
-          description: The name of the Hypervisor Management System (HMS) associated with the datastore
-        hypervisor_object_id:
-          type: string
-          description: The unique identifier (UID) of the hypervisor-based instance associated with the datastore
-        hypervisor_type:
-          type: string
-          description: The type of Hypervisor Management System (HMS) associated with the datastore
-          enum:
-          - VSPHERE
-          - HYPERV
-        id:
-          type: string
-          description: The unique identifier (UID) of the datastore
-        mount_directory:
-          type: string
-          description: The mount point on the system associated with the datastore
-        name:
-          type: string
-          description: The name of the datastore
-        omnistack_cluster_id:
-          type: string
-          description: The unique identifier (UID) of the omnistack_cluster associated with the datastore
-        omnistack_cluster_name:
-          type: string
-          description: The name of the omnistack_cluster associated with the datastore
-        policy_id:
-          type: string
-          description: The unique identifier (UID) of the policy associated with the datastore
-        policy_name:
-          type: string
-          description: The name of the policy associated with the datastore
-        shares:
-          type: array
-          description: A list of hosts that access the datastore, but do not run HPE OmniStack software
-          items:
-            $ref: '#/components/schemas/share'
-        single_replica:
-          type: boolean
-          example: false
-          description: Whether the datastore contains only single-replica virtual machines (no storage HA)
-        size:
-          type: integer
-          format: int64
-          description: The size (in bytes) of the datastore
-      description: An instance of a datastore that is defined on this system
-    policy:
-      type: object
-      required:
-      - cluster_group_ids
-      - id
-      - name
-      - owner_cluster_id
-      - owner_cluster_name
-      - rules
-      properties:
-        cluster_group_ids:
-          type: array
-          description: The unique identifiers (UIDs) of the cluster_groups associated with the policy
-          items:
-            type: string
-        owner_cluster_id:
-          type: string
-          description: The unique identifier (UID) of the omnistack_cluster that owns the policy
-        owner_cluster_name:
-          type: string
-          description: The name of the omnistack_cluster that owns the policy
-        id:
-          type: string
-          description: The unique identifier (UID) of the policy
-        name:
-          type: string
-          description: The name of the policy
-        rules:
-          type: array
-          description: The rules for the policy
-          items:
-            $ref: '#/components/schemas/rule'
-      description: A policy on this system
-    create_or_rename_policy:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          description: The name of the policy
-      description: Creates a new policy
-    report_on_proposed_rules_edits:
-      type: object
-      required:
-      - frequency
-      - retention
-      - rule_id
-      properties:
-        destination_id:
-          type: string
-          description: The unique identifier (UID) of the omnistack_cluster to store the backup
-        rule_id:
-          type: string
-          description: The unique identifier (UID) of the policy rule
-        frequency:
-          type: integer
-          format: int32
-          description: The number of minutes between backups
-        retention:
-          type: integer
-          format: int32
-          description: The number of minutes to keep backups
-        days:
-          type: string
-          description: The days of the week (for example, Mon,Fri), or month (for example, 1,15) to take backups or "last" to specify the last day of each month
-        start_time:
-          type: string
-          description: The time to start the backups, for example, 14:30. This time is local to the time zone of the Hypervisor Management System (HMS).
+            $ref: '#/components/schemas/AffectedObjectMO'
         end_time:
           type: string
-          description: The time to stop backing up, for example, 14:30. This time is local to the time zone of the Hypervisor Management System (HMS).
-        application_consistent:
-          type: boolean
-          example: false
-          description: Set to false for crash-consistent backups. Set to true for application-consistent backups (for example, VSS or snapshot backups).
-        consistency_type:
+          description: The time the task finished, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+        error_code:
+          type: integer
+          format: int32
+          description: The error code returned if a task failed
+        error_message:
           type: string
-          description: Set to DEFAULT for a snapshot backup. Set to VSS for a Microsoft Volume Shadow Copy Service backup. Set to NONE for crash-consistent backups.
+          description: The error message returned if a task fails
+        id:
+          type: string
+          description: The unique identifier (UID) of the task
+        start_time:
+          type: string
+          description: The time the task started, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+        state:
+          type: string
+          description: The current state of the task object
           enum:
-          - NONE
-          - DEFAULT
-          - FAILEDVSS
-          - NOT_APPLICABLE
-          - VSS
-        external_store_name:
-          type: string
-          description: 'The external store to hold the backup.
-
-            Cannot be specified if destination_id is set.'
-      description: Generate a backup impact reported based on proposed changes to the rules for the policy
-    policy_schedule_impact_report:
-      type: object
-      required:
-      - schedule_after_change
-      - schedule_before_change
-      properties:
-        schedule_after_change:
-          description: The policy backup schedule report
-          $ref: '#/components/schemas/policy_schedule_report'
-        schedule_before_change:
-          description: The policy backup schedule report
-          $ref: '#/components/schemas/policy_schedule_report'
-      description: The policy backup schedule reports for prior to and after applying proposed changes
+          - IN_PROGRESS
+          - COMPLETED
+          - FAILED
+      description: A task that was created as a result of an operation performed on the system
   securitySchemes:
     OAuth2:
       type: oauth2
