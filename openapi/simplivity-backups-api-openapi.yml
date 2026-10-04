@@ -2495,6 +2495,15 @@ paths:
           description: Not Found
 components:
   schemas:
+    rename_backup:
+      type: object
+      required:
+      - backup_name
+      properties:
+        backup_name:
+          type: string
+          description: The new name for the backup
+      description: Renames the specified backup
     TaskMO:
       type: object
       required:
@@ -2533,20 +2542,6 @@ components:
           - COMPLETED
           - FAILED
       description: A task that was created as a result of an operation performed on the system
-    delete_backups:
-      type: object
-      required:
-      - backup_id
-      properties:
-        backup_id:
-          type: array
-          description: The list of the unique identifier (UID) of the backups that you want to delete
-          items:
-            type: string
-        cluster_group_id:
-          type: string
-          description: The cluster group id of the backup list
-      description: Deletes the specified list of backup instances
     BackupVirtualDiskMO:
       type: object
       required:
@@ -2557,89 +2552,19 @@ components:
           description: List of backup virtual hard disk files
           items:
             type: object
-    BackupPartitionDataMO:
+    backup_copy:
       type: object
       required:
-      - disk_type
-      - mountable
-      - partition_number
-      - size
+      - destination_id
+      - external_store_name
       properties:
-        disk_type:
+        destination_id:
           type: string
-          description: The partition disk type (for example, GPT or BIOS)
-        mountable:
-          type: boolean
-          example: false
-          description: Indicates if the application can mount the partition
-        partition_number:
-          type: integer
-          format: int32
-          description: The partition number for the partition
-        size:
-          type: integer
-          format: int64
-          description: The size of the partition in bytes
-    restore_file:
-      type: object
-      required:
-      - paths
-      - virtual_machine_id
-      properties:
-        virtual_machine_id:
+          description: The unique identifier (UID) of the omnistack_cluster that stores the new backup
+        external_store_name:
           type: string
-          description: The identification number of the virtual machine where you want to restore the files
-        paths:
-          type: array
-          description: 'The paths to the files in this format: virtual_machine_disk_name/partition_number/path_to_file (for example, "vmdk1.vmdk/2/Documents/file.txt")'
-          items:
-            type: string
-      description: Restore files from a specific partition
-    AffectedObjectMO:
-      type: object
-      required:
-      - object_id
-      - object_type
-      properties:
-        object_id:
-          type: string
-          description: The unique identifier (UID) of the object affected by the completed task
-        object_type:
-          type: string
-          description: The type of the object affected by the completed task (virtual_machine, datastore, omnistack_cluster, backup, host, policy, rule)
-    rename_backup:
-      type: object
-      required:
-      - backup_name
-      properties:
-        backup_name:
-          type: string
-          description: The new name for the backup
-      description: Renames the specified backup
-    backup_retention_set:
-      type: object
-      required:
-      - backup_id
-      - retention
-      properties:
-        backup_id:
-          type: array
-          description: The list of the unique identifier (UID) of the backups that you want to set the retention time for
-          items:
-            type: string
-        retention:
-          type: integer
-          format: int32
-          description: The number of minutes to keep backups
-        force:
-          type: boolean
-          example: false
-          description: An indicator to force a retention time modification even if this action results in deleting backups
-        forever:
-          type: boolean
-          example: false
-          description: 'Retains backups indefinitely '
-      description: Sets the retention time for the specified list of backups
+          description: The name of the external_store
+      description: Copies the specified backup to another omnistack_cluster or external_store
     restore_virtual_machine:
       type: object
       required:
@@ -2819,19 +2744,55 @@ components:
           - VM
           - TEMPLATE
           - UNKNOWN
-    backup_copy:
+    AffectedObjectMO:
       type: object
       required:
-      - destination_id
-      - external_store_name
+      - object_id
+      - object_type
       properties:
-        destination_id:
+        object_id:
           type: string
-          description: The unique identifier (UID) of the omnistack_cluster that stores the new backup
-        external_store_name:
+          description: The unique identifier (UID) of the object affected by the completed task
+        object_type:
           type: string
-          description: The name of the external_store
-      description: Copies the specified backup to another omnistack_cluster or external_store
+          description: The type of the object affected by the completed task (virtual_machine, datastore, omnistack_cluster, backup, host, policy, rule)
+    BackupPartitionDataMO:
+      type: object
+      required:
+      - disk_type
+      - mountable
+      - partition_number
+      - size
+      properties:
+        disk_type:
+          type: string
+          description: The partition disk type (for example, GPT or BIOS)
+        mountable:
+          type: boolean
+          example: false
+          description: Indicates if the application can mount the partition
+        partition_number:
+          type: integer
+          format: int32
+          description: The partition number for the partition
+        size:
+          type: integer
+          format: int64
+          description: The size of the partition in bytes
+    delete_backups:
+      type: object
+      required:
+      - backup_id
+      properties:
+        backup_id:
+          type: array
+          description: The list of the unique identifier (UID) of the backups that you want to delete
+          items:
+            type: string
+        cluster_group_id:
+          type: string
+          description: The cluster group id of the backup list
+      description: Deletes the specified list of backup instances
     BackupFileDataMO:
       type: object
       required:
@@ -2864,6 +2825,45 @@ components:
           type: boolean
           example: false
           description: Indicates if the file is a symbolic link
+    restore_file:
+      type: object
+      required:
+      - paths
+      - virtual_machine_id
+      properties:
+        virtual_machine_id:
+          type: string
+          description: The identification number of the virtual machine where you want to restore the files
+        paths:
+          type: array
+          description: 'The paths to the files in this format: virtual_machine_disk_name/partition_number/path_to_file (for example, "vmdk1.vmdk/2/Documents/file.txt")'
+          items:
+            type: string
+      description: Restore files from a specific partition
+    backup_retention_set:
+      type: object
+      required:
+      - backup_id
+      - retention
+      properties:
+        backup_id:
+          type: array
+          description: The list of the unique identifier (UID) of the backups that you want to set the retention time for
+          items:
+            type: string
+        retention:
+          type: integer
+          format: int32
+          description: The number of minutes to keep backups
+        force:
+          type: boolean
+          example: false
+          description: An indicator to force a retention time modification even if this action results in deleting backups
+        forever:
+          type: boolean
+          example: false
+          description: 'Retains backups indefinitely '
+      description: Sets the retention time for the specified list of backups
   securitySchemes:
     OAuth2:
       type: oauth2

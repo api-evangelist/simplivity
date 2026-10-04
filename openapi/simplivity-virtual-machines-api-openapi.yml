@@ -2391,449 +2391,44 @@ paths:
         required: true
 components:
   schemas:
-    CloneVMMO:
+    TaskMO:
       type: object
       required:
-      - virtual_machine_name
-      properties:
-        virtual_machine_name:
-          type: string
-          description: The name of the virtual_machine created from this action
-        app_consistent:
-          type: boolean
-          example: false
-          description: '[deprecated] An indicator to show if the backup represents a snapshot of a virtual machine with data that was first flushed to disk'
-        consistency_type:
-          type: string
-          description: 'The type of backup used for the clone method (DEFAULT [crash-consistent], VSS [application-consistent using VSS], or NONE [application-consistent using a snapshot]).
-
-
-            NOTE: If the consistency_type and app_consistent values are both set, the value for consistency_type overrides the value for app_consistent.
-
-
-            If consisteny_type is not set and the app_consistent value is set to True, the consistency_type value equals DEFAULT (crash-consistent). If the app_consistent value is set to False, the consistency_type value equalsNONE (application-consistent using a snapshot'
-          enum:
-          - NONE
-          - DEFAULT
-          - FAILEDVSS
-          - NOT_APPLICABLE
-          - VSS
-    backup_parameters:
-      type: object
-      properties:
-        guest_username:
-          type: string
-          description: The user name of the virtual machine
-        guest_password:
-          type: string
-          description: The password of the virtual machine
-        override_guest_validation:
-          type: boolean
-          example: false
-          description: Set to true to disable virtual machine validation logic.
-        app_aware_type:
-          type: string
-          description: "Set the application aware backup type: \nVSS - Application-consistent backup using Microsoft VSS, \nDEFAULT - Crash-consistent backup, \nNONE - Application-consistent backup using a VMware snapshot."
-          enum:
-          - NONE
-          - DEFAULT
-          - FAILEDVSS
-          - NOT_APPLICABLE
-          - VSS
-      description: Set the virtual machine backup parameters used for application consistent backups.
-    validate_backup_credentials:
-      type: object
-      required:
-      - guest_password
-      - guest_username
-      properties:
-        guest_username:
-          type: string
-          description: The user name of the virtual machine
-        guest_password:
-          type: string
-          description: The password of the virtual machine
-      description: Validates the credentials for the virtual machine you want to backup
-    set_policy:
-      type: object
-      required:
-      - policy_id
-      properties:
-        policy_id:
-          type: string
-          description: The unique identifier (UID) of the policy you want to access
-      description: Sets the backup policy for a virtual_machine or datastore
-    NetworkInterface:
-      type: object
-      required:
-      - adapter_type
-      - device_number
-      - ipv4_addresses
-      - mac_address
-      - mac_generation
-      - network_label
-      properties:
-        adapter_type:
-          type: string
-          description: The adapter type of the network_interface
-          enum:
-          - E1000
-          - E1000E
-          - PCNET32
-          - VMXNET
-          - VNXNET2
-          - VMXNET3
-          - UNKNOWN
-        device_number:
-          type: string
-          description: The device number of the network_interface; empty if this represents a new network_interface
-        ipv4_addresses:
-          type: array
-          description: The IPV4 address(es) assigned to the network_interface
-          items:
-            type: string
-        mac_address:
-          type: string
-          description: If mac_generation is set to MANUAL, specifies the MAC address assigned to the network_interface
-        mac_generation:
-          type: string
-          description: Specifies how the MAC address for the network_interface is generated
-          enum:
-          - ASSIGNED
-          - GENERATED
-          - MANUAL
-          - UNKNOWN
-        network_label:
-          type: string
-          description: The network ID associated with the network_interface
-    policy_schedule_impact_report:
-      type: object
-      required:
-      - schedule_after_change
-      - schedule_before_change
-      properties:
-        schedule_after_change:
-          description: The policy backup schedule report
-          $ref: '#/components/schemas/policy_schedule_report'
-        schedule_before_change:
-          description: The policy backup schedule report
-          $ref: '#/components/schemas/policy_schedule_report'
-      description: The policy backup schedule reports for prior to and after applying proposed changes
-    policy_schedule_report:
-      type: object
-      required:
-      - backup_rate_level
-      - daily_backup_rate
-      - daily_backup_rate_limit
-      - projected_retained_backups
-      - projected_retained_backups_level
-      - retained_backups_limit
-      properties:
-        backup_rate_level:
-          type: integer
-          format: int32
-          description: The ratio in percent of daily_backup_rate vs daily_backup_rate_limit (i.e. What % of the maximum limit is currently specified)
-        daily_backup_rate:
-          type: integer
-          format: int32
-          description: The average number of backups created in a day in the federation as determined by the current set of backup policies and their rules, and the virtual machines assigned to those backup policies
-        daily_backup_rate_limit:
-          type: integer
-          format: int32
-          description: The maximum number of policy backups allowed to be created in the federation each day
-        projected_retained_backups:
-          type: integer
-          format: int32
-          description: The projection of the maximum number of backups that could be retained given the frequency and retention time specified by the backup policies and the virtual machines assigned to those backup policies
-        projected_retained_backups_level:
-          type: integer
-          format: int32
-          description: The ratio in percent of projected_retained_backups vs retained_backups_limit (i.e. What % of the maximum limit is currently specified)
-        retained_backups_limit:
-          type: integer
-          format: int32
-          description: The maximum number of policy backups the federation is permitted to have at any given time
-      description: A policy on this system
-    move_virtual_machine:
-      type: object
-      required:
-      - destination_datastore_id
-      properties:
-        virtual_machine_name:
-          type: string
-          description: The name of the virtual_machine created from this action
-        destination_datastore_id:
-          type: string
-          description: The unique identifier (UID) of the destination datastore for the move
-      description: Moves a virtual machine to another datastore
-    AffectedObjectMO:
-      type: object
-      required:
-      - object_id
-      - object_type
-      properties:
-        object_id:
-          type: string
-          description: The unique identifier (UID) of the object affected by the completed task
-        object_type:
-          type: string
-          description: The type of the object affected by the completed task (virtual_machine, datastore, omnistack_cluster, backup, host, policy, rule)
-    ReplicaInfo:
-      type: object
-      required:
+      - affected_objects
+      - end_time
       - id
-      - role
-      properties:
-        id:
-          type: string
-          description: The unique identifier (UID) of the host storing the replica
-        role:
-          type: string
-          description: The role of the replica
-          enum:
-          - PRIMARY
-          - SECONDARY
-    credentials_validation:
-      type: object
-      required:
-      - status
-      properties:
-        status:
-          type: string
-          description: The credentials validation status
-          enum:
-          - VM_POWERED_OFF
-          - INVALID
-          - VALID
-      description: Status of the virtual machine credentials validation operation
-    vm_set_policy_vms:
-      type: object
-      required:
-      - policy_id
-      - virtual_machine_id
-      properties:
-        virtual_machine_id:
-          type: array
-          description: The unique identifier (UID) of each virtual_machine that you want to associate with the specified policy
-          items:
-            type: string
-        policy_id:
-          type: string
-          description: The unique identifier (UID) of the policy you want to access
-      description: Sets the backup policy for virtual machines
-    BackupMO:
-      type: object
-      required:
-      - application_consistent
-      - associated_cluster
-      - backup_store_type
-      - cluster_group_ids
-      - compute_cluster_parent_hypervisor_object_id
-      - compute_cluster_parent_name
-      - consistency_type
-      - created_at
-      - datastore_id
-      - datastore_name
-      - expiration_time
-      - hypervisor_type
-      - id
-      - name
-      - omnistack_cluster_id
-      - omnistack_cluster_name
-      - sent
-      - sent_completion_time
-      - sent_duration
-      - size
+      - start_time
       - state
-      - type
-      - unique_size_bytes
-      - unique_size_timestamp
-      - virtual_machine_id
-      - virtual_machine_name
-      - virtual_machine_state
-      - virtual_machine_type
       properties:
-        application_consistent:
-          type: boolean
-          example: false
-          description: An indicator to show if the backup represents a snapshot of a virtual machine with data that was first flushed to disk
-        associated_cluster:
-          type: string
-          description: The cluster associated with the external_store
-        backup_store_type:
-          type: string
-          description: The storage type of the backup
-          enum:
-          - SimplivityStore
-          - StoreOnceOnPrem
-          - StoreOnceCloud
-          - Unknown
-        cluster_group_ids:
+        affected_objects:
           type: array
-          description: The unique identifiers (UIDs) of the cluster_groups associated with the backup
+          description: For a completed task, the unique identifiers (UIDs) and types of the objects affected by the operation
           items:
-            type: string
-        compute_cluster_parent_hypervisor_object_id:
+            $ref: '#/components/schemas/AffectedObjectMO'
+        end_time:
           type: string
-          description: The unique identifier (UID) of the hypervisor-based instance that contains the omnistack_cluster that is associated with the instance
-        compute_cluster_parent_name:
+          description: The time the task finished, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+        error_code:
+          type: integer
+          format: int32
+          description: The error code returned if a task failed
+        error_message:
           type: string
-          description: The name of the hypervisor-based instance that contains the omnistack_cluster that is associated with the instance
-        consistency_type:
-          type: string
-          description: The consistency type of the backup
-          enum:
-          - NONE
-          - DEFAULT
-          - FAILEDVSS
-          - NOT_APPLICABLE
-          - VSS
-        created_at:
-          type: string
-          description: The time the backup was created, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
-        datastore_id:
-          type: string
-          description: The unique identifier (UID) of the datastore that is associated with the instance
-        datastore_name:
-          type: string
-          description: The name of the datastore that is associated with the instance
-        expiration_time:
-          type: string
-          description: The time the backup expired (and was deleted), unless locked. This time is expressed in ISO-8601 form, based on Coordinated Universal Time (UTC).
-        external_store_name:
-          type: string
-          description: The name of the external_store
-        hypervisor_type:
-          type: string
-          description: The type of Hypervisor Management System (HMS) associated with the backup
-          enum:
-          - VSPHERE
-          - HYPERV
+          description: The error message returned if a task fails
         id:
           type: string
-          description: the unique identifier (UID) of the backup
-        name:
+          description: The unique identifier (UID) of the task
+        start_time:
           type: string
-          description: The name of the backup
-        omnistack_cluster_id:
-          type: string
-          description: The unique identifier (UID) of the omnistack_cluster that is associated with the instance
-        omnistack_cluster_name:
-          type: string
-          description: The name of the omnistack_cluster that is associated with the instance
-        sent:
-          type: integer
-          format: int64
-          description: For a backup stored in a remote location, the number of bytes that transferred
-        sent_completion_time:
-          type: string
-          description: The time when the backup replication completed, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
-        sent_duration:
-          type: integer
-          format: int64
-          description: The number of seconds that elapsed while replicating the backup
-        size:
-          type: integer
-          format: int64
-          description: The logical size of the backup
+          description: The time the task started, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
         state:
           type: string
-          description: The current state of the backup
+          description: The current state of the task object
           enum:
-          - NEW
-          - SAVING
+          - IN_PROGRESS
+          - COMPLETED
           - FAILED
-          - PROTECTED
-          - UNKNOWN
-          - CANCELING
-          - CANCELED
-          - QUEUED
-          - REBUILDING
-          - DELETED
-          - DEGRADED
-        type:
-          type: string
-          description: The type of backup
-          enum:
-          - MANUAL
-          - POLICY
-          - UNSPECIFIED
-        unique_size_bytes:
-          type: integer
-          format: int64
-          description: The unique size of the backup
-        unique_size_timestamp:
-          type: string
-          description: The time the unique size of the backup was calculated, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
-        virtual_machine_id:
-          type: string
-          description: The unique identifier (UID) of the virtual_machine that is associated with the instance
-        virtual_machine_name:
-          type: string
-          description: The name of the virtual_machine that is associated with the instance
-        virtual_machine_state:
-          type: string
-          description: The state of the virtual_machine
-          enum:
-          - ALIVE
-          - REMOVED
-          - DELETED
-        virtual_machine_type:
-          type: string
-          description: The type of the virtual_machine that is associated with the instance
-          enum:
-          - VM
-          - TEMPLATE
-          - UNKNOWN
-    MetricsDataMO:
-      type: object
-      required:
-      - date
-      - reads
-      - writes
-      properties:
-        date:
-          type: string
-          description: The date for the set of metrics, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
-        reads:
-          type: integer
-          format: int64
-          description: The number of reads per second or latency (in microseconds) or throughput (in bytes per second)
-        writes:
-          type: integer
-          format: int64
-          description: The number of writes per second or latency (in microseconds) or throughput (in bytes per second)
-    BackupVMMO:
-      type: object
-      required:
-      - backup_name
-      properties:
-        backup_name:
-          type: string
-          description: The name of the new backup created from this action
-        destination_id:
-          type: string
-          description: The unique identifier (UID) of the omnistack_cluster that stores the new backup
-        app_consistent:
-          type: boolean
-          example: false
-          description: An indicator to show if the backup represents a snapshot of a virtual machine with data that was first flushed to disk
-        consistency_type:
-          type: string
-          description: The consistency type of the backup
-          enum:
-          - NONE
-          - DEFAULT
-          - FAILEDVSS
-          - NOT_APPLICABLE
-          - VSS
-        retention:
-          type: integer
-          format: int32
-          description: The number of minutes to keep backups
-        external_store_name:
-          type: string
-          description: The name of the external_store
+      description: A task that was created as a result of an operation performed on the system
     virtual_machine:
       type: object
       required:
@@ -3021,44 +2616,436 @@ components:
           - REMOVED
           - DELETED
       description: An instance of a virtual_machine defined on this system
-    TaskMO:
+    policy_schedule_report:
       type: object
       required:
-      - affected_objects
-      - end_time
-      - id
-      - start_time
-      - state
+      - backup_rate_level
+      - daily_backup_rate
+      - daily_backup_rate_limit
+      - projected_retained_backups
+      - projected_retained_backups_level
+      - retained_backups_limit
       properties:
-        affected_objects:
-          type: array
-          description: For a completed task, the unique identifiers (UIDs) and types of the objects affected by the operation
-          items:
-            $ref: '#/components/schemas/AffectedObjectMO'
-        end_time:
-          type: string
-          description: The time the task finished, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
-        error_code:
+        backup_rate_level:
           type: integer
           format: int32
-          description: The error code returned if a task failed
-        error_message:
+          description: The ratio in percent of daily_backup_rate vs daily_backup_rate_limit (i.e. What % of the maximum limit is currently specified)
+        daily_backup_rate:
+          type: integer
+          format: int32
+          description: The average number of backups created in a day in the federation as determined by the current set of backup policies and their rules, and the virtual machines assigned to those backup policies
+        daily_backup_rate_limit:
+          type: integer
+          format: int32
+          description: The maximum number of policy backups allowed to be created in the federation each day
+        projected_retained_backups:
+          type: integer
+          format: int32
+          description: The projection of the maximum number of backups that could be retained given the frequency and retention time specified by the backup policies and the virtual machines assigned to those backup policies
+        projected_retained_backups_level:
+          type: integer
+          format: int32
+          description: The ratio in percent of projected_retained_backups vs retained_backups_limit (i.e. What % of the maximum limit is currently specified)
+        retained_backups_limit:
+          type: integer
+          format: int32
+          description: The maximum number of policy backups the federation is permitted to have at any given time
+      description: A policy on this system
+    set_policy:
+      type: object
+      required:
+      - policy_id
+      properties:
+        policy_id:
           type: string
-          description: The error message returned if a task fails
+          description: The unique identifier (UID) of the policy you want to access
+      description: Sets the backup policy for a virtual_machine or datastore
+    vm_set_policy_vms:
+      type: object
+      required:
+      - policy_id
+      - virtual_machine_id
+      properties:
+        virtual_machine_id:
+          type: array
+          description: The unique identifier (UID) of each virtual_machine that you want to associate with the specified policy
+          items:
+            type: string
+        policy_id:
+          type: string
+          description: The unique identifier (UID) of the policy you want to access
+      description: Sets the backup policy for virtual machines
+    BackupMO:
+      type: object
+      required:
+      - application_consistent
+      - associated_cluster
+      - backup_store_type
+      - cluster_group_ids
+      - compute_cluster_parent_hypervisor_object_id
+      - compute_cluster_parent_name
+      - consistency_type
+      - created_at
+      - datastore_id
+      - datastore_name
+      - expiration_time
+      - hypervisor_type
+      - id
+      - name
+      - omnistack_cluster_id
+      - omnistack_cluster_name
+      - sent
+      - sent_completion_time
+      - sent_duration
+      - size
+      - state
+      - type
+      - unique_size_bytes
+      - unique_size_timestamp
+      - virtual_machine_id
+      - virtual_machine_name
+      - virtual_machine_state
+      - virtual_machine_type
+      properties:
+        application_consistent:
+          type: boolean
+          example: false
+          description: An indicator to show if the backup represents a snapshot of a virtual machine with data that was first flushed to disk
+        associated_cluster:
+          type: string
+          description: The cluster associated with the external_store
+        backup_store_type:
+          type: string
+          description: The storage type of the backup
+          enum:
+          - SimplivityStore
+          - StoreOnceOnPrem
+          - StoreOnceCloud
+          - Unknown
+        cluster_group_ids:
+          type: array
+          description: The unique identifiers (UIDs) of the cluster_groups associated with the backup
+          items:
+            type: string
+        compute_cluster_parent_hypervisor_object_id:
+          type: string
+          description: The unique identifier (UID) of the hypervisor-based instance that contains the omnistack_cluster that is associated with the instance
+        compute_cluster_parent_name:
+          type: string
+          description: The name of the hypervisor-based instance that contains the omnistack_cluster that is associated with the instance
+        consistency_type:
+          type: string
+          description: The consistency type of the backup
+          enum:
+          - NONE
+          - DEFAULT
+          - FAILEDVSS
+          - NOT_APPLICABLE
+          - VSS
+        created_at:
+          type: string
+          description: The time the backup was created, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+        datastore_id:
+          type: string
+          description: The unique identifier (UID) of the datastore that is associated with the instance
+        datastore_name:
+          type: string
+          description: The name of the datastore that is associated with the instance
+        expiration_time:
+          type: string
+          description: The time the backup expired (and was deleted), unless locked. This time is expressed in ISO-8601 form, based on Coordinated Universal Time (UTC).
+        external_store_name:
+          type: string
+          description: The name of the external_store
+        hypervisor_type:
+          type: string
+          description: The type of Hypervisor Management System (HMS) associated with the backup
+          enum:
+          - VSPHERE
+          - HYPERV
         id:
           type: string
-          description: The unique identifier (UID) of the task
-        start_time:
+          description: the unique identifier (UID) of the backup
+        name:
           type: string
-          description: The time the task started, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+          description: The name of the backup
+        omnistack_cluster_id:
+          type: string
+          description: The unique identifier (UID) of the omnistack_cluster that is associated with the instance
+        omnistack_cluster_name:
+          type: string
+          description: The name of the omnistack_cluster that is associated with the instance
+        sent:
+          type: integer
+          format: int64
+          description: For a backup stored in a remote location, the number of bytes that transferred
+        sent_completion_time:
+          type: string
+          description: The time when the backup replication completed, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+        sent_duration:
+          type: integer
+          format: int64
+          description: The number of seconds that elapsed while replicating the backup
+        size:
+          type: integer
+          format: int64
+          description: The logical size of the backup
         state:
           type: string
-          description: The current state of the task object
+          description: The current state of the backup
           enum:
-          - IN_PROGRESS
-          - COMPLETED
+          - NEW
+          - SAVING
           - FAILED
-      description: A task that was created as a result of an operation performed on the system
+          - PROTECTED
+          - UNKNOWN
+          - CANCELING
+          - CANCELED
+          - QUEUED
+          - REBUILDING
+          - DELETED
+          - DEGRADED
+        type:
+          type: string
+          description: The type of backup
+          enum:
+          - MANUAL
+          - POLICY
+          - UNSPECIFIED
+        unique_size_bytes:
+          type: integer
+          format: int64
+          description: The unique size of the backup
+        unique_size_timestamp:
+          type: string
+          description: The time the unique size of the backup was calculated, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+        virtual_machine_id:
+          type: string
+          description: The unique identifier (UID) of the virtual_machine that is associated with the instance
+        virtual_machine_name:
+          type: string
+          description: The name of the virtual_machine that is associated with the instance
+        virtual_machine_state:
+          type: string
+          description: The state of the virtual_machine
+          enum:
+          - ALIVE
+          - REMOVED
+          - DELETED
+        virtual_machine_type:
+          type: string
+          description: The type of the virtual_machine that is associated with the instance
+          enum:
+          - VM
+          - TEMPLATE
+          - UNKNOWN
+    AffectedObjectMO:
+      type: object
+      required:
+      - object_id
+      - object_type
+      properties:
+        object_id:
+          type: string
+          description: The unique identifier (UID) of the object affected by the completed task
+        object_type:
+          type: string
+          description: The type of the object affected by the completed task (virtual_machine, datastore, omnistack_cluster, backup, host, policy, rule)
+    MetricsDataMO:
+      type: object
+      required:
+      - date
+      - reads
+      - writes
+      properties:
+        date:
+          type: string
+          description: The date for the set of metrics, expressed in ISO-8601 form, based on Coordinated Universal Time (UTC)
+        reads:
+          type: integer
+          format: int64
+          description: The number of reads per second or latency (in microseconds) or throughput (in bytes per second)
+        writes:
+          type: integer
+          format: int64
+          description: The number of writes per second or latency (in microseconds) or throughput (in bytes per second)
+    move_virtual_machine:
+      type: object
+      required:
+      - destination_datastore_id
+      properties:
+        virtual_machine_name:
+          type: string
+          description: The name of the virtual_machine created from this action
+        destination_datastore_id:
+          type: string
+          description: The unique identifier (UID) of the destination datastore for the move
+      description: Moves a virtual machine to another datastore
+    ReplicaInfo:
+      type: object
+      required:
+      - id
+      - role
+      properties:
+        id:
+          type: string
+          description: The unique identifier (UID) of the host storing the replica
+        role:
+          type: string
+          description: The role of the replica
+          enum:
+          - PRIMARY
+          - SECONDARY
+    BackupVMMO:
+      type: object
+      required:
+      - backup_name
+      properties:
+        backup_name:
+          type: string
+          description: The name of the new backup created from this action
+        destination_id:
+          type: string
+          description: The unique identifier (UID) of the omnistack_cluster that stores the new backup
+        app_consistent:
+          type: boolean
+          example: false
+          description: An indicator to show if the backup represents a snapshot of a virtual machine with data that was first flushed to disk
+        consistency_type:
+          type: string
+          description: The consistency type of the backup
+          enum:
+          - NONE
+          - DEFAULT
+          - FAILEDVSS
+          - NOT_APPLICABLE
+          - VSS
+        retention:
+          type: integer
+          format: int32
+          description: The number of minutes to keep backups
+        external_store_name:
+          type: string
+          description: The name of the external_store
+    backup_parameters:
+      type: object
+      properties:
+        guest_username:
+          type: string
+          description: The user name of the virtual machine
+        guest_password:
+          type: string
+          description: The password of the virtual machine
+        override_guest_validation:
+          type: boolean
+          example: false
+          description: Set to true to disable virtual machine validation logic.
+        app_aware_type:
+          type: string
+          description: "Set the application aware backup type: \nVSS - Application-consistent backup using Microsoft VSS, \nDEFAULT - Crash-consistent backup, \nNONE - Application-consistent backup using a VMware snapshot."
+          enum:
+          - NONE
+          - DEFAULT
+          - FAILEDVSS
+          - NOT_APPLICABLE
+          - VSS
+      description: Set the virtual machine backup parameters used for application consistent backups.
+    validate_backup_credentials:
+      type: object
+      required:
+      - guest_password
+      - guest_username
+      properties:
+        guest_username:
+          type: string
+          description: The user name of the virtual machine
+        guest_password:
+          type: string
+          description: The password of the virtual machine
+      description: Validates the credentials for the virtual machine you want to backup
+    policy_schedule_impact_report:
+      type: object
+      required:
+      - schedule_after_change
+      - schedule_before_change
+      properties:
+        schedule_after_change:
+          description: The policy backup schedule report
+          $ref: '#/components/schemas/policy_schedule_report'
+        schedule_before_change:
+          description: The policy backup schedule report
+          $ref: '#/components/schemas/policy_schedule_report'
+      description: The policy backup schedule reports for prior to and after applying proposed changes
+    NetworkInterface:
+      type: object
+      required:
+      - adapter_type
+      - device_number
+      - ipv4_addresses
+      - mac_address
+      - mac_generation
+      - network_label
+      properties:
+        adapter_type:
+          type: string
+          description: The adapter type of the network_interface
+          enum:
+          - E1000
+          - E1000E
+          - PCNET32
+          - VMXNET
+          - VNXNET2
+          - VMXNET3
+          - UNKNOWN
+        device_number:
+          type: string
+          description: The device number of the network_interface; empty if this represents a new network_interface
+        ipv4_addresses:
+          type: array
+          description: The IPV4 address(es) assigned to the network_interface
+          items:
+            type: string
+        mac_address:
+          type: string
+          description: If mac_generation is set to MANUAL, specifies the MAC address assigned to the network_interface
+        mac_generation:
+          type: string
+          description: Specifies how the MAC address for the network_interface is generated
+          enum:
+          - ASSIGNED
+          - GENERATED
+          - MANUAL
+          - UNKNOWN
+        network_label:
+          type: string
+          description: The network ID associated with the network_interface
+    CloneVMMO:
+      type: object
+      required:
+      - virtual_machine_name
+      properties:
+        virtual_machine_name:
+          type: string
+          description: The name of the virtual_machine created from this action
+        app_consistent:
+          type: boolean
+          example: false
+          description: '[deprecated] An indicator to show if the backup represents a snapshot of a virtual machine with data that was first flushed to disk'
+        consistency_type:
+          type: string
+          description: 'The type of backup used for the clone method (DEFAULT [crash-consistent], VSS [application-consistent using VSS], or NONE [application-consistent using a snapshot]).
+
+
+            NOTE: If the consistency_type and app_consistent values are both set, the value for consistency_type overrides the value for app_consistent.
+
+
+            If consisteny_type is not set and the app_consistent value is set to True, the consistency_type value equals DEFAULT (crash-consistent). If the app_consistent value is set to False, the consistency_type value equalsNONE (application-consistent using a snapshot'
+          enum:
+          - NONE
+          - DEFAULT
+          - FAILEDVSS
+          - NOT_APPLICABLE
+          - VSS
     analytics_info:
       type: object
       required:
@@ -3074,6 +3061,19 @@ components:
           type: string
           description: The name of the set of metrics (iops, throughput, latency)
       description: The metrics information
+    credentials_validation:
+      type: object
+      required:
+      - status
+      properties:
+        status:
+          type: string
+          description: The credentials validation status
+          enum:
+          - VM_POWERED_OFF
+          - INVALID
+          - VALID
+      description: Status of the virtual machine credentials validation operation
   securitySchemes:
     OAuth2:
       type: oauth2

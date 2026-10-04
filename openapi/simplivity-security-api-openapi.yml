@@ -750,6 +750,30 @@ paths:
         required: true
 components:
   schemas:
+    role_assignments:
+      type: object
+      required:
+      - groups
+      - role
+      properties:
+        role:
+          type: string
+          description: The value of the HPE OmniStack role
+        groups:
+          type: array
+          description: The vCenter Server group(s) assigned to the HPE OmniStack role
+          items:
+            type: string
+      description: The HPE OmniStack role assignments
+    add_certificate:
+      type: object
+      required:
+      - certificate
+      properties:
+        certificate:
+          type: string
+          description: A Base64 encoded SSL certificate
+      description: Add an SSL certificate to the HPE SimpliVity trust store
     certificate:
       type: object
       required:
@@ -771,30 +795,6 @@ components:
           type: string
           description: The serial number of the SSL certificate
       description: An SSL Certificate
-    add_certificate:
-      type: object
-      required:
-      - certificate
-      properties:
-        certificate:
-          type: string
-          description: A Base64 encoded SSL certificate
-      description: Add an SSL certificate to the HPE SimpliVity trust store
-    role_assignments:
-      type: object
-      required:
-      - groups
-      - role
-      properties:
-        role:
-          type: string
-          description: The value of the HPE OmniStack role
-        groups:
-          type: array
-          description: The vCenter Server group(s) assigned to the HPE OmniStack role
-          items:
-            type: string
-      description: The HPE OmniStack role assignments
   securitySchemes:
     OAuth2:
       type: oauth2
