@@ -1,0 +1,66 @@
+slug: simplivity
+provider: SimpliVity
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 5
+edges:
+- tag: Datastores
+  spec_file: simplivity-datastores-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.82
+  evidence: POST /datastores createDatastore  Creates a new datastore; POST /datastores/{datastoreId}/resize
+    resizeDatastore
+  reason: Provisioning, resizing and sharing of storage datastores on an HCI cluster — compute/storage
+    infrastructure management.
+- tag: Hosts
+  spec_file: simplivity-hosts-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.8
+  evidence: GET /hosts/{hostId}/hardware getHostHardware  Retrieves hardware information for the host;
+    GET /hosts/{hostId}/capacity
+  reason: Inventory, hardware, capacity, throughput/IOPS metrics and controlled shutdown of physical cluster
+    hosts — infrastructure estate management.
+- tag: Virtual Machines
+  spec_file: simplivity-virtual-machines-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.8
+  evidence: POST /virtual_machines/{vmId}/backup backupVm Backs up a virtual machine
+  reason: 'Duplicate-safe restatement: VM lifecycle, backup and performance operations on HCI infrastructure
+    map to IT Infrastructure Management; the backup aspect is an infrastructure data-protection feature
+    rather than an enterprise DR programme.'
+- tag: omnistack_clusters
+  spec_file: simplivity-omnistack-clusters-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.8
+  evidence: GET /omnistack_clusters/{clusterId}/metrics getClusterPerfomance Retrieves throughput, IOPS,
+    and latency data for the cluster
+  reason: Inventory, connectivity, throughput metrics and time-zone/IWO settings for HCI clusters — management
+    of compute and storage infrastructure estate.
+- tag: Backups
+  spec_file: simplivity-backups-api-openapi.yml
+  capability_id: BC-160.20
+  capability_id_l1: BC-160
+  capability_name: Disaster Recovery Management
+  confidence: 0.7
+  evidence: POST /backups/{bkpId}/restore restoreFromBackup  Creates a new virtual machine or replaces
+    the original virtual machine from the…; POST /backups/set_retention
+  reason: Backup inventory, retention, copy to another cluster/external store, and VM/file restore — IT
+    data protection and recovery. Mapped to IT disaster recovery rather than the SaaS-service-specific
+    resilience capability since this is an on-prem HCI platform.
